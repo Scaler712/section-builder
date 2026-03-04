@@ -1,0 +1,52 @@
+# App Structure - Section Builder (Systeme.io)
+# Last updated: 2026-03-04
+
+## Purpose
+Tool to rapidly create self-contained HTML sections for Systeme.io sales pages.
+Generate → edit → copy HTML → paste into Systeme.io Raw HTML block.
+
+## Architecture
+- Single-page Next.js app (no auth, no database)
+- AI generation via Anthropic SDK (Claude Sonnet 4.5, streaming)
+- CodeMirror 6 for HTML editing
+- iframe srcdoc for isolated live preview
+- 12 section templates with Systeme.io constraints
+
+## Repositories
+- GitHub: https://github.com/refsdev/section-builder (pending push)
+
+## Deployed Services
+- Frontend: Vercel (pending deployment)
+
+## Tech Stack
+- Next.js 16.1.6 | React 19.2.3 | TypeScript 5
+- @uiw/react-codemirror + @codemirror/lang-html
+- @anthropic-ai/sdk (streaming)
+- shadcn/ui + Tailwind CSS 4
+- sonner (toasts)
+
+## Key Files
+- app/page.tsx — Single page entry
+- app/api/generate/route.ts — AI streaming endpoint
+- components/builder/ — All builder UI components
+- lib/templates/ — 12 section template definitions
+- lib/ai-prompt.ts — System prompt for HTML generation
+- lib/sanitize.ts — HTML post-processing (strip fences, var replacement)
+- lib/design-tokens.ts — Shared colors/fonts/spacing
+
+## Environment Variables Required
+- None — users provide their own Anthropic API key in the browser UI
+- Key stored in sessionStorage (per-session, cleared on tab close)
+- Key passed to /api/generate via x-api-key header (never stored server-side)
+
+## Templates (12)
+hero, benefits-grid, pain-points, solution-transition, testimonials,
+pricing, faq, cta, guarantee, about-bio, countdown-timer, video-embed
+
+## Notes
+- All templates use scoped CSS (.sb-[type] prefix)
+- Vanilla JS only (var, not let/const) for Systeme.io compatibility
+- No <html>/<head>/<body>/<footer> tags (Systeme.io constraint)
+- Raleway font via @import
+- IntersectionObserver scroll animations
+- Responsive at 768px and 480px breakpoints
