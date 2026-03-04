@@ -8,7 +8,6 @@ import { HtmlEditor } from "./html-editor";
 import { PreviewPanel } from "./preview-panel";
 import { OutputBar } from "./output-bar";
 import { templateMap } from "@/lib/templates";
-import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -38,9 +37,9 @@ export function BuilderLayout() {
   const sidebar = (
     <>
       <ApiKeyInput apiKey={apiKey} onApiKeyChange={setApiKey} />
-      <Separator className="my-4" />
+      <div className="my-4 border-t border-[#e5e4de]" />
       <TemplatePicker activeTemplate={activeTemplate} onSelect={selectTemplate} />
-      <Separator className="my-4" />
+      <div className="my-4 border-t border-[#e5e4de]" />
       <AiGenerator
         activeTemplate={activeTemplate}
         onGenerated={handleAiGenerated}
@@ -56,10 +55,10 @@ export function BuilderLayout() {
 
       {/* Desktop: 3-panel */}
       <div className="flex-1 hidden lg:grid lg:grid-cols-[280px_1fr_1fr] overflow-hidden">
-        <ScrollArea className="border-r bg-white p-4">
+        <ScrollArea className="border-r border-[#e5e4de] bg-[#f7f6f2] p-4">
           {sidebar}
         </ScrollArea>
-        <div className="border-r overflow-hidden">
+        <div className="border-r border-[#e5e4de] overflow-hidden">
           <HtmlEditor value={html} onChange={setHtml} />
         </div>
         <PreviewPanel html={html} device={device} />
@@ -68,10 +67,25 @@ export function BuilderLayout() {
       {/* Mobile/Tablet: tabbed layout */}
       <div className="flex-1 lg:hidden overflow-hidden">
         <Tabs defaultValue="templates" className="h-full flex flex-col">
-          <TabsList className="mx-4 mt-2 grid grid-cols-3">
-            <TabsTrigger value="templates">Templates</TabsTrigger>
-            <TabsTrigger value="editor">Editor</TabsTrigger>
-            <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsList className="mx-4 mt-2 grid grid-cols-3 bg-[#efede8] rounded-none">
+            <TabsTrigger
+              value="templates"
+              className="font-mono text-[10px] uppercase tracking-[0.2em] rounded-none data-[state=active]:bg-[#3d7068] data-[state=active]:text-[#f7f6f2]"
+            >
+              Templates
+            </TabsTrigger>
+            <TabsTrigger
+              value="editor"
+              className="font-mono text-[10px] uppercase tracking-[0.2em] rounded-none data-[state=active]:bg-[#3d7068] data-[state=active]:text-[#f7f6f2]"
+            >
+              Editor
+            </TabsTrigger>
+            <TabsTrigger
+              value="preview"
+              className="font-mono text-[10px] uppercase tracking-[0.2em] rounded-none data-[state=active]:bg-[#3d7068] data-[state=active]:text-[#f7f6f2]"
+            >
+              Preview
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="templates" className="flex-1 overflow-auto p-4">
             {sidebar}

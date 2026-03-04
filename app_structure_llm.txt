@@ -13,10 +13,11 @@ Generate → edit → copy HTML → paste into Systeme.io Raw HTML block.
 - 12 section templates with Systeme.io constraints
 
 ## Repositories
-- GitHub: https://github.com/refsdev/section-builder (pending push)
+- GitHub: https://github.com/Scaler712/section-builder
 
 ## Deployed Services
-- Frontend: Vercel (pending deployment)
+- Frontend: https://section-builder-two.vercel.app
+  - Vercel Project: section-builder
 
 ## Tech Stack
 - Next.js 16.1.6 | React 19.2.3 | TypeScript 5

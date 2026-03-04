@@ -15,21 +15,20 @@ import {
   Timer,
   PlayCircle,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 const iconMap: Record<string, React.ReactNode> = {
-  Sparkles: <Sparkles className="size-4" />,
-  LayoutGrid: <LayoutGrid className="size-4" />,
-  AlertTriangle: <AlertTriangle className="size-4" />,
-  ArrowRightLeft: <ArrowRightLeft className="size-4" />,
-  Quote: <Quote className="size-4" />,
-  CreditCard: <CreditCard className="size-4" />,
-  HelpCircle: <HelpCircle className="size-4" />,
-  MousePointerClick: <MousePointerClick className="size-4" />,
-  ShieldCheck: <ShieldCheck className="size-4" />,
-  User: <User className="size-4" />,
-  Timer: <Timer className="size-4" />,
-  PlayCircle: <PlayCircle className="size-4" />,
+  Sparkles: <Sparkles className="size-3.5" />,
+  LayoutGrid: <LayoutGrid className="size-3.5" />,
+  AlertTriangle: <AlertTriangle className="size-3.5" />,
+  ArrowRightLeft: <ArrowRightLeft className="size-3.5" />,
+  Quote: <Quote className="size-3.5" />,
+  CreditCard: <CreditCard className="size-3.5" />,
+  HelpCircle: <HelpCircle className="size-3.5" />,
+  MousePointerClick: <MousePointerClick className="size-3.5" />,
+  ShieldCheck: <ShieldCheck className="size-3.5" />,
+  User: <User className="size-3.5" />,
+  Timer: <Timer className="size-3.5" />,
+  PlayCircle: <PlayCircle className="size-3.5" />,
 };
 
 interface TemplatePickerProps {
@@ -40,23 +39,22 @@ interface TemplatePickerProps {
 export function TemplatePicker({ activeTemplate, onSelect }: TemplatePickerProps) {
   return (
     <div>
-      <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-        Templates
-      </h3>
-      <div className="grid grid-cols-2 gap-2">
+      <h3 className="mono-label mb-3">Templates</h3>
+      <div className="grid grid-cols-2 gap-1.5">
         {templates.map((t) => (
           <button
             key={t.id}
             onClick={() => onSelect(t.id)}
-            className={cn(
-              "flex flex-col items-center gap-1.5 p-3 rounded-lg border text-center transition-all text-xs",
+            className={`flex flex-col items-center gap-1.5 p-3 border text-center ed-transition ${
               activeTemplate === t.id
-                ? "border-primary bg-primary/5 text-primary"
-                : "border-transparent bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
-            )}
+                ? "border-[#3d7068] bg-[#3d706810] text-[#3d7068]"
+                : "border-[#e5e4de] text-[#7a7a72] hover:border-[#3d7068] hover:text-[#1c1c1c]"
+            }`}
           >
-            {iconMap[t.icon] || <Sparkles className="size-4" />}
-            <span className="font-medium leading-tight">{t.name}</span>
+            {iconMap[t.icon] || <Sparkles className="size-3.5" />}
+            <span className="font-mono text-[9px] uppercase tracking-[0.15em] leading-tight">
+              {t.name}
+            </span>
           </button>
         ))}
       </div>

@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { Loader2, Wand2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
@@ -39,7 +37,6 @@ export function AiGenerator({ activeTemplate, onGenerated, onTemplateChange, api
   const [instructions, setInstructions] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Sync section type when template changes externally
   if (activeTemplate && activeTemplate !== sectionType) {
     setSectionType(activeTemplate);
   }
@@ -88,13 +85,11 @@ export function AiGenerator({ activeTemplate, onGenerated, onTemplateChange, api
         onGenerated(html);
       }
 
-      // Sanitize final output
       const sanitized = sanitizeHtml(html);
       if (sanitized !== html) {
         onGenerated(sanitized);
       }
 
-      // Also select the template in the picker
       onTemplateChange(sectionType);
       toast.success("Section generated");
     } catch (err) {
@@ -106,12 +101,10 @@ export function AiGenerator({ activeTemplate, onGenerated, onTemplateChange, api
 
   return (
     <div>
-      <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-        AI Generate
-      </h3>
+      <h3 className="mono-label mb-3">AI Generate</h3>
       <div className="space-y-3">
         <div>
-          <Label className="text-xs mb-1.5">Section Type</Label>
+          <label className="mono-label mb-1.5 block">Section Type</label>
           <Select
             value={sectionType}
             onValueChange={(v) => {
@@ -119,12 +112,12 @@ export function AiGenerator({ activeTemplate, onGenerated, onTemplateChange, api
               onTemplateChange(v);
             }}
           >
-            <SelectTrigger className="h-9 text-sm">
+            <SelectTrigger className="h-9 text-xs font-mono bg-transparent border-[#e5e4de] focus:border-[#3d7068]">
               <SelectValue placeholder="Choose section..." />
             </SelectTrigger>
             <SelectContent>
               {templates.map((t) => (
-                <SelectItem key={t.id} value={t.id}>
+                <SelectItem key={t.id} value={t.id} className="text-xs font-mono">
                   {t.name}
                 </SelectItem>
               ))}
@@ -133,14 +126,14 @@ export function AiGenerator({ activeTemplate, onGenerated, onTemplateChange, api
         </div>
 
         <div>
-          <Label className="text-xs mb-1.5">Language</Label>
+          <label className="mono-label mb-1.5 block">Language</label>
           <Select value={language} onValueChange={setLanguage}>
-            <SelectTrigger className="h-9 text-sm">
+            <SelectTrigger className="h-9 text-xs font-mono bg-transparent border-[#e5e4de] focus:border-[#3d7068]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
               {languages.map((l) => (
-                <SelectItem key={l.value} value={l.value}>
+                <SelectItem key={l.value} value={l.value} className="text-xs font-mono">
                   {l.label}
                 </SelectItem>
               ))}
@@ -149,30 +142,34 @@ export function AiGenerator({ activeTemplate, onGenerated, onTemplateChange, api
         </div>
 
         <div>
-          <Label className="text-xs mb-1.5">Product / Brand Name</Label>
+          <label className="mono-label mb-1.5 block">Product / Brand</label>
           <input
             type="text"
             value={productName}
             onChange={(e) => setProductName(e.target.value)}
             placeholder="e.g. RunAdy"
-            className="w-full h-9 px-3 text-sm rounded-md border border-input bg-background"
+            className="w-full h-9 px-3 font-mono text-xs bg-transparent border border-[#e5e4de] focus:border-[#3d7068] focus:outline-none ed-transition placeholder:text-[#cccbc4]"
           />
         </div>
 
         <div>
-          <Label className="text-xs mb-1.5">Custom Instructions</Label>
+          <label className="mono-label mb-1.5 block">Instructions</label>
           <Textarea
             value={instructions}
             onChange={(e) => setInstructions(e.target.value)}
             placeholder="e.g. Target audience is ecommerce brands spending $5K+/mo on ads"
-            className="text-sm min-h-[80px] resize-none"
+            className="text-xs font-sans min-h-[80px] resize-none bg-transparent border-[#e5e4de] focus:border-[#3d7068] placeholder:text-[#cccbc4]"
           />
         </div>
 
-        <Button onClick={generate} disabled={loading || !sectionType || !apiKey} className="w-full gap-2">
+        <button
+          onClick={generate}
+          disabled={loading || !sectionType || !apiKey}
+          className="w-full flex items-center justify-center gap-2 h-10 bg-[#3d7068] text-[#f7f6f2] font-mono text-[10px] uppercase tracking-[0.25em] hover:bg-[#2f5a53] disabled:opacity-40 disabled:cursor-not-allowed ed-transition"
+        >
           {loading ? <Loader2 className="size-4 animate-spin" /> : <Wand2 className="size-4" />}
           {loading ? "Generating..." : "Generate"}
-        </Button>
+        </button>
       </div>
     </div>
   );

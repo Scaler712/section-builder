@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { Key, Eye, EyeOff, Check } from "lucide-react";
-import { Label } from "@/components/ui/label";
 
 const STORAGE_KEY = "sb-anthropic-key";
 
@@ -14,7 +13,6 @@ interface ApiKeyInputProps {
 export function ApiKeyInput({ apiKey, onApiKeyChange }: ApiKeyInputProps) {
   const [visible, setVisible] = useState(false);
 
-  // Load from sessionStorage on mount
   useEffect(() => {
     const stored = sessionStorage.getItem(STORAGE_KEY);
     if (stored && !apiKey) {
@@ -35,33 +33,33 @@ export function ApiKeyInput({ apiKey, onApiKeyChange }: ApiKeyInputProps) {
 
   return (
     <div>
-      <Label className="text-xs mb-1.5 flex items-center gap-1.5">
+      <label className="mono-label flex items-center gap-1.5 mb-2">
         <Key className="size-3" />
         API Key
-      </Label>
+      </label>
       <div className="relative">
         <input
           type={visible ? "text" : "password"}
           value={apiKey}
           onChange={(e) => handleChange(e.target.value)}
           placeholder="sk-ant-..."
-          className="w-full h-9 px-3 pr-16 text-sm rounded-md border border-input bg-background font-mono"
+          className="w-full h-9 px-3 pr-16 font-mono text-xs bg-transparent border border-[#e5e4de] focus:border-[#3d7068] focus:outline-none ed-transition placeholder:text-[#cccbc4]"
         />
-        <div className="absolute right-1 top-1/2 -translate-y-1/2 flex items-center gap-0.5">
+        <div className="absolute right-1.5 top-1/2 -translate-y-1/2 flex items-center gap-0.5">
           {apiKey && isValid && (
-            <Check className="size-3.5 text-emerald-500" />
+            <Check className="size-3.5 text-[#3d7068]" />
           )}
           <button
             type="button"
             onClick={() => setVisible(!visible)}
-            className="p-1 text-muted-foreground hover:text-foreground"
+            className="p-1 text-[#7a7a72] hover:text-[#1c1c1c] ed-transition"
           >
             {visible ? <EyeOff className="size-3.5" /> : <Eye className="size-3.5" />}
           </button>
         </div>
       </div>
-      <p className="text-[11px] text-muted-foreground mt-1">
-        Stored in browser session only. Never sent to our servers.
+      <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#7a7a72] mt-1.5">
+        Session only. Never stored server-side.
       </p>
     </div>
   );
