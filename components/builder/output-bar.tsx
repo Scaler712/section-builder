@@ -19,6 +19,7 @@ interface OutputBarProps {
   onToggleCode: () => void;
   styleOverrides?: StyleOverrides;
   getExportHtml?: () => string;
+  checkoutUrl?: string;
 }
 
 /**
@@ -82,7 +83,7 @@ function buildLovablePrompt(html: string, _sections: PageSection[], overrides?: 
   return lines.join("\n");
 }
 
-export function OutputBar({ html, sections = [], device, onDeviceChange, onClear, showCode, onToggleCode, styleOverrides, getExportHtml }: OutputBarProps) {
+export function OutputBar({ html, sections = [], device, onDeviceChange, onClear, showCode, onToggleCode, styleOverrides, getExportHtml, checkoutUrl }: OutputBarProps) {
   const [showValidation, setShowValidation] = useState(false);
   const [validation, setValidation] = useState<{ valid: boolean; warnings: string[] } | null>(null);
 
@@ -106,7 +107,7 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
       return;
     }
 
-    const optimized = optimizeForSystemeio(html, styleOverrides);
+    const optimized = optimizeForSystemeio(html, styleOverrides, checkoutUrl);
     const result = validateSystemeioHtml(optimized);
     setValidation(result);
 

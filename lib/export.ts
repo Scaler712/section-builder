@@ -10,7 +10,7 @@ import { buildCssVarBlock } from "@/lib/css-vars";
  * - Replaces per-section IntersectionObservers with a single robust one
  * - Strips prohibited tags
  */
-export function optimizeForSystemeio(html: string, overrides: StyleOverrides): string {
+export function optimizeForSystemeio(html: string, overrides: StyleOverrides, checkoutUrl?: string): string {
   if (!html.trim()) return html;
 
   // Strip any existing theme block
@@ -51,6 +51,41 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides): s
 .fade-up.sb-animated { opacity: 0 !important; transform: translateY(30px) !important; transition: opacity 0.6s ease, transform 0.6s ease !important; }
 .fade-up.sb-animated.visible { opacity: 1 !important; transform: translateY(0) !important; }`;
 
+  // ── Fix Systeme.io alignment override ──
+  // Systeme.io wraps Raw HTML blocks in a container with text-align: center.
+  // This CSS resets alignment properly: left by default, center only where intended.
+  const alignmentFix = `/* Systeme.io alignment fix */
+[class^="sb-"] { text-align: left !important; }
+[class^="sb-"] h2 { text-align: center !important; }
+[class^="sb-"] .subtitle,
+[class^="sb-"] .lead { text-align: center !important; }
+.sb-hero { text-align: center !important; }
+.sb-hero h1, .sb-hero p, .sb-hero .cta-btn { text-align: center !important; }
+.sb-cta { text-align: center !important; }
+.sb-cta h2, .sb-cta p, .sb-cta .cta-btn { text-align: center !important; }
+.sb-guarantee { text-align: center !important; }
+.sb-guarantee h2, .sb-guarantee p, .sb-guarantee .shield { text-align: center !important; }
+.sb-transition { text-align: center !important; }
+.sb-transition h2, .sb-transition p { text-align: center !important; }
+.sb-pricing-card { text-align: center !important; }
+.sb-pricing-card .features,
+.sb-pricing-card .features li { text-align: left !important; }
+.sb-about-text .stat { text-align: center !important; }
+html { scroll-behavior: smooth; }`;
+
+  // ── Replace dead links with checkout URL or anchor ──
+  if (checkoutUrl && checkoutUrl.trim()) {
+    clean = clean.replace(/href="#"/g, `href="${checkoutUrl.trim()}"`);
+  } else {
+    // No checkout URL — point buttons to pricing section anchor
+    clean = clean.replace(/href="#"/g, 'href="#sb-pricing"');
+  }
+
+  // ── Add anchor IDs to sections for smooth scroll ──
+  clean = clean.replace(/class="sb-pricing"/g, 'id="sb-pricing" class="sb-pricing"');
+  clean = clean.replace(/class="sb-faq"/g, 'id="sb-faq" class="sb-faq"');
+  clean = clean.replace(/class="sb-testimonials"/g, 'id="sb-testimonials" class="sb-testimonials"');
+
   // Build output
   const parts: string[] = [];
 
@@ -72,9 +107,9 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides): s
     .join("\n\n");
 
   if (combinedCss.trim()) {
-    parts.push(`<style>\n${combinedCss}\n\n/* Systeme.io fade-up fix */\n${fadeUpFix}\n</style>`);
+    parts.push(`<style>\n${combinedCss}\n\n${fadeUpFix}\n\n${alignmentFix}\n</style>`);
   } else {
-    parts.push(`<style>\n${fadeUpFix}\n</style>`);
+    parts.push(`<style>\n${fadeUpFix}\n\n${alignmentFix}\n</style>`);
   }
 
   // HTML content
