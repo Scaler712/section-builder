@@ -1,0 +1,250 @@
+<!-- Generated: hyper-fintech/pricing -->
+<style>
+.sb-pricing {
+  background: #0A0A0A;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-pricing-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-pricing .sb-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.sb-pricing h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+  margin: 0 0 16px 0;
+}
+.sb-pricing .sb-sub {
+  font-size: 16px;
+  color: var(--sb-muted);
+  margin: 0 0 56px 0;
+}
+.sb-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-pricing-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 2rem;
+  padding: 40px;
+  transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-pricing-card:hover {
+  border-color: rgba(255,255,255,0.2);
+}
+.sb-pricing-card.sb-featured {
+  background: var(--sb-accent);
+  color: #000000;
+  border-color: var(--sb-accent);
+  border-radius: 100px;
+  padding: 48px 40px;
+}
+.sb-pricing-card .sb-pill {
+  display: inline-block;
+  background: rgba(253,224,71,0.15);
+  color: var(--sb-accent);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 24px;
+}
+.sb-pricing-card.sb-featured .sb-pill {
+  background: rgba(0,0,0,0.15);
+  color: #000000;
+}
+.sb-pricing-card .sb-tier {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-muted);
+  margin-bottom: 12px;
+}
+.sb-pricing-card.sb-featured .sb-tier {
+  color: rgba(0,0,0,0.5);
+}
+.sb-pricing-card .sb-price {
+  font-size: 48px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.04em;
+}
+.sb-pricing-card.sb-featured .sb-price {
+  color: #000000;
+}
+.sb-pricing-card .sb-price span {
+  font-size: 16px;
+  color: var(--sb-muted);
+  font-weight: 400;
+}
+.sb-pricing-card.sb-featured .sb-price span {
+  color: rgba(0,0,0,0.4);
+}
+.sb-pricing-card .sb-desc {
+  font-size: 14px;
+  color: var(--sb-muted);
+  margin-bottom: 28px;
+}
+.sb-pricing-card.sb-featured .sb-desc {
+  color: rgba(0,0,0,0.5);
+}
+.sb-pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+}
+.sb-pricing-card li {
+  font-size: 14px;
+  color: var(--sb-body);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sb-pricing-card.sb-featured li {
+  color: rgba(0,0,0,0.7);
+  border-bottom-color: rgba(0,0,0,0.1);
+}
+.sb-pricing-card li::before {
+  content: '\2713  ';
+  color: var(--sb-accent);
+  font-weight: 700;
+}
+.sb-pricing-card.sb-featured li::before {
+  color: #000000;
+}
+.sb-pricing-card .sb-btn {
+  display: block;
+  text-align: center;
+  border-radius: 9999px;
+  padding: 18px 48px;
+  font-family: var(--sb-font);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-pricing-card .sb-btn {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.sb-pricing-card .sb-btn:hover {
+  border-color: #FFFFFF;
+}
+.sb-pricing-card.sb-featured .sb-btn {
+  background: #000000;
+  color: var(--sb-accent);
+  border: none;
+}
+.sb-pricing-card.sb-featured .sb-btn:hover {
+  transform: scale(1.03);
+}
+.sb-pricing-card .sb-btn:active {
+  transform: scale(0.95);
+}
+.sb-pricing .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-pricing .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .sb-pricing h2 { font-size: 32px; }
+  .sb-pricing-card.sb-featured { border-radius: 48px; }
+  .sb-pricing-card .sb-price { font-size: 40px; }
+}
+</style>
+
+<div class="sb-pricing">
+  <div class="sb-pricing-inner">
+    <span class="sb-badge fade-up">Pricing</span>
+    <h2 class="fade-up">Simple, transparent pricing.</h2>
+    <p class="sb-sub fade-up">No hidden fees. No FX markups. What you see is what you pay.</p>
+
+    <div class="sb-pricing-grid">
+      <div class="sb-pricing-card fade-up">
+        <div class="sb-tier">Startup</div>
+        <div class="sb-price">$49<span>/mo</span></div>
+        <div class="sb-desc">For early-stage companies</div>
+        <ul>
+          <li>$500K monthly volume</li>
+          <li>0.5% per transaction</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+          <li>2 team members</li>
+        </ul>
+        <a href="#" class="sb-btn">Get Started</a>
+      </div>
+
+      <div class="sb-pricing-card sb-featured fade-up">
+        <div class="sb-pill">Most Popular</div>
+        <div class="sb-tier">Growth</div>
+        <div class="sb-price">$199<span>/mo</span></div>
+        <div class="sb-desc">For scaling businesses</div>
+        <ul>
+          <li>$5M monthly volume</li>
+          <li>0.3% per transaction</li>
+          <li>Advanced analytics + API</li>
+          <li>Priority support</li>
+          <li>10 team members</li>
+        </ul>
+        <a href="#" class="sb-btn">Start Free Trial</a>
+      </div>
+
+      <div class="sb-pricing-card fade-up">
+        <div class="sb-tier">Enterprise</div>
+        <div class="sb-price">Custom</div>
+        <div class="sb-desc">For high-volume operations</div>
+        <ul>
+          <li>Unlimited volume</li>
+          <li>Custom pricing</li>
+          <li>Dedicated infrastructure</li>
+          <li>24/7 phone support</li>
+          <li>Unlimited team</li>
+        </ul>
+        <a href="#" class="sb-btn">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pricing .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

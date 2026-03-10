@@ -1,0 +1,245 @@
+<!-- Generated: softly-wellness/faq -->
+<style>
+.sb-faq {
+  background: #FDFCF8;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-faq .sb-blob-1 {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(80px);
+  top: 5%;
+  right: -3%;
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite;
+}
+.sb-faq .sb-blob-2 {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: #EFEDF4;
+  opacity: 0.35;
+  filter: blur(80px);
+  bottom: 5%;
+  left: -3%;
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite 3s;
+}
+@keyframes sb-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.sb-faq-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-faq .sb-badge {
+  display: inline-block;
+  background: rgba(255,183,178,0.15);
+  color: var(--sb-accent);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.sb-faq h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0 0 12px 0;
+}
+.sb-faq .sb-subtitle {
+  font-size: 18px;
+  color: var(--sb-muted);
+  margin-bottom: 44px;
+}
+.sb-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+.sb-faq-item {
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.sb-faq-item:hover {
+  box-shadow: 0 6px 24px -2px rgba(0,0,0,0.07);
+}
+.sb-faq-item .sb-faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 28px;
+  cursor: pointer;
+  user-select: none;
+}
+.sb-faq-item .sb-faq-q h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  margin: 0;
+  line-height: 1.4;
+}
+.sb-faq-item .sb-faq-q .sb-faq-toggle {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,183,178,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--sb-accent);
+  transition: transform 0.4s ease, background 0.4s ease;
+  margin-left: 16px;
+}
+.sb-faq-item.active .sb-faq-q .sb-faq-toggle {
+  transform: rotate(45deg);
+  background: rgba(255,183,178,0.2);
+}
+.sb-faq-item .sb-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.sb-faq-item.active .sb-faq-a {
+  max-height: 300px;
+}
+.sb-faq-item .sb-faq-a p {
+  padding: 0 28px 24px;
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq h2 { font-size: 32px; }
+  .sb-faq-item .sb-faq-q { padding: 18px 20px; }
+  .sb-faq-item .sb-faq-a p { padding: 0 20px 20px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-blob-1"></div>
+  <div class="sb-blob-2"></div>
+  <div class="sb-faq-inner">
+    <span class="sb-badge fade-up">Common questions</span>
+    <h2 class="fade-up">We're here to help</h2>
+    <p class="sb-subtitle fade-up">Everything you're wondering about, answered with care.</p>
+    <div class="sb-faq-list">
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>How much time does this take each day?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>As little as 10 minutes. Our meditations start at 5 minutes, and the recipes take under 30 minutes. We designed everything for real people with busy lives -- not for someone with unlimited free time.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>I've never meditated before. Is this for me?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>Absolutely. Our guided sessions are designed specifically for beginners. No experience needed, no special equipment. Just you, a quiet moment, and a gentle voice guiding you through.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>What if I don't like it?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>No problem at all. You have 30 days to try everything risk-free. If it doesn't feel right, simply let us know and we'll refund you completely. No questions, no guilt, no awkward conversations.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Are the recipes suitable for dietary restrictions?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>Yes. Every recipe includes tags for gluten-free, dairy-free, vegan, and nut-free options. You can filter the entire library by your dietary needs. We believe nourishment should never feel restrictive.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Can I do this while pregnant or postpartum?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>Many of our members are pregnant or postpartum. We have specific meditation tracks and recipe guides for each stage. That said, always check with your healthcare provider before starting any new wellness program.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>How is the community moderated?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>We take community safety seriously. Our space is actively moderated by trained facilitators. We have clear guidelines around respect, kindness, and confidentiality. It's a judgment-free zone, always.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-faq-item');
+  for (var i = 0; i < items.length; i++) {
+    items[i].querySelector('.sb-faq-q').addEventListener('click', function() {
+      var item = this.parentElement;
+      var wasActive = item.classList.contains('active');
+      for (var j = 0; j < items.length; j++) {
+        items[j].classList.remove('active');
+      }
+      if (!wasActive) {
+        item.classList.add('active');
+      }
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

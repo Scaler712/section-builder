@@ -1,0 +1,211 @@
+<!-- Generated: red-sun/about-bio -->
+<style>
+.sb-about-bio {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-about-bio .sb-blur-1 {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.07;
+  filter: blur(120px);
+  pointer-events: none;
+  top: -80px;
+  left: -60px;
+}
+.sb-about-bio .sb-blur-2 {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(100px);
+  pointer-events: none;
+  bottom: -60px;
+  right: 5%;
+}
+.sb-about-bio .sb-blur-3 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.05;
+  filter: blur(110px);
+  pointer-events: none;
+  top: 40%;
+  right: 20%;
+}
+.sb-about-bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-about-photo-wrap {
+  position: relative;
+}
+.sb-about-bio .sb-dot-grid {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(#EF4623 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  opacity: 0.18;
+  pointer-events: none;
+  bottom: -24px;
+  right: -24px;
+  border-radius: 12px;
+}
+.sb-about-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 24px 64px rgba(45,59,66,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sb-muted);
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+.sb-about-content .sb-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sb-about-content .sb-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+}
+.sb-about-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 24px 0;
+}
+.sb-about-content h2 em {
+  color: var(--sb-accent);
+  font-style: italic;
+}
+.sb-about-content .sb-body {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.sb-about-content .sb-stats {
+  display: flex;
+  gap: 36px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.sb-about-content .sb-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--sb-accent);
+  line-height: 1;
+}
+.sb-about-content .sb-stat-label {
+  font-size: 12px;
+  color: var(--sb-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 8px;
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px) rotate(2deg);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio-inner { grid-template-columns: 1fr; gap: 36px; }
+  .sb-about-photo-wrap { max-width: 300px; margin: 0 auto; }
+  .sb-about-content h2 { font-size: 28px; }
+  .sb-about-content .sb-stats { gap: 24px; flex-wrap: wrap; }
+  .sb-about-content .sb-stat-num { font-size: 32px; }
+  .sb-about-bio .sb-dot-grid { display: none; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-blur-1"></div>
+  <div class="sb-blur-2"></div>
+  <div class="sb-blur-3"></div>
+  <div class="sb-about-bio-inner">
+    <div class="sb-about-photo-wrap fade-up">
+      <div class="sb-dot-grid"></div>
+      <div class="sb-about-photo">Your Photo</div>
+    </div>
+    <div class="sb-about-content">
+      <div class="sb-label fade-up">About the Founder</div>
+      <h2 class="fade-up">Built by a <em>Creator</em>,<br>for Creators</h2>
+      <p class="sb-body fade-up">I spent 10 years running a creative agency before burning out on the inefficiency. Every campaign was a fire drill. Every client meant more chaos. I knew there had to be a better way.</p>
+      <p class="sb-body fade-up">So I built it. This platform is the tool I wish I had when I was managing 40 clients with a team of 5. It's designed to give small teams the output of agencies 10x their size.</p>
+      <div class="sb-stats fade-up">
+        <div>
+          <div class="sb-stat-num">10+</div>
+          <div class="sb-stat-label">Years in Creative</div>
+        </div>
+        <div>
+          <div class="sb-stat-num">$30M</div>
+          <div class="sb-stat-label">Revenue Generated</div>
+        </div>
+        <div>
+          <div class="sb-stat-num">4,800</div>
+          <div class="sb-stat-label">Creators Served</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

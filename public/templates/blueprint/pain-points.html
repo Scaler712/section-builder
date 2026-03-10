@@ -1,0 +1,167 @@
+<!-- Generated: blueprint/pain-points -->
+<style>
+.sb-pain-points {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-pain-points-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-pain-points .sb-coord {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-pain-points h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 48px 0;
+}
+.sb-pain-points .sb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sb-pain-points .sb-pain-item {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 0;
+  padding: 24px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+.sb-pain-points .sb-pain-item::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+.sb-pain-points .sb-pain-item::after {
+  content: '+';
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+.sb-pain-points .sb-pain-item:hover {
+  border-color: var(--sb-accent);
+}
+.sb-pain-points .sb-pain-icon {
+  font-family: monospace;
+  font-size: 14px;
+  color: var(--sb-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.sb-pain-points .sb-pain-text h3 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 16px;
+  margin: 0 0 8px 0;
+}
+.sb-pain-points .sb-pain-text p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin: 0;
+}
+.sb-pain-points .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-pain-points .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pain-points h2 { font-size: 28px; }
+  .sb-pain-points .sb-pain-item { flex-direction: column; gap: 8px; padding: 20px; }
+}
+</style>
+
+<div class="sb-pain-points">
+  <div class="sb-pain-points-inner">
+    <div class="sb-coord fade-up">REF: DEFECT-LOG-003 &nbsp;&middot;&nbsp; CRITICAL FINDINGS</div>
+    <h2 class="fade-up">Structural Failures Identified</h2>
+    <div class="sb-list">
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">[!]</div>
+        <div class="sb-pain-text">
+          <h3>No Repeatable System</h3>
+          <p>// you're reinventing the wheel every time you land a new client. no templates, no SOPs, no documented processes. every project starts from zero.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">[!]</div>
+        <div class="sb-pain-text">
+          <h3>Feast-or-Famine Revenue</h3>
+          <p>// one month you're overloaded, the next you're scrambling for leads. without a pipeline system, income is a gamble instead of a forecast.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">[!]</div>
+        <div class="sb-pain-text">
+          <h3>Undercharging by 3x</h3>
+          <p>// imposter syndrome has you billing hourly at rates that would embarrass a junior freelancer. no value-based pricing. no proposal framework.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">[!]</div>
+        <div class="sb-pain-text">
+          <h3>Zero Authority Positioning</h3>
+          <p>// you look like every other generalist on the internet. no niche, no case studies, no proof stack. prospects can't tell you apart from the competition.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">[!]</div>
+        <div class="sb-pain-text">
+          <h3>Manual Everything</h3>
+          <p>// proposals hand-typed. invoices in spreadsheets. client onboarding improvised. you're spending 60% of your time on admin instead of delivery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pain-points .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

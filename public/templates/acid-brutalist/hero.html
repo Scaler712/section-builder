@@ -1,0 +1,214 @@
+<!-- Generated: acid-brutalist/hero -->
+<style>
+.sb-hero {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: var(--sb-highlight);
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.sb-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+.sb-hero .sb-marquee-bg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%) rotate(-3deg);
+  font-size: 140px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--sb-heading);
+  opacity: 0.03;
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  z-index: 0;
+}
+.sb-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+}
+.sb-hero .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px 0px var(--sb-heading);
+  padding: 8px 20px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 28px;
+}
+.sb-hero h1 {
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 800;
+  color: var(--sb-heading);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  margin: 0 0 24px 0;
+  text-transform: uppercase;
+}
+.sb-hero h1 .sb-underline {
+  background: var(--sb-accent);
+  padding: 0 12px;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.sb-hero .sb-subtitle {
+  font-size: 19px;
+  color: var(--sb-body);
+  font-weight: 500;
+  margin: 0 0 40px 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+.sb-hero .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px 0px var(--sb-heading);
+  padding: 18px 52px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-family: var(--sb-font);
+}
+.sb-hero .sb-cta-btn:hover {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.sb-hero .sb-microcopy {
+  font-size: 13px;
+  color: var(--sb-muted);
+  margin-top: 14px;
+  font-weight: 600;
+}
+.sb-hero .sb-social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 48px;
+  background: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px 0px var(--sb-heading);
+  padding: 16px 28px;
+  display: inline-flex;
+}
+.sb-hero .sb-avatars {
+  display: flex;
+}
+.sb-hero .sb-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--sb-heading);
+  background: var(--sb-accent);
+  margin-left: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sb-heading);
+}
+.sb-hero .sb-avatar:first-child {
+  margin-left: 0;
+}
+.sb-hero .sb-proof-text {
+  font-size: 14px;
+  color: var(--sb-heading);
+  font-weight: 700;
+}
+.sb-hero .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-hero .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-hero h1 { font-size: 42px; }
+  .sb-hero .sb-subtitle { font-size: 16px; }
+  .sb-hero { min-height: 70vh; }
+  .sb-hero .sb-marquee-bg { font-size: 80px; }
+}
+@media (max-width: 480px) {
+  .sb-hero h1 { font-size: 34px; }
+  .sb-hero .sb-cta-btn { padding: 14px 32px; font-size: 14px; }
+  .sb-hero .sb-social-proof { flex-direction: column; gap: 10px; }
+}
+</style>
+
+<div class="sb-hero">
+  <div class="sb-marquee-bg">BUILD FASTER BUILD FASTER BUILD FASTER</div>
+  <div class="sb-hero-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Early Access Open</span>
+    </div>
+    <h1 class="fade-up">Stop Building<br><span class="sb-underline">Start Shipping.</span></h1>
+    <p class="sb-subtitle fade-up">The brutally simple platform that turns your ideas into revenue-generating machines. Launch in days, not months.</p>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Get Started Free</a>
+      <p class="sb-microcopy">No credit card &bull; 14-day trial &bull; Cancel anytime</p>
+    </div>
+    <div class="fade-up" style="text-align:center;">
+      <div class="sb-social-proof">
+        <div class="sb-avatars">
+          <div class="sb-avatar">J</div>
+          <div class="sb-avatar">M</div>
+          <div class="sb-avatar">S</div>
+          <div class="sb-avatar">K</div>
+        </div>
+        <span class="sb-proof-text">3,200+ builders already in</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-hero .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

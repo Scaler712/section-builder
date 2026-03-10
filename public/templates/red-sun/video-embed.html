@@ -1,0 +1,256 @@
+<!-- Generated: red-sun/video-embed -->
+<style>
+.sb-video-embed {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-video-embed .sb-blur-1 {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.08;
+  filter: blur(120px);
+  pointer-events: none;
+  top: -80px;
+  right: -60px;
+}
+.sb-video-embed .sb-blur-2 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(100px);
+  pointer-events: none;
+  bottom: -80px;
+  left: -40px;
+}
+.sb-video-embed .sb-blur-3 {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.05;
+  filter: blur(110px);
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.sb-video-embed-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-video-embed .sb-header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+.sb-video-embed .sb-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.sb-video-embed .sb-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+}
+.sb-video-embed h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 12px 0;
+}
+.sb-video-embed h2 em {
+  color: var(--sb-accent);
+  font-style: italic;
+}
+.sb-video-embed .sb-sub {
+  font-size: 17px;
+  color: var(--sb-muted);
+  line-height: 1.7;
+}
+.sb-video-frame-wrap {
+  position: relative;
+}
+.sb-video-embed .sb-dot-grid {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(#EF4623 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  opacity: 0.18;
+  pointer-events: none;
+  bottom: -24px;
+  right: -24px;
+  border-radius: 12px;
+}
+.sb-video-frame {
+  position: relative;
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 24px 64px rgba(45,59,66,0.08);
+  overflow: hidden;
+  z-index: 2;
+}
+.sb-video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+.sb-video-container .sb-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  background: rgba(0,0,0,0.15);
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-video-container .sb-play-overlay:hover {
+  background: rgba(0,0,0,0.08);
+}
+.sb-video-container .sb-play-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(239,70,35,0.3);
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-video-container .sb-play-overlay:hover .sb-play-btn {
+  transform: scale(1.08);
+  box-shadow: 0 12px 40px rgba(239,70,35,0.4);
+}
+.sb-video-container .sb-play-icon {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 14px 0 14px 24px;
+  border-color: transparent transparent transparent #ffffff;
+  margin-left: 4px;
+}
+.sb-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.sb-video-embed .sb-caption {
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--sb-muted);
+}
+.sb-video-embed .fade-up {
+  opacity: 0;
+  transform: translateY(30px) rotate(2deg);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-video-embed .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+@media (max-width: 768px) {
+  .sb-video-embed h2 { font-size: 28px; }
+  .sb-video-frame { border-radius: 16px; }
+  .sb-video-container .sb-play-btn { width: 64px; height: 64px; }
+  .sb-video-container .sb-play-icon { border-width: 10px 0 10px 18px; }
+  .sb-video-embed .sb-dot-grid { display: none; }
+}
+</style>
+
+<div class="sb-video-embed">
+  <div class="sb-blur-1"></div>
+  <div class="sb-blur-2"></div>
+  <div class="sb-blur-3"></div>
+
+  <div class="sb-video-embed-inner">
+    <div class="sb-header">
+      <div class="sb-label fade-up">Watch Demo</div>
+      <h2 class="fade-up">See It <em>In Action</em></h2>
+      <p class="sb-sub fade-up">A quick 3-minute walkthrough of how the platform works from start to finish.</p>
+    </div>
+
+    <div class="sb-video-frame-wrap fade-up">
+      <div class="sb-dot-grid"></div>
+      <div class="sb-video-frame">
+        <div class="sb-video-container" id="sb-video-wrap">
+          <div class="sb-play-overlay" id="sb-play-trigger">
+            <div class="sb-play-btn">
+              <div class="sb-play-icon"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="sb-caption fade-up">Watch how teams ship 10x more creative with half the effort</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var playBtn = document.getElementById('sb-play-trigger');
+  var videoWrap = document.getElementById('sb-video-wrap');
+
+  if (playBtn && videoWrap) {
+    playBtn.addEventListener('click', function() {
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0';
+      iframe.title = 'Product Demo';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      videoWrap.innerHTML = '';
+      videoWrap.appendChild(iframe);
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-video-embed .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

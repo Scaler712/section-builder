@@ -1,0 +1,139 @@
+<!-- Generated: swiss-echo/solution-transition -->
+<style>
+.sb-solution-transition {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-solution-transition-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sb-solution-transition .sb-empathy {
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+.sb-solution-transition .sb-empathy p {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+}
+.sb-solution-transition .sb-empathy p:last-child {
+  margin-bottom: 0;
+}
+.sb-solution-transition .sb-divider-line {
+  width: 100%;
+  max-width: 600px;
+  height: 1px;
+  background: rgba(30,30,30,0.1);
+  margin: 0 auto 64px;
+}
+.sb-solution-transition .sb-label {
+  color: var(--sb-muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: block;
+}
+.sb-solution-transition .sb-pivot-title {
+  font-size: clamp(36px, 6vw, 80px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--sb-heading);
+  margin: 0 0 12px 0;
+}
+.sb-solution-transition .sb-echo {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(30,30,30,0.15);
+  font-size: clamp(36px, 6vw, 80px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  margin-top: -0.1em;
+  margin-bottom: 40px;
+  user-select: none;
+}
+.sb-solution-transition .sb-pivot-body {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--sb-body);
+  max-width: 540px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+}
+.sb-solution-transition .sb-cta-btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--sb-cta-bg);
+  border: 1px solid var(--sb-cta-bg);
+  border-radius: var(--sb-btn-radius);
+  padding: 16px 52px;
+  font-family: var(--sb-font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-solution-transition .sb-cta-btn:hover {
+  background: var(--sb-cta-bg);
+  color: var(--sb-highlight);
+}
+.sb-solution-transition .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 700ms cubic-bezier(0.77, 0, 0.175, 1), transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-solution-transition .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-solution-transition .sb-empathy p { font-size: 17px; }
+  .sb-solution-transition .sb-pivot-title { font-size: 36px; }
+  .sb-solution-transition .sb-echo { font-size: 36px; }
+  .sb-solution-transition .sb-pivot-body { font-size: 16px; }
+}
+</style>
+
+<div class="sb-solution-transition">
+  <div class="sb-solution-transition-inner">
+    <div class="sb-empathy fade-up">
+      <p>You didn't start this to grind 14-hour days with nothing to show for it.</p>
+      <p>You started because you wanted freedom. You wanted to build something that matters. You wanted proof that your idea could work.</p>
+      <p>It can. You just need the right system.</p>
+    </div>
+    <div class="sb-divider-line fade-up"></div>
+    <span class="sb-label fade-up">Introducing</span>
+    <h2 class="sb-pivot-title fade-up">The Launch<br>Accelerator</h2>
+    <span class="sb-echo fade-up" aria-hidden="true">Accelerator</span>
+    <p class="sb-pivot-body fade-up">A step-by-step system. Idea to revenue in 30 days. Weekly coaching, proven templates, and a community of founders building alongside you.</p>
+    <a href="#" class="sb-cta-btn fade-up">See How It Works</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-solution-transition .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

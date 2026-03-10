@@ -1,0 +1,195 @@
+<!-- Generated: disruptor/guarantee -->
+<style>
+.sb-guarantee {
+  background: #000000;
+  color: #ffffff;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-guarantee .sb-vert-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.06);
+  user-select: none;
+}
+.sb-guarantee .sb-vert-left { left: 20px; }
+.sb-guarantee .sb-vert-right { right: 20px; }
+.sb-guarantee-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.sb-guarantee .sb-shield {
+  width: 100px;
+  height: 100px;
+  background: var(--sb-accent);
+  border: 4px solid #000000;
+  border-radius: 50%;
+  box-shadow: 8px 8px 0px 0px rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  margin: 0 auto 32px auto;
+}
+.sb-guarantee .sb-sticker {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #000000;
+  padding: 10px 22px;
+  transform: rotate(-2deg);
+  border: 4px solid #000000;
+  box-shadow: 6px 6px 0px 0px rgba(255,255,255,0.15);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+.sb-guarantee h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.85;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+}
+.sb-guarantee h2 .sb-accent {
+  color: var(--sb-accent);
+}
+.sb-guarantee .sb-body {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sb-guarantee .sb-body strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+.sb-guarantee .sb-terms {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.sb-guarantee .sb-term {
+  background: rgba(255,255,255,0.05);
+  border: 4px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 20px 28px;
+  text-align: center;
+}
+.sb-guarantee .sb-term .sb-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--sb-accent);
+  display: block;
+  text-transform: uppercase;
+}
+.sb-guarantee .sb-term .sb-label {
+  font-family: monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+.sb-guarantee .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #000000;
+  border: 4px solid var(--sb-accent);
+  border-radius: var(--sb-btn-radius);
+  box-shadow: 8px 8px 0px 0px rgba(255,255,255,0.15);
+  padding: 18px 48px;
+  font-family: var(--sb-font);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sb-guarantee .sb-cta-btn:hover {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0px 0px rgba(255,255,255,0.15);
+}
+.sb-guarantee .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-guarantee .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-guarantee .sb-vert-text { display: none; }
+  .sb-guarantee h2 { font-size: 36px; }
+  .sb-guarantee .sb-terms { flex-direction: column; align-items: center; }
+}
+</style>
+
+<div class="sb-guarantee">
+  <div class="sb-vert-text sb-vert-left">Zero Risk &middot; Full Refund</div>
+  <div class="sb-vert-text sb-vert-right">We Mean It</div>
+  <div class="sb-guarantee-inner">
+    <div class="sb-shield fade-up">&#128737;</div>
+    <div class="sb-sticker fade-up">Iron-Clad Promise</div>
+    <h2 class="fade-up">Try It Risk-Free.<br><span class="sb-accent">14 Days. No Questions.</span></h2>
+    <p class="sb-body fade-up">We're so confident this will work for you that we're putting our money where our mouth is. If you don't see results in <strong>14 days</strong>, we'll refund every cent. No hoops, no guilt trips, no "retention specialists." One click and you're out.</p>
+    <div class="sb-terms fade-up">
+      <div class="sb-term">
+        <span class="sb-value">14</span>
+        <span class="sb-label">Day Window</span>
+      </div>
+      <div class="sb-term">
+        <span class="sb-value">100%</span>
+        <span class="sb-label">Money Back</span>
+      </div>
+      <div class="sb-term">
+        <span class="sb-value">Zero</span>
+        <span class="sb-label">Questions Asked</span>
+      </div>
+    </div>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Start Risk-Free Now</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-guarantee .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

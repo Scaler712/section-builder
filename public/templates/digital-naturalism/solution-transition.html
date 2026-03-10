@@ -1,0 +1,202 @@
+<!-- Generated: digital-naturalism/solution-transition -->
+<style>
+.sb-solution-transition {
+  background: #0C0A09;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-solution-transition::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.sb-solution-transition .sb-glow {
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212,242,104,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.sb-solution-transition-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.sb-solution-transition .sb-left .sb-label {
+  color: var(--sb-accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+  font-family: sans-serif;
+}
+.sb-solution-transition .sb-left h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--sb-heading);
+  margin: 0 0 20px 0;
+}
+.sb-solution-transition .sb-left h2 strong {
+  font-weight: 700;
+  font-style: normal;
+  color: var(--sb-accent);
+}
+.sb-solution-transition .sb-left p {
+  font-size: 17px;
+  color: var(--sb-muted);
+  line-height: 1.7;
+  margin: 0 0 36px 0;
+  font-family: sans-serif;
+}
+.sb-solution-transition .sb-left .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: var(--sb-cta-text);
+  border-radius: var(--sb-btn-radius);
+  padding: 16px 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: sans-serif;
+  transition: all 300ms cubic-bezier(0.4,0,0.2,1);
+}
+.sb-solution-transition .sb-left .sb-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212,242,104,0.2);
+}
+.sb-solution-transition .sb-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sb-solution-transition .sb-step {
+  background: #292524;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--sb-card-radius);
+  padding: 24px 28px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 300ms cubic-bezier(0.4,0,0.2,1);
+}
+.sb-solution-transition .sb-step:hover {
+  border-color: rgba(212,242,104,0.2);
+  transform: translateY(-2px);
+}
+.sb-solution-transition .sb-step-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(212,242,104,0.1);
+  color: var(--sb-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: sans-serif;
+}
+.sb-solution-transition .sb-step h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  margin: 0 0 4px 0;
+  font-family: sans-serif;
+}
+.sb-solution-transition .sb-step p {
+  font-size: 14px;
+  color: var(--sb-muted);
+  line-height: 1.6;
+  margin: 0;
+  font-family: sans-serif;
+}
+.sb-solution-transition .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-solution-transition .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-solution-transition-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .sb-solution-transition .sb-left h2 { font-size: 28px; }
+}
+</style>
+
+<div class="sb-solution-transition">
+  <div class="sb-glow"></div>
+  <div class="sb-solution-transition-inner">
+    <div class="sb-left">
+      <span class="sb-label fade-up">The Solution</span>
+      <h2 class="fade-up">What if there was a<br><strong>simpler way?</strong></h2>
+      <p class="fade-up">You don't need another course, another guru, or another 90-day plan. You need a refined system that runs on autopilot so you can focus on what actually matters.</p>
+      <div class="fade-up">
+        <a href="#" class="sb-cta-btn">See How It Works</a>
+      </div>
+    </div>
+    <div class="sb-right">
+      <div class="sb-step fade-up">
+        <div class="sb-step-num">1</div>
+        <div>
+          <h3>Connect Your Offer</h3>
+          <p>Plug in your product or service. Our system maps the optimal funnel in under 5 minutes.</p>
+        </div>
+      </div>
+      <div class="sb-step fade-up">
+        <div class="sb-step-num">2</div>
+        <div>
+          <h3>Activate Automation</h3>
+          <p>AI-powered outreach, content, and follow-ups start running the moment you flip the switch.</p>
+        </div>
+      </div>
+      <div class="sb-step fade-up">
+        <div class="sb-step-num">3</div>
+        <div>
+          <h3>Watch Revenue Grow</h3>
+          <p>Qualified leads land in your inbox while you sleep. Scale up or down with a single slider.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-solution-transition .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

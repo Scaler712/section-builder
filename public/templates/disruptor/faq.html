@@ -1,0 +1,245 @@
+<!-- Generated: disruptor/faq -->
+<style>
+.sb-faq {
+  background: #ffffff;
+  color: #000000;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-faq .sb-vert-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(0,0,0,0.06);
+  user-select: none;
+}
+.sb-faq .sb-vert-left { left: 20px; }
+.sb-faq .sb-vert-right { right: 20px; }
+.sb-faq-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-faq .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sb-accent);
+  background: #000000;
+  padding: 6px 14px;
+  margin-bottom: 24px;
+}
+.sb-faq h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.85;
+  color: #000000;
+  margin: 0 0 48px 0;
+}
+.sb-faq h2 .sb-accent { color: var(--sb-accent); background: #000000; padding: 0 8px; }
+.sb-faq .sb-accordion-item {
+  border: 4px solid #000000;
+  border-radius: 8px;
+  box-shadow: 6px 6px 0px 0px #000000;
+  margin-bottom: 16px;
+  overflow: hidden;
+  background: #ffffff;
+}
+.sb-faq .sb-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+.sb-faq .sb-accordion-header:hover {
+  background: rgba(0,0,0,0.03);
+}
+.sb-faq .sb-accordion-header h3 {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #000000;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+.sb-faq .sb-accordion-icon {
+  width: 32px;
+  height: 32px;
+  background: #000000;
+  color: var(--sb-accent);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.sb-faq .sb-accordion-item.sb-open .sb-accordion-icon {
+  transform: rotate(45deg);
+}
+.sb-faq .sb-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.sb-faq .sb-accordion-body-inner {
+  padding: 0 24px 24px 24px;
+}
+.sb-faq .sb-accordion-body p {
+  font-size: 15px;
+  color: rgba(0,0,0,0.65);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq .sb-vert-text { display: none; }
+  .sb-faq h2 { font-size: 36px; }
+  .sb-faq .sb-accordion-header h3 { font-size: 14px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-vert-text sb-vert-left">Questions &middot; Answers</div>
+  <div class="sb-vert-text sb-vert-right">No BS &middot; Straight Talk</div>
+  <div class="sb-faq-inner">
+    <div class="sb-badge fade-up">// FAQ</div>
+    <h2 class="fade-up">Got Questions?<br><span class="sb-accent">Good.</span></h2>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>How fast can I launch my first page?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Most users have their first page live within 2 hours. Pick a template, swap in your copy and images, connect your domain, and you're live. No developers, no designers, no waiting.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>Do I need to know how to code?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Absolutely not. If you can write a text message and click a mouse, you can build a high-converting page. Everything is visual, drag-and-drop, and tested to work out of the box.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>What if it doesn't work for my niche?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Our templates have been tested across 40+ industries from SaaS to e-commerce to coaching. The conversion principles are universal. Plus, there's a 14-day money-back guarantee so there's zero risk.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>Can I cancel anytime?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Yes. No contracts, no lock-in, no cancellation fees. If you want out, click one button and you're done. We keep your data for 30 days in case you change your mind.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>How is this different from Unbounce, Instapage, etc.?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Speed and conversion focus. Most page builders give you a blank canvas and wish you luck. We give you battle-tested frameworks, AI-optimized layouts, and built-in analytics. You're not designing pages. You're deploying conversion machines.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>Do you offer team plans?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>The Growth plan includes 5 team seats. The Agency plan has unlimited seats plus client sub-accounts. Need something custom? Hit us up and we'll build you a deal that makes sense.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-accordion-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var header = item.querySelector('.sb-accordion-header');
+      var body = item.querySelector('.sb-accordion-body');
+      var inner = item.querySelector('.sb-accordion-body-inner');
+      header.addEventListener('click', function() {
+        var isOpen = item.classList.contains('sb-open');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('sb-open');
+          items[j].querySelector('.sb-accordion-body').style.maxHeight = '0';
+        }
+        if (!isOpen) {
+          item.classList.add('sb-open');
+          body.style.maxHeight = inner.scrollHeight + 24 + 'px';
+        }
+      });
+    })(items[i]);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var k = 0; k < elements.length; k++) {
+    observer.observe(elements[k]);
+  }
+})();
+</script>

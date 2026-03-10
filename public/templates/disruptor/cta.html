@@ -1,0 +1,176 @@
+<!-- Generated: disruptor/cta -->
+<style>
+.sb-cta {
+  background: var(--sb-heading);
+  color: #ffffff;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-cta .sb-vert-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.08);
+  user-select: none;
+}
+.sb-cta .sb-vert-left { left: 20px; }
+.sb-cta .sb-vert-right { right: 20px; }
+.sb-cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-cta .sb-sticker {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  padding: 12px 24px;
+  transform: rotate(-2deg);
+  border: 4px solid var(--sb-heading);
+  box-shadow: 4px 4px 0px 0px rgba(255,255,255,0.2);
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+}
+.sb-cta h2 {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.85;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+}
+.sb-cta h2 .sb-accent {
+  color: var(--sb-accent);
+}
+.sb-cta .sb-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 48px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.sb-cta .sb-btn-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sb-cta .sb-btn-primary {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 4px solid var(--sb-accent);
+  border-radius: var(--sb-btn-radius);
+  box-shadow: 8px 8px 0px 0px rgba(255,255,255,0.15);
+  padding: 18px 44px;
+  font-family: var(--sb-font);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sb-cta .sb-btn-primary:hover {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.sb-cta .sb-btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: #ffffff;
+  border: 4px solid rgba(255,255,255,0.3);
+  border-radius: var(--sb-btn-radius);
+  padding: 18px 44px;
+  font-family: var(--sb-font);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+.sb-cta .sb-btn-secondary:hover {
+  border-color: #ffffff;
+}
+.sb-cta .sb-proof {
+  margin-top: 48px;
+  font-family: monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.sb-cta .sb-proof strong {
+  color: var(--sb-accent);
+  font-weight: 700;
+}
+.sb-cta .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-cta .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-cta .sb-vert-text { display: none; }
+  .sb-cta h2 { font-size: 36px; }
+  .sb-cta .sb-btn-group { flex-direction: column; }
+  .sb-cta .sb-btn-primary,
+  .sb-cta .sb-btn-secondary { width: 100%; text-align: center; }
+}
+</style>
+
+<div class="sb-cta">
+  <div class="sb-vert-text sb-vert-left">Act Now &middot; Limited Spots</div>
+  <div class="sb-vert-text sb-vert-right">Zero Risk &middot; Full Guarantee</div>
+  <div class="sb-cta-inner">
+    <div class="sb-sticker fade-up">Limited Availability</div>
+    <h2 class="fade-up">Stop Watching.<br><span class="sb-accent">Start Building.</span></h2>
+    <p class="sb-sub fade-up">Your competitors are already using this. Every day you wait is market share you're handing them. Lock in your spot before we close enrollment.</p>
+    <div class="sb-btn-group fade-up">
+      <a href="#" class="sb-btn-primary">Get Instant Access</a>
+      <a href="#" class="sb-btn-secondary">Book a Demo</a>
+    </div>
+    <div class="sb-proof fade-up">
+      <strong>2,847</strong> builders joined this month &nbsp;&middot;&nbsp; <strong>14-day</strong> money-back guarantee
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-cta .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

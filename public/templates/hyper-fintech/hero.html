@@ -1,0 +1,159 @@
+<!-- Generated: hyper-fintech/hero -->
+<style>
+.sb-hero {
+  background: #0A0A0A;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.sb-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 40%, rgba(253,224,71,0.06) 0%, transparent 50%),
+              radial-gradient(circle at 70% 60%, rgba(253,224,71,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.sb-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-hero .sb-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 32px;
+}
+.sb-hero h1 {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+  margin: 0 0 28px 0;
+}
+.sb-hero h1 .sb-accent-word {
+  color: var(--sb-accent);
+}
+.sb-hero .sb-sub {
+  font-size: 18px;
+  color: var(--sb-body);
+  max-width: 520px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+}
+.sb-hero .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: var(--sb-cta-text, #000000);
+  border: none;
+  border-radius: 9999px;
+  padding: 18px 48px;
+  font-family: var(--sb-font);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-hero .sb-cta-btn:hover {
+  transform: scale(1.04);
+}
+.sb-hero .sb-cta-btn:active {
+  transform: scale(0.95);
+}
+.sb-hero .sb-stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 56px;
+}
+.sb-hero .sb-stat {
+  text-align: center;
+}
+.sb-hero .sb-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #FFFFFF;
+  display: block;
+}
+.sb-hero .sb-stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-muted);
+  margin-top: 4px;
+  display: block;
+}
+.sb-hero .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-hero .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-hero { min-height: 75vh; }
+  .sb-hero h1 { font-size: 40px; }
+  .sb-hero .sb-sub { font-size: 16px; margin-bottom: 36px; }
+  .sb-hero .sb-stats { flex-direction: column; gap: 24px; }
+  .sb-hero .sb-stat-value { font-size: 28px; }
+}
+</style>
+
+<div class="sb-hero">
+  <div class="sb-hero-inner">
+    <span class="sb-badge fade-up">Now Open for Early Access</span>
+    <h1 class="fade-up">Move Money at<br><span class="sb-accent-word">Warp Speed</span></h1>
+    <p class="sb-sub fade-up">The next-gen platform processing $2.4B+ in transactions. Instant settlements, zero hidden fees, and infrastructure that scales with you.</p>
+    <a href="#" class="sb-cta-btn fade-up">Start Free Trial</a>
+    <div class="sb-stats fade-up">
+      <div class="sb-stat">
+        <span class="sb-stat-value">$2.4B+</span>
+        <span class="sb-stat-label">Processed</span>
+      </div>
+      <div class="sb-stat">
+        <span class="sb-stat-value">14ms</span>
+        <span class="sb-stat-label">Avg Latency</span>
+      </div>
+      <div class="sb-stat">
+        <span class="sb-stat-value">99.99%</span>
+        <span class="sb-stat-label">Uptime</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-hero .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

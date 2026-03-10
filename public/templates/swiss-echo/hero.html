@@ -1,0 +1,118 @@
+<!-- Generated: swiss-echo/hero -->
+<style>
+.sb-hero {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  text-align: center;
+  font-family: var(--sb-font);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sb-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-hero .sb-label {
+  color: var(--sb-muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+.sb-hero h1 {
+  font-size: clamp(48px, 8vw, 160px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--sb-heading);
+  margin: 0 0 24px 0;
+}
+.sb-hero .sb-echo {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(30,30,30,0.15);
+  font-size: clamp(48px, 8vw, 160px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  margin-top: -0.15em;
+  user-select: none;
+}
+.sb-hero .sb-sub {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--sb-body);
+  max-width: 540px;
+  margin: 48px auto 56px;
+  line-height: 1.7;
+}
+.sb-hero .sb-cta-btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--sb-cta-bg);
+  border: 1px solid var(--sb-cta-bg);
+  border-radius: var(--sb-btn-radius);
+  padding: 16px 52px;
+  font-family: var(--sb-font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-hero .sb-cta-btn:hover {
+  background: var(--sb-cta-bg);
+  color: var(--sb-highlight);
+}
+.sb-hero .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 700ms cubic-bezier(0.77, 0, 0.175, 1), transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-hero .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-hero { min-height: 70vh; }
+  .sb-hero h1 { font-size: 42px; }
+  .sb-hero .sb-echo { font-size: 42px; }
+  .sb-hero .sb-sub { font-size: 16px; margin: 32px auto 40px; }
+}
+@media (max-width: 480px) {
+  .sb-hero h1 { font-size: 32px; }
+  .sb-hero .sb-echo { font-size: 32px; }
+}
+</style>
+
+<div class="sb-hero">
+  <div class="sb-hero-inner">
+    <div class="sb-label fade-up">Digital Product Studio</div>
+    <h1 class="fade-up">Build What<br>Matters</h1>
+    <span class="sb-echo fade-up" aria-hidden="true">Build What<br>Matters</span>
+    <p class="sb-sub fade-up">We help ambitious founders ship products that customers actually want. No fluff, no frameworks — just velocity and taste.</p>
+    <a href="#" class="sb-cta-btn fade-up">Start Your Project</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-hero .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

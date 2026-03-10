@@ -1,0 +1,284 @@
+<!-- Generated: red-sun/faq -->
+<style>
+.sb-faq {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-faq .sb-blur-1 {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.07;
+  filter: blur(120px);
+  pointer-events: none;
+  top: -100px;
+  right: -40px;
+}
+.sb-faq .sb-blur-2 {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.05;
+  filter: blur(100px);
+  pointer-events: none;
+  bottom: -80px;
+  left: 10%;
+}
+.sb-faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-faq .sb-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.sb-faq .sb-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.sb-faq .sb-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+}
+.sb-faq h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 16px 0;
+}
+.sb-faq h2 em {
+  color: var(--sb-accent);
+  font-style: italic;
+}
+.sb-faq .sb-sub {
+  font-size: 17px;
+  color: var(--sb-muted);
+  line-height: 1.7;
+}
+.sb-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sb-faq-item {
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 24px 64px rgba(45,59,66,0.08);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-faq-item:hover {
+  box-shadow: 0 32px 72px rgba(45,59,66,0.12);
+}
+.sb-faq-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--sb-font);
+  gap: 16px;
+}
+.sb-faq-trigger .sb-q {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  line-height: 1.4;
+}
+.sb-faq-trigger .sb-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sb-highlight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-faq-trigger .sb-toggle-icon {
+  width: 14px;
+  height: 14px;
+  position: relative;
+}
+.sb-faq-trigger .sb-toggle-icon::before,
+.sb-faq-trigger .sb-toggle-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--sb-accent);
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-faq-trigger .sb-toggle-icon::before {
+  width: 14px;
+  height: 2px;
+  top: 6px;
+  left: 0;
+}
+.sb-faq-trigger .sb-toggle-icon::after {
+  width: 2px;
+  height: 14px;
+  top: 0;
+  left: 6px;
+}
+.sb-faq-item.sb-open .sb-toggle {
+  background: var(--sb-accent);
+  transform: rotate(45deg);
+}
+.sb-faq-item.sb-open .sb-toggle-icon::before,
+.sb-faq-item.sb-open .sb-toggle-icon::after {
+  background: #ffffff;
+}
+.sb-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-faq-answer-inner {
+  padding: 0 28px 24px 28px;
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px) rotate(2deg);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq h2 { font-size: 32px; }
+  .sb-faq-trigger { padding: 20px 20px; }
+  .sb-faq-answer-inner { padding: 0 20px 20px 20px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-blur-1"></div>
+  <div class="sb-blur-2"></div>
+
+  <div class="sb-faq-inner">
+    <div class="sb-header">
+      <div class="sb-label fade-up">FAQ</div>
+      <h2 class="fade-up">Common <em>Questions</em></h2>
+      <p class="sb-sub fade-up">Everything you need to know before getting started.</p>
+    </div>
+
+    <div class="sb-faq-list">
+      <div class="sb-faq-item fade-up">
+        <button class="sb-faq-trigger">
+          <span class="sb-q">How quickly will I see results?</span>
+          <span class="sb-toggle"><span class="sb-toggle-icon"></span></span>
+        </button>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-inner">Most clients see measurable improvement in their ad performance within the first 14 days. You'll have your first batch of AI-generated creatives within minutes of signing up, and our onboarding team helps you launch optimized campaigns on day one.</div>
+        </div>
+      </div>
+
+      <div class="sb-faq-item fade-up">
+        <button class="sb-faq-trigger">
+          <span class="sb-q">Do I need design or copywriting experience?</span>
+          <span class="sb-toggle"><span class="sb-toggle-icon"></span></span>
+        </button>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-inner">Not at all. The platform handles creative generation, copywriting, and performance optimization automatically. You provide the brand guidelines and business context, and the AI produces campaign-ready assets in your voice.</div>
+        </div>
+      </div>
+
+      <div class="sb-faq-item fade-up">
+        <button class="sb-faq-trigger">
+          <span class="sb-q">What if I'm already working with an agency?</span>
+          <span class="sb-toggle"><span class="sb-toggle-icon"></span></span>
+        </button>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-inner">Many of our clients use the platform alongside their existing agency, or transition away over time. The platform can serve as a force multiplier for your agency's output, or fully replace the creative production side of their scope.</div>
+        </div>
+      </div>
+
+      <div class="sb-faq-item fade-up">
+        <button class="sb-faq-trigger">
+          <span class="sb-q">Is there a contract or commitment?</span>
+          <span class="sb-toggle"><span class="sb-toggle-icon"></span></span>
+        </button>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-inner">No long-term contracts. All plans are month-to-month and you can cancel anytime. We keep clients because the platform delivers results, not because they're locked in. Most clients stay for 12+ months because the ROI speaks for itself.</div>
+        </div>
+      </div>
+
+      <div class="sb-faq-item fade-up">
+        <button class="sb-faq-trigger">
+          <span class="sb-q">What platforms do you support?</span>
+          <span class="sb-toggle"><span class="sb-toggle-icon"></span></span>
+        </button>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-inner">We support Meta (Facebook + Instagram), Google Ads, TikTok, LinkedIn, and X. Creatives are automatically formatted for each platform's specs, so you get native-looking ads everywhere without any extra work.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-faq-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var trigger = item.querySelector('.sb-faq-trigger');
+      var answer = item.querySelector('.sb-faq-answer');
+      var inner = item.querySelector('.sb-faq-answer-inner');
+      trigger.addEventListener('click', function() {
+        var isOpen = item.classList.contains('sb-open');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('sb-open');
+          items[j].querySelector('.sb-faq-answer').style.maxHeight = '0';
+        }
+        if (!isOpen) {
+          item.classList.add('sb-open');
+          answer.style.maxHeight = inner.scrollHeight + 24 + 'px';
+        }
+      });
+    })(items[i]);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var k = 0; k < elements.length; k++) {
+    observer.observe(elements[k]);
+  }
+})();
+</script>

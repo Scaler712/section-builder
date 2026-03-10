@@ -1,0 +1,170 @@
+<!-- Generated: softly-wellness/guarantee -->
+<style>
+.sb-guarantee {
+  background: #FDFCF8;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-guarantee .sb-blob-1 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(80px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite;
+}
+.sb-guarantee .sb-blob-2 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #E8EFE8;
+  opacity: 0.4;
+  filter: blur(80px);
+  bottom: -5%;
+  right: 10%;
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite 3s;
+}
+@keyframes sb-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.sb-guarantee-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-guarantee-card {
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05);
+  padding: 56px 48px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+.sb-guarantee-card:hover {
+  box-shadow: 0 8px 32px -2px rgba(0,0,0,0.08);
+}
+.sb-guarantee-card .sb-shield {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  background: rgba(255,183,178,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+}
+.sb-guarantee-card h2 {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0 0 8px 0;
+}
+.sb-guarantee-card .sb-accent-line {
+  font-size: 17px;
+  color: var(--sb-accent);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.sb-guarantee-card p {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 auto 20px;
+  max-width: 520px;
+}
+.sb-guarantee-card .sb-terms {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+.sb-guarantee-card .sb-term {
+  text-align: center;
+}
+.sb-guarantee-card .sb-term .sb-term-icon {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+.sb-guarantee-card .sb-term span {
+  display: block;
+  font-size: 13px;
+  color: var(--sb-muted);
+}
+.sb-guarantee .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.sb-guarantee .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-guarantee-card { padding: 36px 24px; }
+  .sb-guarantee-card h2 { font-size: 26px; }
+  .sb-guarantee-card .sb-terms { gap: 20px; }
+}
+</style>
+
+<div class="sb-guarantee">
+  <div class="sb-blob-1"></div>
+  <div class="sb-blob-2"></div>
+  <div class="sb-guarantee-inner">
+    <div class="sb-guarantee-card fade-up">
+      <div class="sb-shield">&#128156;</div>
+      <h2>Our promise to you</h2>
+      <div class="sb-accent-line">30 days of peace of mind</div>
+      <p>We want you to feel completely safe saying yes. Try everything for a full 30 days. If it doesn't feel right -- if it doesn't bring more calm, more energy, more joy into your days -- simply let us know.</p>
+      <p>We'll refund you fully, no questions asked. No forms, no phone calls, no guilt. This is your journey, and you should never feel pressured to stay.</p>
+      <div class="sb-terms">
+        <div class="sb-term">
+          <div class="sb-term-icon">&#127808;</div>
+          <span>Full access for 30 days</span>
+        </div>
+        <div class="sb-term">
+          <div class="sb-term-icon">&#128140;</div>
+          <span>No-questions refund</span>
+        </div>
+        <div class="sb-term">
+          <div class="sb-term-icon">&#128230;</div>
+          <span>Keep your downloads</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-guarantee .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

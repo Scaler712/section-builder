@@ -1,0 +1,181 @@
+<!-- Generated: cyber-serif/testimonials -->
+<style>
+.sb-testimonials {
+  background: #050505;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.sb-testimonials .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-testimonials h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-heading);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0 0 48px 0;
+}
+.sb-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-testimonial-card {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 32px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease;
+}
+.sb-testimonial-card:hover {
+  border-color: rgba(16,185,129,0.2);
+}
+.sb-testimonial-card .sb-quote-mark {
+  font-size: 48px;
+  line-height: 1;
+  color: var(--sb-accent);
+  opacity: 0.3;
+  margin-bottom: 12px;
+  font-family: var(--sb-font);
+}
+.sb-testimonial-card .sb-quote-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+}
+.sb-testimonial-card .sb-stars {
+  color: var(--sb-accent);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.sb-testimonial-card .sb-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sb-testimonial-card .sb-author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sb-accent);
+}
+.sb-testimonial-card .sb-author-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sb-heading);
+}
+.sb-testimonial-card .sb-author-role {
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--sb-muted);
+  letter-spacing: 0.05em;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-testimonials-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .sb-testimonials h2 { font-size: 32px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-testimonials-inner">
+    <span class="sb-badge fade-up">Testimonials</span>
+    <h2 class="fade-up">Trusted by Builders</h2>
+    <div class="sb-testimonials-grid">
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-quote-mark">&ldquo;</div>
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-quote-text">We cut our deployment time from 3 days to 47 minutes. That's not an exaggeration. Our entire engineering team operates differently now.</p>
+        <div class="sb-author">
+          <div class="sb-author-avatar">S</div>
+          <div>
+            <div class="sb-author-name">Sarah Chen</div>
+            <div class="sb-author-role">CTO, Meridian Labs</div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-quote-mark">&ldquo;</div>
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-quote-text">$240K in recovered ad spend within 90 days. The attribution model alone paid for three years of the platform.</p>
+        <div class="sb-author">
+          <div class="sb-author-avatar">M</div>
+          <div>
+            <div class="sb-author-name">Marcus Rivera</div>
+            <div class="sb-author-role">VP Growth, Onward</div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-quote-mark">&ldquo;</div>
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-quote-text">I've tried every platform in this space. This is the first one that actually feels like it was built by people who run real campaigns.</p>
+        <div class="sb-author">
+          <div class="sb-author-avatar">E</div>
+          <div>
+            <div class="sb-author-name">Elena Voss</div>
+            <div class="sb-author-role">Founder, Strata Digital</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

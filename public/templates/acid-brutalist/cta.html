@@ -1,0 +1,151 @@
+<!-- Generated: acid-brutalist/cta -->
+<style>
+.sb-cta {
+  background: var(--sb-heading);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-cta .sb-marquee-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  padding: 10px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.sb-cta .sb-marquee-strip span {
+  display: inline-block;
+  animation: sbMarquee 20s linear infinite;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sb-accent);
+}
+@keyframes sbMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.sb-cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding-top: 30px;
+}
+.sb-cta .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-accent);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px 0px rgba(255,255,255,0.15);
+  padding: 8px 20px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+.sb-cta h2 {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
+.sb-cta h2 .sb-acid {
+  color: var(--sb-accent);
+}
+.sb-cta .sb-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 40px 0;
+  line-height: 1.6;
+}
+.sb-cta .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-accent);
+  border-radius: 20px;
+  box-shadow: 6px 6px 0px 0px rgba(255,255,255,0.15);
+  padding: 18px 52px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--sb-font);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sb-cta .sb-cta-btn:hover {
+  transform: translate(6px, 6px);
+  box-shadow: none;
+}
+.sb-cta .sb-proof {
+  margin-top: 28px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  font-weight: 600;
+}
+.sb-cta .sb-proof strong {
+  color: var(--sb-accent);
+}
+.sb-cta .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-cta .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-cta h2 { font-size: 36px; }
+  .sb-cta .sb-cta-btn { padding: 16px 36px; font-size: 14px; }
+  .sb-cta .sb-marquee-strip { display: none; }
+}
+</style>
+
+<div class="sb-cta">
+  <div class="sb-marquee-strip">
+    <span>LIMITED SPOTS &nbsp;&middot;&nbsp; ACT NOW &nbsp;&middot;&nbsp; LIMITED SPOTS &nbsp;&middot;&nbsp; ACT NOW &nbsp;&middot;&nbsp; LIMITED SPOTS &nbsp;&middot;&nbsp; ACT NOW &nbsp;&middot;&nbsp; LIMITED SPOTS &nbsp;&middot;&nbsp; ACT NOW &nbsp;&middot;&nbsp; LIMITED SPOTS &nbsp;&middot;&nbsp; ACT NOW &nbsp;&middot;&nbsp; LIMITED SPOTS &nbsp;&middot;&nbsp; ACT NOW &nbsp;&middot;&nbsp; </span>
+  </div>
+  <div class="sb-cta-inner">
+    <span class="sb-badge fade-up">Final Call</span>
+    <h2 class="fade-up">Stop Waiting.<br><span class="sb-acid">Start Building.</span></h2>
+    <p class="sb-sub fade-up">Your competitors are already using this. Every day you wait is revenue you're leaving on the table. Lock in your spot before we close enrollment.</p>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Get Instant Access</a>
+    </div>
+    <div class="sb-proof fade-up">
+      <strong>2,847</strong> builders joined this month &nbsp;&middot;&nbsp; <strong>14-day</strong> money-back guarantee
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-cta .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,199 @@
+<!-- Generated: neo-brutalist-yellow/countdown-timer -->
+<style>
+.sb-countdown-timer {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: var(--sb-accent);
+  position: relative;
+}
+.sb-countdown-timer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-countdown-timer .sb-badge {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-heading);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px 0px #000;
+  padding: 6px 16px;
+  font-weight: 800;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+.sb-countdown-timer h2 {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 12px 0;
+}
+.sb-countdown-timer .sb-lead {
+  font-size: 18px;
+  color: var(--sb-body);
+  font-weight: 500;
+  margin: 0 0 40px 0;
+  line-height: 1.6;
+}
+.sb-countdown-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.sb-countdown-box {
+  background: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: var(--sb-card-radius);
+  box-shadow: 4px 4px 0px 0px #000;
+  padding: 20px 24px;
+  min-width: 100px;
+}
+.sb-countdown-box .sb-count-num {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  display: block;
+}
+.sb-countdown-box .sb-count-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sb-muted);
+  margin-top: 8px;
+  display: block;
+}
+.sb-countdown-timer .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: var(--sb-cta-text);
+  border: 2px solid var(--sb-cta-bg);
+  border-radius: var(--sb-btn-radius);
+  box-shadow: 4px 4px 0px 0px #000;
+  padding: 18px 56px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-family: var(--sb-font);
+}
+.sb-countdown-timer .sb-cta-btn:hover {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.sb-countdown-timer .sb-microcopy {
+  font-size: 14px;
+  color: var(--sb-body);
+  margin-top: 14px;
+  font-weight: 500;
+}
+.sb-countdown-timer .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-countdown-timer .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-countdown-timer h2 { font-size: 32px; }
+  .sb-countdown-boxes { gap: 10px; }
+  .sb-countdown-box { min-width: 70px; padding: 14px 16px; }
+  .sb-countdown-box .sb-count-num { font-size: 36px; }
+}
+@media (max-width: 480px) {
+  .sb-countdown-timer h2 { font-size: 26px; }
+  .sb-countdown-box .sb-count-num { font-size: 28px; }
+  .sb-countdown-box { min-width: 60px; padding: 12px; }
+  .sb-countdown-timer .sb-cta-btn { padding: 16px 36px; font-size: 16px; }
+}
+</style>
+
+<div class="sb-countdown-timer">
+  <div class="sb-countdown-timer-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Offer Ends Soon</span>
+    </div>
+    <h2 class="fade-up">Early Access Pricing<br>Disappears In</h2>
+    <p class="sb-lead fade-up">Lock in 40% off before the timer hits zero. This price won't come back.</p>
+    <div class="sb-countdown-boxes fade-up">
+      <div class="sb-countdown-box">
+        <span class="sb-count-num" id="sb-cd-days">02</span>
+        <span class="sb-count-label">Days</span>
+      </div>
+      <div class="sb-countdown-box">
+        <span class="sb-count-num" id="sb-cd-hours">11</span>
+        <span class="sb-count-label">Hours</span>
+      </div>
+      <div class="sb-countdown-box">
+        <span class="sb-count-num" id="sb-cd-mins">47</span>
+        <span class="sb-count-label">Minutes</span>
+      </div>
+      <div class="sb-countdown-box">
+        <span class="sb-count-num" id="sb-cd-secs">33</span>
+        <span class="sb-count-label">Seconds</span>
+      </div>
+    </div>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Claim 40% Off Now</a>
+      <p class="sb-microcopy">Price increases to full rate when timer expires</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var deadline = new Date();
+  deadline.setDate(deadline.getDate() + 2);
+  deadline.setHours(deadline.getHours() + 11);
+  deadline.setMinutes(deadline.getMinutes() + 47);
+  var endTime = deadline.getTime();
+
+  function updateTimer() {
+    var now = new Date().getTime();
+    var diff = endTime - now;
+    if (diff <= 0) {
+      document.getElementById('sb-cd-days').textContent = '00';
+      document.getElementById('sb-cd-hours').textContent = '00';
+      document.getElementById('sb-cd-mins').textContent = '00';
+      document.getElementById('sb-cd-secs').textContent = '00';
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('sb-cd-days').textContent = d < 10 ? '0' + d : d;
+    document.getElementById('sb-cd-hours').textContent = h < 10 ? '0' + h : h;
+    document.getElementById('sb-cd-mins').textContent = m < 10 ? '0' + m : m;
+    document.getElementById('sb-cd-secs').textContent = s < 10 ? '0' + s : s;
+  }
+  updateTimer();
+  setInterval(updateTimer, 1000);
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-countdown-timer .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

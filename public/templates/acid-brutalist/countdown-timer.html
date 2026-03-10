@@ -1,0 +1,200 @@
+<!-- Generated: acid-brutalist/countdown-timer -->
+<style>
+.sb-countdown-timer {
+  background: var(--sb-heading);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-countdown-timer .sb-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--sb-accent) 0px,
+    var(--sb-accent) 30px,
+    transparent 30px,
+    transparent 60px
+  );
+}
+.sb-countdown-timer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.sb-countdown-timer .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-accent);
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+.sb-countdown-timer h2 {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+}
+.sb-countdown-timer h2 .sb-acid {
+  color: var(--sb-accent);
+}
+.sb-countdown-timer .sb-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 40px 0;
+}
+.sb-countdown-timer .sb-timer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.sb-countdown-timer .sb-timer-box {
+  background: rgba(255,255,255,0.06);
+  border: 2px solid var(--sb-accent);
+  border-radius: 16px;
+  padding: 20px 24px;
+  min-width: 90px;
+}
+.sb-countdown-timer .sb-timer-num {
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--sb-accent);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.sb-countdown-timer .sb-timer-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4);
+  margin-top: 6px;
+}
+.sb-countdown-timer .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-accent);
+  border-radius: 20px;
+  box-shadow: 6px 6px 0px 0px rgba(255,255,255,0.12);
+  padding: 18px 52px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--sb-font);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sb-countdown-timer .sb-cta-btn:hover {
+  transform: translate(6px, 6px);
+  box-shadow: none;
+}
+.sb-countdown-timer .sb-note {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 16px;
+  font-weight: 600;
+}
+.sb-countdown-timer .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-countdown-timer .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-countdown-timer h2 { font-size: 28px; }
+  .sb-countdown-timer .sb-timer { gap: 8px; }
+  .sb-countdown-timer .sb-timer-box { min-width: 70px; padding: 16px; }
+  .sb-countdown-timer .sb-timer-num { font-size: 32px; }
+  .sb-countdown-timer .sb-cta-btn { padding: 16px 36px; font-size: 14px; }
+}
+</style>
+
+<div class="sb-countdown-timer">
+  <div class="sb-stripe"></div>
+  <div class="sb-countdown-timer-inner">
+    <span class="sb-badge fade-up">Limited Time</span>
+    <h2 class="fade-up">Offer Closes <span class="sb-acid">Soon</span></h2>
+    <p class="sb-sub fade-up">Lock in the launch price before it goes up permanently.</p>
+    <div class="sb-timer fade-up">
+      <div class="sb-timer-box">
+        <div class="sb-timer-num" id="sb-days">02</div>
+        <div class="sb-timer-label">Days</div>
+      </div>
+      <div class="sb-timer-box">
+        <div class="sb-timer-num" id="sb-hours">11</div>
+        <div class="sb-timer-label">Hours</div>
+      </div>
+      <div class="sb-timer-box">
+        <div class="sb-timer-num" id="sb-mins">47</div>
+        <div class="sb-timer-label">Minutes</div>
+      </div>
+      <div class="sb-timer-box">
+        <div class="sb-timer-num" id="sb-secs">33</div>
+        <div class="sb-timer-label">Seconds</div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Claim Your Spot</a>
+      <p class="sb-note">Price increases to $149 when the timer hits zero</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var deadline = new Date().getTime() + (2 * 24 * 60 * 60 * 1000) + (11 * 60 * 60 * 1000) + (47 * 60 * 1000) + (33 * 1000);
+  var timer = setInterval(function() {
+    var now = new Date().getTime();
+    var diff = deadline - now;
+    if (diff <= 0) {
+      clearInterval(timer);
+      diff = 0;
+    }
+    var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    var s = Math.floor((diff % (1000 * 60)) / 1000);
+    var dEl = document.getElementById('sb-days');
+    var hEl = document.getElementById('sb-hours');
+    var mEl = document.getElementById('sb-mins');
+    var sEl = document.getElementById('sb-secs');
+    if (dEl) dEl.textContent = d < 10 ? '0' + d : d;
+    if (hEl) hEl.textContent = h < 10 ? '0' + h : h;
+    if (mEl) mEl.textContent = m < 10 ? '0' + m : m;
+    if (sEl) sEl.textContent = s < 10 ? '0' + s : s;
+  }, 1000);
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-countdown-timer .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

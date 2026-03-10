@@ -1,0 +1,211 @@
+<!-- Generated: digital-naturalism/hero -->
+<style>
+.sb-hero {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: #0C0A09;
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.sb-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+.sb-hero .sb-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212,242,104,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.sb-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+}
+.sb-hero .sb-badge {
+  display: inline-block;
+  color: var(--sb-accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.sb-hero h1 {
+  font-size: clamp(44px, 7vw, 76px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0 0 24px 0;
+}
+.sb-hero h1 strong {
+  font-weight: 700;
+  font-style: normal;
+}
+.sb-hero h1 .sb-lime {
+  color: var(--sb-accent);
+}
+.sb-hero .sb-subtitle {
+  font-size: 19px;
+  color: var(--sb-muted);
+  font-weight: 400;
+  margin: 0 auto 44px auto;
+  max-width: 580px;
+  line-height: 1.7;
+  font-family: sans-serif;
+}
+.sb-hero .sb-btn-group {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sb-hero .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: var(--sb-cta-text);
+  border-radius: var(--sb-btn-radius);
+  padding: 16px 44px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: sans-serif;
+  transition: all 300ms cubic-bezier(0.4,0,0.2,1);
+}
+.sb-hero .sb-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212,242,104,0.2);
+}
+.sb-hero .sb-outline-btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--sb-heading);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--sb-btn-radius);
+  padding: 16px 44px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: sans-serif;
+  transition: all 300ms cubic-bezier(0.4,0,0.2,1);
+}
+.sb-hero .sb-outline-btn:hover {
+  border-color: rgba(255,255,255,0.5);
+}
+.sb-hero .sb-social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 52px;
+}
+.sb-hero .sb-avatars {
+  display: flex;
+}
+.sb-hero .sb-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #0C0A09;
+  background: #292524;
+  margin-left: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sb-accent);
+}
+.sb-hero .sb-avatar:first-child {
+  margin-left: 0;
+}
+.sb-hero .sb-proof-text {
+  font-size: 14px;
+  color: var(--sb-muted);
+  font-family: sans-serif;
+}
+.sb-hero .sb-proof-text strong {
+  color: var(--sb-heading);
+}
+.sb-hero .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-hero .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-hero h1 { font-size: 38px; }
+  .sb-hero .sb-subtitle { font-size: 16px; }
+  .sb-hero { min-height: 70vh; }
+  .sb-hero .sb-btn-group { flex-direction: column; }
+  .sb-hero .sb-cta-btn, .sb-hero .sb-outline-btn { width: 100%; text-align: center; }
+}
+@media (max-width: 480px) {
+  .sb-hero h1 { font-size: 32px; }
+}
+</style>
+
+<div class="sb-hero">
+  <div class="sb-glow"></div>
+  <div class="sb-hero-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Now in Early Access</span>
+    </div>
+    <h1 class="fade-up">The <em>effortless</em> way to<br><strong>grow your <span class="sb-lime">revenue</span></strong></h1>
+    <p class="sb-subtitle fade-up">A refined platform that transforms your strategy into measurable growth. Build beautiful, high-converting experiences in minutes.</p>
+    <div class="sb-btn-group fade-up">
+      <a href="#" class="sb-cta-btn">Start Free Trial</a>
+      <a href="#" class="sb-outline-btn">Watch Demo</a>
+    </div>
+    <div class="sb-social-proof fade-up">
+      <div class="sb-avatars">
+        <div class="sb-avatar">J</div>
+        <div class="sb-avatar">M</div>
+        <div class="sb-avatar">S</div>
+        <div class="sb-avatar">K</div>
+      </div>
+      <span class="sb-proof-text"><strong>2,400+</strong> professionals already on board</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-hero .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

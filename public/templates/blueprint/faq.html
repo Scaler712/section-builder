@@ -1,0 +1,226 @@
+<!-- Generated: blueprint/faq -->
+<style>
+.sb-faq {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-faq-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sb-faq .sb-coord {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-faq h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 48px 0;
+}
+.sb-faq .sb-accordion-item {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 0;
+  margin-bottom: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+.sb-faq .sb-accordion-item::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.2);
+  font-family: monospace;
+}
+.sb-faq .sb-accordion-item:hover {
+  border-color: rgba(255,255,255,0.3);
+}
+.sb-faq .sb-accordion-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: monospace;
+  text-align: left;
+}
+.sb-faq .sb-accordion-trigger span {
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  flex: 1;
+  padding-right: 16px;
+}
+.sb-faq .sb-accordion-icon {
+  font-family: monospace;
+  font-size: 16px;
+  color: var(--sb-accent);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.sb-faq .sb-accordion-item.open .sb-accordion-icon {
+  transform: rotate(45deg);
+}
+.sb-faq .sb-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.sb-faq .sb-accordion-body-inner {
+  padding: 0 28px 22px;
+}
+.sb-faq .sb-accordion-body p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq h2 { font-size: 28px; }
+  .sb-faq .sb-accordion-trigger { padding: 18px 20px; }
+  .sb-faq .sb-accordion-trigger span { font-size: 12px; }
+  .sb-faq .sb-accordion-body-inner { padding: 0 20px 18px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-faq-inner">
+    <div class="sb-coord fade-up">REF: APPENDIX-FAQ-005 &nbsp;&middot;&nbsp; REV 2.1</div>
+    <h2 class="fade-up">Technical Specifications</h2>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>How quickly will I see results?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>// most members land their first client within 2-4 weeks. our fastest member closed a $3,200 deal on day 9. the system is designed for speed, not theory.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>Do I need prior experience?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>// 60% of our members launched their first business with us. the blueprints cover everything from choosing your niche to closing your first deal. if you can follow steps, you're qualified.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>What time commitment is required?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>// 1-2 hours per day. that covers training, implementation, and daily outreach. many of our most successful members have full-time jobs and build on the side.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>How is this different from other programs?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>// speed and accountability. no 200-hour theory courses. proven templates, fill-in-the-blank frameworks, and a community that holds you accountable. 94% completion rate vs industry average of 15%.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>What if it doesn't work for me?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>// 30-day money-back guarantee. implement the steps, and if you don't see results, full refund. no questions. fewer than 12 refunds out of 2,400+ members.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>Can I cancel anytime?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>// no contracts. no lock-ins. cancel from your dashboard in two clicks. we keep members because the system works, not because of fine print.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-accordion-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var trigger = item.querySelector('.sb-accordion-trigger');
+      var body = item.querySelector('.sb-accordion-body');
+      trigger.addEventListener('click', function() {
+        var isOpen = item.classList.contains('open');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('open');
+          items[j].querySelector('.sb-accordion-trigger').setAttribute('aria-expanded', 'false');
+          items[j].querySelector('.sb-accordion-body').style.maxHeight = null;
+        }
+        if (!isOpen) {
+          item.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    })(items[i]);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var k = 0; k < elements.length; k++) {
+    observer.observe(elements[k]);
+  }
+})();
+</script>

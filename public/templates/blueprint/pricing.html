@@ -1,0 +1,263 @@
+<!-- Generated: blueprint/pricing -->
+<style>
+.sb-pricing {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-pricing-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-pricing .sb-coord {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-pricing h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 8px 0;
+}
+.sb-pricing .sb-sub {
+  color: rgba(255,255,255,0.5);
+  font-size: 16px;
+  margin-bottom: 48px;
+  font-family: monospace;
+}
+.sb-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-pricing-card {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  padding: 32px;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+.sb-pricing-card::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+.sb-pricing-card::after {
+  content: '+';
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+.sb-pricing-card:hover {
+  border-color: rgba(255,255,255,0.5);
+}
+.sb-pricing-card.sb-featured {
+  border: 2px solid var(--sb-accent);
+}
+.sb-pricing-card.sb-featured::before,
+.sb-pricing-card.sb-featured::after {
+  color: var(--sb-accent);
+}
+.sb-pricing-card .sb-stamp {
+  display: inline-block;
+  border: 2px solid var(--sb-accent);
+  color: var(--sb-accent);
+  transform: rotate(-3deg);
+  padding: 4px 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+.sb-pricing-card .sb-tier {
+  font-family: monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #00FFFF;
+  margin-bottom: 12px;
+}
+.sb-pricing-card .sb-price {
+  font-family: monospace;
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.sb-pricing-card .sb-price span {
+  font-size: 16px;
+  color: rgba(255,255,255,0.4);
+}
+.sb-pricing-card .sb-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 24px;
+  font-family: monospace;
+}
+.sb-pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+}
+.sb-pricing-card li {
+  font-family: monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.sb-pricing-card li::before {
+  content: '// ';
+  color: rgba(255,255,255,0.3);
+}
+.sb-pricing-card .sb-btn {
+  display: block;
+  background: transparent;
+  color: var(--sb-accent);
+  border: 2px solid var(--sb-accent);
+  border-radius: 0;
+  padding: 14px 36px;
+  font-family: monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sb-pricing-card .sb-btn:hover {
+  background: var(--sb-accent);
+  color: #003366;
+}
+.sb-pricing-card.sb-featured .sb-btn {
+  background: var(--sb-accent);
+  color: #003366;
+}
+.sb-pricing-card.sb-featured .sb-btn:hover {
+  background: transparent;
+  color: var(--sb-accent);
+}
+.sb-pricing .sb-dim-line {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 48px 0 0 0;
+  position: relative;
+  padding-top: 12px;
+}
+.sb-pricing .sb-dim-line span {
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+}
+.sb-pricing .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-pricing .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .sb-pricing h2 { font-size: 28px; }
+  .sb-pricing-card .sb-price { font-size: 36px; }
+}
+</style>
+
+<div class="sb-pricing">
+  <div class="sb-pricing-inner">
+    <div class="sb-coord fade-up">REF: PRICING-SPEC-001 &nbsp;&middot;&nbsp; REV 3.2</div>
+    <h2 class="fade-up">Select Your Blueprint</h2>
+    <p class="sb-sub fade-up">// all plans include 14-day money-back guarantee</p>
+
+    <div class="sb-pricing-grid">
+      <div class="sb-pricing-card fade-up">
+        <div class="sb-tier">Starter</div>
+        <div class="sb-price">$29<span>/mo</span></div>
+        <div class="sb-desc">// for solo builders</div>
+        <ul>
+          <li>5 active projects</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+          <li>1 team member</li>
+          <li>Community access</li>
+        </ul>
+        <a href="#" class="sb-btn">Initialize</a>
+      </div>
+
+      <div class="sb-pricing-card sb-featured fade-up">
+        <div class="sb-stamp">Recommended</div>
+        <div class="sb-tier">Professional</div>
+        <div class="sb-price">$79<span>/mo</span></div>
+        <div class="sb-desc">// for growing teams</div>
+        <ul>
+          <li>Unlimited projects</li>
+          <li>Advanced analytics + A/B</li>
+          <li>Priority support</li>
+          <li>5 team members</li>
+          <li>Custom domain</li>
+        </ul>
+        <a href="#" class="sb-btn">Deploy Now</a>
+      </div>
+
+      <div class="sb-pricing-card fade-up">
+        <div class="sb-tier">Enterprise</div>
+        <div class="sb-price">$199<span>/mo</span></div>
+        <div class="sb-desc">// for agencies & brands</div>
+        <ul>
+          <li>Unlimited everything</li>
+          <li>White-label reports</li>
+          <li>Dedicated account manager</li>
+          <li>Unlimited team</li>
+          <li>API access</li>
+        </ul>
+        <a href="#" class="sb-btn">Contact Ops</a>
+      </div>
+    </div>
+
+    <div class="sb-dim-line fade-up">
+      <span>SCALE: 1:1 &nbsp;&middot;&nbsp; ALL DIMENSIONS IN USD &nbsp;&middot;&nbsp; ANNUAL BILLING SAVES 20%</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pricing .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

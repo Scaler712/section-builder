@@ -1,0 +1,262 @@
+<!-- Generated: cyber-serif/pricing -->
+<style>
+.sb-pricing {
+  background: #050505;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-pricing-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.sb-pricing .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-pricing h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-heading);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0 0 12px 0;
+}
+.sb-pricing .sb-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: var(--sb-muted);
+  margin: 0 0 56px 0;
+}
+.sb-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.sb-pricing-card {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 36px;
+  text-align: left;
+  transition: border-color 0.4s ease;
+}
+.sb-pricing-card:hover {
+  border-color: rgba(255,255,255,0.15);
+}
+.sb-pricing-card.sb-featured {
+  border-color: rgba(16,185,129,0.3);
+  position: relative;
+  overflow: hidden;
+}
+.sb-pricing-card.sb-featured::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, transparent 40%, var(--sb-accent) 50%, transparent 60%);
+  background-size: 200% 200%;
+  animation: sb-shimmer 4s linear infinite;
+  border-radius: inherit;
+  z-index: -2;
+}
+.sb-pricing-card.sb-featured::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: #0a0a0a;
+  border-radius: inherit;
+  z-index: -1;
+}
+@keyframes sb-shimmer {
+  0% { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
+}
+.sb-pricing-card .sb-popular {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #050505;
+  background: var(--sb-accent);
+  border-radius: 50px;
+  padding: 6px 16px;
+  margin-bottom: 20px;
+}
+.sb-pricing-card .sb-tier {
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-muted);
+  margin-bottom: 12px;
+}
+.sb-pricing-card.sb-featured .sb-tier {
+  color: var(--sb-accent);
+}
+.sb-pricing-card .sb-price {
+  font-size: 52px;
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-heading);
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.03em;
+}
+.sb-pricing-card .sb-price span {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--sb-muted);
+}
+.sb-pricing-card .sb-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--sb-muted);
+  margin-bottom: 28px;
+}
+.sb-pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+}
+.sb-pricing-card li {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--sb-body);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sb-pricing-card li::before {
+  content: '\2713';
+  font-weight: 700;
+  color: var(--sb-accent);
+  font-size: 13px;
+}
+.sb-pricing-card .sb-btn {
+  display: block;
+  background: transparent;
+  color: var(--sb-heading);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--sb-btn-radius);
+  padding: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sb-pricing-card .sb-btn:hover {
+  border-color: rgba(255,255,255,0.3);
+}
+.sb-pricing-card.sb-featured .sb-btn {
+  background: var(--sb-accent);
+  color: #050505;
+  border-color: var(--sb-accent);
+}
+.sb-pricing-card.sb-featured .sb-btn:hover {
+  box-shadow: 0 0 30px rgba(16,185,129,0.2);
+}
+.sb-pricing .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-pricing .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .sb-pricing h2 { font-size: 32px; }
+}
+</style>
+
+<div class="sb-pricing">
+  <div class="sb-pricing-inner">
+    <span class="sb-badge fade-up">Pricing</span>
+    <h2 class="fade-up">Simple, Transparent Pricing</h2>
+    <p class="sb-sub fade-up">14-day free trial on every plan. No credit card required.</p>
+
+    <div class="sb-pricing-grid">
+      <div class="sb-pricing-card fade-up">
+        <div class="sb-tier">Starter</div>
+        <div class="sb-price">$49<span>/mo</span></div>
+        <div class="sb-desc">For individuals and small teams</div>
+        <ul>
+          <li>5 active projects</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+          <li>1 team member</li>
+          <li>Community access</li>
+        </ul>
+        <a href="#" class="sb-btn">Start Free Trial</a>
+      </div>
+
+      <div class="sb-pricing-card sb-featured fade-up">
+        <span class="sb-popular">Most Popular</span>
+        <div class="sb-tier">Professional</div>
+        <div class="sb-price">$129<span>/mo</span></div>
+        <div class="sb-desc">For growing teams that need more</div>
+        <ul>
+          <li>Unlimited projects</li>
+          <li>Advanced analytics + AI insights</li>
+          <li>Priority support (2h response)</li>
+          <li>10 team members</li>
+          <li>Custom integrations</li>
+        </ul>
+        <a href="#" class="sb-btn">Start Free Trial</a>
+      </div>
+
+      <div class="sb-pricing-card fade-up">
+        <div class="sb-tier">Enterprise</div>
+        <div class="sb-price">$349<span>/mo</span></div>
+        <div class="sb-desc">For agencies and large organizations</div>
+        <ul>
+          <li>Everything in Professional</li>
+          <li>White-label reports</li>
+          <li>Dedicated success manager</li>
+          <li>Unlimited team members</li>
+          <li>Full API access + SLA</li>
+        </ul>
+        <a href="#" class="sb-btn">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pricing .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

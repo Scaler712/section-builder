@@ -1,0 +1,151 @@
+<!-- Generated: default/about-bio -->
+<style>
+.sb-about-bio {
+  background: #ffffff;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-about-bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-about-bio .sb-badge {
+  display: inline-block;
+  background: var(--sb-highlight);
+  color: var(--sb-accent);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.sb-about-bio .sb-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.sb-about-bio .sb-photo-wrapper {
+  border-radius: var(--sb-card-radius);
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+.sb-about-bio .sb-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--sb-highlight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: var(--sb-accent);
+}
+.sb-about-bio .sb-bio-content h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--sb-heading);
+  margin: 12px 0 20px 0;
+}
+.sb-about-bio .sb-bio-content p {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.sb-about-bio .sb-bio-content p:last-of-type {
+  margin-bottom: 0;
+}
+.sb-about-bio .sb-stats-row {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.sb-about-bio .sb-stat-item .sb-stat-number {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  display: block;
+}
+.sb-about-bio .sb-stat-item .sb-stat-label {
+  font-size: 13px;
+  color: var(--sb-muted);
+  font-weight: 600;
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio .sb-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .sb-about-bio .sb-photo-wrapper {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .sb-about-bio .sb-bio-content h2 { font-size: 28px; }
+  .sb-about-bio .sb-stats-row { gap: 20px; flex-wrap: wrap; }
+  .sb-about-bio .sb-stat-item .sb-stat-number { font-size: 24px; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-about-bio-inner">
+    <div class="sb-layout">
+      <div class="sb-photo-wrapper fade-up">
+        <div class="sb-photo-placeholder">&#128100;</div>
+      </div>
+      <div class="sb-bio-content fade-up">
+        <span class="sb-badge">Meet Your Coach</span>
+        <h2>I Built This Because Nobody Gave Me a Roadmap</h2>
+        <p>Three years ago, I was broke, burned out, and bouncing between freelance gigs that paid barely enough to cover rent. I had skills, ideas, and ambition — but zero direction.</p>
+        <p>I spent $14,000 on courses, coaches, and mastermind groups before I finally cracked the code. Not because those programs were bad, but because none of them gave me a clear, day-by-day system I could actually follow.</p>
+        <p>So I built one. And I tested it on myself first. In 90 days, I went from $0 to $12,400/month in recurring revenue. Then I gave it to 50 people. Then 500. Then 2,400+.</p>
+        <div class="sb-stats-row">
+          <div class="sb-stat-item">
+            <span class="sb-stat-number">2,400+</span>
+            <span class="sb-stat-label">Members</span>
+          </div>
+          <div class="sb-stat-item">
+            <span class="sb-stat-number">94%</span>
+            <span class="sb-stat-label">Completion Rate</span>
+          </div>
+          <div class="sb-stat-item">
+            <span class="sb-stat-number">$8.2M</span>
+            <span class="sb-stat-label">Member Revenue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

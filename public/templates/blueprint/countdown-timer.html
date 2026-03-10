@@ -1,0 +1,287 @@
+<!-- Generated: blueprint/countdown-timer -->
+<style>
+.sb-countdown-timer {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-countdown-timer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sb-countdown-timer .sb-coord {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-countdown-timer .sb-stamp {
+  display: inline-block;
+  border: 2px solid var(--sb-accent);
+  color: var(--sb-accent);
+  transform: rotate(-2deg);
+  padding: 6px 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+.sb-countdown-timer h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 12px 0;
+}
+.sb-countdown-timer .sb-sub {
+  font-family: monospace;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 40px 0;
+  line-height: 1.7;
+}
+.sb-countdown-timer .sb-timer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.sb-countdown-timer .sb-timer-block {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  padding: 24px 20px;
+  min-width: 100px;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+.sb-countdown-timer .sb-timer-block::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.2);
+  font-family: monospace;
+}
+.sb-countdown-timer .sb-timer-block::after {
+  content: '+';
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.2);
+  font-family: monospace;
+}
+.sb-countdown-timer .sb-timer-block:hover {
+  border-color: rgba(255,255,255,0.4);
+}
+.sb-countdown-timer .sb-timer-value {
+  font-family: monospace;
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  display: block;
+}
+.sb-countdown-timer .sb-timer-label {
+  font-family: monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #00FFFF;
+  display: block;
+  margin-top: 8px;
+}
+.sb-countdown-timer .sb-timer-sep {
+  font-family: monospace;
+  font-size: 36px;
+  color: #00FFFF;
+  align-self: center;
+  padding-bottom: 20px;
+}
+.sb-countdown-timer .sb-capacity {
+  margin-bottom: 32px;
+}
+.sb-countdown-timer .sb-capacity-bar {
+  width: 100%;
+  max-width: 400px;
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 auto 8px;
+  position: relative;
+}
+.sb-countdown-timer .sb-capacity-fill {
+  height: 100%;
+  background: var(--sb-accent);
+  width: 78%;
+}
+.sb-countdown-timer .sb-capacity-label {
+  font-family: monospace;
+  font-size: 10px;
+  color: var(--sb-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.sb-countdown-timer .sb-btn {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #003366;
+  border: 2px solid var(--sb-accent);
+  border-radius: 0;
+  padding: 16px 40px;
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.sb-countdown-timer .sb-btn::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 1px solid rgba(255,51,51,0.3);
+}
+.sb-countdown-timer .sb-btn:hover {
+  background: transparent;
+  color: var(--sb-accent);
+}
+.sb-countdown-timer .sb-note {
+  font-family: monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 16px;
+  letter-spacing: 0.05em;
+}
+.sb-countdown-timer .sb-dim-line {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 40px auto 0;
+  max-width: 500px;
+  position: relative;
+}
+.sb-countdown-timer .sb-dim-line::before,
+.sb-countdown-timer .sb-dim-line::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: 1px;
+  height: 8px;
+  background: rgba(255,255,255,0.3);
+}
+.sb-countdown-timer .sb-dim-line::before { left: 0; }
+.sb-countdown-timer .sb-dim-line::after { right: 0; }
+.sb-countdown-timer .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-countdown-timer .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-countdown-timer h2 { font-size: 28px; }
+  .sb-countdown-timer .sb-timer { gap: 8px; }
+  .sb-countdown-timer .sb-timer-block { min-width: 64px; padding: 16px 12px; }
+  .sb-countdown-timer .sb-timer-value { font-size: 32px; }
+  .sb-countdown-timer .sb-timer-sep { font-size: 24px; }
+}
+</style>
+
+<div class="sb-countdown-timer">
+  <div class="sb-countdown-timer-inner">
+    <div class="sb-coord fade-up">REF: DEADLINE-ALERT-002 &nbsp;&middot;&nbsp; STATUS: ACTIVE</div>
+    <div class="sb-stamp fade-up">Time Sensitive</div>
+    <h2 class="fade-up">Enrollment Closes</h2>
+    <p class="sb-sub fade-up">// current cohort pricing expires when the timer hits zero. next cohort starts at full price. 47 spots remaining in this build cycle.</p>
+    <div class="sb-timer fade-up">
+      <div class="sb-timer-block">
+        <span class="sb-timer-value" id="sb-bp-cd-days">02</span>
+        <span class="sb-timer-label">Days</span>
+      </div>
+      <div class="sb-timer-sep">:</div>
+      <div class="sb-timer-block">
+        <span class="sb-timer-value" id="sb-bp-cd-hours">14</span>
+        <span class="sb-timer-label">Hours</span>
+      </div>
+      <div class="sb-timer-sep">:</div>
+      <div class="sb-timer-block">
+        <span class="sb-timer-value" id="sb-bp-cd-mins">37</span>
+        <span class="sb-timer-label">Min</span>
+      </div>
+      <div class="sb-timer-sep">:</div>
+      <div class="sb-timer-block">
+        <span class="sb-timer-value" id="sb-bp-cd-secs">00</span>
+        <span class="sb-timer-label">Sec</span>
+      </div>
+    </div>
+    <div class="sb-capacity fade-up">
+      <div class="sb-capacity-bar">
+        <div class="sb-capacity-fill"></div>
+      </div>
+      <span class="sb-capacity-label">78% Capacity Reached</span>
+    </div>
+    <a href="#" class="sb-btn fade-up">Secure Your Spot</a>
+    <p class="sb-note fade-up">// instant access. 30-day guarantee. cancel anytime.</p>
+    <div class="sb-dim-line fade-up"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var deadline = new Date();
+  deadline.setDate(deadline.getDate() + 2);
+  deadline.setHours(deadline.getHours() + 14);
+  deadline.setMinutes(deadline.getMinutes() + 37);
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function tick() {
+    var diff = Math.max(0, deadline.getTime() - Date.now());
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    var de = document.getElementById('sb-bp-cd-days');
+    var he = document.getElementById('sb-bp-cd-hours');
+    var me = document.getElementById('sb-bp-cd-mins');
+    var se = document.getElementById('sb-bp-cd-secs');
+    if (de) de.textContent = pad(d);
+    if (he) he.textContent = pad(h);
+    if (me) me.textContent = pad(m);
+    if (se) se.textContent = pad(s);
+    if (diff > 0) setTimeout(tick, 1000);
+  }
+  tick();
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-countdown-timer .fade-up');
+  for (var k = 0; k < elements.length; k++) {
+    observer.observe(elements[k]);
+  }
+})();
+</script>

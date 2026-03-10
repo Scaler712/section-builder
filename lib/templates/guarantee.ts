@@ -10,8 +10,8 @@ export const guarantee: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-guarantee {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
   background: #FAFAFA;
   text-align: center;
 }
@@ -26,18 +26,18 @@ export const guarantee: SectionTemplate = {
 .sb-guarantee h2 {
   font-size: 32px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 16px;
 }
 .sb-guarantee p {
   font-size: 17px;
-  color: #3A3A3A;
+  color: var(--sb-body);
   line-height: 1.7;
   margin-bottom: 12px;
   font-weight: 400;
 }
 .sb-guarantee .highlight {
-  background: #FFF2C2;
+  background: var(--sb-highlight);
   padding: 2px 6px;
   border-radius: 4px;
   font-weight: 600;
@@ -53,7 +53,7 @@ export const guarantee: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-guarantee { padding: 50px 16px; }
+  .sb-guarantee { padding: var(--sb-section-pad); }
   .sb-guarantee h2 { font-size: 26px; }
   .sb-guarantee .shield { font-size: 48px; }
   .sb-guarantee p { font-size: 15px; }

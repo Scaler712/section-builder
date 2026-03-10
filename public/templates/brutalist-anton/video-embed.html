@@ -1,0 +1,161 @@
+<!-- Generated: brutalist-anton/video-embed -->
+<style>
+.sb-video-embed {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: #ffffff;
+  position: relative;
+}
+.sb-video-embed::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,0.03) 39px, rgba(0,0,0,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,0.03) 39px, rgba(0,0,0,0.03) 40px);
+  pointer-events: none;
+}
+.sb-video-embed-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.sb-video-embed .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  padding: 4px 12px;
+  transform: rotate(-2deg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--sb-heading);
+  margin-bottom: 20px;
+}
+.sb-video-embed h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0 0 12px 0;
+}
+.sb-video-embed .sb-subtitle {
+  font-size: 18px;
+  color: var(--sb-muted);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+.sb-video-wrapper {
+  border: 2px solid var(--sb-heading);
+  border-radius: var(--sb-card-radius);
+  overflow: hidden;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: #000000;
+}
+.sb-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.sb-video-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sb-heading);
+  cursor: pointer;
+}
+.sb-video-play-btn {
+  width: 80px;
+  height: 80px;
+  border: 3px solid var(--sb-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: var(--sb-accent);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-video-placeholder:hover .sb-video-play-btn {
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+}
+.sb-video-caption {
+  background: var(--sb-heading);
+  padding: 16px 24px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sb-video-embed .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1), transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-video-embed .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-video-embed h2 { font-size: 38px; }
+}
+@media (max-width: 480px) {
+  .sb-video-embed h2 { font-size: 30px; }
+  .sb-video-play-btn { width: 60px; height: 60px; font-size: 24px; }
+}
+</style>
+
+<div class="sb-video-embed">
+  <div class="sb-video-embed-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Watch Demo</span>
+    </div>
+    <h2 class="fade-up">See It In Action</h2>
+    <p class="sb-subtitle fade-up">Watch how our users build high-converting pages in under 10 minutes.</p>
+    <div class="sb-video-wrapper fade-up">
+      <div class="sb-video-container">
+        <div class="sb-video-placeholder">
+          <div class="sb-video-play-btn">&#9654;</div>
+        </div>
+        <!-- Replace with your embed: <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
+      </div>
+      <div class="sb-video-caption">&#9201; 8 min watch &mdash; From blank page to live funnel in one session</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-video-embed .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,170 @@
+<!-- Generated: cyber-serif/pain-points -->
+<style>
+.sb-pain-points {
+  background: #050505;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-pain-points .sb-ambient {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.03;
+  filter: blur(120px);
+  pointer-events: none;
+  top: -100px;
+  right: -100px;
+}
+.sb-pain-points-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+.sb-pain-points .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-pain-points h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-heading);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0 0 48px 0;
+}
+.sb-pain-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sb-pain-item {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: border-color 0.4s ease;
+}
+.sb-pain-item:hover {
+  border-color: rgba(255,255,255,0.12);
+}
+.sb-pain-item .sb-x {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ef4444;
+}
+.sb-pain-item h3 {
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--sb-heading);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.02em;
+}
+.sb-pain-item p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--sb-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.sb-pain-points .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-pain-points .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pain-points h2 { font-size: 32px; }
+  .sb-pain-item { padding: 20px 24px; }
+}
+</style>
+
+<div class="sb-pain-points">
+  <div class="sb-ambient"></div>
+  <div class="sb-pain-points-inner">
+    <span class="sb-badge fade-up">The Problem</span>
+    <h2 class="fade-up">Sound Familiar?</h2>
+    <div class="sb-pain-list">
+      <div class="sb-pain-item fade-up">
+        <span class="sb-x">&times;</span>
+        <div>
+          <h3>Spending hours on manual workflows</h3>
+          <p>You're copy-pasting between 6 different tools, losing data at every handoff, and burning your best hours on work a machine should handle.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-x">&times;</span>
+        <div>
+          <h3>Scaling feels impossible</h3>
+          <p>Every new client means more chaos. Your systems weren't built for growth, and adding people only multiplies the complexity.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-x">&times;</span>
+        <div>
+          <h3>Analytics that lie to you</h3>
+          <p>Your dashboards show vanity metrics. You can't connect spend to revenue, and you're making six-figure decisions on gut instinct.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-x">&times;</span>
+        <div>
+          <h3>Tools that don't talk to each other</h3>
+          <p>Your CRM doesn't sync with your ad platform. Your email tool ignores your analytics. It's a patchwork held together with duct tape and Zapier.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-x">&times;</span>
+        <div>
+          <h3>Competitors are moving faster</h3>
+          <p>While you're stuck debugging integrations, your competition is shipping features weekly. The gap is widening, not closing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pain-points .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

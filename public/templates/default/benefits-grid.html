@@ -1,0 +1,143 @@
+<!-- Generated: default/benefits-grid -->
+<style>
+.sb-benefits-grid {
+  background: #ffffff;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-benefits-grid-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-benefits-grid .sb-badge {
+  display: inline-block;
+  background: var(--sb-highlight);
+  color: var(--sb-accent);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.sb-benefits-grid .sb-section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--sb-heading);
+  margin: 0 0 12px 0;
+}
+.sb-benefits-grid .sb-section-sub {
+  font-size: 17px;
+  color: var(--sb-muted);
+  max-width: 600px;
+  line-height: 1.6;
+  margin: 0 0 48px 0;
+}
+.sb-benefits-grid .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.sb-benefits-grid .sb-card {
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  padding: 32px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.sb-benefits-grid .sb-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+.sb-benefits-grid .sb-card-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--sb-highlight);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.sb-benefits-grid .sb-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.sb-benefits-grid .sb-card p {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.6;
+  margin: 0;
+}
+.sb-benefits-grid .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-benefits-grid .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-grid .sb-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .sb-benefits-grid .sb-section-title { font-size: 28px; }
+}
+</style>
+
+<div class="sb-benefits-grid">
+  <div class="sb-benefits-grid-inner">
+    <span class="sb-badge fade-up">Why It Works</span>
+    <h2 class="sb-section-title fade-up">Everything You Need to<br>Hit the Ground Running</h2>
+    <p class="sb-section-sub fade-up">Four pillars that separate the programs that deliver results from the ones that collect dust.</p>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#9889;</div>
+        <h3>Launch in Days, Not Months</h3>
+        <p>Skip the 6-month planning phase. Our templates and frameworks get you to market in under 14 days with a validated offer and live funnel.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#127919;</div>
+        <h3>Proven Client Acquisition</h3>
+        <p>The exact outreach scripts and ad templates that generated $2.4M in client revenue last quarter. Copy, customize, deploy.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#128200;</div>
+        <h3>Built-In Accountability</h3>
+        <p>Weekly live calls, daily check-ins, and a cohort of founders who keep you honest. 94% completion rate — the highest in the industry.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#128161;</div>
+        <h3>AI-Powered Workflows</h3>
+        <p>Automate your content, outreach, and follow-ups from day one. Spend your time closing deals, not doing admin work.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits-grid .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

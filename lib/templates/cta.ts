@@ -10,9 +10,9 @@ export const cta: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-cta {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
-  background: #2B2B2B;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: var(--sb-cta-bg);
   text-align: center;
 }
 .sb-cta-inner {
@@ -35,10 +35,10 @@ export const cta: SectionTemplate = {
 }
 .sb-cta .cta-btn {
   display: inline-block;
-  background: #E8B931;
-  color: #2B2B2B;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
   padding: 16px 48px;
-  border-radius: 50px;
+  border-radius: var(--sb-btn-radius);
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
@@ -60,7 +60,7 @@ export const cta: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-cta { padding: 50px 16px; }
+  .sb-cta { padding: var(--sb-section-pad); }
   .sb-cta h2 { font-size: 28px; }
   .sb-cta p { font-size: 16px; }
   .sb-cta .cta-btn { padding: 14px 36px; font-size: 16px; }

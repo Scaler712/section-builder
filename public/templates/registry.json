@@ -1,0 +1,952 @@
+{
+  "acid-brutalist": {
+    "about-bio": {
+      "file": "acid-brutalist/about-bio.html",
+      "size": 5007
+    },
+    "benefits-grid": {
+      "file": "acid-brutalist/benefits-grid.html",
+      "size": 4972
+    },
+    "countdown-timer": {
+      "file": "acid-brutalist/countdown-timer.html",
+      "size": 5933
+    },
+    "cta": {
+      "file": "acid-brutalist/cta.html",
+      "size": 4331
+    },
+    "faq": {
+      "file": "acid-brutalist/faq.html",
+      "size": 7356
+    },
+    "guarantee": {
+      "file": "acid-brutalist/guarantee.html",
+      "size": 3828
+    },
+    "hero": {
+      "file": "acid-brutalist/hero.html",
+      "size": 5840
+    },
+    "pain-points": {
+      "file": "acid-brutalist/pain-points.html",
+      "size": 5568
+    },
+    "pricing": {
+      "file": "acid-brutalist/pricing.html",
+      "size": 7577
+    },
+    "solution-transition": {
+      "file": "acid-brutalist/solution-transition.html",
+      "size": 5595
+    },
+    "testimonials": {
+      "file": "acid-brutalist/testimonials.html",
+      "size": 5641
+    },
+    "video-embed": {
+      "file": "acid-brutalist/video-embed.html",
+      "size": 4316
+    }
+  },
+  "atmospheric-glass": {
+    "about-bio": {
+      "file": "atmospheric-glass/about-bio.html",
+      "size": 5702
+    },
+    "benefits-grid": {
+      "file": "atmospheric-glass/benefits-grid.html",
+      "size": 4969
+    },
+    "countdown-timer": {
+      "file": "atmospheric-glass/countdown-timer.html",
+      "size": 6588
+    },
+    "cta": {
+      "file": "atmospheric-glass/cta.html",
+      "size": 4274
+    },
+    "faq": {
+      "file": "atmospheric-glass/faq.html",
+      "size": 7531
+    },
+    "guarantee": {
+      "file": "atmospheric-glass/guarantee.html",
+      "size": 4770
+    },
+    "hero": {
+      "file": "atmospheric-glass/hero.html",
+      "size": 4354
+    },
+    "pain-points": {
+      "file": "atmospheric-glass/pain-points.html",
+      "size": 6008
+    },
+    "pricing": {
+      "file": "atmospheric-glass/pricing.html",
+      "size": 7513
+    },
+    "solution-transition": {
+      "file": "atmospheric-glass/solution-transition.html",
+      "size": 5452
+    },
+    "testimonials": {
+      "file": "atmospheric-glass/testimonials.html",
+      "size": 6354
+    },
+    "video-embed": {
+      "file": "atmospheric-glass/video-embed.html",
+      "size": 4860
+    }
+  },
+  "blueprint": {
+    "about-bio": {
+      "file": "blueprint/about-bio.html",
+      "size": 6693
+    },
+    "benefits-grid": {
+      "file": "blueprint/benefits-grid.html",
+      "size": 4477
+    },
+    "countdown-timer": {
+      "file": "blueprint/countdown-timer.html",
+      "size": 8349
+    },
+    "cta": {
+      "file": "blueprint/cta.html",
+      "size": 4891
+    },
+    "faq": {
+      "file": "blueprint/faq.html",
+      "size": 7645
+    },
+    "guarantee": {
+      "file": "blueprint/guarantee.html",
+      "size": 5649
+    },
+    "hero": {
+      "file": "blueprint/hero.html",
+      "size": 3884
+    },
+    "pain-points": {
+      "file": "blueprint/pain-points.html",
+      "size": 5145
+    },
+    "pricing": {
+      "file": "blueprint/pricing.html",
+      "size": 7063
+    },
+    "solution-transition": {
+      "file": "blueprint/solution-transition.html",
+      "size": 4153
+    },
+    "testimonials": {
+      "file": "blueprint/testimonials.html",
+      "size": 5501
+    },
+    "video-embed": {
+      "file": "blueprint/video-embed.html",
+      "size": 3363
+    }
+  },
+  "brutalist-anton": {
+    "about-bio": {
+      "file": "brutalist-anton/about-bio.html",
+      "size": 5328
+    },
+    "benefits-grid": {
+      "file": "brutalist-anton/benefits-grid.html",
+      "size": 4945
+    },
+    "countdown-timer": {
+      "file": "brutalist-anton/countdown-timer.html",
+      "size": 6501
+    },
+    "cta": {
+      "file": "brutalist-anton/cta.html",
+      "size": 3190
+    },
+    "faq": {
+      "file": "brutalist-anton/faq.html",
+      "size": 7553
+    },
+    "guarantee": {
+      "file": "brutalist-anton/guarantee.html",
+      "size": 3897
+    },
+    "hero": {
+      "file": "brutalist-anton/hero.html",
+      "size": 5114
+    },
+    "pain-points": {
+      "file": "brutalist-anton/pain-points.html",
+      "size": 5761
+    },
+    "pricing": {
+      "file": "brutalist-anton/pricing.html",
+      "size": 7669
+    },
+    "solution-transition": {
+      "file": "brutalist-anton/solution-transition.html",
+      "size": 5090
+    },
+    "testimonials": {
+      "file": "brutalist-anton/testimonials.html",
+      "size": 7179
+    },
+    "video-embed": {
+      "file": "brutalist-anton/video-embed.html",
+      "size": 4307
+    }
+  },
+  "claymorphism": {
+    "about-bio": {
+      "file": "claymorphism/about-bio.html",
+      "size": 5790
+    },
+    "benefits-grid": {
+      "file": "claymorphism/benefits-grid.html",
+      "size": 5803
+    },
+    "countdown-timer": {
+      "file": "claymorphism/countdown-timer.html",
+      "size": 6593
+    },
+    "cta": {
+      "file": "claymorphism/cta.html",
+      "size": 4144
+    },
+    "faq": {
+      "file": "claymorphism/faq.html",
+      "size": 8868
+    },
+    "guarantee": {
+      "file": "claymorphism/guarantee.html",
+      "size": 4134
+    },
+    "hero": {
+      "file": "claymorphism/hero.html",
+      "size": 4283
+    },
+    "pain-points": {
+      "file": "claymorphism/pain-points.html",
+      "size": 5776
+    },
+    "pricing": {
+      "file": "claymorphism/pricing.html",
+      "size": 9263
+    },
+    "solution-transition": {
+      "file": "claymorphism/solution-transition.html",
+      "size": 6723
+    },
+    "testimonials": {
+      "file": "claymorphism/testimonials.html",
+      "size": 6171
+    },
+    "video-embed": {
+      "file": "claymorphism/video-embed.html",
+      "size": 4270
+    }
+  },
+  "cyber-serif": {
+    "about-bio": {
+      "file": "cyber-serif/about-bio.html",
+      "size": 4747
+    },
+    "benefits-grid": {
+      "file": "cyber-serif/benefits-grid.html",
+      "size": 4388
+    },
+    "countdown-timer": {
+      "file": "cyber-serif/countdown-timer.html",
+      "size": 6106
+    },
+    "cta": {
+      "file": "cyber-serif/cta.html",
+      "size": 3681
+    },
+    "faq": {
+      "file": "cyber-serif/faq.html",
+      "size": 6899
+    },
+    "guarantee": {
+      "file": "cyber-serif/guarantee.html",
+      "size": 3085
+    },
+    "hero": {
+      "file": "cyber-serif/hero.html",
+      "size": 5159
+    },
+    "pain-points": {
+      "file": "cyber-serif/pain-points.html",
+      "size": 4760
+    },
+    "pricing": {
+      "file": "cyber-serif/pricing.html",
+      "size": 6988
+    },
+    "solution-transition": {
+      "file": "cyber-serif/solution-transition.html",
+      "size": 5220
+    },
+    "testimonials": {
+      "file": "cyber-serif/testimonials.html",
+      "size": 5367
+    },
+    "video-embed": {
+      "file": "cyber-serif/video-embed.html",
+      "size": 3167
+    }
+  },
+  "default": {
+    "about-bio": {
+      "file": "default/about-bio.html",
+      "size": 4494
+    },
+    "benefits-grid": {
+      "file": "default/benefits-grid.html",
+      "size": 4278
+    },
+    "countdown-timer": {
+      "file": "default/countdown-timer.html",
+      "size": 5369
+    },
+    "cta": {
+      "file": "default/cta.html",
+      "size": 2930
+    },
+    "faq": {
+      "file": "default/faq.html",
+      "size": 7617
+    },
+    "guarantee": {
+      "file": "default/guarantee.html",
+      "size": 2798
+    },
+    "hero": {
+      "file": "default/hero.html",
+      "size": 2867
+    },
+    "pain-points": {
+      "file": "default/pain-points.html",
+      "size": 4914
+    },
+    "pricing": {
+      "file": "default/pricing.html",
+      "size": 7240
+    },
+    "solution-transition": {
+      "file": "default/solution-transition.html",
+      "size": 3742
+    },
+    "testimonials": {
+      "file": "default/testimonials.html",
+      "size": 5183
+    },
+    "video-embed": {
+      "file": "default/video-embed.html",
+      "size": 3099
+    }
+  },
+  "digital-naturalism": {
+    "about-bio": {
+      "file": "digital-naturalism/about-bio.html",
+      "size": 5152
+    },
+    "benefits-grid": {
+      "file": "digital-naturalism/benefits-grid.html",
+      "size": 4958
+    },
+    "countdown-timer": {
+      "file": "digital-naturalism/countdown-timer.html",
+      "size": 6659
+    },
+    "cta": {
+      "file": "digital-naturalism/cta.html",
+      "size": 4609
+    },
+    "faq": {
+      "file": "digital-naturalism/faq.html",
+      "size": 7380
+    },
+    "guarantee": {
+      "file": "digital-naturalism/guarantee.html",
+      "size": 4313
+    },
+    "hero": {
+      "file": "digital-naturalism/hero.html",
+      "size": 5653
+    },
+    "pain-points": {
+      "file": "digital-naturalism/pain-points.html",
+      "size": 5493
+    },
+    "pricing": {
+      "file": "digital-naturalism/pricing.html",
+      "size": 7268
+    },
+    "solution-transition": {
+      "file": "digital-naturalism/solution-transition.html",
+      "size": 5884
+    },
+    "testimonials": {
+      "file": "digital-naturalism/testimonials.html",
+      "size": 5896
+    },
+    "video-embed": {
+      "file": "digital-naturalism/video-embed.html",
+      "size": 4188
+    }
+  },
+  "disruptor": {
+    "about-bio": {
+      "file": "disruptor/about-bio.html",
+      "size": 5474
+    },
+    "benefits-grid": {
+      "file": "disruptor/benefits-grid.html",
+      "size": 5052
+    },
+    "countdown-timer": {
+      "file": "disruptor/countdown-timer.html",
+      "size": 6690
+    },
+    "cta": {
+      "file": "disruptor/cta.html",
+      "size": 4835
+    },
+    "faq": {
+      "file": "disruptor/faq.html",
+      "size": 7794
+    },
+    "guarantee": {
+      "file": "disruptor/guarantee.html",
+      "size": 5454
+    },
+    "hero": {
+      "file": "disruptor/hero.html",
+      "size": 5296
+    },
+    "pain-points": {
+      "file": "disruptor/pain-points.html",
+      "size": 6071
+    },
+    "pricing": {
+      "file": "disruptor/pricing.html",
+      "size": 7387
+    },
+    "solution-transition": {
+      "file": "disruptor/solution-transition.html",
+      "size": 5992
+    },
+    "testimonials": {
+      "file": "disruptor/testimonials.html",
+      "size": 5715
+    },
+    "video-embed": {
+      "file": "disruptor/video-embed.html",
+      "size": 4734
+    }
+  },
+  "glassmorphic-depth": {
+    "about-bio": {
+      "file": "glassmorphic-depth/about-bio.html",
+      "size": 5029
+    },
+    "benefits-grid": {
+      "file": "glassmorphic-depth/benefits-grid.html",
+      "size": 6694
+    },
+    "countdown-timer": {
+      "file": "glassmorphic-depth/countdown-timer.html",
+      "size": 8084
+    },
+    "cta": {
+      "file": "glassmorphic-depth/cta.html",
+      "size": 5042
+    },
+    "faq": {
+      "file": "glassmorphic-depth/faq.html",
+      "size": 9005
+    },
+    "guarantee": {
+      "file": "glassmorphic-depth/guarantee.html",
+      "size": 4811
+    },
+    "hero": {
+      "file": "glassmorphic-depth/hero.html",
+      "size": 7374
+    },
+    "pain-points": {
+      "file": "glassmorphic-depth/pain-points.html",
+      "size": 5795
+    },
+    "pricing": {
+      "file": "glassmorphic-depth/pricing.html",
+      "size": 8390
+    },
+    "solution-transition": {
+      "file": "glassmorphic-depth/solution-transition.html",
+      "size": 7642
+    },
+    "testimonials": {
+      "file": "glassmorphic-depth/testimonials.html",
+      "size": 6155
+    },
+    "video-embed": {
+      "file": "glassmorphic-depth/video-embed.html",
+      "size": 5980
+    }
+  },
+  "hyper-fintech": {
+    "about-bio": {
+      "file": "hyper-fintech/about-bio.html",
+      "size": 6193
+    },
+    "benefits-grid": {
+      "file": "hyper-fintech/benefits-grid.html",
+      "size": 4309
+    },
+    "countdown-timer": {
+      "file": "hyper-fintech/countdown-timer.html",
+      "size": 7060
+    },
+    "cta": {
+      "file": "hyper-fintech/cta.html",
+      "size": 3067
+    },
+    "faq": {
+      "file": "hyper-fintech/faq.html",
+      "size": 7491
+    },
+    "guarantee": {
+      "file": "hyper-fintech/guarantee.html",
+      "size": 4968
+    },
+    "hero": {
+      "file": "hyper-fintech/hero.html",
+      "size": 4188
+    },
+    "pain-points": {
+      "file": "hyper-fintech/pain-points.html",
+      "size": 4724
+    },
+    "pricing": {
+      "file": "hyper-fintech/pricing.html",
+      "size": 6578
+    },
+    "solution-transition": {
+      "file": "hyper-fintech/solution-transition.html",
+      "size": 2959
+    },
+    "testimonials": {
+      "file": "hyper-fintech/testimonials.html",
+      "size": 4878
+    },
+    "video-embed": {
+      "file": "hyper-fintech/video-embed.html",
+      "size": 5015
+    }
+  },
+  "luxury-dark-gold": {
+    "about-bio": {
+      "file": "luxury-dark-gold/about-bio.html",
+      "size": 5328
+    },
+    "benefits-grid": {
+      "file": "luxury-dark-gold/benefits-grid.html",
+      "size": 4849
+    },
+    "countdown-timer": {
+      "file": "luxury-dark-gold/countdown-timer.html",
+      "size": 6643
+    },
+    "cta": {
+      "file": "luxury-dark-gold/cta.html",
+      "size": 4696
+    },
+    "faq": {
+      "file": "luxury-dark-gold/faq.html",
+      "size": 7806
+    },
+    "guarantee": {
+      "file": "luxury-dark-gold/guarantee.html",
+      "size": 5251
+    },
+    "hero": {
+      "file": "luxury-dark-gold/hero.html",
+      "size": 4714
+    },
+    "pain-points": {
+      "file": "luxury-dark-gold/pain-points.html",
+      "size": 5576
+    },
+    "pricing": {
+      "file": "luxury-dark-gold/pricing.html",
+      "size": 7250
+    },
+    "solution-transition": {
+      "file": "luxury-dark-gold/solution-transition.html",
+      "size": 6396
+    },
+    "testimonials": {
+      "file": "luxury-dark-gold/testimonials.html",
+      "size": 5501
+    },
+    "video-embed": {
+      "file": "luxury-dark-gold/video-embed.html",
+      "size": 4251
+    }
+  },
+  "neo-brutalist-yellow": {
+    "about-bio": {
+      "file": "neo-brutalist-yellow/about-bio.html",
+      "size": 5056
+    },
+    "benefits-grid": {
+      "file": "neo-brutalist-yellow/benefits-grid.html",
+      "size": 4371
+    },
+    "countdown-timer": {
+      "file": "neo-brutalist-yellow/countdown-timer.html",
+      "size": 6028
+    },
+    "cta": {
+      "file": "neo-brutalist-yellow/cta.html",
+      "size": 3059
+    },
+    "faq": {
+      "file": "neo-brutalist-yellow/faq.html",
+      "size": 7543
+    },
+    "guarantee": {
+      "file": "neo-brutalist-yellow/guarantee.html",
+      "size": 3158
+    },
+    "hero": {
+      "file": "neo-brutalist-yellow/hero.html",
+      "size": 4565
+    },
+    "pain-points": {
+      "file": "neo-brutalist-yellow/pain-points.html",
+      "size": 5375
+    },
+    "pricing": {
+      "file": "neo-brutalist-yellow/pricing.html",
+      "size": 7238
+    },
+    "solution-transition": {
+      "file": "neo-brutalist-yellow/solution-transition.html",
+      "size": 4664
+    },
+    "testimonials": {
+      "file": "neo-brutalist-yellow/testimonials.html",
+      "size": 6248
+    },
+    "video-embed": {
+      "file": "neo-brutalist-yellow/video-embed.html",
+      "size": 3691
+    }
+  },
+  "obsidian-lime": {
+    "about-bio": {
+      "file": "obsidian-lime/about-bio.html",
+      "size": 5285
+    },
+    "benefits-grid": {
+      "file": "obsidian-lime/benefits-grid.html",
+      "size": 4956
+    },
+    "countdown-timer": {
+      "file": "obsidian-lime/countdown-timer.html",
+      "size": 6812
+    },
+    "cta": {
+      "file": "obsidian-lime/cta.html",
+      "size": 4075
+    },
+    "faq": {
+      "file": "obsidian-lime/faq.html",
+      "size": 7585
+    },
+    "guarantee": {
+      "file": "obsidian-lime/guarantee.html",
+      "size": 4026
+    },
+    "hero": {
+      "file": "obsidian-lime/hero.html",
+      "size": 8450
+    },
+    "pain-points": {
+      "file": "obsidian-lime/pain-points.html",
+      "size": 5747
+    },
+    "pricing": {
+      "file": "obsidian-lime/pricing.html",
+      "size": 8260
+    },
+    "solution-transition": {
+      "file": "obsidian-lime/solution-transition.html",
+      "size": 7280
+    },
+    "testimonials": {
+      "file": "obsidian-lime/testimonials.html",
+      "size": 5840
+    },
+    "video-embed": {
+      "file": "obsidian-lime/video-embed.html",
+      "size": 4706
+    }
+  },
+  "organic-intelligence": {
+    "about-bio": {
+      "file": "organic-intelligence/about-bio.html",
+      "size": 4596
+    },
+    "benefits-grid": {
+      "file": "organic-intelligence/benefits-grid.html",
+      "size": 4762
+    },
+    "countdown-timer": {
+      "file": "organic-intelligence/countdown-timer.html",
+      "size": 6138
+    },
+    "cta": {
+      "file": "organic-intelligence/cta.html",
+      "size": 3376
+    },
+    "faq": {
+      "file": "organic-intelligence/faq.html",
+      "size": 7921
+    },
+    "guarantee": {
+      "file": "organic-intelligence/guarantee.html",
+      "size": 3637
+    },
+    "hero": {
+      "file": "organic-intelligence/hero.html",
+      "size": 3337
+    },
+    "pain-points": {
+      "file": "organic-intelligence/pain-points.html",
+      "size": 4638
+    },
+    "pricing": {
+      "file": "organic-intelligence/pricing.html",
+      "size": 7399
+    },
+    "solution-transition": {
+      "file": "organic-intelligence/solution-transition.html",
+      "size": 3792
+    },
+    "testimonials": {
+      "file": "organic-intelligence/testimonials.html",
+      "size": 5537
+    },
+    "video-embed": {
+      "file": "organic-intelligence/video-embed.html",
+      "size": 3586
+    }
+  },
+  "red-noir": {
+    "about-bio": {
+      "file": "red-noir/about-bio.html",
+      "size": 5629
+    },
+    "benefits-grid": {
+      "file": "red-noir/benefits-grid.html",
+      "size": 5820
+    },
+    "countdown-timer": {
+      "file": "red-noir/countdown-timer.html",
+      "size": 7813
+    },
+    "cta": {
+      "file": "red-noir/cta.html",
+      "size": 4489
+    },
+    "faq": {
+      "file": "red-noir/faq.html",
+      "size": 7533
+    },
+    "guarantee": {
+      "file": "red-noir/guarantee.html",
+      "size": 4087
+    },
+    "hero": {
+      "file": "red-noir/hero.html",
+      "size": 7748
+    },
+    "pain-points": {
+      "file": "red-noir/pain-points.html",
+      "size": 6382
+    },
+    "pricing": {
+      "file": "red-noir/pricing.html",
+      "size": 9289
+    },
+    "solution-transition": {
+      "file": "red-noir/solution-transition.html",
+      "size": 7605
+    },
+    "testimonials": {
+      "file": "red-noir/testimonials.html",
+      "size": 6119
+    },
+    "video-embed": {
+      "file": "red-noir/video-embed.html",
+      "size": 5303
+    }
+  },
+  "red-sun": {
+    "about-bio": {
+      "file": "red-sun/about-bio.html",
+      "size": 4533
+    },
+    "benefits-grid": {
+      "file": "red-sun/benefits-grid.html",
+      "size": 5695
+    },
+    "countdown-timer": {
+      "file": "red-sun/countdown-timer.html",
+      "size": 6177
+    },
+    "cta": {
+      "file": "red-sun/cta.html",
+      "size": 3442
+    },
+    "faq": {
+      "file": "red-sun/faq.html",
+      "size": 8627
+    },
+    "guarantee": {
+      "file": "red-sun/guarantee.html",
+      "size": 3325
+    },
+    "hero": {
+      "file": "red-sun/hero.html",
+      "size": 8070
+    },
+    "pain-points": {
+      "file": "red-sun/pain-points.html",
+      "size": 5318
+    },
+    "pricing": {
+      "file": "red-sun/pricing.html",
+      "size": 8626
+    },
+    "solution-transition": {
+      "file": "red-sun/solution-transition.html",
+      "size": 7866
+    },
+    "testimonials": {
+      "file": "red-sun/testimonials.html",
+      "size": 7326
+    },
+    "video-embed": {
+      "file": "red-sun/video-embed.html",
+      "size": 2942
+    }
+  },
+  "softly-wellness": {
+    "about-bio": {
+      "file": "softly-wellness/about-bio.html",
+      "size": 5031
+    },
+    "benefits-grid": {
+      "file": "softly-wellness/benefits-grid.html",
+      "size": 4792
+    },
+    "countdown-timer": {
+      "file": "softly-wellness/countdown-timer.html",
+      "size": 6469
+    },
+    "cta": {
+      "file": "softly-wellness/cta.html",
+      "size": 3736
+    },
+    "faq": {
+      "file": "softly-wellness/faq.html",
+      "size": 7413
+    },
+    "guarantee": {
+      "file": "softly-wellness/guarantee.html",
+      "size": 4489
+    },
+    "hero": {
+      "file": "softly-wellness/hero.html",
+      "size": 4130
+    },
+    "pain-points": {
+      "file": "softly-wellness/pain-points.html",
+      "size": 5724
+    },
+    "pricing": {
+      "file": "softly-wellness/pricing.html",
+      "size": 7187
+    },
+    "solution-transition": {
+      "file": "softly-wellness/solution-transition.html",
+      "size": 5039
+    },
+    "testimonials": {
+      "file": "softly-wellness/testimonials.html",
+      "size": 6280
+    },
+    "video-embed": {
+      "file": "softly-wellness/video-embed.html",
+      "size": 4691
+    }
+  },
+  "swiss-echo": {
+    "about-bio": {
+      "file": "swiss-echo/about-bio.html",
+      "size": 4768
+    },
+    "benefits-grid": {
+      "file": "swiss-echo/benefits-grid.html",
+      "size": 4223
+    },
+    "countdown-timer": {
+      "file": "swiss-echo/countdown-timer.html",
+      "size": 5440
+    },
+    "cta": {
+      "file": "swiss-echo/cta.html",
+      "size": 3252
+    },
+    "faq": {
+      "file": "swiss-echo/faq.html",
+      "size": 7593
+    },
+    "guarantee": {
+      "file": "swiss-echo/guarantee.html",
+      "size": 3211
+    },
+    "hero": {
+      "file": "swiss-echo/hero.html",
+      "size": 3181
+    },
+    "pain-points": {
+      "file": "swiss-echo/pain-points.html",
+      "size": 5114
+    },
+    "pricing": {
+      "file": "swiss-echo/pricing.html",
+      "size": 6093
+    },
+    "solution-transition": {
+      "file": "swiss-echo/solution-transition.html",
+      "size": 4194
+    },
+    "testimonials": {
+      "file": "swiss-echo/testimonials.html",
+      "size": 4403
+    },
+    "video-embed": {
+      "file": "swiss-echo/video-embed.html",
+      "size": 3440
+    }
+  }
+}

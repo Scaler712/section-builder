@@ -1,0 +1,198 @@
+<!-- Generated: organic-intelligence/countdown-timer -->
+<style>
+.sb-countdown-timer {
+  background: var(--sb-heading);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+.sb-countdown-timer::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -10%;
+  width: 120%;
+  height: 120px;
+  background: #fcfbf9;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.sb-countdown-timer-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-countdown-timer .sb-mono-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+  display: block;
+}
+.sb-countdown-timer .sb-section-title {
+  font-family: var(--sb-font);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 48px 0;
+}
+.sb-countdown-timer .sb-timer-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.sb-countdown-timer .sb-timer-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--sb-card-radius);
+  padding: 28px 32px;
+  min-width: 100px;
+  transition: all 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sb-countdown-timer .sb-timer-box:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.sb-countdown-timer .sb-timer-number {
+  display: block;
+  font-family: var(--sb-font);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  font-style: italic;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.sb-countdown-timer .sb-timer-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-top: 10px;
+}
+.sb-countdown-timer .sb-section-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 440px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+}
+.sb-countdown-timer .sb-cta-btn {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--sb-heading);
+  border: none;
+  border-radius: var(--sb-btn-radius);
+  padding: 16px 44px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: sb-oi-cd-pulse 3s ease-in-out infinite;
+}
+@keyframes sb-oi-cd-pulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+  50% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); transform: scale(1.02); }
+}
+.sb-countdown-timer .fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1000ms cubic-bezier(0.22, 1, 0.36, 1), transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sb-countdown-timer .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-countdown-timer .sb-section-title { font-size: 32px; }
+  .sb-countdown-timer .sb-timer-boxes { flex-wrap: wrap; gap: 12px; }
+  .sb-countdown-timer .sb-timer-box { min-width: 70px; padding: 20px 22px; flex: 1; }
+  .sb-countdown-timer .sb-timer-number { font-size: 32px; }
+}
+</style>
+
+<div class="sb-countdown-timer">
+  <div class="sb-countdown-timer-inner">
+    <span class="sb-mono-label fade-up">Time Sensitive</span>
+    <h2 class="sb-section-title fade-up">Launch Price<br>Expires Soon</h2>
+    <div class="sb-timer-boxes fade-up">
+      <div class="sb-timer-box">
+        <span class="sb-timer-number" id="sb-oi-cd-days">02</span>
+        <span class="sb-timer-label">Days</span>
+      </div>
+      <div class="sb-timer-box">
+        <span class="sb-timer-number" id="sb-oi-cd-hours">11</span>
+        <span class="sb-timer-label">Hours</span>
+      </div>
+      <div class="sb-timer-box">
+        <span class="sb-timer-number" id="sb-oi-cd-mins">47</span>
+        <span class="sb-timer-label">Min</span>
+      </div>
+      <div class="sb-timer-box">
+        <span class="sb-timer-number" id="sb-oi-cd-secs">33</span>
+        <span class="sb-timer-label">Sec</span>
+      </div>
+    </div>
+    <p class="sb-section-sub fade-up">Lock in the launch price before it increases by 40%. Limited to the first 100 members only.</p>
+    <a href="#" class="sb-cta-btn fade-up">Lock In My Price</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var container = document.querySelector('.sb-countdown-timer');
+  var deadline = container.getAttribute('data-deadline');
+  var target = deadline ? new Date(deadline).getTime() : Date.now() + 3 * 24 * 60 * 60 * 1000;
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function tick() {
+    var now = Date.now();
+    var diff = Math.max(0, target - now);
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    var elD = document.getElementById('sb-oi-cd-days');
+    var elH = document.getElementById('sb-oi-cd-hours');
+    var elM = document.getElementById('sb-oi-cd-mins');
+    var elS = document.getElementById('sb-oi-cd-secs');
+    if (elD) elD.textContent = pad(d);
+    if (elH) elH.textContent = pad(h);
+    if (elM) elM.textContent = pad(m);
+    if (elS) elS.textContent = pad(s);
+    if (diff > 0) requestAnimationFrame(tick);
+  }
+  tick();
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-countdown-timer .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

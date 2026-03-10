@@ -10,9 +10,9 @@ export const hero: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-hero {
-  padding: 80px 20px;
+  padding: var(--sb-section-pad);
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: var(--sb-font);
   background: #FFFFFF;
 }
 .sb-hero-inner {
@@ -22,28 +22,28 @@ export const hero: SectionTemplate = {
 .sb-hero h1 {
   font-size: 48px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   line-height: 1.15;
   margin-bottom: 24px;
 }
 .sb-hero .highlight {
-  background: #FFF2C2;
+  background: var(--sb-highlight);
   padding: 2px 8px;
   border-radius: 4px;
 }
 .sb-hero p {
   font-size: 20px;
-  color: #3A3A3A;
+  color: var(--sb-body);
   line-height: 1.6;
   margin-bottom: 40px;
   font-weight: 400;
 }
 .sb-hero .cta-btn {
   display: inline-block;
-  background: #2B2B2B;
+  background: var(--sb-cta-bg);
   color: #FFFFFF;
   padding: 16px 48px;
-  border-radius: 50px;
+  border-radius: var(--sb-btn-radius);
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
@@ -65,7 +65,7 @@ export const hero: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-hero { padding: 50px 16px; }
+  .sb-hero { padding: var(--sb-section-pad); }
   .sb-hero h1 { font-size: 32px; }
   .sb-hero p { font-size: 17px; }
 }

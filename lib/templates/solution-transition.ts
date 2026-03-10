@@ -10,8 +10,8 @@ export const solutionTransition: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-transition {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
   background: #F5F5F5;
   text-align: center;
 }
@@ -22,18 +22,18 @@ export const solutionTransition: SectionTemplate = {
 .sb-transition h2 {
   font-size: 36px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 24px;
   line-height: 1.2;
 }
 .sb-transition .highlight {
-  background: #FFF2C2;
+  background: var(--sb-highlight);
   padding: 2px 8px;
   border-radius: 4px;
 }
 .sb-transition p {
   font-size: 18px;
-  color: #3A3A3A;
+  color: var(--sb-body);
   line-height: 1.7;
   margin-bottom: 20px;
   font-weight: 400;
@@ -41,7 +41,7 @@ export const solutionTransition: SectionTemplate = {
 .sb-transition .divider {
   width: 60px;
   height: 3px;
-  background: #E8B931;
+  background: var(--sb-accent);
   margin: 0 auto 32px;
   border-radius: 2px;
 }
@@ -56,7 +56,7 @@ export const solutionTransition: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-transition { padding: 50px 16px; }
+  .sb-transition { padding: var(--sb-section-pad); }
   .sb-transition h2 { font-size: 28px; }
   .sb-transition p { font-size: 16px; }
 }

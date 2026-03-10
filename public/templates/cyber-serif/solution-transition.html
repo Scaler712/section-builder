@@ -1,0 +1,181 @@
+<!-- Generated: cyber-serif/solution-transition -->
+<style>
+.sb-solution-transition {
+  background: #050505;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-solution-transition .sb-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.04;
+  filter: blur(140px);
+  pointer-events: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.sb-solution-transition-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+.sb-solution-transition .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-solution-transition h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-heading);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin: 0 0 24px 0;
+}
+.sb-solution-transition h2 .sb-gradient {
+  background: linear-gradient(135deg, var(--sb-accent), #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sb-solution-transition .sb-lead {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 auto 48px auto;
+}
+.sb-solution-transition .sb-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sb-accent), transparent);
+  margin: 0 auto 48px auto;
+}
+.sb-solution-cols {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 0;
+  align-items: start;
+  text-align: left;
+}
+.sb-solution-col {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 32px;
+}
+.sb-solution-col.sb-before {
+  border-color: rgba(239,68,68,0.15);
+}
+.sb-solution-col.sb-after {
+  border-color: rgba(16,185,129,0.15);
+}
+.sb-solution-col .sb-label {
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+}
+.sb-solution-col.sb-before .sb-label { color: #ef4444; }
+.sb-solution-col.sb-after .sb-label { color: var(--sb-accent); }
+.sb-solution-col li {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.6;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sb-solution-col ul { padding: 0; margin: 0; }
+.sb-solution-col.sb-before li::before { content: '\2717'; color: #ef4444; font-weight: 700; }
+.sb-solution-col.sb-after li::before { content: '\2713'; color: var(--sb-accent); font-weight: 700; }
+.sb-solution-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--sb-muted);
+  padding-top: 40px;
+}
+.sb-solution-transition .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-solution-transition .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-solution-cols { grid-template-columns: 1fr; gap: 16px; }
+  .sb-solution-arrow { transform: rotate(90deg); padding: 0; }
+  .sb-solution-transition h2 { font-size: 32px; }
+}
+</style>
+
+<div class="sb-solution-transition">
+  <div class="sb-glow"></div>
+  <div class="sb-solution-transition-inner">
+    <span class="sb-badge fade-up">The Shift</span>
+    <h2 class="fade-up">From Chaos to <span class="sb-gradient">Clarity</span></h2>
+    <p class="sb-lead fade-up">What used to take your team a full week now happens before your morning coffee. Here's the transformation.</p>
+    <div class="sb-divider fade-up"></div>
+    <div class="sb-solution-cols fade-up">
+      <div class="sb-solution-col sb-before">
+        <div class="sb-label">Before</div>
+        <ul>
+          <li>Manual data entry across 6 tools</li>
+          <li>3-day turnaround on campaign changes</li>
+          <li>Guessing which channels convert</li>
+          <li>Scaling breaks everything</li>
+        </ul>
+      </div>
+      <div class="sb-solution-arrow">&rarr;</div>
+      <div class="sb-solution-col sb-after">
+        <div class="sb-label">After</div>
+        <ul>
+          <li>Unified dashboard, zero copy-paste</li>
+          <li>Real-time optimization, always on</li>
+          <li>Revenue attributed to every touchpoint</li>
+          <li>Architecture that grows with you</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-solution-transition .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

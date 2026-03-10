@@ -1,0 +1,271 @@
+<!-- Generated: brutalist-anton/pricing -->
+<style>
+.sb-pricing {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: #ffffff;
+  position: relative;
+}
+.sb-pricing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,0.03) 39px, rgba(0,0,0,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,0.03) 39px, rgba(0,0,0,0.03) 40px);
+  pointer-events: none;
+}
+.sb-pricing-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.sb-pricing .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  padding: 4px 12px;
+  transform: rotate(-2deg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--sb-heading);
+  margin-bottom: 20px;
+}
+.sb-pricing h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0 0 12px 0;
+}
+.sb-pricing .sb-subtitle {
+  font-size: 18px;
+  color: var(--sb-muted);
+  margin-bottom: 48px;
+  font-weight: 400;
+}
+.sb-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+.sb-pricing-card {
+  background: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: var(--sb-card-radius);
+  padding: 36px 32px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-pricing-card:hover {
+  transform: translateY(-4px);
+}
+.sb-pricing-card.sb-featured {
+  background: var(--sb-heading);
+  color: #ffffff;
+  position: relative;
+}
+.sb-pricing-card.sb-featured .sb-popular-tag {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  padding: 4px 14px;
+  font-weight: 800;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.sb-pricing-tier {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sb-muted);
+  margin: 0 0 8px 0;
+}
+.sb-pricing-card.sb-featured .sb-pricing-tier {
+  color: rgba(255,255,255,0.5);
+}
+.sb-pricing-price {
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  line-height: 1;
+  margin: 0 0 4px 0;
+}
+.sb-pricing-card.sb-featured .sb-pricing-price {
+  color: #ffffff;
+}
+.sb-pricing-price span {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--sb-muted);
+}
+.sb-pricing-card.sb-featured .sb-pricing-price span {
+  color: rgba(255,255,255,0.5);
+}
+.sb-pricing-desc {
+  font-size: 14px;
+  color: var(--sb-muted);
+  margin: 0 0 28px 0;
+  line-height: 1.5;
+}
+.sb-pricing-card.sb-featured .sb-pricing-desc {
+  color: rgba(255,255,255,0.6);
+}
+.sb-pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  flex-grow: 1;
+}
+.sb-pricing-features li {
+  font-size: 14px;
+  color: var(--sb-body);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding-left: 24px;
+  position: relative;
+}
+.sb-pricing-card.sb-featured .sb-pricing-features li {
+  color: rgba(255,255,255,0.8);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+.sb-pricing-features li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--sb-heading);
+}
+.sb-pricing-card.sb-featured .sb-pricing-features li::before {
+  color: var(--sb-accent);
+}
+.sb-pricing-cta {
+  display: block;
+  width: 100%;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-heading);
+  border-radius: var(--sb-btn-radius);
+  box-shadow: 4px 4px 0px 0px #000;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--sb-font);
+}
+.sb-pricing-cta:hover {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.sb-pricing-card.sb-featured .sb-pricing-cta {
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border-color: var(--sb-accent);
+}
+.sb-pricing .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1), transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-pricing .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .sb-pricing h2 { font-size: 38px; }
+}
+@media (max-width: 480px) {
+  .sb-pricing h2 { font-size: 30px; }
+  .sb-pricing-price { font-size: 44px; }
+}
+</style>
+
+<div class="sb-pricing">
+  <div class="sb-pricing-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Simple Pricing</span>
+    </div>
+    <h2 class="fade-up">Pick Your Plan.<br>Start Building.</h2>
+    <p class="sb-subtitle fade-up">No hidden fees. Cancel anytime. All plans include a 14-day free trial.</p>
+    <div class="sb-pricing-grid">
+      <div class="sb-pricing-card fade-up">
+        <p class="sb-pricing-tier">Starter</p>
+        <p class="sb-pricing-price">$29 <span>/mo</span></p>
+        <p class="sb-pricing-desc">Perfect for solopreneurs testing their first funnel.</p>
+        <ul class="sb-pricing-features">
+          <li>5 landing pages</li>
+          <li>1,000 monthly visitors</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+          <li>10 templates</li>
+        </ul>
+        <a href="#" class="sb-pricing-cta">Start Free Trial</a>
+      </div>
+      <div class="sb-pricing-card sb-featured fade-up">
+        <span class="sb-popular-tag">Most Popular</span>
+        <p class="sb-pricing-tier">Growth</p>
+        <p class="sb-pricing-price">$79 <span>/mo</span></p>
+        <p class="sb-pricing-desc">For serious marketers ready to scale their conversions.</p>
+        <ul class="sb-pricing-features">
+          <li>Unlimited landing pages</li>
+          <li>50,000 monthly visitors</li>
+          <li>A/B testing</li>
+          <li>Priority support</li>
+          <li>All templates</li>
+          <li>Custom domains</li>
+        </ul>
+        <a href="#" class="sb-pricing-cta">Start Free Trial</a>
+      </div>
+      <div class="sb-pricing-card fade-up">
+        <p class="sb-pricing-tier">Agency</p>
+        <p class="sb-pricing-price">$199 <span>/mo</span></p>
+        <p class="sb-pricing-desc">For teams managing multiple clients and campaigns.</p>
+        <ul class="sb-pricing-features">
+          <li>Unlimited everything</li>
+          <li>500,000 monthly visitors</li>
+          <li>White-label branding</li>
+          <li>Dedicated account manager</li>
+          <li>API access</li>
+          <li>Team collaboration</li>
+        </ul>
+        <a href="#" class="sb-pricing-cta">Start Free Trial</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pricing .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

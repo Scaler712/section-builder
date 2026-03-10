@@ -1,0 +1,196 @@
+<!-- Generated: claymorphism/about-bio -->
+<style>
+.sb-about-bio {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-about-bio .sb-blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(80px);
+  animation: clayFloat 8s ease-in-out infinite;
+  pointer-events: none;
+}
+.sb-about-bio .sb-blob-1 {
+  width: 360px;
+  height: 360px;
+  background: #DB2777;
+  top: -80px;
+  right: -60px;
+}
+.sb-about-bio .sb-blob-2 {
+  width: 280px;
+  height: 280px;
+  background: #0EA5E9;
+  bottom: -60px;
+  left: -40px;
+  animation-delay: -3s;
+}
+@keyframes clayFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+.sb-about-bio-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-about-bio .sb-card {
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 2px 4px rgba(124,58,237,0.04), 0 8px 16px rgba(124,58,237,0.06), 0 16px 32px rgba(124,58,237,0.08), inset 0 -2px 4px rgba(0,0,0,0.02);
+  padding: 48px;
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+.sb-about-bio .sb-photo-wrapper {
+  flex-shrink: 0;
+}
+.sb-about-bio .sb-photo {
+  width: 200px;
+  height: 240px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(219,39,119,0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  box-shadow: inset 0 -4px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(124,58,237,0.1);
+}
+.sb-about-bio .sb-badge {
+  display: inline-block;
+  background: rgba(124,58,237,0.1);
+  color: var(--sb-accent);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+.sb-about-bio .sb-bio-content h2 {
+  font-family: 'Nunito', var(--sb-font), sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--sb-heading);
+  margin: 0 0 18px 0;
+}
+.sb-about-bio .sb-bio-content p {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.sb-about-bio .sb-bio-content p:last-of-type {
+  margin-bottom: 0;
+}
+.sb-about-bio .sb-bio-content strong {
+  color: var(--sb-heading);
+}
+.sb-about-bio .sb-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+.sb-about-bio .sb-stat {
+  background: var(--sb-highlight);
+  border-radius: 20px;
+  padding: 16px 20px;
+  text-align: center;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.04);
+}
+.sb-about-bio .sb-stat-number {
+  font-family: 'Nunito', var(--sb-font), sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--sb-accent);
+  display: block;
+  line-height: 1;
+}
+.sb-about-bio .sb-stat-label {
+  font-size: 12px;
+  color: var(--sb-muted);
+  font-weight: 600;
+  margin-top: 4px;
+  display: block;
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio .sb-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 36px 28px;
+    gap: 28px;
+  }
+  .sb-about-bio .sb-photo { width: 160px; height: 200px; }
+  .sb-about-bio .sb-bio-content h2 { font-size: 26px; }
+  .sb-about-bio .sb-stats { flex-direction: column; gap: 12px; }
+  .sb-about-bio .sb-stat { padding: 14px 16px; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-blob sb-blob-1"></div>
+  <div class="sb-blob sb-blob-2"></div>
+  <div class="sb-about-bio-inner">
+    <div class="sb-card fade-up">
+      <div class="sb-photo-wrapper">
+        <div class="sb-photo">&#128100;</div>
+      </div>
+      <div class="sb-bio-content">
+        <span class="sb-badge">Your Guide</span>
+        <h2>Hey, I'm Alex</h2>
+        <p>Three years ago, I was exactly where you are. Working 14-hour days at a job I hated, dreaming about building something of my own, but completely overwhelmed by where to start.</p>
+        <p>I burned through $12,000 on courses, coaches, and tools before I finally cracked the code. Turns out, <strong>most business advice is designed to sell more business advice</strong>. The actual mechanics of going from zero to revenue are shockingly simple — when someone shows you the right steps in the right order.</p>
+        <p>That realization became this program. Today, our community of 2,400+ founders has generated over <strong>$4.2M in combined revenue</strong>. And I get to wake up every morning doing work that matters.</p>
+        <div class="sb-stats">
+          <div class="sb-stat">
+            <span class="sb-stat-number">2,400+</span>
+            <span class="sb-stat-label">Members</span>
+          </div>
+          <div class="sb-stat">
+            <span class="sb-stat-number">$4.2M</span>
+            <span class="sb-stat-label">Revenue Generated</span>
+          </div>
+          <div class="sb-stat">
+            <span class="sb-stat-number">38</span>
+            <span class="sb-stat-label">Countries</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

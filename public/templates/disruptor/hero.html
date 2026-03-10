@@ -1,0 +1,196 @@
+<!-- Generated: disruptor/hero -->
+<style>
+.sb-hero {
+  background: #000000;
+  color: #ffffff;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+.sb-hero .sb-vert-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.06);
+  user-select: none;
+}
+.sb-hero .sb-vert-left { left: 20px; }
+.sb-hero .sb-vert-right { right: 20px; }
+.sb-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+}
+.sb-hero .sb-sticker {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #000000;
+  padding: 10px 22px;
+  transform: rotate(-2deg);
+  border: 4px solid #000000;
+  box-shadow: 6px 6px 0px 0px rgba(255,255,255,0.15);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+}
+.sb-hero h1 {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.85;
+  color: #ffffff;
+  margin: 0 0 32px 0;
+}
+.sb-hero h1 .sb-accent {
+  color: var(--sb-accent);
+}
+.sb-hero .sb-subtitle {
+  font-size: 20px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 400;
+  margin: 0 auto 48px auto;
+  max-width: 640px;
+  line-height: 1.6;
+}
+.sb-hero .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #000000;
+  border: 4px solid var(--sb-accent);
+  border-radius: var(--sb-btn-radius);
+  box-shadow: 8px 8px 0px 0px rgba(255,255,255,0.15);
+  padding: 18px 52px;
+  font-family: var(--sb-font);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sb-hero .sb-cta-btn:hover {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0px 0px rgba(255,255,255,0.15);
+}
+.sb-hero .sb-microcopy {
+  font-family: monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.sb-hero .sb-microcopy strong {
+  color: var(--sb-accent);
+}
+.sb-hero .sb-social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 48px;
+}
+.sb-hero .sb-avatars {
+  display: flex;
+}
+.sb-hero .sb-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 4px solid #000000;
+  background: var(--sb-accent);
+  color: #000000;
+  margin-left: -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  font-family: monospace;
+}
+.sb-hero .sb-avatar:first-child { margin-left: 0; }
+.sb-hero .sb-proof-text {
+  font-family: monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.sb-hero .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-hero .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-hero .sb-vert-text { display: none; }
+  .sb-hero h1 { font-size: 44px; }
+  .sb-hero { min-height: 70vh; }
+  .sb-hero .sb-subtitle { font-size: 17px; }
+}
+@media (max-width: 480px) {
+  .sb-hero h1 { font-size: 36px; }
+  .sb-hero .sb-cta-btn { padding: 16px 36px; font-size: 14px; }
+}
+</style>
+
+<div class="sb-hero">
+  <div class="sb-vert-text sb-vert-left">Ship Fast &middot; Break Records</div>
+  <div class="sb-vert-text sb-vert-right">No Excuses &middot; Just Results</div>
+  <div class="sb-hero-inner">
+    <div class="sb-sticker fade-up">Now in Early Access</div>
+    <h1 class="fade-up">Build Faster.<br><span class="sb-accent">Sell Harder.</span></h1>
+    <p class="sb-subtitle fade-up">The conversion engine that turns cold traffic into paying customers. No fluff, no drag-and-drop limitations, no wasted ad spend.</p>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Get Instant Access</a>
+      <p class="sb-microcopy">No credit card required &bull; <strong>14-day</strong> money-back guarantee</p>
+    </div>
+    <div class="sb-social-proof fade-up">
+      <div class="sb-avatars">
+        <div class="sb-avatar">R</div>
+        <div class="sb-avatar">K</div>
+        <div class="sb-avatar">D</div>
+        <div class="sb-avatar">M</div>
+      </div>
+      <span class="sb-proof-text">3,200+ operators already inside</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-hero .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

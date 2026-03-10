@@ -1,0 +1,253 @@
+<!-- Generated: blueprint/video-embed -->
+<style>
+.sb-video-embed {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-video-embed-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sb-video-embed .sb-coord {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-video-embed h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 12px 0;
+}
+.sb-video-embed .sb-sub {
+  font-family: monospace;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin: 0 auto 40px;
+  max-width: 560px;
+  line-height: 1.7;
+}
+.sb-video-embed .sb-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.4s ease;
+}
+.sb-video-embed .sb-video-wrapper:hover {
+  border-color: rgba(255,255,255,0.4);
+}
+.sb-video-embed .sb-video-wrapper::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+  z-index: 3;
+}
+.sb-video-embed .sb-video-wrapper::after {
+  content: '+';
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+  z-index: 3;
+}
+.sb-video-embed .sb-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.sb-video-embed .sb-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(0,30,60,0.7);
+  transition: background 0.4s ease;
+  z-index: 2;
+}
+.sb-video-embed .sb-video-wrapper:hover .sb-video-overlay {
+  background: rgba(0,30,60,0.5);
+}
+.sb-video-embed .sb-play-btn {
+  width: 72px;
+  height: 72px;
+  background: transparent;
+  border: 2px solid var(--sb-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.sb-video-embed .sb-play-btn::before {
+  content: '+';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  font-size: 14px;
+  color: var(--sb-accent);
+  font-family: monospace;
+}
+.sb-video-embed .sb-video-wrapper:hover .sb-play-btn {
+  background: var(--sb-accent);
+}
+.sb-video-embed .sb-play-icon {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent var(--sb-accent);
+  margin-left: 3px;
+}
+.sb-video-embed .sb-video-wrapper:hover .sb-play-icon {
+  border-color: transparent transparent transparent #003366;
+}
+.sb-video-embed .sb-play-label {
+  font-family: monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.5);
+}
+.sb-video-embed .sb-video-meta {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+}
+.sb-video-embed .sb-video-meta span {
+  font-family: monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.sb-video-embed .sb-video-meta span strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+.sb-video-embed .sb-dim-line {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 32px auto 0;
+  max-width: 600px;
+  position: relative;
+  padding-top: 12px;
+}
+.sb-video-embed .sb-dim-line::before,
+.sb-video-embed .sb-dim-line::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: 1px;
+  height: 8px;
+  background: rgba(255,255,255,0.3);
+}
+.sb-video-embed .sb-dim-line::before { left: 0; }
+.sb-video-embed .sb-dim-line::after { right: 0; }
+.sb-video-embed .sb-dim-label {
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+}
+.sb-video-embed .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-video-embed .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-video-embed h2 { font-size: 28px; }
+  .sb-video-embed .sb-play-btn { width: 56px; height: 56px; }
+  .sb-video-embed .sb-play-icon { border-width: 8px 0 8px 14px; }
+  .sb-video-embed .sb-video-meta { flex-direction: column; gap: 8px; }
+}
+</style>
+
+<div class="sb-video-embed">
+  <div class="sb-video-embed-inner">
+    <div class="sb-coord fade-up">REF: DEMO-REEL-001 &nbsp;&middot;&nbsp; RUNTIME: 3:42</div>
+    <h2 class="fade-up">Watch the Walkthrough</h2>
+    <p class="sb-sub fade-up">// see the complete system in action. real dashboard, real results, real member walkthrough. no fluff.</p>
+    <div class="sb-video-wrapper fade-up" id="sb-bp-video-container">
+      <div class="sb-video-overlay" id="sb-bp-video-overlay">
+        <div class="sb-play-btn">
+          <div class="sb-play-icon"></div>
+        </div>
+        <span class="sb-play-label">Click to Initialize Playback</span>
+      </div>
+    </div>
+    <div class="sb-video-meta fade-up">
+      <span><strong>3:42</strong> runtime</span>
+      <span><strong>12,800+</strong> views</span>
+      <span><strong>Full</strong> walkthrough</span>
+    </div>
+    <div class="sb-dim-line fade-up">
+      <span class="sb-dim-label">FORMAT: 1080P &nbsp;&middot;&nbsp; CODEC: H.264 &nbsp;&middot;&nbsp; UPDATED: 2026</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('sb-bp-video-overlay');
+  var container = document.getElementById('sb-bp-video-container');
+  if (overlay && container) {
+    overlay.addEventListener('click', function() {
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0';
+      iframe.allow = 'autoplay; encrypted-media';
+      iframe.allowFullscreen = true;
+      container.appendChild(iframe);
+      overlay.style.display = 'none';
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-video-embed .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

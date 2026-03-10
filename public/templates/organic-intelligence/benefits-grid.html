@@ -1,0 +1,156 @@
+<!-- Generated: organic-intelligence/benefits-grid -->
+<style>
+.sb-benefits-grid {
+  background: #fcfbf9;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-benefits-grid::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -10%;
+  width: 120%;
+  height: 120px;
+  background: #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.sb-benefits-grid-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-benefits-grid .sb-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.sb-benefits-grid .sb-mono-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+  display: block;
+}
+.sb-benefits-grid .sb-section-title {
+  font-family: var(--sb-font);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--sb-heading);
+  margin: 0;
+}
+.sb-benefits-grid .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.sb-benefits-grid .sb-card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: var(--sb-card-radius);
+  padding: 36px;
+  transition: all 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sb-benefits-grid .sb-card:hover {
+  border-color: var(--sb-accent);
+  box-shadow: 0 0 30px rgba(67, 56, 202, 0.08);
+}
+.sb-benefits-grid .sb-card-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--sb-highlight);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.sb-benefits-grid .sb-card-title {
+  font-family: var(--sb-font);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+.sb-benefits-grid .sb-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--sb-body);
+  line-height: 1.6;
+  margin: 0;
+}
+.sb-benefits-grid .fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1000ms cubic-bezier(0.22, 1, 0.36, 1), transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sb-benefits-grid .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-grid .sb-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .sb-benefits-grid .sb-section-title { font-size: 32px; }
+  .sb-benefits-grid .sb-card { padding: 28px; }
+}
+</style>
+
+<div class="sb-benefits-grid">
+  <div class="sb-benefits-grid-inner">
+    <div class="sb-header">
+      <span class="sb-mono-label fade-up">What You Get</span>
+      <h2 class="sb-section-title fade-up">Built for Real<br>Results</h2>
+    </div>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#9889;</div>
+        <h3 class="sb-card-title">Accelerated Learning Paths</h3>
+        <p class="sb-card-desc">Custom-sequenced modules that adapt to your pace. Skip what you know. Deep-dive where it matters. Average completion: 18 days.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#9881;</div>
+        <h3 class="sb-card-title">Plug-and-Play Templates</h3>
+        <p class="sb-card-desc">47 battle-tested templates used by our top performers. Copy, customize, deploy. No guesswork, no blank-page syndrome.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#127891;</div>
+        <h3 class="sb-card-title">Expert-Led Workshops</h3>
+        <p class="sb-card-desc">Live sessions with practitioners who have built what you want to build. Ask anything. Get answers that actually apply to your situation.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#128640;</div>
+        <h3 class="sb-card-title">Private Community</h3>
+        <p class="sb-card-desc">2,800+ members sharing wins, asking questions, and holding each other accountable. No fluff posts. Just operators building together.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits-grid .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

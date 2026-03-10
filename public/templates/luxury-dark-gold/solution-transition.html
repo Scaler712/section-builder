@@ -1,0 +1,209 @@
+<!-- Generated: luxury-dark-gold/solution-transition -->
+<style>
+.sb-solution-transition {
+  background: #0a0a0a;
+  color: var(--sb-body);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.sb-solution-transition .sb-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(167,139,113,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.sb-solution-transition-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.sb-solution-transition .sb-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-solution-transition h2 {
+  font-family: var(--sb-font);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  font-size: 42px;
+  margin: 0 0 24px 0;
+}
+.sb-solution-transition .sb-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sb-accent), transparent);
+  margin: 0 auto 32px auto;
+}
+.sb-solution-transition .sb-body {
+  font-size: 18px;
+  color: var(--sb-muted);
+  line-height: 1.8;
+  max-width: 640px;
+  margin: 0 auto 56px auto;
+}
+.sb-solution-transition .sb-body strong {
+  color: var(--sb-heading);
+}
+.sb-solution-transition .sb-columns {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 24px;
+  text-align: left;
+  margin-bottom: 56px;
+}
+.sb-solution-transition .sb-col-card {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius);
+  padding: 32px;
+}
+.sb-solution-transition .sb-col-card.sb-after {
+  border-color: rgba(167,139,113,0.3);
+  box-shadow: 0 0 60px rgba(167,139,113,0.08);
+}
+.sb-solution-transition .sb-col-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: var(--sb-muted);
+}
+.sb-solution-transition .sb-col-card.sb-after .sb-col-title {
+  color: var(--sb-accent);
+}
+.sb-solution-transition .sb-col-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sb-solution-transition .sb-col-card li {
+  font-size: 15px;
+  color: var(--sb-body);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sb-solution-transition .sb-col-card li:last-child { border-bottom: none; }
+.sb-solution-transition .sb-col-card li .sb-mark {
+  font-size: 14px;
+  color: var(--sb-muted);
+}
+.sb-solution-transition .sb-col-card.sb-after li .sb-mark {
+  color: var(--sb-accent);
+}
+.sb-solution-transition .sb-arrow-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--sb-accent);
+}
+.sb-solution-transition .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 50px;
+  padding: 18px 48px;
+  font-family: var(--sb-font);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 40px rgba(167,139,113,0.2);
+}
+.sb-solution-transition .sb-cta-btn:hover {
+  box-shadow: 0 0 60px rgba(167,139,113,0.35);
+  transform: translateY(-2px);
+}
+.sb-solution-transition .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-solution-transition .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-solution-transition h2 { font-size: 32px; }
+  .sb-solution-transition .sb-columns { grid-template-columns: 1fr; }
+  .sb-solution-transition .sb-arrow-col { transform: rotate(90deg); padding: 8px 0; }
+}
+</style>
+
+<div class="sb-solution-transition">
+  <div class="sb-glow"></div>
+  <div class="sb-solution-transition-inner">
+    <div class="sb-label fade-up">The Transformation</div>
+    <h2 class="fade-up">From Overwhelm to<br>Effortless Excellence</h2>
+    <div class="sb-divider fade-up"></div>
+    <p class="sb-body fade-up">You don't need more complexity. You need a platform that <strong>elevates every touchpoint</strong> while simplifying every process. Built by operators who've managed eight-figure budgets.</p>
+    <div class="sb-columns fade-up">
+      <div class="sb-col-card">
+        <div class="sb-col-title">Before</div>
+        <ul>
+          <li><span class="sb-mark">&#8212;</span> Weeks to launch a single page</li>
+          <li><span class="sb-mark">&#8212;</span> Generic templates, generic results</li>
+          <li><span class="sb-mark">&#8212;</span> Analytics scattered across platforms</li>
+          <li><span class="sb-mark">&#8212;</span> Developers as gatekeepers</li>
+        </ul>
+      </div>
+      <div class="sb-arrow-col">&#8594;</div>
+      <div class="sb-col-card sb-after">
+        <div class="sb-col-title">After</div>
+        <ul>
+          <li><span class="sb-mark">&#10003;</span> Live in hours, not weeks</li>
+          <li><span class="sb-mark">&#10003;</span> Bespoke design, proven conversion</li>
+          <li><span class="sb-mark">&#10003;</span> Unified intelligence dashboard</li>
+          <li><span class="sb-mark">&#10003;</span> Full creative control, zero code</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Experience the Difference</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-solution-transition .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

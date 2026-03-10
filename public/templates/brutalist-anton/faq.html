@@ -1,0 +1,232 @@
+<!-- Generated: brutalist-anton/faq -->
+<style>
+.sb-faq {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: var(--sb-heading);
+  position: relative;
+}
+.sb-faq::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px);
+  pointer-events: none;
+}
+.sb-faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-faq .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  padding: 4px 12px;
+  transform: rotate(-2deg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--sb-heading);
+  margin-bottom: 20px;
+}
+.sb-faq h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0 0 12px 0;
+}
+.sb-faq .sb-subtitle {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+.sb-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sb-faq-item {
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: var(--sb-card-radius);
+  overflow: hidden;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-faq-item.sb-active {
+  border-color: var(--sb-accent);
+}
+.sb-faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--sb-font);
+}
+.sb-faq-question h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  flex: 1;
+  padding-right: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.sb-faq-toggle {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sb-accent);
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-faq-item.sb-active .sb-faq-toggle {
+  transform: rotate(45deg);
+}
+.sb-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-faq-answer-content {
+  padding: 0 24px 20px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1), transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq h2 { font-size: 38px; }
+}
+@media (max-width: 480px) {
+  .sb-faq h2 { font-size: 30px; }
+  .sb-faq-question { padding: 16px 20px; }
+  .sb-faq-answer-content { padding: 0 20px 16px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-faq-inner">
+    <div class="fade-up">
+      <span class="sb-badge">FAQ</span>
+    </div>
+    <h2 class="fade-up">Got Questions?</h2>
+    <p class="sb-subtitle fade-up">Everything you need to know before getting started.</p>
+    <div class="sb-faq-list">
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <h3>Do I need any technical skills?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-content">Absolutely not. If you can write an email, you can build a page. Our drag-and-drop editor handles all the technical stuff behind the scenes. No coding, no design skills, no headaches.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <h3>Can I use my own domain name?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-content">Yes. Custom domains are included on the Growth and Agency plans. You can connect any domain you own in about 5 minutes. We handle the SSL certificate automatically.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <h3>What if I go over my visitor limit?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-content">Your pages stay live. We'll send you a heads-up when you're at 80% of your limit, and you can upgrade at any time. We never take your pages down mid-campaign.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <h3>Is there a contract?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-content">No contracts, no commitments. You can cancel your subscription anytime from your dashboard with one click. If you cancel, you keep access until the end of your billing period.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <h3>Do you offer a money-back guarantee?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-content">Yes. Every plan comes with a 30-day money-back guarantee. If you're not satisfied for any reason, email us and we'll refund your payment. No questions asked.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <h3>Can I integrate with my email tool?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <div class="sb-faq-answer-content">We integrate with all major email platforms including Mailchimp, ConvertKit, ActiveCampaign, and 40+ others. Plus we have a Zapier integration for anything else you might use.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-faq-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var question = item.querySelector('.sb-faq-question');
+      var answer = item.querySelector('.sb-faq-answer');
+      var content = item.querySelector('.sb-faq-answer-content');
+      question.addEventListener('click', function() {
+        var isOpen = item.classList.contains('sb-active');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('sb-active');
+          items[j].querySelector('.sb-faq-answer').style.maxHeight = '0';
+        }
+        if (!isOpen) {
+          item.classList.add('sb-active');
+          answer.style.maxHeight = content.scrollHeight + 20 + 'px';
+        }
+      });
+    })(items[i]);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var k = 0; k < elements.length; k++) {
+    observer.observe(elements[k]);
+  }
+})();
+</script>

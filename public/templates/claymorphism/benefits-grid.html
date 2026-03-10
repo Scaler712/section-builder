@@ -1,0 +1,174 @@
+<!-- Generated: claymorphism/benefits-grid -->
+<style>
+.sb-benefits-grid {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-benefits-grid .sb-blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(80px);
+  animation: clayFloat 8s ease-in-out infinite;
+  pointer-events: none;
+}
+.sb-benefits-grid .sb-blob-1 {
+  width: 380px;
+  height: 380px;
+  background: #0EA5E9;
+  top: -100px;
+  left: -80px;
+}
+.sb-benefits-grid .sb-blob-2 {
+  width: 300px;
+  height: 300px;
+  background: #DB2777;
+  bottom: -60px;
+  right: -40px;
+  animation-delay: -4s;
+}
+@keyframes clayFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+.sb-benefits-grid-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-benefits-grid .sb-badge {
+  display: inline-block;
+  background: rgba(124,58,237,0.1);
+  color: var(--sb-accent);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.sb-benefits-grid .sb-section-title {
+  font-family: 'Nunito', var(--sb-font), sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  margin: 0 0 48px 0;
+}
+.sb-benefits-grid .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.sb-benefits-grid .sb-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 2px 4px rgba(124,58,237,0.04), 0 8px 16px rgba(124,58,237,0.06), 0 16px 32px rgba(124,58,237,0.08), inset 0 -2px 4px rgba(0,0,0,0.02);
+  padding: 36px 32px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.sb-benefits-grid .sb-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 4px rgba(124,58,237,0.06), 0 12px 24px rgba(124,58,237,0.1), 0 24px 48px rgba(124,58,237,0.12), inset 0 -2px 4px rgba(0,0,0,0.02);
+}
+.sb-benefits-grid .sb-card:active {
+  transform: scale(0.92);
+}
+.sb-benefits-grid .sb-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.06);
+}
+.sb-benefits-grid .sb-card:nth-child(1) .sb-card-icon { background: rgba(124,58,237,0.12); }
+.sb-benefits-grid .sb-card:nth-child(2) .sb-card-icon { background: rgba(219,39,119,0.12); }
+.sb-benefits-grid .sb-card:nth-child(3) .sb-card-icon { background: rgba(14,165,233,0.12); }
+.sb-benefits-grid .sb-card:nth-child(4) .sb-card-icon { background: rgba(16,185,129,0.12); }
+.sb-benefits-grid .sb-card-title {
+  font-family: 'Nunito', var(--sb-font), sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  margin: 0 0 10px 0;
+}
+.sb-benefits-grid .sb-card-desc {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-benefits-grid .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-benefits-grid .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-grid .sb-section-title { font-size: 28px; }
+  .sb-benefits-grid .sb-grid { grid-template-columns: 1fr; gap: 16px; }
+  .sb-benefits-grid .sb-card { padding: 28px 24px; }
+}
+</style>
+
+<div class="sb-benefits-grid">
+  <div class="sb-blob sb-blob-1"></div>
+  <div class="sb-blob sb-blob-2"></div>
+  <div class="sb-benefits-grid-inner">
+    <span class="sb-badge fade-up">Why It Works</span>
+    <h2 class="sb-section-title fade-up">Everything You Need to Succeed</h2>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#9889;</div>
+        <h3 class="sb-card-title">Launch in 30 Days</h3>
+        <p class="sb-card-desc">No more analysis paralysis. Our step-by-step roadmap gets you from zero to revenue in under a month — with daily action items you can finish in 90 minutes.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#127919;</div>
+        <h3 class="sb-card-title">Proven Templates</h3>
+        <p class="sb-card-desc">Every email, landing page, and sales script is done for you. Just fill in the blanks and deploy. These templates generated over $4.2M in combined revenue last year.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#128640;</div>
+        <h3 class="sb-card-title">Private Community</h3>
+        <p class="sb-card-desc">Get feedback from 2,400+ founders who are in the trenches with you. Weekly hot seats, accountability pods, and direct access to our coaching team.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#128161;</div>
+        <h3 class="sb-card-title">Lifetime Updates</h3>
+        <p class="sb-card-desc">Markets change. Our system evolves with them. Every new template, strategy, and case study gets added to your dashboard automatically — no extra cost.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits-grid .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

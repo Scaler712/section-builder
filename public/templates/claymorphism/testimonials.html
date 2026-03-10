@@ -1,0 +1,201 @@
+<!-- Generated: claymorphism/testimonials -->
+<style>
+.sb-testimonials {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-testimonials .sb-blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(80px);
+  animation: clayFloat 8s ease-in-out infinite;
+  pointer-events: none;
+}
+.sb-testimonials .sb-blob-1 {
+  width: 350px;
+  height: 350px;
+  background: var(--sb-accent);
+  bottom: -80px;
+  left: -60px;
+}
+.sb-testimonials .sb-blob-2 {
+  width: 280px;
+  height: 280px;
+  background: #F59E0B;
+  top: -40px;
+  right: -40px;
+  animation-delay: -3s;
+}
+@keyframes clayFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-testimonials .sb-badge {
+  display: inline-block;
+  background: rgba(124,58,237,0.1);
+  color: var(--sb-accent);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.sb-testimonials .sb-section-title {
+  font-family: 'Nunito', var(--sb-font), sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  margin: 0 0 48px 0;
+}
+.sb-testimonials .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-testimonials .sb-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 2px 4px rgba(124,58,237,0.04), 0 8px 16px rgba(124,58,237,0.06), 0 16px 32px rgba(124,58,237,0.08), inset 0 -2px 4px rgba(0,0,0,0.02);
+  padding: 36px 28px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+.sb-testimonials .sb-card:hover {
+  transform: translateY(-4px);
+}
+.sb-testimonials .sb-stars {
+  color: #F59E0B;
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.sb-testimonials .sb-quote {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+  font-style: italic;
+}
+.sb-testimonials .sb-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sb-testimonials .sb-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #A78BFA, #7C3AED);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1);
+}
+.sb-testimonials .sb-card:nth-child(2) .sb-avatar { background: linear-gradient(135deg, #F472B6, #DB2777); }
+.sb-testimonials .sb-card:nth-child(3) .sb-avatar { background: linear-gradient(135deg, #67E8F9, #0EA5E9); }
+.sb-testimonials .sb-author-name {
+  font-family: 'Nunito', var(--sb-font), sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  margin: 0;
+}
+.sb-testimonials .sb-author-role {
+  font-size: 13px;
+  color: var(--sb-muted);
+  margin: 2px 0 0 0;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-testimonials .sb-section-title { font-size: 28px; }
+  .sb-testimonials .sb-grid { grid-template-columns: 1fr; gap: 16px; }
+  .sb-testimonials .sb-card { padding: 28px 24px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-blob sb-blob-1"></div>
+  <div class="sb-blob sb-blob-2"></div>
+  <div class="sb-testimonials-inner">
+    <span class="sb-badge fade-up">Real Results</span>
+    <h2 class="sb-section-title fade-up">What Our Members Are Saying</h2>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-quote">"Closed my first client for $3,200 on day 9. I'd been stuck for 8 months before joining. The templates alone are worth 10x the price — I just filled in the blanks and hit send."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">MR</div>
+          <div>
+            <p class="sb-author-name">Marcus R.</p>
+            <p class="sb-author-role">Freelance Consultant, Denver</p>
+          </div>
+        </div>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-quote">"I've bought 6 courses in the last 2 years. This is the only one I actually finished — and the only one that made me money. Hit $5k/month in week 6. The community alone keeps me accountable."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">SL</div>
+          <div>
+            <p class="sb-author-name">Sarah L.</p>
+            <p class="sb-author-role">Agency Owner, London</p>
+          </div>
+        </div>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-quote">"Built my entire service business around the frameworks in here. $14k last month with a 4-hour workday. The system is simple — not easy, but simple. That's what matters."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">JT</div>
+          <div>
+            <p class="sb-author-name">James T.</p>
+            <p class="sb-author-role">Digital Strategist, Toronto</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

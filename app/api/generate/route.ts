@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { templateMap } from "@/lib/templates";
 import { SYSTEM_PROMPT, buildUserPrompt } from "@/lib/ai-prompt";
+import { designSystemMap } from "@/lib/design-systems";
 
 // Simple in-memory rate limiter
 const requests: number[] = [];
@@ -32,6 +33,7 @@ export async function POST(req: Request) {
     language?: string;
     productName?: string;
     customInstructions?: string;
+    designSystemId?: string;
   };
 
   try {
@@ -40,13 +42,14 @@ export async function POST(req: Request) {
     return Response.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { sectionType, language = "en", productName, customInstructions } = body;
+  const { sectionType, language = "en", productName, customInstructions, designSystemId } = body;
 
   if (!sectionType || !templateMap[sectionType]) {
     return Response.json({ error: "Invalid section type" }, { status: 400 });
   }
 
   const template = templateMap[sectionType]!;
+  const designSystem = designSystemId ? designSystemMap[designSystemId] : undefined;
 
   const client = new Anthropic({ apiKey });
 
@@ -57,6 +60,7 @@ export async function POST(req: Request) {
     customInstructions,
     referenceHtml: template.defaultHtml,
     aiPromptHints: template.aiPromptHints,
+    designSystem,
   });
 
   const stream = await client.messages.stream({

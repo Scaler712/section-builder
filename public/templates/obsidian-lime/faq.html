@@ -1,0 +1,225 @@
+<!-- Generated: obsidian-lime/faq -->
+<style>
+.sb-faq {
+  background: #0c0c0c;
+  padding: var(--sb-section-pad, 100px 20px);
+  font-family: 'Space Grotesk', var(--sb-font), sans-serif;
+  color: var(--sb-body);
+  position: relative;
+  overflow: hidden;
+}
+.sb-faq::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.sb-faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.sb-faq-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  text-align: center;
+}
+.sb-faq-title {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+  color: var(--sb-heading);
+  margin: 0 0 64px;
+  text-align: center;
+}
+.sb-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sb-faq-item {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--sb-card-radius, 24px);
+  overflow: hidden;
+  transition: border-color 400ms ease;
+}
+.sb-faq-item.active {
+  border-color: rgba(204,255,0,0.15);
+}
+.sb-faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  cursor: pointer;
+  user-select: none;
+  gap: 16px;
+}
+.sb-faq-question-text {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--sb-heading);
+}
+.sb-faq-toggle {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--sb-accent);
+  transition: transform 300ms ease, background 300ms ease;
+}
+.sb-faq-item.active .sb-faq-toggle {
+  transform: rotate(45deg);
+  background: rgba(204,255,0,0.1);
+}
+.sb-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 400ms cubic-bezier(0.77, 0, 0.175, 1), padding 400ms ease;
+}
+.sb-faq-item.active .sb-faq-answer {
+  max-height: 300px;
+}
+.sb-faq-answer-text {
+  padding: 0 32px 28px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(235,235,235,0.5);
+  margin: 0;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 700ms cubic-bezier(0.77, 0, 0.175, 1), transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .sb-faq-title { font-size: 32px; }
+  .sb-faq-question { padding: 20px 24px; }
+  .sb-faq-answer-text { padding: 0 24px 24px; }
+}
+@media (max-width: 480px) {
+  .sb-faq-title { font-size: 26px; }
+  .sb-faq-question-text { font-size: 15px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-faq-inner">
+    <div class="sb-faq-label fade-up">FAQ</div>
+    <h2 class="sb-faq-title fade-up">Questions we get asked a lot.</h2>
+    <div class="sb-faq-list">
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">How long does migration take?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">Most teams complete their migration in under a weekend. Our CLI handles the heavy lifting, and our migration guides cover every major framework. Enterprise customers get a dedicated migration engineer.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">Is there a free tier?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">Yes. The Starter plan is free forever with 100K requests per month, 1 GB storage, and edge deploys. No credit card required. You only pay when you scale past the free limits.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">What about vendor lock-in?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">Zero lock-in. We use standard Docker containers and open formats. You can export your entire configuration and migrate away at any time. We earn your business every month.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">Do you support my framework?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">If it runs in a container, it runs on Vertex. We have first-class support for Next.js, Nuxt, Rails, Django, Go, Rust, and anything else you throw at us. Custom buildpacks available on Pro and above.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">What happens during traffic spikes?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">Auto scaling kicks in within 200ms. We pre-warm instances based on traffic patterns, so most spikes are handled before you even notice. You will never get a surprise bill either &mdash; we alert you before overages.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">Is SOC 2 compliance included?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">SOC 2 Type II is included on all Enterprise plans. Pro plans include our security whitepaper and data processing agreement. We undergo annual third-party audits and publish the results.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var question = item.querySelector('.sb-faq-question');
+      question.addEventListener('click', function() {
+        var wasActive = item.classList.contains('active');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('active');
+        }
+        if (!wasActive) {
+          item.classList.add('active');
+        }
+      });
+    })(items[i]);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,190 @@
+<!-- Generated: brutalist-anton/solution-transition -->
+<style>
+.sb-solution-transition {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: #ffffff;
+  position: relative;
+}
+.sb-solution-transition::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,0.03) 39px, rgba(0,0,0,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,0.03) 39px, rgba(0,0,0,0.03) 40px);
+  pointer-events: none;
+}
+.sb-solution-transition-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.sb-solution-transition .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  padding: 4px 12px;
+  transform: rotate(-2deg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--sb-heading);
+  margin-bottom: 24px;
+}
+.sb-solution-transition h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0 0 16px 0;
+}
+.sb-solution-transition .sb-lead {
+  font-size: 18px;
+  color: var(--sb-muted);
+  font-weight: 400;
+  max-width: 640px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+}
+.sb-solution-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 2px solid var(--sb-heading);
+  border-radius: var(--sb-card-radius);
+  overflow: hidden;
+}
+.sb-solution-before {
+  background: var(--sb-heading);
+  padding: 40px 36px;
+  text-align: left;
+}
+.sb-solution-after {
+  background: #ffffff;
+  padding: 40px 36px;
+  text-align: left;
+}
+.sb-solution-before h3 {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 24px 0;
+  color: rgba(255,255,255,0.5);
+}
+.sb-solution-after h3 {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 24px 0;
+  color: var(--sb-muted);
+}
+.sb-solution-before ul, .sb-solution-after ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sb-solution-before li {
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-left: 28px;
+  position: relative;
+}
+.sb-solution-before li::before {
+  content: '\2715';
+  position: absolute;
+  left: 0;
+  color: rgba(255,255,255,0.4);
+  font-weight: 700;
+}
+.sb-solution-after li {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.6;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding-left: 28px;
+  position: relative;
+}
+.sb-solution-after li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--sb-heading);
+  font-weight: 700;
+}
+.sb-solution-transition .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1), transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-solution-transition .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-solution-split { grid-template-columns: 1fr; }
+  .sb-solution-transition h2 { font-size: 38px; }
+}
+@media (max-width: 480px) {
+  .sb-solution-transition h2 { font-size: 30px; }
+  .sb-solution-before, .sb-solution-after { padding: 28px 24px; }
+}
+</style>
+
+<div class="sb-solution-transition">
+  <div class="sb-solution-transition-inner">
+    <div class="fade-up">
+      <span class="sb-badge">There's a Better Way</span>
+    </div>
+    <h2 class="fade-up">What If You Could<br>Launch in 48 Hours?</h2>
+    <p class="sb-lead fade-up">The old way is broken. Here's what changes when you have the right system.</p>
+    <div class="sb-solution-split fade-up">
+      <div class="sb-solution-before">
+        <h3>Before</h3>
+        <ul>
+          <li>3 weeks to build a landing page</li>
+          <li>$5,000+ for a developer</li>
+          <li>No idea if your page converts</li>
+          <li>Manual A/B testing (if any)</li>
+          <li>12 tools duct-taped together</li>
+        </ul>
+      </div>
+      <div class="sb-solution-after">
+        <h3>After</h3>
+        <ul>
+          <li>Live in 48 hours, not 3 weeks</li>
+          <li>$0 in developer costs</li>
+          <li>Real-time conversion data</li>
+          <li>Automated split testing</li>
+          <li>One platform, everything included</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-solution-transition .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

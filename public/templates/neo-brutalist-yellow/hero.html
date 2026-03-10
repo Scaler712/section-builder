@@ -1,0 +1,180 @@
+<!-- Generated: neo-brutalist-yellow/hero -->
+<style>
+.sb-hero {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: #ffffff;
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+.sb-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#000 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.07;
+  pointer-events: none;
+}
+.sb-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+}
+.sb-hero .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-heading);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px 0px #000;
+  padding: 6px 16px;
+  font-weight: 800;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+.sb-hero h1 {
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 20px 0;
+}
+.sb-hero h1 .sb-highlight {
+  background: var(--sb-highlight);
+  padding: 2px 12px;
+  display: inline;
+}
+.sb-hero .sb-subtitle {
+  font-size: 20px;
+  color: var(--sb-muted);
+  font-weight: 500;
+  margin: 0 0 40px 0;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+.sb-hero .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: var(--sb-cta-text);
+  border: 2px solid var(--sb-cta-bg);
+  border-radius: var(--sb-btn-radius);
+  box-shadow: 4px 4px 0px 0px #000;
+  padding: 16px 48px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-family: var(--sb-font);
+}
+.sb-hero .sb-cta-btn:hover {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.sb-hero .sb-microcopy {
+  font-size: 13px;
+  color: var(--sb-muted);
+  margin-top: 14px;
+  font-weight: 500;
+}
+.sb-hero .sb-social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+.sb-hero .sb-avatars {
+  display: flex;
+}
+.sb-hero .sb-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--sb-heading);
+  background: var(--sb-accent);
+  margin-left: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+.sb-hero .sb-avatar:first-child {
+  margin-left: 0;
+}
+.sb-hero .sb-proof-text {
+  font-size: 14px;
+  color: var(--sb-body);
+  font-weight: 600;
+}
+.sb-hero .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-hero .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-hero h1 { font-size: 40px; }
+  .sb-hero .sb-subtitle { font-size: 17px; }
+  .sb-hero { min-height: 70vh; }
+}
+@media (max-width: 480px) {
+  .sb-hero h1 { font-size: 32px; }
+  .sb-hero .sb-cta-btn { padding: 14px 32px; font-size: 15px; }
+}
+</style>
+
+<div class="sb-hero">
+  <div class="sb-hero-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Now in Early Access</span>
+    </div>
+    <h1 class="fade-up">Stop Guessing.<br><span class="sb-highlight">Start Converting.</span></h1>
+    <p class="sb-subtitle fade-up">The all-in-one platform that turns your traffic into revenue. Build high-converting pages in minutes, not weeks.</p>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Get Started Free</a>
+      <p class="sb-microcopy">No credit card required &bull; 14-day free trial</p>
+    </div>
+    <div class="sb-social-proof fade-up">
+      <div class="sb-avatars">
+        <div class="sb-avatar">J</div>
+        <div class="sb-avatar">M</div>
+        <div class="sb-avatar">S</div>
+        <div class="sb-avatar">K</div>
+      </div>
+      <span class="sb-proof-text">2,400+ marketers already on board</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-hero .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

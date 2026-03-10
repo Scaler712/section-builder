@@ -1,0 +1,248 @@
+<!-- Generated: red-sun/countdown-timer -->
+<style>
+.sb-countdown-timer {
+  background: #ffffff;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-countdown-timer .sb-blur-1 {
+  position: absolute;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.08;
+  filter: blur(120px);
+  pointer-events: none;
+  top: -100px;
+  left: -80px;
+}
+.sb-countdown-timer .sb-blur-2 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(100px);
+  pointer-events: none;
+  bottom: -60px;
+  right: -40px;
+}
+.sb-countdown-timer .sb-blur-3 {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.05;
+  filter: blur(110px);
+  pointer-events: none;
+  top: 40%;
+  right: 25%;
+}
+.sb-countdown-timer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-countdown-timer .sb-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.sb-countdown-timer .sb-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+}
+.sb-countdown-timer h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 12px 0;
+}
+.sb-countdown-timer h2 em {
+  color: var(--sb-accent);
+  font-style: italic;
+}
+.sb-countdown-timer .sb-sub {
+  font-size: 17px;
+  color: var(--sb-muted);
+  margin: 0 0 44px 0;
+  line-height: 1.7;
+}
+.sb-timer-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.sb-timer-box {
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  padding: 28px 24px;
+  min-width: 100px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(45,59,66,0.08);
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-timer-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 32px 72px rgba(45,59,66,0.12);
+}
+.sb-timer-box .sb-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--sb-accent);
+  line-height: 1;
+}
+.sb-timer-box .sb-unit {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sb-muted);
+  margin-top: 10px;
+}
+.sb-countdown-timer .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: #ffffff;
+  border-radius: 30px;
+  padding: 18px 52px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+  font-family: var(--sb-font);
+  border: none;
+  box-shadow: 0 8px 24px rgba(239,70,35,0.2);
+}
+.sb-countdown-timer .sb-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(239,70,35,0.3);
+}
+.sb-countdown-timer .sb-microcopy {
+  font-size: 13px;
+  color: var(--sb-muted);
+  margin-top: 16px;
+  font-weight: 500;
+}
+.sb-countdown-timer .fade-up {
+  opacity: 0;
+  transform: translateY(30px) rotate(2deg);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-countdown-timer .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+@media (max-width: 768px) {
+  .sb-countdown-timer h2 { font-size: 32px; }
+  .sb-timer-boxes { gap: 10px; }
+  .sb-timer-box { min-width: 72px; padding: 20px 16px; }
+  .sb-timer-box .sb-num { font-size: 36px; }
+}
+@media (max-width: 480px) {
+  .sb-timer-box { min-width: 62px; padding: 16px 12px; }
+  .sb-timer-box .sb-num { font-size: 30px; }
+  .sb-countdown-timer .sb-cta-btn { padding: 16px 36px; font-size: 14px; }
+}
+</style>
+
+<div class="sb-countdown-timer">
+  <div class="sb-blur-1"></div>
+  <div class="sb-blur-2"></div>
+  <div class="sb-blur-3"></div>
+  <div class="sb-countdown-timer-inner">
+    <div class="sb-label fade-up">Limited Offer</div>
+    <h2 class="fade-up">This Deal <em>Expires</em> In</h2>
+    <p class="sb-sub fade-up">Founding member pricing won't last. Lock in your rate before it's gone.</p>
+    <div class="sb-timer-boxes fade-up">
+      <div class="sb-timer-box">
+        <div class="sb-num" id="sb-days">02</div>
+        <div class="sb-unit">Days</div>
+      </div>
+      <div class="sb-timer-box">
+        <div class="sb-num" id="sb-hours">14</div>
+        <div class="sb-unit">Hours</div>
+      </div>
+      <div class="sb-timer-box">
+        <div class="sb-num" id="sb-minutes">37</div>
+        <div class="sb-unit">Minutes</div>
+      </div>
+      <div class="sb-timer-box">
+        <div class="sb-num" id="sb-seconds">51</div>
+        <div class="sb-unit">Seconds</div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Claim Your Spot</a>
+      <p class="sb-microcopy">Founding price locked in for life</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var deadline = new Date();
+  deadline.setDate(deadline.getDate() + 2);
+  deadline.setHours(deadline.getHours() + 14);
+  deadline.setMinutes(deadline.getMinutes() + 37);
+
+  function updateTimer() {
+    var now = new Date().getTime();
+    var distance = deadline.getTime() - now;
+    if (distance < 0) distance = 0;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    var daysEl = document.getElementById('sb-days');
+    var hoursEl = document.getElementById('sb-hours');
+    var minutesEl = document.getElementById('sb-minutes');
+    var secondsEl = document.getElementById('sb-seconds');
+
+    if (daysEl) daysEl.textContent = days < 10 ? '0' + days : days;
+    if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+    if (minutesEl) minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+    if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-countdown-timer .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

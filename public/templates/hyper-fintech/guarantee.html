@@ -1,0 +1,185 @@
+<!-- Generated: hyper-fintech/guarantee -->
+<style>
+.sb-guarantee {
+  background: #0A0A0A;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-guarantee-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.sb-guarantee .sb-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.sb-guarantee h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+  margin: 0 0 20px 0;
+}
+.sb-guarantee .sb-desc {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+}
+.sb-guarantee .sb-terms {
+  font-size: 13px;
+  color: var(--sb-muted);
+  line-height: 1.6;
+}
+.sb-guarantee .sb-shield {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 28px;
+  padding: 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.sb-guarantee .sb-shield::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--sb-accent), transparent);
+  border-radius: 2px;
+}
+.sb-guarantee .sb-shield-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(253,224,71,0.1);
+  border: 2px solid rgba(253,224,71,0.2);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 24px;
+}
+.sb-guarantee .sb-shield h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+.sb-guarantee .sb-shield .sb-days {
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--sb-accent);
+  line-height: 1;
+  margin: 16px 0;
+  letter-spacing: -0.04em;
+}
+.sb-guarantee .sb-shield .sb-days span {
+  font-size: 16px;
+  color: var(--sb-muted);
+  font-weight: 400;
+  display: block;
+  margin-top: 4px;
+}
+.sb-guarantee .sb-shield .sb-sub {
+  font-size: 14px;
+  color: var(--sb-muted);
+  line-height: 1.6;
+}
+.sb-guarantee .sb-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+  justify-content: center;
+}
+.sb-guarantee .sb-pill-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(253,224,71,0.1);
+  border: 1px solid rgba(253,224,71,0.15);
+  color: var(--sb-accent);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.sb-guarantee .sb-pill-list span::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--sb-accent);
+  border-radius: 9999px;
+}
+.sb-guarantee .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-guarantee .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-guarantee-inner { grid-template-columns: 1fr; gap: 36px; }
+  .sb-guarantee h2 { font-size: 32px; }
+  .sb-guarantee .sb-shield .sb-days { font-size: 44px; }
+}
+</style>
+
+<div class="sb-guarantee">
+  <div class="sb-guarantee-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Risk-Free</span>
+      <h2>Your money is protected. Always.</h2>
+      <p class="sb-desc">We're so confident in our platform that we guarantee your results. If our infrastructure doesn't outperform your current provider on speed, uptime, or cost, we'll refund every penny.</p>
+      <p class="sb-terms">No hidden clauses. No fine print. No hoops to jump through. Just send us an email within 30 days and we'll process your refund within 24 hours. We've issued fewer than 0.3% refunds since launch.</p>
+    </div>
+    <div class="sb-shield fade-up">
+      <div class="sb-shield-icon">&#128737;</div>
+      <h3>Money-Back Guarantee</h3>
+      <div class="sb-days">30<span>Day Full Refund</span></div>
+      <p class="sb-sub">Try the full platform. If it doesn't deliver, you pay nothing.</p>
+      <div class="sb-pill-list">
+        <span>No Risk</span>
+        <span>Full Refund</span>
+        <span>24hr Processing</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-guarantee .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

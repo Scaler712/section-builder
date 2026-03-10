@@ -1,0 +1,165 @@
+<!-- Generated: swiss-echo/about-bio -->
+<style>
+.sb-about-bio {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-about-bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-about-bio .sb-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(30,30,30,0.1);
+}
+.sb-about-bio .sb-photo-col {
+  background: var(--sb-highlight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sb-about-bio .sb-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: rgba(30,30,30,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(60px, 10vw, 120px);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(30,30,30,0.1);
+  letter-spacing: -0.05em;
+  user-select: none;
+}
+.sb-about-bio .sb-bio-col {
+  background: var(--sb-highlight);
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sb-about-bio .sb-label {
+  color: var(--sb-muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.sb-about-bio .sb-bio-col h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--sb-heading);
+  margin: 0 0 28px 0;
+}
+.sb-about-bio .sb-bio-col p {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.sb-about-bio .sb-bio-col p:last-of-type {
+  margin-bottom: 0;
+}
+.sb-about-bio .sb-stats-row {
+  display: flex;
+  gap: 1px;
+  background: rgba(30,30,30,0.1);
+  margin-top: 36px;
+}
+.sb-about-bio .sb-stat-item {
+  background: var(--sb-highlight);
+  padding: 20px 0;
+  flex: 1;
+}
+.sb-about-bio .sb-stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  display: block;
+}
+.sb-about-bio .sb-stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sb-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 700ms cubic-bezier(0.77, 0, 0.175, 1), transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio .sb-layout {
+    grid-template-columns: 1fr;
+  }
+  .sb-about-bio .sb-photo-placeholder { aspect-ratio: 4/3; }
+  .sb-about-bio .sb-bio-col { padding: 40px 28px; }
+  .sb-about-bio .sb-bio-col h2 { font-size: 28px; }
+  .sb-about-bio .sb-stat-number { font-size: 22px; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-about-bio-inner">
+    <div class="sb-layout">
+      <div class="sb-photo-col fade-up">
+        <div class="sb-photo-placeholder">&#9632;</div>
+      </div>
+      <div class="sb-bio-col fade-up">
+        <span class="sb-label">The Founder</span>
+        <h2>I Built This Because<br>Nobody Gave Me a Roadmap</h2>
+        <p>Three years ago I was broke, burned out, and bouncing between freelance gigs that barely covered rent. I had skills, ideas, and ambition. Zero direction.</p>
+        <p>I spent $14,000 on courses, coaches, and mastermind groups before I cracked the code. Not because those programs were bad, but because none of them gave me a clear, day-by-day system I could actually follow.</p>
+        <p>So I built one. Tested it on myself first. Zero to $12,400 per month in 90 days. Then I gave it to 50 people. Then 500. Then 2,400.</p>
+        <div class="sb-stats-row">
+          <div class="sb-stat-item">
+            <span class="sb-stat-number">2,400+</span>
+            <span class="sb-stat-label">Members</span>
+          </div>
+          <div class="sb-stat-item">
+            <span class="sb-stat-number">94%</span>
+            <span class="sb-stat-label">Completion</span>
+          </div>
+          <div class="sb-stat-item">
+            <span class="sb-stat-number">$8.2M</span>
+            <span class="sb-stat-label">Revenue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

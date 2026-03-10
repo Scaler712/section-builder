@@ -1,0 +1,241 @@
+<!-- Generated: default/pricing -->
+<style>
+.sb-pricing {
+  background: #ffffff;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-pricing-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sb-pricing .sb-badge {
+  display: inline-block;
+  background: var(--sb-highlight);
+  color: var(--sb-accent);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.sb-pricing .sb-section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--sb-heading);
+  margin: 0 0 12px 0;
+}
+.sb-pricing .sb-section-sub {
+  font-size: 17px;
+  color: var(--sb-muted);
+  max-width: 500px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+}
+.sb-pricing .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+.sb-pricing .sb-plan {
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  padding: 36px 28px;
+  text-align: left;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.sb-pricing .sb-plan.sb-featured {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  border: 2px solid var(--sb-accent);
+  transform: scale(1.03);
+}
+.sb-pricing .sb-popular-tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--sb-accent);
+  color: #ffffff;
+  padding: 4px 16px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.sb-pricing .sb-plan-name {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sb-muted);
+  margin: 0 0 12px 0;
+}
+.sb-pricing .sb-plan-price {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  letter-spacing: -0.03em;
+  margin: 0 0 4px 0;
+  line-height: 1;
+}
+.sb-pricing .sb-plan-price span {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--sb-muted);
+}
+.sb-pricing .sb-plan-desc {
+  font-size: 14px;
+  color: var(--sb-muted);
+  margin: 0 0 28px 0;
+  line-height: 1.5;
+}
+.sb-pricing .sb-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  flex-grow: 1;
+}
+.sb-pricing .sb-features li {
+  font-size: 14px;
+  color: var(--sb-body);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sb-pricing .sb-features li:last-child {
+  border-bottom: none;
+}
+.sb-pricing .sb-check {
+  color: var(--sb-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.sb-pricing .sb-plan-btn {
+  display: block;
+  text-align: center;
+  background: var(--sb-cta-bg);
+  color: var(--sb-cta-text, #ffffff);
+  border: none;
+  border-radius: var(--sb-btn-radius);
+  padding: 14px 32px;
+  font-family: var(--sb-font);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.sb-pricing .sb-plan-btn:hover {
+  opacity: 0.88;
+}
+.sb-pricing .sb-plan-btn.sb-outline {
+  background: transparent;
+  color: var(--sb-heading);
+  border: 2px solid rgba(0,0,0,0.12);
+}
+.sb-pricing .sb-plan-btn.sb-outline:hover {
+  border-color: var(--sb-heading);
+  opacity: 1;
+}
+.sb-pricing .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-pricing .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pricing .sb-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .sb-pricing .sb-plan.sb-featured { transform: none; }
+  .sb-pricing .sb-section-title { font-size: 28px; }
+}
+</style>
+
+<div class="sb-pricing">
+  <div class="sb-pricing-inner">
+    <span class="sb-badge fade-up">Simple Pricing</span>
+    <h2 class="sb-section-title fade-up">Pick the Plan That Fits Your Pace</h2>
+    <p class="sb-section-sub fade-up">No hidden fees. No long-term contracts. Cancel or upgrade anytime.</p>
+    <div class="sb-grid">
+      <div class="sb-plan fade-up">
+        <p class="sb-plan-name">Starter</p>
+        <p class="sb-plan-price">$47 <span>/mo</span></p>
+        <p class="sb-plan-desc">Perfect for getting your first clients</p>
+        <ul class="sb-features">
+          <li><span class="sb-check">&#10003;</span> Core training modules</li>
+          <li><span class="sb-check">&#10003;</span> Community access</li>
+          <li><span class="sb-check">&#10003;</span> 5 outreach templates</li>
+          <li><span class="sb-check">&#10003;</span> Monthly group call</li>
+          <li><span class="sb-check">&#10003;</span> Resource library</li>
+        </ul>
+        <a href="#" class="sb-plan-btn sb-outline">Get Started</a>
+      </div>
+      <div class="sb-plan sb-featured fade-up">
+        <span class="sb-popular-tag">Most Popular</span>
+        <p class="sb-plan-name">Accelerator</p>
+        <p class="sb-plan-price">$197 <span>/mo</span></p>
+        <p class="sb-plan-desc">For founders ready to scale fast</p>
+        <ul class="sb-features">
+          <li><span class="sb-check">&#10003;</span> Everything in Starter</li>
+          <li><span class="sb-check">&#10003;</span> Weekly live coaching calls</li>
+          <li><span class="sb-check">&#10003;</span> Full template library (50+)</li>
+          <li><span class="sb-check">&#10003;</span> AI automation workflows</li>
+          <li><span class="sb-check">&#10003;</span> Private accountability pod</li>
+          <li><span class="sb-check">&#10003;</span> Funnel builder access</li>
+        </ul>
+        <a href="#" class="sb-plan-btn">Join Accelerator</a>
+      </div>
+      <div class="sb-plan fade-up">
+        <p class="sb-plan-name">VIP</p>
+        <p class="sb-plan-price">$497 <span>/mo</span></p>
+        <p class="sb-plan-desc">White-glove support and 1-on-1 access</p>
+        <ul class="sb-features">
+          <li><span class="sb-check">&#10003;</span> Everything in Accelerator</li>
+          <li><span class="sb-check">&#10003;</span> 2x monthly 1-on-1 calls</li>
+          <li><span class="sb-check">&#10003;</span> Custom funnel review</li>
+          <li><span class="sb-check">&#10003;</span> Priority Slack support</li>
+          <li><span class="sb-check">&#10003;</span> Done-with-you ad setup</li>
+          <li><span class="sb-check">&#10003;</span> Revenue share partnership</li>
+        </ul>
+        <a href="#" class="sb-plan-btn sb-outline">Apply for VIP</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pricing .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,143 @@
+<!-- Generated: swiss-echo/testimonials -->
+<style>
+.sb-testimonials {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sb-testimonials .sb-label {
+  color: var(--sb-muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: block;
+}
+.sb-testimonials .sb-section-title {
+  font-size: clamp(36px, 6vw, 80px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--sb-heading);
+  margin: 0 0 56px 0;
+}
+.sb-testimonials .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(30,30,30,0.1);
+}
+.sb-testimonials .sb-card {
+  background: var(--sb-highlight);
+  padding: 48px 36px;
+  text-align: left;
+  transition: all 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-testimonials .sb-card:hover {
+  background: #ffffff;
+}
+.sb-testimonials .sb-result-tag {
+  color: var(--sb-muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+}
+.sb-testimonials .sb-quote {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--sb-heading);
+  line-height: 1.7;
+  margin: 0 0 32px 0;
+}
+.sb-testimonials .sb-divider {
+  width: 32px;
+  height: 1px;
+  background: rgba(30,30,30,0.2);
+  margin-bottom: 20px;
+}
+.sb-testimonials .sb-author-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  margin: 0 0 4px 0;
+  letter-spacing: -0.01em;
+}
+.sb-testimonials .sb-author-role {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sb-muted);
+  margin: 0;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 700ms cubic-bezier(0.77, 0, 0.175, 1), transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-testimonials .sb-grid {
+    grid-template-columns: 1fr;
+  }
+  .sb-testimonials .sb-card { padding: 36px 28px; }
+  .sb-testimonials .sb-section-title { font-size: 36px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-testimonials-inner">
+    <span class="sb-label fade-up">Proof of Work</span>
+    <h2 class="sb-section-title fade-up">Real People,<br>Real Revenue</h2>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <span class="sb-result-tag">$0 to $8,200/mo</span>
+        <p class="sb-quote">"I went from zero clients to 11 paying customers in my first month. The outreach templates alone were worth 10x the price. I'm now at $8,200 per month recurring."</p>
+        <div class="sb-divider"></div>
+        <p class="sb-author-name">Marcus Rodriguez</p>
+        <p class="sb-author-role">Marketing Consultant, Austin TX</p>
+      </div>
+      <div class="sb-card fade-up">
+        <span class="sb-result-tag">$4,700 First Launch</span>
+        <p class="sb-quote">"I'd been sitting on my course idea for 8 months. After joining, I launched in 3 weeks and made $4,700 on my first launch. The accountability alone is worth it."</p>
+        <div class="sb-divider"></div>
+        <p class="sb-author-name">Sarah Lin</p>
+        <p class="sb-author-role">Course Creator, Vancouver BC</p>
+      </div>
+      <div class="sb-card fade-up">
+        <span class="sb-result-tag">15+ Hours Saved Weekly</span>
+        <p class="sb-quote">"The AI workflow automations save me 15 hours a week. I went from doing everything manually to running a lean operation with three times the output."</p>
+        <div class="sb-divider"></div>
+        <p class="sb-author-name">James Thompson</p>
+        <p class="sb-author-role">Agency Owner, London UK</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

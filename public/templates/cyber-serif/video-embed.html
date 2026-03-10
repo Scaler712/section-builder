@@ -1,0 +1,122 @@
+<!-- Generated: cyber-serif/video-embed -->
+<style>
+.sb-video-embed {
+  background: #050505;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-video-embed-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.sb-video-embed .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-video-embed h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-heading);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin: 0 0 12px 0;
+}
+.sb-video-embed .sb-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: var(--sb-muted);
+  margin: 0 0 40px 0;
+}
+.sb-video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+}
+.sb-video-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, transparent 40%, var(--sb-accent) 50%, transparent 60%);
+  background-size: 200% 200%;
+  animation: sb-vid-shimmer 4s linear infinite;
+  border-radius: inherit;
+  z-index: 0;
+}
+.sb-video-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: #0a0a0a;
+  border-radius: inherit;
+  z-index: 0;
+}
+@keyframes sb-vid-shimmer {
+  0% { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
+}
+.sb-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 1;
+}
+.sb-video-embed .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-video-embed .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-video-embed h2 { font-size: 28px; }
+  .sb-video-wrapper { border-radius: 16px; }
+}
+</style>
+
+<div class="sb-video-embed">
+  <div class="sb-video-embed-inner">
+    <span class="sb-badge fade-up">Watch Demo</span>
+    <h2 class="fade-up">See It in Action</h2>
+    <p class="sb-sub fade-up">A 3-minute walkthrough of how the platform works end-to-end.</p>
+    <div class="sb-video-wrapper fade-up">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Product Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-video-embed .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

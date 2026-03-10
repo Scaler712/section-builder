@@ -10,8 +10,8 @@ export const testimonials: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-testimonials {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
   background: #FFFFFF;
 }
 .sb-testimonials-inner {
@@ -22,7 +22,7 @@ export const testimonials: SectionTemplate = {
   text-align: center;
   font-size: 36px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 48px;
 }
 .sb-testimonials-grid {
@@ -32,20 +32,20 @@ export const testimonials: SectionTemplate = {
 }
 .sb-testimonial-card {
   background: #FAFAFA;
-  border-radius: 18px;
+  border-radius: var(--sb-card-radius);
   padding: 32px 28px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.06);
   position: relative;
 }
 .sb-testimonial-card .quote-mark {
   font-size: 48px;
-  color: #E8B931;
+  color: var(--sb-accent);
   line-height: 1;
   margin-bottom: 12px;
 }
 .sb-testimonial-card .quote-text {
   font-size: 16px;
-  color: #3A3A3A;
+  color: var(--sb-body);
   line-height: 1.7;
   margin-bottom: 20px;
   font-style: italic;
@@ -54,11 +54,11 @@ export const testimonials: SectionTemplate = {
 .sb-testimonial-card .author {
   font-size: 15px;
   font-weight: 700;
-  color: #2B2B2B;
+  color: var(--sb-heading);
 }
 .sb-testimonial-card .role {
   font-size: 13px;
-  color: #6B6B6B;
+  color: var(--sb-muted);
   font-weight: 400;
 }
 .sb-testimonials .fade-up {
@@ -72,7 +72,7 @@ export const testimonials: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-testimonials { padding: 50px 16px; }
+  .sb-testimonials { padding: var(--sb-section-pad); }
   .sb-testimonials h2 { font-size: 28px; }
   .sb-testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
 }

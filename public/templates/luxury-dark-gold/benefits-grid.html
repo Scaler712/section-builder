@@ -1,0 +1,163 @@
+<!-- Generated: luxury-dark-gold/benefits-grid -->
+<style>
+.sb-benefits-grid {
+  background: #0a0a0a;
+  color: var(--sb-body);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.sb-benefits-grid .sb-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(167,139,113,0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.sb-benefits-grid-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-benefits-grid .sb-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  text-align: center;
+}
+.sb-benefits-grid h2 {
+  font-family: var(--sb-font);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  font-size: 42px;
+  text-align: center;
+  margin: 0 0 16px 0;
+}
+.sb-benefits-grid .sb-subtitle {
+  font-size: 17px;
+  color: var(--sb-muted);
+  text-align: center;
+  margin: 0 auto 56px auto;
+  max-width: 520px;
+  line-height: 1.6;
+}
+.sb-benefits-grid .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.sb-benefits-grid .sb-card {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius);
+  padding: 36px;
+  transition: all 0.5s ease;
+}
+.sb-benefits-grid .sb-card:hover {
+  border-color: rgba(167,139,113,0.3);
+  box-shadow: 0 0 40px rgba(167,139,113,0.08);
+}
+.sb-benefits-grid .sb-card .sb-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(167,139,113,0.12);
+  border: 1px solid rgba(167,139,113,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.sb-benefits-grid .sb-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  margin: 0 0 8px 0;
+}
+.sb-benefits-grid .sb-card p {
+  font-size: 15px;
+  color: var(--sb-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-benefits-grid .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-benefits-grid .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-grid .sb-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .sb-benefits-grid h2 { font-size: 32px; }
+}
+@media (max-width: 480px) {
+  .sb-benefits-grid h2 { font-size: 26px; }
+  .sb-benefits-grid .sb-card { padding: 28px; }
+}
+</style>
+
+<div class="sb-benefits-grid">
+  <div class="sb-glow"></div>
+  <div class="sb-benefits-grid-inner">
+    <div class="sb-label fade-up">Why Choose Us</div>
+    <h2 class="fade-up">Crafted for Those Who<br>Demand More</h2>
+    <p class="sb-subtitle fade-up">Every detail engineered for performance. Every pixel designed for prestige.</p>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-icon">&#9830;</div>
+        <h3>Concierge Onboarding</h3>
+        <p>A dedicated strategist walks you through setup, migration, and your first campaign. White-glove from the first minute.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-icon">&#9733;</div>
+        <h3>Conversion Architecture</h3>
+        <p>Layouts informed by $80M+ in tested ad spend. Not templates. Conversion blueprints reverse-engineered from the top 1%.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-icon">&#9670;</div>
+        <h3>Enterprise-Grade Analytics</h3>
+        <p>Real-time dashboards, multi-touch attribution, and predictive insights. See exactly where revenue comes from and what to scale next.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-icon">&#10022;</div>
+        <h3>Bespoke Integrations</h3>
+        <p>Connect to your existing stack seamlessly. CRM, email, payment processors, ad platforms. One ecosystem, zero friction.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits-grid .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

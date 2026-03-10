@@ -1,0 +1,133 @@
+<!-- Generated: acid-brutalist/guarantee -->
+<style>
+.sb-guarantee {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+}
+.sb-guarantee::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.sb-guarantee-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+.sb-guarantee-card {
+  background: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 6px 6px 0px 0px var(--sb-heading);
+  padding: 48px;
+  text-align: center;
+}
+.sb-guarantee .sb-shield {
+  width: 80px;
+  height: 80px;
+  background: var(--sb-accent);
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px 0px var(--sb-heading);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px auto;
+  font-size: 40px;
+}
+.sb-guarantee h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  margin: 0 0 16px 0;
+}
+.sb-guarantee .sb-desc {
+  font-size: 17px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 28px 0;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sb-guarantee .sb-terms {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.sb-guarantee .sb-term {
+  background: var(--sb-highlight);
+  border: 2px solid var(--sb-heading);
+  border-radius: 14px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  text-transform: uppercase;
+}
+.sb-guarantee .sb-signature {
+  font-size: 14px;
+  color: var(--sb-muted);
+  font-style: italic;
+}
+.sb-guarantee .sb-signature strong {
+  color: var(--sb-heading);
+  font-style: normal;
+}
+.sb-guarantee .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-guarantee .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-guarantee-card { padding: 32px 24px; }
+  .sb-guarantee h2 { font-size: 28px; }
+  .sb-guarantee .sb-terms { flex-direction: column; align-items: center; }
+}
+</style>
+
+<div class="sb-guarantee">
+  <div class="sb-guarantee-inner">
+    <div class="sb-guarantee-card fade-up">
+      <div class="sb-shield">&#128737;</div>
+      <h2>14-Day Ironclad<br>Money-Back Guarantee</h2>
+      <p class="sb-desc">Try everything for 14 days. If you're not completely blown away by the results, email us and we'll refund every penny. No forms, no retention calls, no awkward conversations.</p>
+      <div class="sb-terms">
+        <span class="sb-term">No Questions Asked</span>
+        <span class="sb-term">Full Refund</span>
+        <span class="sb-term">Zero Risk</span>
+      </div>
+      <p class="sb-signature">Personally backed by <strong>the founding team</strong></p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-guarantee .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

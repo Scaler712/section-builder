@@ -1,0 +1,169 @@
+<!-- Generated: glassmorphic-depth/about-bio -->
+<style>
+.sb-about-bio {
+  background: #000000;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-about-bio .sb-grain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.sb-about-bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-about-bio .sb-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(244,244,245,0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  overflow: hidden;
+  transition: all 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-about-bio .sb-photo:hover {
+  border-color: rgba(255,255,255,0.18);
+}
+.sb-about-bio .sb-content {
+  padding: 20px 0;
+}
+.sb-about-bio .sb-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+}
+.sb-about-bio h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  color: var(--sb-heading);
+  margin: 0 0 24px 0;
+}
+.sb-about-bio .sb-bio-text {
+  font-size: 15px;
+  color: rgba(244,244,245,0.45);
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+}
+.sb-about-bio .sb-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.sb-about-bio .sb-stat-item {
+  text-align: center;
+}
+.sb-about-bio .sb-stat-num {
+  display: block;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.sb-about-bio .sb-stat-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(244,244,245,0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 6px;
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 480px;
+  }
+  .sb-about-bio .sb-photo { aspect-ratio: 4 / 3; max-width: 320px; margin: 0 auto; }
+  .sb-about-bio h2 { font-size: 32px; }
+  .sb-about-bio .sb-stats { gap: 20px; flex-wrap: wrap; justify-content: center; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-grain"></div>
+  <div class="sb-about-bio-inner">
+    <div class="sb-photo fade-up">Your Photo</div>
+    <div class="sb-content">
+      <span class="sb-label fade-up">The Founder</span>
+      <h2 class="fade-up">Alex Morgan</h2>
+      <p class="sb-bio-text fade-up">I built my first agency out of a studio apartment with $200 and a laptop. Two years later, it was doing $47k/month. Then I realized the real leverage wasn't in doing client work. It was in teaching the system.</p>
+      <p class="sb-bio-text fade-up">This program is the exact playbook I'd hand myself if I could go back. No theory. No fluff. Just the frameworks and templates that actually move the needle.</p>
+      <div class="sb-stats fade-up">
+        <div class="sb-stat-item">
+          <span class="sb-stat-num">3,200+</span>
+          <span class="sb-stat-label">Members</span>
+        </div>
+        <div class="sb-stat-item">
+          <span class="sb-stat-num">$2.1M</span>
+          <span class="sb-stat-label">Revenue</span>
+        </div>
+        <div class="sb-stat-item">
+          <span class="sb-stat-num">94%</span>
+          <span class="sb-stat-label">Completion</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

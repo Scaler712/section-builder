@@ -1,0 +1,182 @@
+<!-- Generated: blueprint/testimonials -->
+<style>
+.sb-testimonials {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-testimonials .sb-coord {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-testimonials h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 48px 0;
+}
+.sb-testimonials .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-testimonials .sb-card {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  padding: 32px;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+.sb-testimonials .sb-card::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+.sb-testimonials .sb-card::after {
+  content: '+';
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+.sb-testimonials .sb-card:hover {
+  border-color: rgba(255,255,255,0.5);
+}
+.sb-testimonials .sb-card .sb-ref {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-testimonials .sb-quote {
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+  font-style: italic;
+}
+.sb-testimonials .sb-dim-line {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 16px;
+  position: relative;
+}
+.sb-testimonials .sb-dim-line::before,
+.sb-testimonials .sb-dim-line::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: 1px;
+  height: 8px;
+  background: rgba(255,255,255,0.3);
+}
+.sb-testimonials .sb-dim-line::before { left: 0; }
+.sb-testimonials .sb-dim-line::after { right: 0; }
+.sb-testimonials .sb-author .sb-name {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+.sb-testimonials .sb-author .sb-role {
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-top: 4px;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-testimonials .sb-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .sb-testimonials h2 { font-size: 28px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-testimonials-inner">
+    <div class="sb-coord fade-up">REF: FIELD-REPORTS-004 &nbsp;&middot;&nbsp; VERIFIED</div>
+    <h2 class="fade-up">Field Test Results</h2>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-ref">Report #047</div>
+        <p class="sb-quote">"Went from zero clients to $8,200/month in 6 weeks using the outreach blueprints. The templates alone paid for the program 10x over. Best investment I've made."</p>
+        <div class="sb-dim-line"></div>
+        <div class="sb-author">
+          <span class="sb-name">Sarah Chen</span>
+          <span class="sb-role">Freelance Designer</span>
+        </div>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-ref">Report #112</div>
+        <p class="sb-quote">"The pricing framework changed everything. I was charging $500 per project. After implementing value-based pricing, my average project is $3,800. Same work, better positioning."</p>
+        <div class="sb-dim-line"></div>
+        <div class="sb-author">
+          <span class="sb-name">James Okonkwo</span>
+          <span class="sb-role">Marketing Consultant</span>
+        </div>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-ref">Report #203</div>
+        <p class="sb-quote">"I used the client onboarding system and cut my admin time by 70%. What used to take 3 days now takes 4 hours. I finally have time to actually do the work I love."</p>
+        <div class="sb-dim-line"></div>
+        <div class="sb-author">
+          <span class="sb-name">Elena Vasquez</span>
+          <span class="sb-role">Brand Strategist</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

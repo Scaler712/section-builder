@@ -1,0 +1,189 @@
+<!-- Generated: atmospheric-glass/about-bio -->
+<style>
+.sb-about-bio {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-about-bio .sb-glow-1 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.08), transparent 70%);
+  filter: blur(60px);
+  top: -5%;
+  left: 10%;
+  pointer-events: none;
+}
+.sb-about-bio .sb-glow-2 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,85,247,0.06), transparent 70%);
+  filter: blur(60px);
+  bottom: -5%;
+  right: 5%;
+  pointer-events: none;
+}
+.sb-about-bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-about-bio .sb-photo-col {
+  position: relative;
+}
+.sb-about-bio .sb-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--sb-card-radius);
+  background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(168,85,247,0.08));
+  border: 1px solid rgba(99,102,241,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  color: var(--sb-accent);
+  overflow: hidden;
+}
+.sb-about-bio .sb-photo-placeholder .sb-photo-label {
+  font-size: 14px;
+  color: var(--sb-muted);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+.sb-about-bio .sb-text-col .sb-badge {
+  display: inline-block;
+  background: rgba(99,102,241,0.1);
+  color: var(--sb-accent);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(99,102,241,0.2);
+  margin-bottom: 20px;
+  font-family: 'Inter', sans-serif;
+}
+.sb-about-bio .sb-text-col h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 8px 0;
+}
+.sb-about-bio .sb-text-col .sb-role {
+  font-size: 16px;
+  color: var(--sb-accent);
+  font-weight: 600;
+  margin-bottom: 24px;
+  font-family: 'Inter', sans-serif;
+}
+.sb-about-bio .sb-text-col p {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+  font-family: 'Inter', sans-serif;
+}
+.sb-about-bio .sb-stats-row {
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(99,102,241,0.1);
+}
+.sb-about-bio .sb-stat {
+  text-align: center;
+}
+.sb-about-bio .sb-stat .sb-stat-num {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  line-height: 1;
+  display: block;
+}
+.sb-about-bio .sb-stat .sb-stat-label {
+  font-size: 13px;
+  color: var(--sb-muted);
+  margin-top: 4px;
+  display: block;
+  font-family: 'Inter', sans-serif;
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio-inner { grid-template-columns: 1fr; gap: 36px; }
+  .sb-about-bio .sb-photo-placeholder { max-width: 320px; margin: 0 auto; }
+  .sb-about-bio .sb-text-col h2 { font-size: 30px; }
+  .sb-about-bio .sb-stats-row { gap: 20px; }
+  .sb-about-bio .sb-stat .sb-stat-num { font-size: 22px; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-glow-1"></div>
+  <div class="sb-glow-2"></div>
+  <div class="sb-about-bio-inner">
+    <div class="sb-photo-col fade-up">
+      <div class="sb-photo-placeholder">
+        <span class="sb-photo-label">Your Photo</span>
+      </div>
+    </div>
+    <div class="sb-text-col">
+      <span class="sb-badge fade-up">About the Founder</span>
+      <h2 class="fade-up">Hey, I'm Alex</h2>
+      <div class="sb-role fade-up">Founder & CEO</div>
+      <p class="fade-up">I spent 8 years building growth teams at startups that scaled from zero to eight figures. Along the way, I watched brilliant founders waste months on tech that didn't convert and tools that promised the world but delivered spreadsheets.</p>
+      <p class="fade-up">So I built the platform I wished existed. One system that handles everything from landing page creation to conversion optimization -- without requiring a team of engineers or a six-figure marketing budget.</p>
+      <p class="fade-up">Today, over 2,400 businesses use our platform to grow faster with less effort. My mission is simple: make world-class growth accessible to every founder, not just the ones with deep pockets.</p>
+      <div class="sb-stats-row fade-up">
+        <div class="sb-stat">
+          <span class="sb-stat-num">8+</span>
+          <span class="sb-stat-label">Years in Growth</span>
+        </div>
+        <div class="sb-stat">
+          <span class="sb-stat-num">2,400+</span>
+          <span class="sb-stat-label">Businesses Served</span>
+        </div>
+        <div class="sb-stat">
+          <span class="sb-stat-num">$47M</span>
+          <span class="sb-stat-label">Revenue Generated</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

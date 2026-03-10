@@ -1,0 +1,188 @@
+<!-- Generated: brutalist-anton/pain-points -->
+<style>
+.sb-pain-points {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: var(--sb-heading);
+  position: relative;
+}
+.sb-pain-points::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px);
+  pointer-events: none;
+}
+.sb-pain-points-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-pain-points .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  padding: 4px 12px;
+  transform: rotate(-2deg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--sb-heading);
+  margin-bottom: 20px;
+}
+.sb-pain-points h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0 0 12px 0;
+}
+.sb-pain-points .sb-subtitle {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 48px;
+  font-weight: 400;
+}
+.sb-pain-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sb-pain-item {
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: var(--sb-card-radius);
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-pain-item:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--sb-accent);
+}
+.sb-pain-item .sb-pain-num {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--sb-accent);
+  flex-shrink: 0;
+  line-height: 1;
+  min-width: 40px;
+}
+.sb-pain-item h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 0.95;
+  margin: 0 0 8px 0;
+}
+.sb-pain-item h3 .sb-mark {
+  position: relative;
+  z-index: 1;
+  display: inline;
+}
+.sb-pain-item h3 .sb-mark::before {
+  content: '';
+  position: absolute;
+  background: var(--sb-accent);
+  transform: rotate(-2deg);
+  inset: -1px -4px;
+  z-index: -1;
+}
+.sb-pain-item h3 .sb-mark-text {
+  color: var(--sb-heading);
+}
+.sb-pain-item p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  margin: 0;
+}
+.sb-pain-points .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1), transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-pain-points .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pain-points h2 { font-size: 38px; }
+  .sb-pain-item { flex-direction: column; gap: 10px; }
+}
+@media (max-width: 480px) {
+  .sb-pain-points h2 { font-size: 30px; }
+  .sb-pain-item { padding: 20px 24px; }
+}
+</style>
+
+<div class="sb-pain-points">
+  <div class="sb-pain-points-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Sound Familiar?</span>
+    </div>
+    <h2 class="fade-up">You're Bleeding<br>Money Right Now</h2>
+    <p class="sb-subtitle fade-up">These are the problems killing your conversions.</p>
+    <div class="sb-pain-list">
+      <div class="sb-pain-item fade-up">
+        <span class="sb-pain-num">01</span>
+        <div>
+          <h3>Spending <span class="sb-mark"><span class="sb-mark-text">$3,000/Month</span></span> on Ads That Don't Convert</h3>
+          <p>You're driving traffic to a page that leaks money. Every visitor that bounces is cash straight down the drain.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-pain-num">02</span>
+        <div>
+          <h3>Hiring Designers for <span class="sb-mark"><span class="sb-mark-text">Every Single Change</span></span></h3>
+          <p>A $200 invoice to swap a headline. Two weeks to add a testimonial section. You're held hostage by your own website.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-pain-num">03</span>
+        <div>
+          <h3>Competitors Are <span class="sb-mark"><span class="sb-mark-text">Testing 10x Faster</span></span></h3>
+          <p>While you're waiting on revisions, they're running A/B tests and stealing your market share. Speed wins.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-pain-num">04</span>
+        <div>
+          <h3>Cobbling Together <span class="sb-mark"><span class="sb-mark-text">12 Different Tools</span></span></h3>
+          <p>Landing page builder here, email tool there, analytics somewhere else. You're paying more and getting less.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-pain-num">05</span>
+        <div>
+          <h3>No Idea <span class="sb-mark"><span class="sb-mark-text">What's Actually Working</span></span></h3>
+          <p>You're guessing which headline performs better. You don't know where visitors drop off. Flying blind is not a strategy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pain-points .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

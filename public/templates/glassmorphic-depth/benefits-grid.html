@@ -1,0 +1,207 @@
+<!-- Generated: glassmorphic-depth/benefits-grid -->
+<style>
+.sb-benefits-grid {
+  background: #000000;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-benefits-grid .sb-grain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.sb-benefits-grid .sb-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22vw;
+  font-weight: 700;
+  color: #ffffff;
+  opacity: 0.03;
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-family: var(--sb-font);
+}
+.sb-benefits-grid-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-benefits-grid .sb-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.sb-benefits-grid .sb-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+}
+.sb-benefits-grid h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  color: var(--sb-heading);
+  margin: 0 0 16px 0;
+}
+.sb-benefits-grid .sb-sub {
+  font-size: 17px;
+  color: rgba(244,244,245,0.45);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.sb-benefits-grid .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.sb-benefits-grid .sb-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius);
+  padding: 36px 28px;
+  transition: all 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-benefits-grid .sb-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.18);
+}
+.sb-benefits-grid .sb-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 20px;
+  color: var(--sb-accent);
+}
+.sb-benefits-grid .sb-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  letter-spacing: -0.03em;
+  margin: 0 0 10px 0;
+}
+.sb-benefits-grid .sb-card p {
+  font-size: 14px;
+  color: rgba(244,244,245,0.45);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.sb-benefits-grid .sb-stat-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sb-accent);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50px;
+  padding: 5px 14px;
+  letter-spacing: 0.02em;
+}
+.sb-benefits-grid .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-benefits-grid .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-grid .sb-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .sb-benefits-grid h2 { font-size: 32px; }
+  .sb-benefits-grid .sb-watermark { font-size: 30vw; }
+  .sb-benefits-grid .sb-card { padding: 28px 24px; }
+}
+</style>
+
+<div class="sb-benefits-grid">
+  <div class="sb-grain"></div>
+  <div class="sb-watermark">FEATURES</div>
+  <div class="sb-benefits-grid-inner">
+    <div class="sb-header">
+      <span class="sb-label fade-up">Why It Works</span>
+      <h2 class="fade-up">Everything You Need.<br>Nothing You Don't.</h2>
+      <p class="sb-sub fade-up">Six core capabilities designed to cut weeks off your timeline and eliminate guesswork entirely.</p>
+    </div>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-icon">&#9889;</div>
+        <h3>Instant Deploy</h3>
+        <p>Go from concept to live product in under 24 hours. Pre-built templates handle the heavy lifting while you focus on strategy.</p>
+        <span class="sb-stat-pill">14x faster launches</span>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-icon">&#9881;</div>
+        <h3>Auto Optimization</h3>
+        <p>AI continuously tests headlines, layouts, and CTAs. Your pages improve while you sleep, backed by real conversion data.</p>
+        <span class="sb-stat-pill">+38% avg. lift</span>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-icon">&#128202;</div>
+        <h3>Revenue Analytics</h3>
+        <p>Track every dollar from first click to final purchase. Attribution modeling that actually makes sense, not vanity metrics.</p>
+        <span class="sb-stat-pill">Real-time ROI</span>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-icon">&#128274;</div>
+        <h3>Built-in Payments</h3>
+        <p>Accept Stripe, PayPal, and crypto out of the box. Checkout flows that convert, with one-click upsells already wired in.</p>
+        <span class="sb-stat-pill">4.2% conversion</span>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-icon">&#127760;</div>
+        <h3>Global CDN</h3>
+        <p>Sub-second load times from 40+ edge locations worldwide. Your pages load fast regardless of where your customers are.</p>
+        <span class="sb-stat-pill">&lt;200ms TTFB</span>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-icon">&#128101;</div>
+        <h3>Team Workspaces</h3>
+        <p>Invite your designer, copywriter, and developer. Role-based permissions keep everyone productive without stepping on toes.</p>
+        <span class="sb-stat-pill">Unlimited seats</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits-grid .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

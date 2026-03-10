@@ -1,0 +1,301 @@
+<!-- Generated: claymorphism/pricing -->
+<style>
+.sb-pricing {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-pricing .sb-blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(80px);
+  animation: clayFloat 8s ease-in-out infinite;
+  pointer-events: none;
+}
+.sb-pricing .sb-blob-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--sb-accent);
+  top: -80px;
+  left: -100px;
+}
+.sb-pricing .sb-blob-2 {
+  width: 320px;
+  height: 320px;
+  background: #DB2777;
+  bottom: -60px;
+  right: -60px;
+  animation-delay: -3s;
+}
+.sb-pricing .sb-blob-3 {
+  width: 220px;
+  height: 220px;
+  background: #0EA5E9;
+  top: 50%;
+  right: 20%;
+  animation-delay: -6s;
+}
+@keyframes clayFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+.sb-pricing-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-pricing .sb-badge {
+  display: inline-block;
+  background: rgba(124,58,237,0.1);
+  color: var(--sb-accent);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.sb-pricing .sb-section-title {
+  font-family: 'Nunito', var(--sb-font), sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  margin: 0 0 12px 0;
+}
+.sb-pricing .sb-section-sub {
+  font-size: 17px;
+  color: var(--sb-body);
+  max-width: 520px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+}
+.sb-pricing .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.sb-pricing .sb-plan {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 2px 4px rgba(124,58,237,0.04), 0 8px 16px rgba(124,58,237,0.06), 0 16px 32px rgba(124,58,237,0.08), inset 0 -2px 4px rgba(0,0,0,0.02);
+  padding: 40px 32px;
+  transition: transform 0.3s ease;
+}
+.sb-pricing .sb-plan:hover {
+  transform: translateY(-4px);
+}
+.sb-pricing .sb-plan.sb-featured {
+  border: 3px solid var(--sb-accent);
+  position: relative;
+  transform: scale(1.04);
+  box-shadow: 0 2px 4px rgba(124,58,237,0.06), 0 12px 24px rgba(124,58,237,0.1), 0 24px 48px rgba(124,58,237,0.14), inset 0 -2px 4px rgba(0,0,0,0.02);
+}
+.sb-pricing .sb-plan.sb-featured:hover {
+  transform: scale(1.04) translateY(-4px);
+}
+.sb-pricing .sb-popular-tag {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #A78BFA, #7C3AED);
+  color: #ffffff;
+  padding: 6px 22px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+}
+.sb-pricing .sb-plan-name {
+  font-family: 'Nunito', var(--sb-font), sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  margin: 0 0 8px 0;
+}
+.sb-pricing .sb-plan-desc {
+  font-size: 14px;
+  color: var(--sb-muted);
+  margin: 0 0 24px 0;
+}
+.sb-pricing .sb-price {
+  margin-bottom: 28px;
+}
+.sb-pricing .sb-price-amount {
+  font-family: 'Nunito', var(--sb-font), sans-serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--sb-heading);
+  line-height: 1;
+}
+.sb-pricing .sb-price-currency {
+  font-size: 24px;
+  vertical-align: super;
+  margin-right: 2px;
+}
+.sb-pricing .sb-price-period {
+  font-size: 15px;
+  color: var(--sb-muted);
+  font-weight: 500;
+}
+.sb-pricing .sb-plan-features {
+  list-style: none;
+  margin: 0 0 32px 0;
+  padding: 0;
+  text-align: left;
+}
+.sb-pricing .sb-plan-features li {
+  font-size: 15px;
+  color: var(--sb-body);
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sb-pricing .sb-plan-features li .sb-check {
+  color: #10B981;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.sb-pricing .sb-plan-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: var(--sb-btn-radius);
+  font-family: 'Nunito', var(--sb-font), sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+.sb-pricing .sb-plan-btn:active {
+  transform: scale(0.92);
+}
+.sb-pricing .sb-plan-btn.sb-outline {
+  background: #ffffff;
+  color: var(--sb-accent);
+  border: 2px solid rgba(124,58,237,0.2);
+}
+.sb-pricing .sb-plan-btn.sb-outline:hover {
+  border-color: var(--sb-accent);
+  background: rgba(124,58,237,0.04);
+}
+.sb-pricing .sb-plan-btn.sb-primary {
+  background: linear-gradient(135deg, #A78BFA, #7C3AED);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+}
+.sb-pricing .sb-plan-btn.sb-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124,58,237,0.35);
+}
+.sb-pricing .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-pricing .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pricing .sb-section-title { font-size: 28px; }
+  .sb-pricing .sb-grid { grid-template-columns: 1fr; gap: 20px; max-width: 400px; margin: 0 auto; }
+  .sb-pricing .sb-plan.sb-featured { transform: none; }
+  .sb-pricing .sb-plan.sb-featured:hover { transform: translateY(-4px); }
+  .sb-pricing .sb-plan { padding: 32px 24px; }
+}
+</style>
+
+<div class="sb-pricing">
+  <div class="sb-blob sb-blob-1"></div>
+  <div class="sb-blob sb-blob-2"></div>
+  <div class="sb-blob sb-blob-3"></div>
+  <div class="sb-pricing-inner">
+    <span class="sb-badge fade-up">Simple Pricing</span>
+    <h2 class="sb-section-title fade-up">Pick the Plan That Fits You</h2>
+    <p class="sb-section-sub fade-up">No hidden fees, no upsells. Every plan includes the core system and community access.</p>
+    <div class="sb-grid">
+      <div class="sb-plan fade-up">
+        <h3 class="sb-plan-name">Starter</h3>
+        <p class="sb-plan-desc">Perfect for getting started</p>
+        <div class="sb-price">
+          <span class="sb-price-amount"><span class="sb-price-currency">$</span>47</span>
+          <span class="sb-price-period">one-time</span>
+        </div>
+        <ul class="sb-plan-features">
+          <li><span class="sb-check">&#10003;</span> Core training modules</li>
+          <li><span class="sb-check">&#10003;</span> 5 ready-to-use templates</li>
+          <li><span class="sb-check">&#10003;</span> Community access</li>
+          <li><span class="sb-check">&#10003;</span> Email support</li>
+        </ul>
+        <a href="#" class="sb-plan-btn sb-outline">Get Started</a>
+      </div>
+      <div class="sb-plan sb-featured fade-up">
+        <span class="sb-popular-tag">Most Popular</span>
+        <h3 class="sb-plan-name">Accelerator</h3>
+        <p class="sb-plan-desc">Everything you need to scale fast</p>
+        <div class="sb-price">
+          <span class="sb-price-amount"><span class="sb-price-currency">$</span>197</span>
+          <span class="sb-price-period">one-time</span>
+        </div>
+        <ul class="sb-plan-features">
+          <li><span class="sb-check">&#10003;</span> All Starter features</li>
+          <li><span class="sb-check">&#10003;</span> 25+ premium templates</li>
+          <li><span class="sb-check">&#10003;</span> Weekly group coaching</li>
+          <li><span class="sb-check">&#10003;</span> Accountability pods</li>
+          <li><span class="sb-check">&#10003;</span> Lifetime updates</li>
+        </ul>
+        <a href="#" class="sb-plan-btn sb-primary">Join Accelerator</a>
+      </div>
+      <div class="sb-plan fade-up">
+        <h3 class="sb-plan-name">VIP</h3>
+        <p class="sb-plan-desc">For serious operators only</p>
+        <div class="sb-price">
+          <span class="sb-price-amount"><span class="sb-price-currency">$</span>497</span>
+          <span class="sb-price-period">one-time</span>
+        </div>
+        <ul class="sb-plan-features">
+          <li><span class="sb-check">&#10003;</span> All Accelerator features</li>
+          <li><span class="sb-check">&#10003;</span> 1-on-1 strategy call</li>
+          <li><span class="sb-check">&#10003;</span> Done-for-you setup</li>
+          <li><span class="sb-check">&#10003;</span> Priority support</li>
+          <li><span class="sb-check">&#10003;</span> Private Slack channel</li>
+        </ul>
+        <a href="#" class="sb-plan-btn sb-outline">Apply for VIP</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pricing .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

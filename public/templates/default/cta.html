@@ -1,0 +1,108 @@
+<!-- Generated: default/cta -->
+<style>
+.sb-cta {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sb-cta .sb-badge {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--sb-accent);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+.sb-cta .sb-section-title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--sb-heading);
+  margin: 0 0 16px 0;
+}
+.sb-cta .sb-section-sub {
+  font-size: 18px;
+  color: var(--sb-body);
+  max-width: 540px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+.sb-cta .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: var(--sb-cta-text, #ffffff);
+  border: none;
+  border-radius: var(--sb-btn-radius);
+  padding: 18px 48px;
+  font-family: var(--sb-font);
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.sb-cta .sb-cta-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+.sb-cta .sb-urgency {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--sb-muted);
+  font-weight: 600;
+}
+.sb-cta .sb-urgency strong {
+  color: var(--sb-accent);
+}
+.sb-cta .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-cta .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-cta .sb-section-title { font-size: 28px; }
+  .sb-cta .sb-section-sub { font-size: 16px; }
+  .sb-cta .sb-cta-btn { padding: 16px 36px; font-size: 15px; }
+}
+</style>
+
+<div class="sb-cta">
+  <div class="sb-cta-inner">
+    <span class="sb-badge fade-up">Don't Wait</span>
+    <h2 class="sb-section-title fade-up">Your Future Clients Are<br>Already Looking for You</h2>
+    <p class="sb-section-sub fade-up">Every day you wait is another day someone else closes the deal you should have. Start today and join 2,400+ founders who chose action over analysis paralysis.</p>
+    <a href="#" class="sb-cta-btn fade-up">Claim Your Spot Now</a>
+    <p class="sb-urgency fade-up"><strong>Only 14 spots remaining</strong> for this cohort. Next intake: April 1st.</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-cta .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

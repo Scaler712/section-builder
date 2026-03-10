@@ -1,0 +1,210 @@
+<!-- Generated: cyber-serif/faq -->
+<style>
+.sb-faq {
+  background: #050505;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+}
+.sb-faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+}
+.sb-faq .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-faq h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-heading);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0 0 48px 0;
+}
+.sb-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sb-faq-item {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: border-color 0.4s ease;
+}
+.sb-faq-item:hover {
+  border-color: rgba(255,255,255,0.14);
+}
+.sb-faq-item.sb-open {
+  border-color: rgba(16,185,129,0.2);
+}
+.sb-faq-item .sb-faq-q {
+  padding: 22px 28px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  user-select: none;
+}
+.sb-faq-item .sb-faq-q h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  margin: 0;
+}
+.sb-faq-item .sb-faq-toggle {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--sb-accent);
+  transition: transform 0.3s ease;
+}
+.sb-faq-item.sb-open .sb-faq-toggle {
+  transform: rotate(45deg);
+}
+.sb-faq-item .sb-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.sb-faq-item .sb-faq-a-inner {
+  padding: 0 28px 22px 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--sb-muted);
+  line-height: 1.7;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq h2 { font-size: 32px; }
+  .sb-faq-item .sb-faq-q { padding: 18px 20px; }
+  .sb-faq-item .sb-faq-a-inner { padding: 0 20px 18px 20px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-faq-inner">
+    <span class="sb-badge fade-up">FAQ</span>
+    <h2 class="fade-up">Questions &amp; Answers</h2>
+    <div class="sb-faq-list">
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>How quickly can I get started?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">Most teams are fully onboarded within 48 hours. We provide migration tools that pull your existing data from any platform, and our setup wizard handles the rest. No engineering time required.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Do I need a technical background?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">Not at all. The platform is designed for operators, not engineers. Everything is visual and template-based. If you can use a spreadsheet, you can use this. Our most successful users are marketers and founders.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>What integrations do you support?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">Over 200 native integrations including all major ad platforms, CRMs, email tools, analytics suites, and payment processors. If it has an API, we can connect to it. Custom webhooks are also supported.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Is my data secure?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">SOC 2 Type II certified with end-to-end encryption. Your data is stored in region-specific data centers with automatic backups. We never sell or share your data, and you can export or delete everything at any time.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>What happens if I cancel?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">Cancel anytime with two clicks. No contracts, no cancellation fees. Your access continues until the end of your billing cycle, and you can export all your data before you leave. We also offer a 14-day money-back guarantee.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Do you offer custom enterprise plans?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">Yes. Enterprise plans include dedicated infrastructure, custom SLAs, SSO, advanced RBAC, and a dedicated account manager. Contact our sales team for a tailored proposal based on your team's specific requirements.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-faq-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var q = item.querySelector('.sb-faq-q');
+      var a = item.querySelector('.sb-faq-a');
+      q.addEventListener('click', function() {
+        var isOpen = item.classList.contains('sb-open');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('sb-open');
+          items[j].querySelector('.sb-faq-a').style.maxHeight = null;
+        }
+        if (!isOpen) {
+          item.classList.add('sb-open');
+          a.style.maxHeight = a.scrollHeight + 'px';
+        }
+      });
+    })(items[i]);
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

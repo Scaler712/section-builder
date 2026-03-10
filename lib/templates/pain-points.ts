@@ -10,8 +10,8 @@ export const painPoints: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-pain {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
   background: #FFFFFF;
 }
 .sb-pain-inner {
@@ -21,13 +21,13 @@ export const painPoints: SectionTemplate = {
 .sb-pain h2 {
   font-size: 36px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 12px;
   text-align: center;
 }
 .sb-pain .lead {
   font-size: 18px;
-  color: #3A3A3A;
+  color: var(--sb-body);
   text-align: center;
   margin-bottom: 40px;
   line-height: 1.6;
@@ -40,12 +40,12 @@ export const painPoints: SectionTemplate = {
   gap: 16px;
 }
 .sb-pain-item {
-  background: #FFF2C2;
+  background: var(--sb-highlight);
   padding: 16px 24px;
   border-radius: 8px;
   font-size: 17px;
   font-weight: 600;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   line-height: 1.5;
 }
 .sb-pain .fade-up {
@@ -59,7 +59,7 @@ export const painPoints: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-pain { padding: 50px 16px; }
+  .sb-pain { padding: var(--sb-section-pad); }
   .sb-pain h2 { font-size: 28px; }
   .sb-pain-item { font-size: 15px; padding: 14px 18px; }
 }

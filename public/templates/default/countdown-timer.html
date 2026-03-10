@@ -1,0 +1,173 @@
+<!-- Generated: default/countdown-timer -->
+<style>
+.sb-countdown-timer {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-countdown-timer-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sb-countdown-timer .sb-badge {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--sb-accent);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+.sb-countdown-timer .sb-section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--sb-heading);
+  margin: 0 0 36px 0;
+}
+.sb-countdown-timer .sb-timer-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.sb-countdown-timer .sb-timer-box {
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  padding: 20px 24px;
+  min-width: 90px;
+}
+.sb-countdown-timer .sb-timer-number {
+  display: block;
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.sb-countdown-timer .sb-timer-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sb-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+}
+.sb-countdown-timer .sb-section-sub {
+  font-size: 17px;
+  color: var(--sb-body);
+  max-width: 480px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+.sb-countdown-timer .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: var(--sb-cta-text, #ffffff);
+  border: none;
+  border-radius: var(--sb-btn-radius);
+  padding: 18px 48px;
+  font-family: var(--sb-font);
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.sb-countdown-timer .sb-cta-btn:hover {
+  opacity: 0.88;
+}
+.sb-countdown-timer .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-countdown-timer .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-countdown-timer .sb-section-title { font-size: 28px; }
+  .sb-countdown-timer .sb-timer-boxes { gap: 10px; }
+  .sb-countdown-timer .sb-timer-box { min-width: 70px; padding: 16px 12px; }
+  .sb-countdown-timer .sb-timer-number { font-size: 30px; }
+  .sb-countdown-timer .sb-cta-btn { padding: 16px 36px; font-size: 15px; }
+}
+</style>
+
+<div class="sb-countdown-timer">
+  <div class="sb-countdown-timer-inner">
+    <span class="sb-badge fade-up">Offer Expires Soon</span>
+    <h2 class="sb-section-title fade-up">This Price Disappears When the Timer Hits Zero</h2>
+    <div class="sb-timer-boxes fade-up">
+      <div class="sb-timer-box">
+        <span class="sb-timer-number" id="sb-cd-days">02</span>
+        <span class="sb-timer-label">Days</span>
+      </div>
+      <div class="sb-timer-box">
+        <span class="sb-timer-number" id="sb-cd-hours">11</span>
+        <span class="sb-timer-label">Hours</span>
+      </div>
+      <div class="sb-timer-box">
+        <span class="sb-timer-number" id="sb-cd-mins">47</span>
+        <span class="sb-timer-label">Minutes</span>
+      </div>
+      <div class="sb-timer-box">
+        <span class="sb-timer-number" id="sb-cd-secs">33</span>
+        <span class="sb-timer-label">Seconds</span>
+      </div>
+    </div>
+    <p class="sb-section-sub fade-up">Lock in the launch price before it increases by 40%. This offer is only available to the first 100 members.</p>
+    <a href="#" class="sb-cta-btn fade-up">Lock In My Price</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  /* Default: 3 days from now. Override with data-deadline on .sb-countdown-timer */
+  var container = document.querySelector('.sb-countdown-timer');
+  var deadline = container.getAttribute('data-deadline');
+  var target = deadline ? new Date(deadline).getTime() : Date.now() + 3 * 24 * 60 * 60 * 1000;
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function tick() {
+    var now = Date.now();
+    var diff = Math.max(0, target - now);
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    var elD = document.getElementById('sb-cd-days');
+    var elH = document.getElementById('sb-cd-hours');
+    var elM = document.getElementById('sb-cd-mins');
+    var elS = document.getElementById('sb-cd-secs');
+    if (elD) elD.textContent = pad(d);
+    if (elH) elH.textContent = pad(h);
+    if (elM) elM.textContent = pad(m);
+    if (elS) elS.textContent = pad(s);
+    if (diff > 0) requestAnimationFrame(tick);
+  }
+  tick();
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-countdown-timer .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,170 @@
+<!-- Generated: softly-wellness/solution-transition -->
+<style>
+.sb-solution-transition {
+  background: #EFEDF4;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-solution-transition .sb-blob-1 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(80px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite;
+}
+.sb-solution-transition .sb-blob-2 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: #E8EFE8;
+  opacity: 0.4;
+  filter: blur(80px);
+  bottom: -5%;
+  right: 10%;
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite 3s;
+}
+@keyframes sb-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.sb-solution-transition-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-solution-transition .sb-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.sb-solution-transition .sb-divider-line {
+  width: 48px;
+  height: 1px;
+  background: rgba(255,183,178,0.4);
+}
+.sb-solution-transition .sb-divider-icon {
+  font-size: 28px;
+}
+.sb-solution-transition h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0 0 20px 0;
+}
+.sb-solution-transition h2 .sb-accent-word {
+  color: var(--sb-accent);
+}
+.sb-solution-transition .sb-lead {
+  font-size: 18px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 36px 0;
+}
+.sb-solution-transition .sb-card {
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05);
+  padding: 44px 40px;
+  text-align: left;
+}
+.sb-solution-transition .sb-card p {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 18px 0;
+}
+.sb-solution-transition .sb-card p:last-child {
+  margin-bottom: 0;
+}
+.sb-solution-transition .sb-card strong {
+  color: var(--sb-heading);
+  font-weight: 600;
+}
+.sb-solution-transition .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--sb-btn-radius);
+  padding: 18px 44px;
+  font-family: var(--sb-font);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px -2px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+  margin-top: 36px;
+}
+.sb-solution-transition .sb-cta-btn:hover {
+  box-shadow: 0 8px 30px -2px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+.sb-solution-transition .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.sb-solution-transition .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-solution-transition h2 { font-size: 30px; }
+  .sb-solution-transition .sb-card { padding: 28px 24px; }
+}
+</style>
+
+<div class="sb-solution-transition">
+  <div class="sb-blob-1"></div>
+  <div class="sb-blob-2"></div>
+  <div class="sb-solution-transition-inner">
+    <div class="sb-divider fade-up">
+      <div class="sb-divider-line"></div>
+      <span class="sb-divider-icon">&#127808;</span>
+      <div class="sb-divider-line"></div>
+    </div>
+    <h2 class="fade-up">There's a gentler way to<br><span class="sb-accent-word">feel like yourself again</span></h2>
+    <p class="sb-lead fade-up">You don't need to overhaul your life. You just need a path that meets you where you are.</p>
+    <div class="sb-card fade-up">
+      <p>We created this program because we lived it. Years of burnout, diet culture, and wellness noise that made us feel worse, not better. <strong>Something had to change.</strong></p>
+      <p>Our approach is different. Instead of forcing new habits, we help you <strong>reconnect with what your body already knows</strong>. Small, intentional shifts that compound over time -- not dramatic overhauls that crumble in a week.</p>
+      <p>Members who follow our framework report feeling more energized within the first 7 days. <strong>Not because we push them harder, but because we finally give them permission to slow down.</strong></p>
+    </div>
+    <a href="#" class="sb-cta-btn fade-up">Learn how it works</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-solution-transition .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

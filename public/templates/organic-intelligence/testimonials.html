@@ -1,0 +1,195 @@
+<!-- Generated: organic-intelligence/testimonials -->
+<style>
+.sb-testimonials {
+  background: #fcfbf9;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-testimonials::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -10%;
+  width: 120%;
+  height: 120px;
+  background: var(--sb-highlight);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-testimonials .sb-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.sb-testimonials .sb-mono-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+  display: block;
+}
+.sb-testimonials .sb-section-title {
+  font-family: var(--sb-font);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--sb-heading);
+  margin: 0;
+}
+.sb-testimonials .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-testimonials .sb-card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: var(--sb-card-radius);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  transition: all 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sb-testimonials .sb-card:hover {
+  border-color: var(--sb-accent);
+  box-shadow: 0 0 30px rgba(67, 56, 202, 0.08);
+}
+.sb-testimonials .sb-quote-mark {
+  font-family: var(--sb-font);
+  font-size: 48px;
+  font-style: italic;
+  color: var(--sb-accent);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.sb-testimonials .sb-quote {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+  flex-grow: 1;
+}
+.sb-testimonials .sb-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sb-testimonials .sb-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--sb-highlight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sb-accent);
+  flex-shrink: 0;
+}
+.sb-testimonials .sb-author-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  margin: 0;
+}
+.sb-testimonials .sb-author-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sb-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 2px 0 0 0;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1000ms cubic-bezier(0.22, 1, 0.36, 1), transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-testimonials .sb-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .sb-testimonials .sb-section-title { font-size: 32px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-testimonials-inner">
+    <div class="sb-header">
+      <span class="sb-mono-label fade-up">Member Stories</span>
+      <h2 class="sb-section-title fade-up">Real People,<br>Real Results</h2>
+    </div>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-quote-mark">"</div>
+        <p class="sb-quote">Landed my first $4,200 client in week three. The outreach templates alone were worth 10x the investment. I stopped guessing and started closing.</p>
+        <div class="sb-author">
+          <div class="sb-avatar">MR</div>
+          <div>
+            <p class="sb-author-name">Marcus Reeves</p>
+            <p class="sb-author-role">Freelance Strategist</p>
+          </div>
+        </div>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-quote-mark">"</div>
+        <p class="sb-quote">I've been in masterminds that cost $25,000. This community gives better feedback, faster. The live workshops are genuinely world-class.</p>
+        <div class="sb-author">
+          <div class="sb-avatar">SK</div>
+          <div>
+            <p class="sb-author-name">Sarah Kim</p>
+            <p class="sb-author-role">Agency Founder</p>
+          </div>
+        </div>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-quote-mark">"</div>
+        <p class="sb-quote">Went from zero to $8,700/mo recurring in 47 days. The accountability pods kept me honest. Can't imagine going back to doing this alone.</p>
+        <div class="sb-author">
+          <div class="sb-avatar">JT</div>
+          <div>
+            <p class="sb-author-name">James Torres</p>
+            <p class="sb-author-role">SaaS Founder</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

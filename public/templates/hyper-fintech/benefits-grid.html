@@ -1,0 +1,140 @@
+<!-- Generated: hyper-fintech/benefits-grid -->
+<style>
+.sb-benefits-grid {
+  background: #0A0A0A;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-benefits-grid-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-benefits-grid .sb-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.sb-benefits-grid h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+  margin: 0 0 56px 0;
+}
+.sb-benefits-grid .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.sb-benefits-grid .sb-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 2rem;
+  padding: 36px;
+  transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-benefits-grid .sb-card:hover {
+  border-color: rgba(253,224,71,0.3);
+  background: rgba(255,255,255,0.08);
+}
+.sb-benefits-grid .sb-card-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(253,224,71,0.1);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.sb-benefits-grid .sb-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+.sb-benefits-grid .sb-card p {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.sb-benefits-grid .sb-card .sb-metric {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+}
+.sb-benefits-grid .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-benefits-grid .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-grid .sb-grid { grid-template-columns: 1fr; }
+  .sb-benefits-grid h2 { font-size: 32px; }
+}
+</style>
+
+<div class="sb-benefits-grid">
+  <div class="sb-benefits-grid-inner">
+    <span class="sb-badge fade-up">Why Us</span>
+    <h2 class="fade-up">Built for speed.<br>Designed for scale.</h2>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#9889;</div>
+        <h3>Instant Settlement</h3>
+        <p>Funds hit your account in under 14 milliseconds. No T+2 delays, no overnight batching. Real-time money movement built on next-gen rails.</p>
+        <span class="sb-metric">14ms avg. settlement</span>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#128274;</div>
+        <h3>Bank-Grade Security</h3>
+        <p>256-bit encryption, SOC 2 Type II certified, and real-time fraud detection powered by ML models trained on billions of transactions.</p>
+        <span class="sb-metric">0 breaches since launch</span>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#128200;</div>
+        <h3>Elastic Infrastructure</h3>
+        <p>Auto-scales from 10 to 10 million transactions per second. You never worry about capacity, we handle the peaks so you can focus on growth.</p>
+        <span class="sb-metric">99.99% uptime SLA</span>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-icon">&#127760;</div>
+        <h3>Global Coverage</h3>
+        <p>Send and receive in 140+ currencies across 190 countries. One API, one integration, one dashboard. No correspondent bank headaches.</p>
+        <span class="sb-metric">190 countries supported</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits-grid .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

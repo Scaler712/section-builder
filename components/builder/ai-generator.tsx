@@ -19,6 +19,7 @@ interface AiGeneratorProps {
   onGenerated: (html: string) => void;
   onTemplateChange: (id: string) => void;
   apiKey: string;
+  activePreset: string | null;
 }
 
 const languages = [
@@ -30,7 +31,7 @@ const languages = [
   { value: "ru", label: "Russian" },
 ];
 
-export function AiGenerator({ activeTemplate, onGenerated, onTemplateChange, apiKey }: AiGeneratorProps) {
+export function AiGenerator({ activeTemplate, onGenerated, onTemplateChange, apiKey, activePreset }: AiGeneratorProps) {
   const [sectionType, setSectionType] = useState(activeTemplate || "");
   const [language, setLanguage] = useState("en");
   const [productName, setProductName] = useState("");
@@ -64,6 +65,7 @@ export function AiGenerator({ activeTemplate, onGenerated, onTemplateChange, api
           language,
           productName: productName.trim() || undefined,
           customInstructions: instructions.trim() || undefined,
+          designSystemId: activePreset || undefined,
         }),
       });
 

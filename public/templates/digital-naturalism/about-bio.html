@@ -1,0 +1,175 @@
+<!-- Generated: digital-naturalism/about-bio -->
+<style>
+.sb-about-bio {
+  background: #1C1917;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+}
+.sb-about-bio::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.sb-about-bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+}
+.sb-about-bio .sb-photo-frame {
+  position: relative;
+}
+.sb-about-bio .sb-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: #292524;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--sb-card-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  color: var(--sb-muted);
+  overflow: hidden;
+}
+.sb-about-bio .sb-photo-glow {
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(212,242,104,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.sb-about-bio .sb-content .sb-label {
+  color: var(--sb-accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+  font-family: sans-serif;
+}
+.sb-about-bio .sb-content h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--sb-heading);
+  margin: 0 0 24px 0;
+}
+.sb-about-bio .sb-content h2 strong {
+  font-weight: 700;
+  font-style: normal;
+}
+.sb-about-bio .sb-content p {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+  font-family: sans-serif;
+}
+.sb-about-bio .sb-content p strong {
+  color: var(--sb-heading);
+  font-weight: 600;
+}
+.sb-about-bio .sb-stats {
+  display: flex;
+  gap: 20px;
+  margin-top: 32px;
+}
+.sb-about-bio .sb-stat {
+  text-align: left;
+}
+.sb-about-bio .sb-stat-num {
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--sb-accent);
+  line-height: 1;
+}
+.sb-about-bio .sb-stat-num strong {
+  font-weight: 700;
+}
+.sb-about-bio .sb-stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sb-muted);
+  margin-top: 4px;
+  font-family: sans-serif;
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .sb-about-bio .sb-photo-frame { max-width: 280px; margin: 0 auto; }
+  .sb-about-bio .sb-content h2 { font-size: 28px; }
+  .sb-about-bio .sb-stats { flex-wrap: wrap; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-about-bio-inner">
+    <div class="sb-photo-frame fade-up">
+      <div class="sb-photo">&#128100;</div>
+      <div class="sb-photo-glow"></div>
+    </div>
+    <div class="sb-content">
+      <span class="sb-label fade-up">About the Founder</span>
+      <h2 class="fade-up">Built by someone who's<br><strong>been in the trenches</strong></h2>
+      <p class="fade-up">I spent 4 years building and failing at online businesses before figuring out what actually works. No trust fund, no connections, no team of 50. Just relentless iteration and a refusal to stay stuck.</p>
+      <p class="fade-up">Today I run a <strong>7-figure business</strong> with a team of 3 and a stack of AI tools that do the heavy lifting. This platform is everything I wish I had when I started -- packaged into one system that actually delivers.</p>
+      <div class="sb-stats fade-up">
+        <div class="sb-stat">
+          <div class="sb-stat-num"><strong>$4.2M</strong></div>
+          <div class="sb-stat-label">Revenue</div>
+        </div>
+        <div class="sb-stat">
+          <div class="sb-stat-num"><strong>3,200+</strong></div>
+          <div class="sb-stat-label">Students</div>
+        </div>
+        <div class="sb-stat">
+          <div class="sb-stat-num"><strong>94%</strong></div>
+          <div class="sb-stat-label">Completion</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

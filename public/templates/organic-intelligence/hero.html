@@ -1,0 +1,126 @@
+<!-- Generated: organic-intelligence/hero -->
+<style>
+.sb-hero {
+  background: #fcfbf9;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.sb-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -10%;
+  width: 120%;
+  height: 120px;
+  background: var(--sb-highlight);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.sb-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-hero .sb-mono-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 40px;
+  display: block;
+}
+.sb-hero h1 {
+  font-family: var(--sb-font);
+  font-size: clamp(48px, 11vw, 140px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--sb-heading);
+  margin: 0 0 32px 0;
+}
+.sb-hero .sb-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--sb-body);
+  max-width: 520px;
+  margin: 0 auto 48px;
+  line-height: 1.5;
+}
+.sb-hero .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--sb-btn-radius);
+  padding: 16px 44px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: sb-oi-pulse 3s ease-in-out infinite;
+}
+.sb-hero .sb-cta-btn:hover {
+  transform: scale(1.02);
+}
+@keyframes sb-oi-pulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(67, 56, 202, 0); }
+  50% { box-shadow: 0 0 20px rgba(67, 56, 202, 0.3); transform: scale(1.02); }
+}
+.sb-hero .fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1000ms cubic-bezier(0.22, 1, 0.36, 1), transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sb-hero .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-hero { min-height: 70vh; }
+  .sb-hero h1 { font-size: 42px; }
+  .sb-hero .sb-sub { font-size: 16px; margin-bottom: 36px; }
+}
+@media (max-width: 480px) {
+  .sb-hero h1 { font-size: 32px; }
+}
+</style>
+
+<div class="sb-hero">
+  <div class="sb-hero-inner">
+    <span class="sb-mono-label fade-up">The Future of Learning</span>
+    <h1 class="fade-up">Master Any Skill<br>In Half the Time</h1>
+    <p class="sb-sub fade-up">A science-backed system that 3,200+ professionals use to acquire expertise faster. No theory overload. Just measurable progress, week after week.</p>
+    <a href="#" class="sb-cta-btn fade-up">Start Your Journey</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-hero .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

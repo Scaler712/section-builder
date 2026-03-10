@@ -1,0 +1,185 @@
+<!-- Generated: red-sun/guarantee -->
+<style>
+.sb-guarantee {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-guarantee .sb-blur-1 {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(120px);
+  pointer-events: none;
+  top: -80px;
+  left: -60px;
+}
+.sb-guarantee .sb-blur-2 {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.08;
+  filter: blur(100px);
+  pointer-events: none;
+  bottom: -60px;
+  right: -40px;
+}
+.sb-guarantee-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-guarantee .sb-dot-grid {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(#EF4623 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  opacity: 0.18;
+  pointer-events: none;
+  top: -20px;
+  right: -30px;
+  border-radius: 12px;
+}
+.sb-guarantee-card {
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 24px 64px rgba(45,59,66,0.08);
+  padding: 60px 52px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.sb-guarantee-card .sb-shield {
+  width: 80px;
+  height: 80px;
+  background: var(--sb-highlight);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin: 0 auto 28px auto;
+}
+.sb-guarantee-card .sb-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.sb-guarantee-card .sb-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+}
+.sb-guarantee-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 24px 0;
+}
+.sb-guarantee-card h2 em {
+  color: var(--sb-accent);
+  font-style: italic;
+}
+.sb-guarantee-card .sb-body {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto 16px auto;
+}
+.sb-guarantee-card .sb-terms {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--sb-highlight);
+  flex-wrap: wrap;
+}
+.sb-guarantee-card .sb-term {
+  font-size: 13px;
+  color: var(--sb-muted);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sb-guarantee-card .sb-term::before {
+  content: '\2713';
+  color: var(--sb-accent);
+  font-weight: 700;
+  font-size: 12px;
+}
+.sb-guarantee .fade-up {
+  opacity: 0;
+  transform: translateY(30px) rotate(2deg);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-guarantee .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+@media (max-width: 768px) {
+  .sb-guarantee-card { padding: 40px 28px; }
+  .sb-guarantee-card h2 { font-size: 28px; }
+  .sb-guarantee-card .sb-terms { flex-direction: column; gap: 12px; align-items: center; }
+  .sb-guarantee .sb-dot-grid { display: none; }
+}
+</style>
+
+<div class="sb-guarantee">
+  <div class="sb-blur-1"></div>
+  <div class="sb-blur-2"></div>
+  <div class="sb-guarantee-inner">
+    <div class="sb-dot-grid"></div>
+    <div class="sb-guarantee-card fade-up">
+      <div class="sb-shield">&#128737;</div>
+      <div class="sb-label">Risk Free</div>
+      <h2>14-Day <em>Money-Back</em><br>Guarantee</h2>
+      <p class="sb-body">We're so confident you'll love the platform that we'll give you a full two weeks to decide. If it's not for you, email us and we'll refund every cent. No questions, no forms, no hassle.</p>
+      <p class="sb-body">Our average refund processing time is under 6 hours. But our refund rate is under 3% -- because the product speaks for itself.</p>
+      <div class="sb-terms">
+        <span class="sb-term">100% Refund</span>
+        <span class="sb-term">No Questions Asked</span>
+        <span class="sb-term">Under 24h Processing</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-guarantee .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

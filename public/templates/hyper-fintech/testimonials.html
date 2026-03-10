@@ -1,0 +1,161 @@
+<!-- Generated: hyper-fintech/testimonials -->
+<style>
+.sb-testimonials {
+  background: #0A0A0A;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-testimonials .sb-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.sb-testimonials h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+  margin: 0 0 56px 0;
+}
+.sb-testimonials .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-testimonials .sb-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 2rem;
+  padding: 36px;
+  transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-testimonials .sb-card:hover {
+  border-color: rgba(253,224,71,0.2);
+}
+.sb-testimonials .sb-stars {
+  color: var(--sb-accent);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.sb-testimonials .sb-quote {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+}
+.sb-testimonials .sb-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sb-testimonials .sb-avatar {
+  width: 40px;
+  height: 40px;
+  background: rgba(253,224,71,0.15);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sb-accent);
+}
+.sb-testimonials .sb-author-info .sb-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+  display: block;
+}
+.sb-testimonials .sb-author-info .sb-role {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-muted);
+  display: block;
+  margin-top: 2px;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-testimonials .sb-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .sb-testimonials h2 { font-size: 32px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-testimonials-inner">
+    <span class="sb-badge fade-up">Social Proof</span>
+    <h2 class="fade-up">Trusted by the fastest<br>companies on earth.</h2>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-quote">"We migrated from Stripe and cut our settlement time from 2 days to 14 milliseconds. Our cash flow has never been healthier. This is the future of payments."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">MR</div>
+          <div class="sb-author-info">
+            <span class="sb-name">Marcus Rivera</span>
+            <span class="sb-role">CFO, NexTrade</span>
+          </div>
+        </div>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-quote">"Processing $400M/month through their platform with zero downtime. The API is clean, documentation is solid, and support actually understands engineering."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">AK</div>
+          <div class="sb-author-info">
+            <span class="sb-name">Aisha Koroma</span>
+            <span class="sb-role">CTO, Finova Labs</span>
+          </div>
+        </div>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-quote">"The fee transparency alone saved us $180K last quarter. We finally know exactly what we're paying per transaction. No surprises, no hidden costs."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">DL</div>
+          <div class="sb-author-info">
+            <span class="sb-name">David Lin</span>
+            <span class="sb-role">Head of Ops, ScaleUp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

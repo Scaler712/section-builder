@@ -1,0 +1,172 @@
+<!-- Generated: atmospheric-glass/guarantee -->
+<style>
+.sb-guarantee {
+  background: #0f172a;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-guarantee .sb-glow-1 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.12), rgba(168,85,247,0.08), transparent 70%);
+  filter: blur(60px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.sb-guarantee .sb-glow-2 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(236,72,153,0.06), transparent 70%);
+  filter: blur(60px);
+  bottom: -5%;
+  right: 10%;
+  pointer-events: none;
+}
+.sb-guarantee-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-guarantee-card {
+  background: rgba(30,41,59,0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius);
+  padding: 56px 48px;
+  text-align: center;
+  transition: all 500ms ease;
+}
+.sb-guarantee-card:hover {
+  border-color: rgba(99,102,241,0.25);
+}
+.sb-guarantee-card .sb-shield {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  background: rgba(99,102,241,0.15);
+  border: 2px solid rgba(99,102,241,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+}
+.sb-guarantee-card h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 8px 0;
+}
+.sb-guarantee-card .sb-accent-line {
+  font-size: 18px;
+  color: var(--sb-accent);
+  font-weight: 600;
+  margin-bottom: 24px;
+  font-family: 'Inter', sans-serif;
+}
+.sb-guarantee-card p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin: 0 auto 24px;
+  max-width: 560px;
+  font-family: 'Inter', sans-serif;
+}
+.sb-guarantee-card .sb-terms {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.sb-guarantee-card .sb-term {
+  text-align: center;
+}
+.sb-guarantee-card .sb-term .sb-term-icon {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.sb-guarantee-card .sb-term span {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Inter', sans-serif;
+}
+.sb-guarantee .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-guarantee .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-guarantee-card { padding: 36px 24px; }
+  .sb-guarantee-card h2 { font-size: 28px; }
+  .sb-guarantee-card .sb-terms { gap: 20px; }
+}
+</style>
+
+<div class="sb-guarantee">
+  <div class="sb-glow-1"></div>
+  <div class="sb-glow-2"></div>
+  <div class="sb-guarantee-inner">
+    <div class="sb-guarantee-card fade-up">
+      <div class="sb-shield">&#128737;</div>
+      <h2>100% Money-Back Guarantee</h2>
+      <div class="sb-accent-line">14 days. No questions asked.</div>
+      <p>Try everything risk-free for a full 14 days. If you don't see measurable improvement in your conversion rates, email us and we'll refund every penny. No calls, no forms, no hoops to jump through.</p>
+      <p>We've processed over 2,400 refund requests to date -- that's less than 3% of all signups. We're confident enough in the product to make this a no-brainer for you.</p>
+      <div class="sb-terms">
+        <div class="sb-term">
+          <div class="sb-term-icon">&#9989;</div>
+          <span>Full feature access</span>
+        </div>
+        <div class="sb-term">
+          <div class="sb-term-icon">&#128274;</div>
+          <span>Cancel in 2 clicks</span>
+        </div>
+        <div class="sb-term">
+          <div class="sb-term-icon">&#128176;</div>
+          <span>Instant refund</span>
+        </div>
+        <div class="sb-term">
+          <div class="sb-term-icon">&#128230;</div>
+          <span>Keep your data</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-guarantee .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

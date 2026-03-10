@@ -1,0 +1,198 @@
+<!-- Generated: red-noir/testimonials -->
+<style>
+.sb-testimonials {
+  background: #0a0a0a;
+  padding: var(--sb-section-pad, 100px 20px);
+  font-family: 'Manrope', var(--sb-font), sans-serif;
+  color: var(--sb-body, #d4d4d8);
+  position: relative;
+  overflow: hidden;
+}
+.sb-testimonials::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.sb-testimonials-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  text-align: center;
+  width: 100%;
+}
+.sb-testimonials-title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #ffffff;
+  margin: 0 0 64px;
+  text-align: center;
+}
+.sb-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-testimonials-card {
+  background: rgba(39,39,42,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius, 18px);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 400ms ease;
+}
+.sb-testimonials-card:hover {
+  border-color: rgba(239,35,60,0.25);
+}
+.sb-testimonials-quote-mark {
+  font-size: 40px;
+  line-height: 1;
+  color: var(--sb-accent);
+  opacity: 0.5;
+  margin-bottom: 12px;
+}
+.sb-testimonials-quote {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+  margin: 0 0 28px;
+  flex: 1;
+}
+.sb-testimonials-metric {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+.sb-testimonials-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 20px;
+}
+.sb-testimonials-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(239,35,60,0.1);
+  border: 1px solid rgba(239,35,60,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sb-accent);
+  flex-shrink: 0;
+}
+.sb-testimonials-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.sb-testimonials-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+  margin-top: 2px;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.77, 0, 0.175, 1), transform 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .sb-testimonials-grid { grid-template-columns: 1fr; }
+  .sb-testimonials-title { font-size: 36px; }
+}
+@media (max-width: 480px) {
+  .sb-testimonials-title { font-size: 28px; }
+  .sb-testimonials-card { padding: 28px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-testimonials-inner">
+    <div class="sb-testimonials-badge fade-up">Results speak</div>
+    <h2 class="sb-testimonials-title fade-up">Brands that stopped guessing and started scaling.</h2>
+    <div class="sb-testimonials-grid">
+      <div class="sb-testimonials-card fade-up">
+        <div class="sb-testimonials-quote-mark">&ldquo;</div>
+        <p class="sb-testimonials-quote">They delivered 15 ad variations in the first week. Three of them beat our best-performing creative that had been running for 4 months.</p>
+        <div class="sb-testimonials-metric">ROAS: 2.1x &rarr; 4.7x</div>
+        <div class="sb-testimonials-author">
+          <div class="sb-testimonials-avatar">DL</div>
+          <div>
+            <div class="sb-testimonials-name">Daniel Liu</div>
+            <div class="sb-testimonials-role">Head of Growth, Elevate Supplements</div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-testimonials-card fade-up">
+        <div class="sb-testimonials-quote-mark">&ldquo;</div>
+        <p class="sb-testimonials-quote">We were spending $40K/mo on creative that was not working. Within 60 days they cut our CPA by 38% and tripled our creative output.</p>
+        <div class="sb-testimonials-metric">CPA reduced 38%</div>
+        <div class="sb-testimonials-author">
+          <div class="sb-testimonials-avatar">AK</div>
+          <div>
+            <div class="sb-testimonials-name">Aisha Khan</div>
+            <div class="sb-testimonials-role">CMO, Thread & Co</div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-testimonials-card fade-up">
+        <div class="sb-testimonials-quote-mark">&ldquo;</div>
+        <p class="sb-testimonials-quote">The turnaround is insane. We brief on Monday and have tested creatives with data by Thursday. Our previous agency took 3 weeks per round.</p>
+        <div class="sb-testimonials-metric">72-hour delivery</div>
+        <div class="sb-testimonials-author">
+          <div class="sb-testimonials-avatar">MW</div>
+          <div>
+            <div class="sb-testimonials-name">Marcus Wright</div>
+            <div class="sb-testimonials-role">Founder, Apex Direct</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

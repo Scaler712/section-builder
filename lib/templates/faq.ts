@@ -10,8 +10,8 @@ export const faq: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-faq {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
   background: #FFFFFF;
 }
 .sb-faq-inner {
@@ -22,7 +22,7 @@ export const faq: SectionTemplate = {
   text-align: center;
   font-size: 36px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 48px;
 }
 .sb-faq-item {
@@ -36,13 +36,13 @@ export const faq: SectionTemplate = {
   cursor: pointer;
   font-size: 17px;
   font-weight: 600;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   user-select: none;
 }
 .sb-faq-question .arrow {
   font-size: 20px;
   transition: transform 0.3s ease;
-  color: #6B6B6B;
+  color: var(--sb-muted);
 }
 .sb-faq-item.open .sb-faq-question .arrow {
   transform: rotate(180deg);
@@ -58,7 +58,7 @@ export const faq: SectionTemplate = {
 }
 .sb-faq-answer p {
   font-size: 16px;
-  color: #3A3A3A;
+  color: var(--sb-body);
   line-height: 1.7;
   font-weight: 400;
 }
@@ -73,7 +73,7 @@ export const faq: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-faq { padding: 50px 16px; }
+  .sb-faq { padding: var(--sb-section-pad); }
   .sb-faq h2 { font-size: 28px; }
   .sb-faq-question { font-size: 15px; }
 }

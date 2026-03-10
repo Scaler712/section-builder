@@ -1,0 +1,167 @@
+<!-- Generated: organic-intelligence/about-bio -->
+<style>
+.sb-about-bio {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-about-bio::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -10%;
+  width: 120%;
+  height: 120px;
+  background: #fcfbf9;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.sb-about-bio-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-about-bio .sb-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #e5e5e5;
+  border-radius: var(--sb-card-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sb-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+}
+.sb-about-bio .sb-content {
+  padding: 20px 0;
+}
+.sb-about-bio .sb-mono-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+  display: block;
+}
+.sb-about-bio .sb-name {
+  font-family: var(--sb-font);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--sb-heading);
+  margin: 0 0 24px 0;
+}
+.sb-about-bio .sb-bio-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+}
+.sb-about-bio .sb-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid #e5e5e5;
+}
+.sb-about-bio .sb-stat-num {
+  font-family: var(--sb-font);
+  font-size: 28px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--sb-heading);
+  display: block;
+  letter-spacing: -0.02em;
+}
+.sb-about-bio .sb-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sb-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 4px;
+  display: block;
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1000ms cubic-bezier(0.22, 1, 0.36, 1), transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 480px;
+  }
+  .sb-about-bio .sb-photo { aspect-ratio: 4 / 3; max-width: 320px; margin: 0 auto; }
+  .sb-about-bio .sb-name { font-size: 32px; }
+  .sb-about-bio .sb-stats { gap: 24px; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-about-bio-inner">
+    <div class="sb-photo fade-up">Your Photo</div>
+    <div class="sb-content">
+      <span class="sb-mono-label fade-up">The Founder</span>
+      <h2 class="sb-name fade-up">Alex Morgan</h2>
+      <p class="sb-bio-text fade-up">I built my first agency out of a studio apartment with $200 and a laptop. Two years later, it was doing $47k/month. Then I realized the real leverage wasn't in doing client work. It was in teaching the system.</p>
+      <p class="sb-bio-text fade-up">This program is the exact playbook I'd hand myself if I could go back. No theory. No fluff. Just the frameworks and templates that actually move the needle.</p>
+      <div class="sb-stats fade-up">
+        <div>
+          <span class="sb-stat-num">3,200+</span>
+          <span class="sb-stat-label">Members</span>
+        </div>
+        <div>
+          <span class="sb-stat-num">$2.1M</span>
+          <span class="sb-stat-label">Revenue</span>
+        </div>
+        <div>
+          <span class="sb-stat-num">94%</span>
+          <span class="sb-stat-label">Completion</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

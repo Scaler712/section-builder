@@ -1,0 +1,210 @@
+<!-- Generated: obsidian-lime/countdown-timer -->
+<style>
+.sb-countdown-timer {
+  background: #0c0c0c;
+  padding: var(--sb-section-pad, 100px 20px);
+  font-family: 'Space Grotesk', var(--sb-font), sans-serif;
+  color: var(--sb-body);
+  position: relative;
+  overflow: hidden;
+}
+.sb-countdown-timer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.sb-countdown-timer-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(204,255,0,0.06), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+.sb-countdown-timer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.sb-countdown-timer-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-countdown-timer-headline {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+  color: var(--sb-heading);
+  margin: 0 0 16px;
+}
+.sb-countdown-timer-sub {
+  font-size: 16px;
+  color: rgba(235,235,235,0.5);
+  line-height: 1.7;
+  margin: 0 0 48px;
+}
+.sb-countdown-timer-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.sb-countdown-timer-box {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--sb-card-radius, 24px);
+  padding: 28px 24px;
+  min-width: 100px;
+  text-align: center;
+}
+.sb-countdown-timer-box-value {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+  line-height: 1;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.sb-countdown-timer-box-unit {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(235,235,235,0.3);
+}
+.sb-countdown-timer-btn {
+  display: inline-block;
+  padding: 18px 52px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', var(--sb-font), sans-serif;
+  letter-spacing: -0.02em;
+  color: #0c0c0c;
+  background: var(--sb-cta-bg);
+  border: none;
+  border-radius: var(--sb-btn-radius, 50px);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-countdown-timer-btn:hover {
+  background: #d9ff4d;
+  box-shadow: 0 0 60px rgba(204,255,0,0.25);
+}
+.sb-countdown-timer-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(235,235,235,0.3);
+  margin-top: 20px;
+}
+.sb-countdown-timer .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 700ms cubic-bezier(0.77, 0, 0.175, 1), transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-countdown-timer .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .sb-countdown-timer-headline { font-size: 32px; }
+  .sb-countdown-timer-boxes { gap: 10px; }
+  .sb-countdown-timer-box { min-width: 72px; padding: 20px 16px; }
+  .sb-countdown-timer-box-value { font-size: 32px; }
+}
+@media (max-width: 480px) {
+  .sb-countdown-timer-headline { font-size: 26px; }
+  .sb-countdown-timer-box { min-width: 60px; padding: 16px 12px; border-radius: 16px; }
+  .sb-countdown-timer-box-value { font-size: 26px; }
+  .sb-countdown-timer-btn { padding: 16px 40px; font-size: 14px; }
+}
+</style>
+
+<div class="sb-countdown-timer">
+  <div class="sb-countdown-timer-glow"></div>
+  <div class="sb-countdown-timer-inner">
+    <div class="sb-countdown-timer-label fade-up">Limited offer</div>
+    <h2 class="sb-countdown-timer-headline fade-up">Early adopter pricing ends soon.</h2>
+    <p class="sb-countdown-timer-sub fade-up">Lock in 40% off Pro for life. This rate disappears when we hit 15,000 teams.</p>
+    <div class="sb-countdown-timer-boxes fade-up">
+      <div class="sb-countdown-timer-box">
+        <div class="sb-countdown-timer-box-value" id="sb-cd-days">02</div>
+        <div class="sb-countdown-timer-box-unit">Days</div>
+      </div>
+      <div class="sb-countdown-timer-box">
+        <div class="sb-countdown-timer-box-value" id="sb-cd-hours">14</div>
+        <div class="sb-countdown-timer-box-unit">Hours</div>
+      </div>
+      <div class="sb-countdown-timer-box">
+        <div class="sb-countdown-timer-box-value" id="sb-cd-mins">37</div>
+        <div class="sb-countdown-timer-box-unit">Min</div>
+      </div>
+      <div class="sb-countdown-timer-box">
+        <div class="sb-countdown-timer-box-value" id="sb-cd-secs">51</div>
+        <div class="sb-countdown-timer-box-unit">Sec</div>
+      </div>
+    </div>
+    <a href="#" class="sb-countdown-timer-btn fade-up">Claim early adopter rate</a>
+    <div class="sb-countdown-timer-note fade-up">2,847 spots remaining</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var deadline = new Date().getTime() + (2 * 24 * 60 * 60 * 1000) + (14 * 60 * 60 * 1000) + (37 * 60 * 1000);
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function tick() {
+    var now = new Date().getTime();
+    var diff = deadline - now;
+    if (diff <= 0) { diff = 0; }
+    var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    var s = Math.floor((diff % (1000 * 60)) / 1000);
+    var dEl = document.getElementById('sb-cd-days');
+    var hEl = document.getElementById('sb-cd-hours');
+    var mEl = document.getElementById('sb-cd-mins');
+    var sEl = document.getElementById('sb-cd-secs');
+    if (dEl) dEl.textContent = pad(d);
+    if (hEl) hEl.textContent = pad(h);
+    if (mEl) mEl.textContent = pad(m);
+    if (sEl) sEl.textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-countdown-timer .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

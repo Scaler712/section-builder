@@ -1,0 +1,244 @@
+<!-- Generated: red-noir/countdown-timer -->
+<style>
+@keyframes sb-countdown-border-spin {
+  0% { --sb-cd-angle: 0deg; }
+  100% { --sb-cd-angle: 360deg; }
+}
+@property --sb-cd-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+.sb-countdown-timer {
+  background: #0a0a0a;
+  padding: var(--sb-section-pad, 100px 20px);
+  font-family: 'Manrope', var(--sb-font), sans-serif;
+  color: var(--sb-body, #d4d4d8);
+  position: relative;
+  overflow: hidden;
+}
+.sb-countdown-timer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.sb-countdown-timer-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239,35,60,0.1), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+.sb-countdown-timer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.sb-countdown-timer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 24px;
+}
+.sb-countdown-timer-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  box-shadow: 0 0 8px rgba(239,35,60,0.5);
+  animation: sb-cd-pulse 2s ease-in-out infinite;
+}
+@keyframes sb-cd-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.sb-countdown-timer-headline {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 16px;
+  background: linear-gradient(180deg, #ffffff 30%, rgba(255,255,255,0.4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sb-countdown-timer-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  margin: 0 0 48px;
+}
+.sb-countdown-timer-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.sb-countdown-timer-box {
+  background: rgba(39,39,42,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius, 18px);
+  padding: 28px 24px;
+  min-width: 100px;
+  text-align: center;
+}
+.sb-countdown-timer-box-value {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.sb-countdown-timer-box-unit {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+.sb-countdown-timer-btn-wrap {
+  display: inline-block;
+  position: relative;
+  border-radius: 100px;
+  padding: 2px;
+  background: conic-gradient(from var(--sb-cd-angle, 0deg), #ef233c, #ff6b6b, #ef233c);
+  animation: sb-countdown-border-spin 2.5s linear infinite;
+}
+.sb-countdown-timer-btn {
+  display: block;
+  padding: 18px 52px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Manrope', var(--sb-font), sans-serif;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  background: #0a0a0a;
+  border: none;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 300ms ease;
+}
+.sb-countdown-timer-btn:hover { background: #111111; }
+.sb-countdown-timer-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.25);
+  margin-top: 20px;
+}
+.sb-countdown-timer .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.77, 0, 0.175, 1), transform 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-countdown-timer .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .sb-countdown-timer-headline { font-size: 36px; }
+  .sb-countdown-timer-boxes { gap: 10px; }
+  .sb-countdown-timer-box { min-width: 72px; padding: 20px 16px; }
+  .sb-countdown-timer-box-value { font-size: 32px; }
+}
+@media (max-width: 480px) {
+  .sb-countdown-timer-headline { font-size: 28px; }
+  .sb-countdown-timer-box { min-width: 60px; padding: 16px 12px; border-radius: 14px; }
+  .sb-countdown-timer-box-value { font-size: 26px; }
+  .sb-countdown-timer-btn { padding: 16px 40px; font-size: 14px; }
+}
+</style>
+
+<div class="sb-countdown-timer">
+  <div class="sb-countdown-timer-glow"></div>
+  <div class="sb-countdown-timer-inner">
+    <div class="sb-countdown-timer-badge fade-up">
+      <span class="sb-countdown-timer-badge-dot"></span>
+      <span>Offer expires soon</span>
+    </div>
+    <h2 class="sb-countdown-timer-headline fade-up">Founding member pricing closes in:</h2>
+    <p class="sb-countdown-timer-sub fade-up">Lock in 30% off your first 3 months. Once these spots are gone, pricing goes to full rate permanently.</p>
+    <div class="sb-countdown-timer-boxes fade-up">
+      <div class="sb-countdown-timer-box">
+        <div class="sb-countdown-timer-box-value" id="sb-rn-cd-days">03</div>
+        <div class="sb-countdown-timer-box-unit">Days</div>
+      </div>
+      <div class="sb-countdown-timer-box">
+        <div class="sb-countdown-timer-box-value" id="sb-rn-cd-hours">11</div>
+        <div class="sb-countdown-timer-box-unit">Hours</div>
+      </div>
+      <div class="sb-countdown-timer-box">
+        <div class="sb-countdown-timer-box-value" id="sb-rn-cd-mins">42</div>
+        <div class="sb-countdown-timer-box-unit">Min</div>
+      </div>
+      <div class="sb-countdown-timer-box">
+        <div class="sb-countdown-timer-box-value" id="sb-rn-cd-secs">08</div>
+        <div class="sb-countdown-timer-box-unit">Sec</div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <div class="sb-countdown-timer-btn-wrap">
+        <a href="#" class="sb-countdown-timer-btn">Claim founding rate</a>
+      </div>
+    </div>
+    <div class="sb-countdown-timer-note fade-up">5 founding spots remaining this month</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var deadline = new Date().getTime() + (3 * 24 * 60 * 60 * 1000) + (11 * 60 * 60 * 1000) + (42 * 60 * 1000);
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function tick() {
+    var now = new Date().getTime();
+    var diff = deadline - now;
+    if (diff <= 0) { diff = 0; }
+    var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    var s = Math.floor((diff % (1000 * 60)) / 1000);
+    var dEl = document.getElementById('sb-rn-cd-days');
+    var hEl = document.getElementById('sb-rn-cd-hours');
+    var mEl = document.getElementById('sb-rn-cd-mins');
+    var sEl = document.getElementById('sb-rn-cd-secs');
+    if (dEl) dEl.textContent = pad(d);
+    if (hEl) hEl.textContent = pad(h);
+    if (mEl) mEl.textContent = pad(m);
+    if (sEl) sEl.textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-countdown-timer .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

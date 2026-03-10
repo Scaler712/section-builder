@@ -1,0 +1,275 @@
+<!-- Generated: obsidian-lime/hero -->
+<style>
+.sb-hero {
+  padding: 0;
+  background: #0c0c0c;
+  font-family: 'Space Grotesk', var(--sb-font), sans-serif;
+  color: var(--sb-body);
+  overflow: hidden;
+  position: relative;
+}
+.sb-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 1;
+}
+.sb-hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.15;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 2;
+}
+.sb-hero-shell {
+  max-width: 1100px;
+  margin: 40px auto;
+  position: relative;
+  z-index: 3;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2.5rem;
+  overflow: hidden;
+}
+.sb-hero-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sb-hero-nav-brand {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+}
+.sb-hero-nav-pills {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 100px;
+  padding: 4px;
+}
+.sb-hero-nav-pill {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(235,235,235,0.5);
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 300ms ease;
+}
+.sb-hero-nav-pill:hover { color: var(--sb-heading); }
+.sb-hero-nav-pill.active {
+  background: rgba(255,255,255,0.08);
+  color: var(--sb-heading);
+}
+.sb-hero-body {
+  display: flex;
+  align-items: center;
+  padding: var(--sb-section-pad, 80px 56px);
+  gap: 48px;
+  position: relative;
+}
+.sb-hero-watermark {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 220px;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  color: rgba(255,255,255,0.03);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.sb-hero-left { flex: 7; position: relative; z-index: 1; }
+.sb-hero-right { flex: 5; position: relative; z-index: 1; }
+.sb-hero-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0c0c0c;
+  background: var(--sb-accent);
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+.sb-hero-headline {
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+  color: var(--sb-heading);
+  margin: 0 0 24px;
+}
+.sb-hero-sub {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(235,235,235,0.5);
+  line-height: 1.7;
+  max-width: 440px;
+  margin: 0 0 40px;
+}
+.sb-hero-cta-btn {
+  display: inline-block;
+  padding: 16px 44px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', var(--sb-font), sans-serif;
+  letter-spacing: -0.02em;
+  color: #0c0c0c;
+  background: var(--sb-cta-bg);
+  border: none;
+  border-radius: var(--sb-btn-radius, 50px);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 400ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-hero-cta-btn:hover {
+  background: #d9ff4d;
+  box-shadow: 0 0 40px rgba(204,255,0,0.2);
+}
+.sb-hero-right-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--sb-card-radius, 24px);
+  padding: 32px;
+}
+.sb-hero-right-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sb-hero-right-card-row:last-child { border-bottom: none; }
+.sb-hero-right-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(235,235,235,0.4);
+}
+.sb-hero-right-card-value {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+}
+.sb-hero-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 56px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(235,235,235,0.3);
+  letter-spacing: 0.04em;
+}
+.sb-hero .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 700ms cubic-bezier(0.77, 0, 0.175, 1), transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-hero .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .sb-hero-shell { margin: 16px; border-radius: 1.5rem; }
+  .sb-hero-body { flex-direction: column; padding: 48px 32px; }
+  .sb-hero-headline { font-size: 36px; }
+  .sb-hero-watermark { font-size: 120px; }
+  .sb-hero-nav-pills { display: none; }
+  .sb-hero-bottom-bar { padding: 16px 32px; flex-direction: column; gap: 8px; }
+}
+@media (max-width: 480px) {
+  .sb-hero-shell { margin: 12px; border-radius: 1.25rem; }
+  .sb-hero-body { padding: 36px 20px; }
+  .sb-hero-headline { font-size: 28px; }
+  .sb-hero-sub { font-size: 14px; }
+  .sb-hero-cta-btn { padding: 14px 36px; font-size: 13px; }
+}
+</style>
+
+<div class="sb-hero">
+  <div class="sb-hero-shell">
+    <nav class="sb-hero-nav fade-up">
+      <span class="sb-hero-nav-brand">Vertex</span>
+      <div class="sb-hero-nav-pills">
+        <a href="#" class="sb-hero-nav-pill active">Platform</a>
+        <a href="#" class="sb-hero-nav-pill">Pricing</a>
+        <a href="#" class="sb-hero-nav-pill">Docs</a>
+        <a href="#" class="sb-hero-nav-pill">Changelog</a>
+      </div>
+    </nav>
+    <div class="sb-hero-body">
+      <div class="sb-hero-watermark" aria-hidden="true">VERTEX</div>
+      <div class="sb-hero-left">
+        <span class="sb-hero-badge fade-up">Now in public beta</span>
+        <h1 class="sb-hero-headline fade-up">Infrastructure that disappears when it works.</h1>
+        <p class="sb-hero-sub fade-up">Deploy globally in under 90 seconds. Zero config edge functions, automatic scaling, and observability baked into every layer.</p>
+        <a href="#" class="sb-hero-cta-btn fade-up">Start building free</a>
+      </div>
+      <div class="sb-hero-right fade-up">
+        <div class="sb-hero-right-card">
+          <div class="sb-hero-right-card-row">
+            <span class="sb-hero-right-card-label">Latency p99</span>
+            <span class="sb-hero-right-card-value">12ms</span>
+          </div>
+          <div class="sb-hero-right-card-row">
+            <span class="sb-hero-right-card-label">Uptime SLA</span>
+            <span class="sb-hero-right-card-value">99.99%</span>
+          </div>
+          <div class="sb-hero-right-card-row">
+            <span class="sb-hero-right-card-label">Edge nodes</span>
+            <span class="sb-hero-right-card-value">280+</span>
+          </div>
+          <div class="sb-hero-right-card-row">
+            <span class="sb-hero-right-card-label">Cold start</span>
+            <span class="sb-hero-right-card-value">&lt;50ms</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sb-hero-bottom-bar fade-up">
+      <span>Trusted by 12,000+ teams</span>
+      <span>SOC 2 Type II Certified</span>
+      <span>v3.2.0 &mdash; Mar 2026</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-hero .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

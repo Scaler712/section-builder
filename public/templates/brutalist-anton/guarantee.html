@@ -1,0 +1,141 @@
+<!-- Generated: brutalist-anton/guarantee -->
+<style>
+.sb-guarantee {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: #ffffff;
+  position: relative;
+}
+.sb-guarantee::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,0.03) 39px, rgba(0,0,0,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,0.03) 39px, rgba(0,0,0,0.03) 40px);
+  pointer-events: none;
+}
+.sb-guarantee-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-guarantee-card {
+  border: 2px solid var(--sb-heading);
+  border-radius: var(--sb-card-radius);
+  overflow: hidden;
+}
+.sb-guarantee-header {
+  background: var(--sb-heading);
+  padding: 20px 32px;
+  text-align: center;
+}
+.sb-guarantee-header h3 {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sb-accent);
+  margin: 0;
+}
+.sb-guarantee-body {
+  background: #ffffff;
+  padding: 48px;
+  text-align: center;
+}
+.sb-guarantee-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+  display: block;
+}
+.sb-guarantee-body h2 {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0 0 20px 0;
+}
+.sb-guarantee-body h2 .sb-highlight {
+  position: relative;
+  z-index: 1;
+  display: inline;
+}
+.sb-guarantee-body h2 .sb-highlight::before {
+  content: '';
+  position: absolute;
+  background: var(--sb-accent);
+  transform: rotate(-2deg);
+  inset: -2px -6px;
+  z-index: -1;
+}
+.sb-guarantee-body p {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 14px 0;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sb-guarantee-terms {
+  font-size: 13px;
+  color: var(--sb-muted);
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 2px solid rgba(0,0,0,0.06);
+  font-weight: 400;
+}
+.sb-guarantee .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1), transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-guarantee .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-guarantee-body { padding: 32px 24px; }
+  .sb-guarantee-body h2 { font-size: 32px; }
+}
+@media (max-width: 480px) {
+  .sb-guarantee-body h2 { font-size: 26px; }
+  .sb-guarantee-icon { font-size: 48px; }
+}
+</style>
+
+<div class="sb-guarantee">
+  <div class="sb-guarantee-inner">
+    <div class="sb-guarantee-card fade-up">
+      <div class="sb-guarantee-header">
+        <h3>Our Promise to You</h3>
+      </div>
+      <div class="sb-guarantee-body">
+        <span class="sb-guarantee-icon">&#128737;</span>
+        <h2>30-Day <span class="sb-highlight">Money-Back</span> Guarantee</h2>
+        <p>Try it risk-free for 30 days. If you're not completely satisfied with your results, email us and we'll refund every penny. No questions asked.</p>
+        <p>We've been in business for 4 years and have issued fewer than 12 refunds. That's how confident we are you'll love it.</p>
+        <p class="sb-guarantee-terms">Refund requests must be submitted within 30 days of purchase. Applies to all plans. Refund processed within 3-5 business days.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-guarantee .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,184 @@
+<!-- Generated: luxury-dark-gold/pain-points -->
+<style>
+.sb-pain-points {
+  background: #0a0a0a;
+  color: var(--sb-body);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.sb-pain-points .sb-glow {
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(167,139,113,0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.sb-pain-points-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-pain-points .sb-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  text-align: center;
+}
+.sb-pain-points h2 {
+  font-family: var(--sb-font);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  font-size: 42px;
+  text-align: center;
+  margin: 0 0 56px 0;
+}
+.sb-pain-points .sb-pain-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sb-pain-points .sb-pain-item {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--sb-card-radius);
+  padding: 28px 32px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+.sb-pain-points .sb-pain-item:hover {
+  border-color: rgba(167,139,113,0.2);
+  background: rgba(255,255,255,0.05);
+}
+.sb-pain-points .sb-pain-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(167,139,113,0.12);
+  border: 1px solid rgba(167,139,113,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sb-accent);
+  flex-shrink: 0;
+}
+.sb-pain-points .sb-pain-content h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  margin: 0 0 6px 0;
+}
+.sb-pain-points .sb-pain-content p {
+  font-size: 15px;
+  color: var(--sb-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.sb-pain-points .sb-cta-line {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 16px;
+  color: var(--sb-muted);
+  font-style: italic;
+}
+.sb-pain-points .sb-cta-line strong {
+  color: var(--sb-accent);
+}
+.sb-pain-points .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-pain-points .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pain-points h2 { font-size: 32px; }
+  .sb-pain-points .sb-pain-item { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .sb-pain-points h2 { font-size: 26px; }
+  .sb-pain-points .sb-pain-item { padding: 22px 20px; }
+}
+</style>
+
+<div class="sb-pain-points">
+  <div class="sb-glow"></div>
+  <div class="sb-pain-points-inner">
+    <div class="sb-label fade-up">The Reality</div>
+    <h2 class="fade-up">Is This What Success<br>Is Supposed to Feel Like?</h2>
+    <div class="sb-pain-list">
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-num">01</div>
+        <div class="sb-pain-content">
+          <h3>Your funnels convert below industry average</h3>
+          <p>You've invested in premium traffic but your landing pages dilute the quality of every visitor. Money in, mediocrity out.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-num">02</div>
+        <div class="sb-pain-content">
+          <h3>Your brand looks like everyone else</h3>
+          <p>Generic templates signal generic value. Your prospects can feel it. Your premium pricing doesn't match your visual presence.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-num">03</div>
+        <div class="sb-pain-content">
+          <h3>You're duct-taping tools together</h3>
+          <p>Five platforms. Three integrations that break monthly. A tech stack that demands as much attention as your actual business.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-num">04</div>
+        <div class="sb-pain-content">
+          <h3>Every change requires a developer</h3>
+          <p>A simple copy update takes three emails, a ticket, and a week. Your agility is hostage to someone else's calendar.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-num">05</div>
+        <div class="sb-pain-content">
+          <h3>You can't see what's actually working</h3>
+          <p>Data lives in silos. Attribution is a guess. You're making six-figure decisions on five-dollar insights.</p>
+        </div>
+      </div>
+    </div>
+    <p class="sb-cta-line fade-up"><strong>There is a better way.</strong> And it was designed for exactly this moment.</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pain-points .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

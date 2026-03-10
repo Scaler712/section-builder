@@ -1,0 +1,211 @@
+<!-- Generated: disruptor/solution-transition -->
+<style>
+.sb-solution-transition {
+  background: var(--sb-accent);
+  color: #000000;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-solution-transition .sb-vert-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(0,0,0,0.1);
+  user-select: none;
+}
+.sb-solution-transition .sb-vert-left { left: 20px; }
+.sb-solution-transition .sb-vert-right { right: 20px; }
+.sb-solution-transition-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.sb-solution-transition .sb-sticker {
+  display: inline-block;
+  background: #000000;
+  color: var(--sb-accent);
+  padding: 10px 22px;
+  transform: rotate(2deg);
+  border: 4px solid #000000;
+  box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.3);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+}
+.sb-solution-transition h2 {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.85;
+  color: #000000;
+  margin: 0 0 32px 0;
+}
+.sb-solution-transition .sb-divider {
+  width: 80px;
+  height: 4px;
+  background: #000000;
+  margin: 0 auto 32px auto;
+}
+.sb-solution-transition .sb-body {
+  font-size: 20px;
+  color: rgba(0,0,0,0.75);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto 48px auto;
+}
+.sb-solution-transition .sb-body strong {
+  color: #000000;
+  font-weight: 800;
+}
+.sb-solution-transition .sb-columns {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 32px;
+  align-items: start;
+  text-align: left;
+  margin-bottom: 48px;
+}
+.sb-solution-transition .sb-col-label {
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  color: rgba(0,0,0,0.5);
+}
+.sb-solution-transition .sb-col-before li,
+.sb-solution-transition .sb-col-after li {
+  font-size: 15px;
+  line-height: 1.8;
+  list-style: none;
+  padding: 0;
+}
+.sb-solution-transition .sb-col-before ul,
+.sb-solution-transition .sb-col-after ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sb-solution-transition .sb-col-before li::before {
+  content: "\2717  ";
+  font-weight: 800;
+  color: #000000;
+}
+.sb-solution-transition .sb-col-after li::before {
+  content: "\2713  ";
+  font-weight: 800;
+  color: #000000;
+}
+.sb-solution-transition .sb-arrow-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 800;
+  color: #000000;
+  padding-top: 28px;
+}
+.sb-solution-transition .sb-cta-btn {
+  display: inline-block;
+  background: #000000;
+  color: var(--sb-accent);
+  border: 4px solid #000000;
+  border-radius: var(--sb-btn-radius);
+  box-shadow: 8px 8px 0px 0px rgba(0,0,0,0.3);
+  padding: 18px 48px;
+  font-family: var(--sb-font);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sb-solution-transition .sb-cta-btn:hover {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.3);
+}
+.sb-solution-transition .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-solution-transition .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-solution-transition .sb-vert-text { display: none; }
+  .sb-solution-transition .sb-columns { grid-template-columns: 1fr; text-align: center; }
+  .sb-solution-transition .sb-arrow-col { font-size: 32px; padding-top: 0; }
+  .sb-solution-transition h2 { font-size: 36px; }
+}
+</style>
+
+<div class="sb-solution-transition">
+  <div class="sb-vert-text sb-vert-left">Before &middot; After</div>
+  <div class="sb-vert-text sb-vert-right">The Shift</div>
+  <div class="sb-solution-transition-inner">
+    <div class="sb-sticker fade-up">The Turning Point</div>
+    <h2 class="fade-up">What If It Didn't<br>Have to Be This Hard?</h2>
+    <div class="sb-divider fade-up"></div>
+    <p class="sb-body fade-up">You don't need another tool. You don't need a bigger team. You need <strong>a system that actually converts</strong> — built by people who've spent $50M+ on ads and know what works.</p>
+    <div class="sb-columns fade-up">
+      <div class="sb-col-before">
+        <div class="sb-col-label">Before</div>
+        <ul>
+          <li>Weeks to launch a page</li>
+          <li>Guessing what converts</li>
+          <li>Scattered across 12 tools</li>
+          <li>Paying devs for small edits</li>
+        </ul>
+      </div>
+      <div class="sb-arrow-col">&#8594;</div>
+      <div class="sb-col-after">
+        <div class="sb-col-label">After</div>
+        <ul>
+          <li>Live in 48 hours</li>
+          <li>Data-driven from day one</li>
+          <li>One platform, everything</li>
+          <li>Full control, no code</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">See How It Works</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-solution-transition .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

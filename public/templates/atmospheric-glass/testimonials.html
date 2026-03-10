@@ -1,0 +1,216 @@
+<!-- Generated: atmospheric-glass/testimonials -->
+<style>
+.sb-testimonials {
+  background: #0f172a;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-testimonials .sb-glow-1 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.12), rgba(168,85,247,0.08), transparent 70%);
+  filter: blur(60px);
+  top: -5%;
+  right: 10%;
+  pointer-events: none;
+}
+.sb-testimonials .sb-glow-2 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,85,247,0.1), transparent 70%);
+  filter: blur(60px);
+  bottom: -5%;
+  left: 5%;
+  pointer-events: none;
+}
+.sb-testimonials .sb-glow-3 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(236,72,153,0.06), transparent 70%);
+  filter: blur(60px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-testimonials .sb-badge {
+  display: inline-block;
+  background: rgba(99,102,241,0.1);
+  color: var(--sb-accent);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(99,102,241,0.2);
+  margin-bottom: 24px;
+  font-family: 'Inter', sans-serif;
+}
+.sb-testimonials h2 {
+  font-size: 44px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 12px 0;
+}
+.sb-testimonials .sb-subtitle {
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 52px;
+  font-family: 'Inter', sans-serif;
+}
+.sb-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-testimonial-card {
+  background: rgba(30,41,59,0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius);
+  padding: 36px;
+  transition: all 500ms ease;
+}
+.sb-testimonial-card:hover {
+  border-color: rgba(99,102,241,0.25);
+  transform: translateY(-4px);
+}
+.sb-testimonial-card .sb-stars {
+  color: #f59e0b;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.sb-testimonial-card blockquote {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin: 0 0 28px 0;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+}
+.sb-testimonial-card .sb-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sb-testimonial-card .sb-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(168,85,247,0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+.sb-testimonial-card .sb-author-info h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 2px 0;
+  font-family: 'Inter', sans-serif;
+}
+.sb-testimonial-card .sb-author-info span {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  font-family: 'Inter', sans-serif;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-testimonials-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .sb-testimonials h2 { font-size: 32px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-glow-1"></div>
+  <div class="sb-glow-2"></div>
+  <div class="sb-glow-3"></div>
+  <div class="sb-testimonials-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Real Results</span>
+    </div>
+    <h2 class="fade-up">What Our Clients Say</h2>
+    <p class="sb-subtitle fade-up">Don't take our word for it. Here's what the numbers look like.</p>
+    <div class="sb-testimonials-grid">
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"We went from $12k to $47k MRR in 90 days after switching. The AI optimization alone paid for 3 years of subscription in the first month."</blockquote>
+        <div class="sb-author">
+          <div class="sb-avatar">MR</div>
+          <div class="sb-author-info">
+            <h4>Marcus Reynolds</h4>
+            <span>CEO, Velocity Labs</span>
+          </div>
+        </div>
+      </div>
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"I've used every tool on the market. This is the first one that actually delivered on the promise. Our conversion rate jumped from 1.8% to 6.2% without changing a single ad."</blockquote>
+        <div class="sb-author">
+          <div class="sb-avatar">SL</div>
+          <div class="sb-author-info">
+            <h4>Sarah Lin</h4>
+            <span>Head of Growth, Noma Health</span>
+          </div>
+        </div>
+      </div>
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Cut our launch time from 2 weeks to 2 hours. My team now ships 5x more campaigns per quarter, and every one of them performs better than our old ones."</blockquote>
+        <div class="sb-author">
+          <div class="sb-avatar">JK</div>
+          <div class="sb-author-info">
+            <h4>James Kowalski</h4>
+            <span>Founder, ScaleForge</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,231 @@
+<!-- Generated: blueprint/about-bio -->
+<style>
+.sb-about-bio {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-about-bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 56px;
+  align-items: center;
+}
+.sb-about-bio .sb-coord {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-about-bio .sb-photo-card {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  padding: 24px;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+.sb-about-bio .sb-photo-card::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+.sb-about-bio .sb-photo-card::after {
+  content: '+';
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+.sb-about-bio .sb-photo-card:hover {
+  border-color: rgba(255,255,255,0.4);
+}
+.sb-about-bio .sb-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px dashed rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 20px;
+}
+.sb-about-bio .sb-photo-ref {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.sb-about-bio .sb-photo-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.sb-about-bio .sb-photo-stat-value {
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+}
+.sb-about-bio .sb-photo-stat-label {
+  font-family: monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4);
+  display: block;
+  margin-top: 2px;
+}
+.sb-about-bio h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 32px;
+  margin: 0 0 8px 0;
+}
+.sb-about-bio .sb-role {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--sb-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+  display: block;
+}
+.sb-about-bio .sb-bio-text {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+  font-family: monospace;
+}
+.sb-about-bio .sb-credentials {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+}
+.sb-about-bio .sb-credentials li {
+  font-family: monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.sb-about-bio .sb-credentials li::before {
+  content: '// ';
+  color: rgba(255,255,255,0.3);
+}
+.sb-about-bio .sb-social-links {
+  display: flex;
+  gap: 12px;
+}
+.sb-about-bio .sb-social-link {
+  font-family: monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.3s ease;
+}
+.sb-about-bio .sb-social-link:hover {
+  border-color: var(--sb-accent);
+  color: var(--sb-accent);
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio-inner { grid-template-columns: 1fr; gap: 36px; }
+  .sb-about-bio h2 { font-size: 24px; }
+  .sb-about-bio .sb-photo-stats { gap: 16px; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-about-bio-inner">
+    <div class="sb-photo-card fade-up">
+      <div class="sb-photo-placeholder">&#128100;</div>
+      <div class="sb-photo-ref">PHOTO-REF: FOUNDER-001 &nbsp;&middot;&nbsp; VERIFIED</div>
+      <div class="sb-photo-stats">
+        <div>
+          <span class="sb-photo-stat-value">8+</span>
+          <span class="sb-photo-stat-label">Years</span>
+        </div>
+        <div>
+          <span class="sb-photo-stat-value">2,400+</span>
+          <span class="sb-photo-stat-label">Students</span>
+        </div>
+        <div>
+          <span class="sb-photo-stat-value">$4.2M</span>
+          <span class="sb-photo-stat-label">Revenue</span>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <div class="sb-coord">REF: PERSONNEL-FILE-001 &nbsp;&middot;&nbsp; CLEARANCE: PUBLIC</div>
+      <h2>Meet the Architect</h2>
+      <span class="sb-role">Founder &amp; Lead Instructor</span>
+      <p class="sb-bio-text">// built my first profitable business at 22 with $400 and a library wifi connection. failed twice before that. now i teach the frameworks that actually work -- the ones i use every day to run a 7-figure operation.</p>
+      <p class="sb-bio-text">// i'm not a guru. i'm a builder who got tired of watching people waste years on theory. every blueprint in this program comes from real campaigns, real clients, and real revenue.</p>
+      <ul class="sb-credentials">
+        <li>Built 3 businesses from zero to $1M+</li>
+        <li>2,400+ students across 38 countries</li>
+        <li>Former agency owner (sold in 2023)</li>
+        <li>Featured in Forbes, Business Insider, Entrepreneur</li>
+      </ul>
+      <div class="sb-social-links">
+        <a href="#" class="sb-social-link">Twitter</a>
+        <a href="#" class="sb-social-link">LinkedIn</a>
+        <a href="#" class="sb-social-link">YouTube</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

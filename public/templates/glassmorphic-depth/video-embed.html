@@ -1,0 +1,216 @@
+<!-- Generated: glassmorphic-depth/video-embed -->
+<style>
+.sb-video-embed {
+  background: #000000;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-video-embed .sb-grain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.sb-video-embed .sb-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22vw;
+  font-weight: 700;
+  color: #ffffff;
+  opacity: 0.03;
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-family: var(--sb-font);
+}
+.sb-video-embed-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-video-embed .sb-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+}
+.sb-video-embed h2 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  color: var(--sb-heading);
+  margin: 0 0 16px 0;
+}
+.sb-video-embed .sb-sub {
+  font-size: 17px;
+  color: rgba(244,244,245,0.45);
+  max-width: 520px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+}
+.sb-video-embed .sb-video-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: var(--sb-card-radius);
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-video-embed .sb-video-wrapper:hover {
+  border-color: rgba(255,255,255,0.18);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.sb-video-embed .sb-video-ratio {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: rgba(0,0,0,0.4);
+}
+.sb-video-embed .sb-video-ratio iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.sb-video-embed .sb-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  background: rgba(0,0,0,0.3);
+  transition: background 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-video-embed .sb-play-overlay:hover {
+  background: rgba(0,0,0,0.15);
+}
+.sb-video-embed .sb-play-overlay.sb-hidden {
+  display: none;
+}
+.sb-video-embed .sb-play-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-video-embed .sb-play-overlay:hover .sb-play-btn {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.3);
+}
+.sb-video-embed .sb-play-btn svg {
+  width: 28px;
+  height: 28px;
+  fill: #ffffff;
+  margin-left: 4px;
+}
+.sb-video-embed .sb-caption {
+  margin-top: 24px;
+  font-size: 14px;
+  color: rgba(244,244,245,0.35);
+}
+.sb-video-embed .sb-caption strong {
+  color: rgba(244,244,245,0.6);
+  font-weight: 600;
+}
+.sb-video-embed .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-video-embed .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-video-embed h2 { font-size: 32px; }
+  .sb-video-embed .sb-sub { font-size: 15px; margin-bottom: 36px; }
+  .sb-video-embed .sb-play-btn { width: 60px; height: 60px; }
+  .sb-video-embed .sb-play-btn svg { width: 22px; height: 22px; }
+  .sb-video-embed .sb-watermark { font-size: 30vw; }
+}
+</style>
+
+<div class="sb-video-embed">
+  <div class="sb-grain"></div>
+  <div class="sb-watermark">WATCH</div>
+  <div class="sb-video-embed-inner">
+    <span class="sb-label fade-up">See It In Action</span>
+    <h2 class="fade-up">Watch the Full<br>Walkthrough</h2>
+    <p class="sb-sub fade-up">In 12 minutes, you'll see exactly how the system works, what members are building, and why 94% of people who start actually finish.</p>
+    <div class="sb-video-wrapper fade-up">
+      <div class="sb-video-ratio">
+        <div class="sb-play-overlay" id="sb-gd-play-overlay">
+          <div class="sb-play-btn">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="sb-caption fade-up"><strong>12 min watch</strong> &mdash; No email required</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('sb-gd-play-overlay');
+  if (overlay) {
+    overlay.addEventListener('click', function() {
+      var ratio = overlay.parentElement;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'about:blank';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('allow', 'autoplay; encrypted-media');
+      ratio.appendChild(iframe);
+      overlay.classList.add('sb-hidden');
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-video-embed .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

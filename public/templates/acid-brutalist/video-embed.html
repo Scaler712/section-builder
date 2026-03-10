@@ -1,0 +1,158 @@
+<!-- Generated: acid-brutalist/video-embed -->
+<style>
+.sb-video-embed {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+}
+.sb-video-embed::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.sb-video-embed-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.sb-video-embed .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px 0px var(--sb-heading);
+  padding: 6px 16px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.sb-video-embed h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  margin: 0 0 12px 0;
+}
+.sb-video-embed .sb-sub {
+  font-size: 17px;
+  color: var(--sb-muted);
+  margin: 0 0 36px 0;
+}
+.sb-video-embed .sb-video-frame {
+  background: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 8px 8px 0px 0px var(--sb-heading);
+  padding: 12px;
+  overflow: hidden;
+}
+.sb-video-embed .sb-video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--sb-heading);
+}
+.sb-video-embed .sb-video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.sb-video-embed .sb-video-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.6);
+  gap: 12px;
+}
+.sb-video-embed .sb-play-btn {
+  width: 72px;
+  height: 72px;
+  background: var(--sb-accent);
+  border: 2px solid var(--sb-heading);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--sb-heading);
+  cursor: pointer;
+  box-shadow: 4px 4px 0px 0px rgba(255,255,255,0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sb-video-embed .sb-play-btn:hover {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.sb-video-embed .sb-video-caption {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.sb-video-embed .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-video-embed .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-video-embed h2 { font-size: 28px; }
+  .sb-video-embed .sb-video-frame { box-shadow: 4px 4px 0px 0px var(--sb-heading); padding: 8px; }
+}
+</style>
+
+<div class="sb-video-embed">
+  <div class="sb-video-embed-inner">
+    <span class="sb-badge fade-up">Watch Demo</span>
+    <h2 class="fade-up">See It In Action</h2>
+    <p class="sb-sub fade-up">2 minutes that show you exactly how the system works end to end.</p>
+    <div class="sb-video-frame fade-up">
+      <div class="sb-video-wrap">
+        <div class="sb-video-placeholder">
+          <div class="sb-play-btn">&#9654;</div>
+          <span class="sb-video-caption">Click to play &bull; 2:14</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-video-embed .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

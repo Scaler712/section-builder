@@ -1,0 +1,218 @@
+<!-- Generated: acid-brutalist/faq -->
+<style>
+.sb-faq {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+}
+.sb-faq::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.sb-faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+}
+.sb-faq .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px 0px var(--sb-heading);
+  padding: 6px 16px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.sb-faq h2 {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--sb-heading);
+  margin: 0 0 40px 0;
+}
+.sb-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sb-faq-item {
+  background: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px 0px var(--sb-heading);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sb-faq-item:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--sb-heading);
+}
+.sb-faq-item .sb-faq-q {
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  user-select: none;
+}
+.sb-faq-item .sb-faq-q h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.sb-faq-item .sb-faq-toggle {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: var(--sb-accent);
+  border: 2px solid var(--sb-heading);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  transition: transform 0.3s ease;
+}
+.sb-faq-item.sb-open .sb-faq-toggle {
+  transform: rotate(45deg);
+}
+.sb-faq-item .sb-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.sb-faq-item .sb-faq-a-inner {
+  padding: 0 24px 20px 24px;
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq h2 { font-size: 32px; }
+  .sb-faq-item .sb-faq-q h3 { font-size: 15px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-faq-inner">
+    <span class="sb-badge fade-up">FAQ</span>
+    <h2 class="fade-up">Got Questions?</h2>
+    <div class="sb-faq-list">
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>How quickly can I see results?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">Most users see their first results within 7-14 days. Our fastest cohort hit $10K MRR within 30 days of starting. It depends on your niche and how quickly you implement, but the system is designed for speed.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Do I need technical skills?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">Not at all. If you can use email and social media, you can use this. Everything is template-based with drag-and-drop simplicity. We've had members with zero tech background launch profitable funnels in their first week.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>What's included in the membership?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">Full platform access, weekly live calls, the complete template library (60+ templates), AI-powered automation tools, community access, and direct messaging support. We add new resources every month.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Is there a money-back guarantee?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">Yes. 14-day unconditional money-back guarantee. If you don't love it, email us and we refund 100% of your payment. No hoops, no retention calls, no hard feelings.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Can I cancel at any time?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">Absolutely. No contracts, no cancellation fees, no questions asked. You can cancel your subscription in two clicks from your account settings. Your access continues until the end of your billing period.</div>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>What makes this different from other programs?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <div class="sb-faq-a-inner">We're not a course you watch and forget. This is a live operating system with real tools, real automation, and real accountability. Our 94% completion rate speaks for itself — most programs are under 10%.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-faq-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var q = item.querySelector('.sb-faq-q');
+      var a = item.querySelector('.sb-faq-a');
+      q.addEventListener('click', function() {
+        var isOpen = item.classList.contains('sb-open');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('sb-open');
+          items[j].querySelector('.sb-faq-a').style.maxHeight = null;
+        }
+        if (!isOpen) {
+          item.classList.add('sb-open');
+          a.style.maxHeight = a.scrollHeight + 'px';
+        }
+      });
+    })(items[i]);
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

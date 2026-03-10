@@ -1,0 +1,146 @@
+<!-- Generated: cyber-serif/cta -->
+<style>
+.sb-cta {
+  background: #050505;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-cta .sb-glow-left {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.04;
+  filter: blur(120px);
+  pointer-events: none;
+  left: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sb-cta .sb-glow-right {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.04;
+  filter: blur(120px);
+  pointer-events: none;
+  right: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sb-cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.sb-cta .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 24px;
+}
+.sb-cta h2 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-heading);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0 0 20px 0;
+}
+.sb-cta h2 .sb-gradient {
+  background: linear-gradient(135deg, var(--sb-accent), #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 400;
+}
+.sb-cta .sb-lead {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto 40px auto;
+}
+.sb-cta .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: #050505;
+  border-radius: var(--sb-btn-radius);
+  padding: 20px 56px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+  border: none;
+}
+.sb-cta .sb-cta-btn:hover {
+  box-shadow: 0 0 50px rgba(16,185,129,0.3);
+  transform: translateY(-2px);
+}
+.sb-cta .sb-microcopy {
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--sb-muted);
+  margin-top: 16px;
+  letter-spacing: 0.05em;
+}
+.sb-cta .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-cta .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-cta h2 { font-size: 36px; }
+  .sb-cta .sb-lead { font-size: 16px; }
+  .sb-cta .sb-cta-btn { padding: 16px 40px; }
+}
+</style>
+
+<div class="sb-cta">
+  <div class="sb-glow-left"></div>
+  <div class="sb-glow-right"></div>
+  <div class="sb-cta-inner">
+    <span class="sb-badge fade-up">Limited Availability</span>
+    <h2 class="fade-up">Ready to <span class="sb-gradient">Build Smarter</span>?</h2>
+    <p class="sb-lead fade-up">Join the teams that have already made the switch. Spots in our current cohort are filling fast.</p>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Claim Your Spot Now</a>
+      <p class="sb-microcopy">14-day trial &bull; Cancel anytime &bull; No credit card</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-cta .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

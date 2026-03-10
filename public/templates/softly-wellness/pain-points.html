@@ -1,0 +1,198 @@
+<!-- Generated: softly-wellness/pain-points -->
+<style>
+.sb-pain-points {
+  background: #FDFCF8;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-pain-points .sb-blob-1 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(80px);
+  top: 10%;
+  right: -3%;
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite;
+}
+.sb-pain-points .sb-blob-2 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: #EFEDF4;
+  opacity: 0.35;
+  filter: blur(80px);
+  bottom: 5%;
+  left: -3%;
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite 3s;
+}
+@keyframes sb-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.sb-pain-points-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-pain-points .sb-badge {
+  display: inline-block;
+  background: rgba(255,183,178,0.15);
+  color: var(--sb-accent);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.sb-pain-points h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0 0 12px 0;
+}
+.sb-pain-points .sb-subtitle {
+  font-size: 18px;
+  color: var(--sb-muted);
+  margin-bottom: 48px;
+}
+.sb-pain-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+.sb-pain-item {
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05);
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all 0.4s ease;
+}
+.sb-pain-item:hover {
+  box-shadow: 0 8px 32px -2px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.sb-pain-item .sb-pain-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #FFF0F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.sb-pain-item h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.015em;
+}
+.sb-pain-item p {
+  font-size: 14px;
+  color: var(--sb-body);
+  line-height: 1.6;
+  margin: 0;
+}
+.sb-pain-points .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.sb-pain-points .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pain-list { grid-template-columns: 1fr; }
+  .sb-pain-points h2 { font-size: 32px; }
+}
+</style>
+
+<div class="sb-pain-points">
+  <div class="sb-blob-1"></div>
+  <div class="sb-blob-2"></div>
+  <div class="sb-pain-points-inner">
+    <span class="sb-badge fade-up">We understand</span>
+    <h2 class="fade-up">You've tried everything<br>and nothing sticks</h2>
+    <p class="sb-subtitle fade-up">These feelings are more common than you think. You're not alone.</p>
+    <div class="sb-pain-list">
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">&#128148;</div>
+        <div>
+          <h3>Exhausted before the day even starts</h3>
+          <p>You wake up tired, push through caffeine and willpower, and crash by 3pm. The cycle repeats, and rest never really comes.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">&#128556;</div>
+        <div>
+          <h3>Overwhelmed by conflicting advice</h3>
+          <p>One expert says intermittent fasting. Another says eat every 3 hours. You just want someone to tell you what actually works for your body.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">&#128532;</div>
+        <div>
+          <h3>Guilt when you take time for yourself</h3>
+          <p>Between work, family, and obligations, self-care feels selfish. You keep putting yourself last and wondering why you feel empty.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">&#127800;</div>
+        <div>
+          <h3>Lost connection to your body</h3>
+          <p>You used to feel vibrant. Somewhere along the way, you stopped listening to what your body needs and started ignoring the signals.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">&#128167;</div>
+        <div>
+          <h3>Anxiety that won't quiet down</h3>
+          <p>Your mind races at night. The to-do list never ends. You can feel the stress physically -- in your shoulders, your jaw, your chest.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-icon">&#128566;</div>
+        <div>
+          <h3>Started and quit too many programs</h3>
+          <p>Detoxes, challenges, memberships -- you've tried them all. They work for a week, then life gets in the way and the shame returns.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pain-points .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

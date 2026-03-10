@@ -1,0 +1,180 @@
+<!-- Generated: luxury-dark-gold/hero -->
+<style>
+.sb-hero {
+  background: #0a0a0a;
+  color: var(--sb-body);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.sb-hero .sb-glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(167,139,113,0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.sb-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+}
+.sb-hero .sb-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  border: 1px solid rgba(167,139,113,0.3);
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 50px;
+  margin-bottom: 40px;
+}
+.sb-hero h1 {
+  font-family: var(--sb-font);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(42px, 7vw, 80px);
+  line-height: 1.1;
+  color: var(--sb-heading);
+  margin: 0 0 24px 0;
+}
+.sb-hero h1 .sb-accent {
+  color: var(--sb-accent);
+}
+.sb-hero .sb-subtitle {
+  font-size: 19px;
+  color: var(--sb-muted);
+  font-weight: 400;
+  margin: 0 auto 48px auto;
+  max-width: 580px;
+  line-height: 1.7;
+}
+.sb-hero .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 50px;
+  padding: 18px 52px;
+  font-family: var(--sb-font);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 40px rgba(167,139,113,0.2);
+}
+.sb-hero .sb-cta-btn:hover {
+  box-shadow: 0 0 60px rgba(167,139,113,0.35);
+  transform: translateY(-2px);
+}
+.sb-hero .sb-microcopy {
+  font-size: 13px;
+  color: var(--sb-muted);
+  margin-top: 20px;
+  letter-spacing: 0.03em;
+}
+.sb-hero .sb-social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 56px;
+}
+.sb-hero .sb-avatars {
+  display: flex;
+}
+.sb-hero .sb-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid rgba(167,139,113,0.4);
+  background: rgba(167,139,113,0.15);
+  color: var(--sb-accent);
+  margin-left: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+.sb-hero .sb-avatar:first-child { margin-left: 0; }
+.sb-hero .sb-proof-text {
+  font-size: 13px;
+  color: var(--sb-muted);
+}
+.sb-hero .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-hero .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-hero h1 { font-size: 38px; }
+  .sb-hero { min-height: 75vh; }
+  .sb-hero .sb-subtitle { font-size: 16px; }
+}
+@media (max-width: 480px) {
+  .sb-hero h1 { font-size: 32px; }
+  .sb-hero .sb-cta-btn { padding: 16px 36px; font-size: 13px; }
+}
+</style>
+
+<div class="sb-hero">
+  <div class="sb-glow"></div>
+  <div class="sb-hero-inner">
+    <div class="sb-label fade-up">Exclusive Access</div>
+    <h1 class="fade-up">Elevate Your Brand<br>to <span class="sb-accent">Extraordinary</span></h1>
+    <p class="sb-subtitle fade-up">A premium platform for those who refuse to settle. Craft world-class experiences that command attention and convert at the highest level.</p>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Request Early Access</a>
+      <p class="sb-microcopy">No credit card required &bull; Invite-only beta</p>
+    </div>
+    <div class="sb-social-proof fade-up">
+      <div class="sb-avatars">
+        <div class="sb-avatar">A</div>
+        <div class="sb-avatar">L</div>
+        <div class="sb-avatar">S</div>
+        <div class="sb-avatar">M</div>
+      </div>
+      <span class="sb-proof-text">Trusted by 1,200+ premium brands</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-hero .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

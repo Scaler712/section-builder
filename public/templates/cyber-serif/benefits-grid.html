@@ -1,0 +1,149 @@
+<!-- Generated: cyber-serif/benefits-grid -->
+<style>
+.sb-benefits-grid {
+  background: #050505;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-benefits-grid-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+.sb-benefits-grid .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-benefits-grid h2 {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-heading);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0 0 16px 0;
+}
+.sb-benefits-grid .sb-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: var(--sb-muted);
+  margin: 0 auto 56px auto;
+  max-width: 520px;
+  line-height: 1.6;
+}
+.sb-benefits-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.sb-benefit-card {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 36px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease;
+}
+.sb-benefit-card:hover {
+  border-color: rgba(16,185,129,0.25);
+}
+.sb-benefit-card .sb-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.sb-benefit-card h3 {
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--sb-heading);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+.sb-benefit-card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--sb-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-benefits-grid .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-benefits-grid .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-cards { grid-template-columns: 1fr; }
+  .sb-benefits-grid h2 { font-size: 36px; }
+}
+</style>
+
+<div class="sb-benefits-grid">
+  <div class="sb-benefits-grid-inner">
+    <span class="sb-badge fade-up">Why Choose Us</span>
+    <h2 class="fade-up">Engineered for <em>Performance</em></h2>
+    <p class="sb-sub fade-up">Four pillars that separate our platform from everything else on the market.</p>
+    <div class="sb-benefits-cards">
+      <div class="sb-benefit-card fade-up">
+        <div class="sb-icon">&#9889;</div>
+        <h3>Lightning Deploys</h3>
+        <p>Ship to production in under 90 seconds. Our edge network spans 42 regions with automatic failover and zero-downtime deployments built in.</p>
+      </div>
+      <div class="sb-benefit-card fade-up">
+        <div class="sb-icon">&#9881;</div>
+        <h3>Adaptive Intelligence</h3>
+        <p>Machine learning models that evolve with your data. Automatic optimization loops reduce cost-per-action by an average of 37% in the first month.</p>
+      </div>
+      <div class="sb-benefit-card fade-up">
+        <div class="sb-icon">&#128274;</div>
+        <h3>Zero-Trust Security</h3>
+        <p>SOC 2 Type II certified. End-to-end encryption at rest and in transit. Role-based access control with audit logging on every action.</p>
+      </div>
+      <div class="sb-benefit-card fade-up">
+        <div class="sb-icon">&#128200;</div>
+        <h3>Real-Time Analytics</h3>
+        <p>Millisecond-resolution dashboards with custom alerting. Track every metric that matters, from conversion rates to revenue attribution, in one view.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits-grid .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

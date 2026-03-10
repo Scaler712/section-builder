@@ -1,0 +1,232 @@
+<!-- Generated: brutalist-anton/testimonials -->
+<style>
+.sb-testimonials {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: var(--sb-heading);
+  position: relative;
+}
+.sb-testimonials::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px);
+  pointer-events: none;
+}
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-testimonials .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  padding: 4px 12px;
+  transform: rotate(-2deg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--sb-heading);
+  margin-bottom: 20px;
+}
+.sb-testimonials h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0 0 12px 0;
+}
+.sb-testimonials .sb-subtitle {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 48px;
+  font-weight: 400;
+}
+.sb-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.sb-testimonial-card {
+  background: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: var(--sb-card-radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-testimonial-card:nth-child(2) {
+  transform: translateY(4px);
+}
+.sb-testimonial-card:nth-child(2):hover {
+  transform: translateY(0);
+}
+.sb-testimonial-card.sb-dark-card {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+}
+.sb-testimonial-card.sb-dark-card .sb-testimonial-quote {
+  color: rgba(255,255,255,0.8);
+}
+.sb-testimonial-card.sb-dark-card .sb-testimonial-name {
+  color: #ffffff;
+}
+.sb-testimonial-card.sb-dark-card .sb-testimonial-role {
+  color: rgba(255,255,255,0.5);
+}
+.sb-testimonial-card.sb-dark-card .sb-testimonial-result {
+  border-color: var(--sb-accent);
+  color: var(--sb-accent);
+  background: transparent;
+}
+.sb-testimonial-stars {
+  color: var(--sb-accent);
+  font-size: 18px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+.sb-testimonial-quote {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+}
+.sb-testimonial-result {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 2px solid var(--sb-heading);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sb-heading);
+  margin-bottom: 20px;
+}
+.sb-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 2px solid rgba(0,0,0,0.06);
+  padding-top: 20px;
+}
+.sb-testimonial-card.sb-dark-card .sb-testimonial-author {
+  border-top-color: rgba(255,255,255,0.1);
+}
+.sb-testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--sb-heading);
+  background: var(--sb-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+  color: var(--sb-heading);
+}
+.sb-testimonial-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  margin: 0;
+}
+.sb-testimonial-role {
+  font-size: 13px;
+  color: var(--sb-muted);
+  margin: 2px 0 0 0;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1), transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-testimonials-grid { grid-template-columns: 1fr; }
+  .sb-testimonials h2 { font-size: 38px; }
+  .sb-testimonial-card:nth-child(2) { transform: none; }
+}
+@media (max-width: 480px) {
+  .sb-testimonials h2 { font-size: 30px; }
+  .sb-testimonial-card { padding: 24px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-testimonials-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Real Results</span>
+    </div>
+    <h2 class="fade-up">Don't Take Our<br>Word For It</h2>
+    <p class="sb-subtitle fade-up">Here's what our customers are saying after switching.</p>
+    <div class="sb-testimonials-grid">
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-testimonial-quote">"We rebuilt our entire funnel in a weekend. Our conversion rate jumped from 1.8% to 5.4% in the first month. The ROI paid for itself in 3 days."</p>
+        <span class="sb-testimonial-result">+200% Conversions</span>
+        <div class="sb-testimonial-author">
+          <div class="sb-testimonial-avatar">S</div>
+          <div>
+            <p class="sb-testimonial-name">Sarah Chen</p>
+            <p class="sb-testimonial-role">CMO, ScaleStack</p>
+          </div>
+        </div>
+      </div>
+      <div class="sb-testimonial-card sb-dark-card fade-up">
+        <div class="sb-testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-testimonial-quote">"I was spending $2,000/month on a designer just for landing pages. Now I build them myself in 30 minutes. The templates are better than what I was paying for."</p>
+        <span class="sb-testimonial-result">$24K/Year Saved</span>
+        <div class="sb-testimonial-author">
+          <div class="sb-testimonial-avatar">M</div>
+          <div>
+            <p class="sb-testimonial-name">Marcus Rivera</p>
+            <p class="sb-testimonial-role">Founder, AdFlow Agency</p>
+          </div>
+        </div>
+      </div>
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="sb-testimonial-quote">"We tested 47 headline variations in one week. That would have taken us 6 months the old way. Found a winner that increased signups by 312%."</p>
+        <span class="sb-testimonial-result">47 Tests / 7 Days</span>
+        <div class="sb-testimonial-author">
+          <div class="sb-testimonial-avatar">J</div>
+          <div>
+            <p class="sb-testimonial-name">Jamie Okonkwo</p>
+            <p class="sb-testimonial-role">Growth Lead, NovaPay</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

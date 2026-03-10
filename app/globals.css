@@ -163,3 +163,27 @@ body > * {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* ── Mobile polish ── */
+@media (max-width: 768px) {
+  body::before {
+    background-size: 20px 20px;
+  }
+
+  /* Touch-friendly targets */
+  button, [role="button"], select, input[type="color"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Tighter spacing in sidebar on mobile */
+  .mono-label {
+    font-size: 9px;
+  }
+
+  /* Color inputs smaller on mobile */
+  input[type="color"] {
+    min-height: 32px;
+    min-width: 32px;
+  }
+}

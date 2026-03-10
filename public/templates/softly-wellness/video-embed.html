@@ -1,0 +1,185 @@
+<!-- Generated: softly-wellness/video-embed -->
+<style>
+.sb-video-embed {
+  background: #EFEDF4;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-video-embed .sb-blob-1 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(80px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite;
+}
+.sb-video-embed .sb-blob-2 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: #E8EFE8;
+  opacity: 0.35;
+  filter: blur(80px);
+  top: -10%;
+  right: 5%;
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite 3s;
+}
+@keyframes sb-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.sb-video-embed-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-video-embed .sb-badge {
+  display: inline-block;
+  background: rgba(255,183,178,0.15);
+  color: var(--sb-accent);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.sb-video-embed h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0 0 12px 0;
+}
+.sb-video-embed .sb-subtitle {
+  font-size: 17px;
+  color: var(--sb-muted);
+  margin-bottom: 40px;
+}
+.sb-video-wrapper {
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px -4px rgba(0,0,0,0.06);
+  overflow: hidden;
+  padding: 8px;
+}
+.sb-video-wrapper .sb-video-inner {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 1.6rem;
+}
+.sb-video-wrapper .sb-video-inner iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.sb-video-wrapper .sb-video-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,183,178,0.1), rgba(232,239,232,0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+}
+.sb-video-wrapper .sb-play-btn {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(255,183,178,0.2);
+  border: 2px solid rgba(255,183,178,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: var(--sb-heading);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.sb-video-wrapper .sb-play-btn:hover {
+  background: rgba(255,183,178,0.35);
+  transform: scale(1.06);
+}
+.sb-video-wrapper .sb-play-label {
+  font-size: 14px;
+  color: var(--sb-muted);
+}
+.sb-video-embed .sb-caption {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--sb-muted);
+}
+.sb-video-embed .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.sb-video-embed .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-video-embed h2 { font-size: 28px; }
+  .sb-video-wrapper { padding: 4px; }
+}
+</style>
+
+<div class="sb-video-embed">
+  <div class="sb-blob-1"></div>
+  <div class="sb-blob-2"></div>
+  <div class="sb-video-embed-inner">
+    <span class="sb-badge fade-up">Take a peek inside</span>
+    <h2 class="fade-up">See what a day looks like</h2>
+    <p class="sb-subtitle fade-up">A 4-minute glimpse into the practices, community, and transformation that await you.</p>
+    <div class="sb-video-wrapper fade-up">
+      <div class="sb-video-inner">
+        <div class="sb-video-placeholder">
+          <div class="sb-play-btn">&#9654;</div>
+          <span class="sb-play-label">Watch the story (4:12)</span>
+        </div>
+        <!-- Replace with actual embed:
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+        -->
+      </div>
+    </div>
+    <p class="sb-caption fade-up">No signup needed. Just press play and feel the difference.</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-video-embed .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

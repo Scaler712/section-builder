@@ -1,0 +1,141 @@
+<!-- Generated: blueprint/solution-transition -->
+<style>
+.sb-solution-transition {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-solution-transition-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.sb-solution-transition .sb-stamp {
+  display: inline-block;
+  border: 2px solid var(--sb-accent);
+  color: var(--sb-accent);
+  transform: rotate(-3deg);
+  padding: 8px 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+.sb-solution-transition h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 24px 0;
+}
+.sb-solution-transition .sb-desc {
+  font-family: monospace;
+  font-size: 15px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+.sb-solution-transition .sb-arrow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.sb-solution-transition .sb-from,
+.sb-solution-transition .sb-to {
+  font-family: monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 12px 24px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.sb-solution-transition .sb-from {
+  color: rgba(255,255,255,0.4);
+  text-decoration: line-through;
+}
+.sb-solution-transition .sb-to {
+  color: #00FFFF;
+  border-color: #00FFFF;
+}
+.sb-solution-transition .sb-arrow {
+  font-family: monospace;
+  font-size: 20px;
+  color: rgba(255,255,255,0.3);
+}
+.sb-solution-transition .sb-cta-btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--sb-accent);
+  border: 2px solid var(--sb-accent);
+  border-radius: 0;
+  padding: 14px 36px;
+  font-family: monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sb-solution-transition .sb-cta-btn:hover {
+  background: var(--sb-accent);
+  color: #003366;
+}
+.sb-solution-transition .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-solution-transition .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-solution-transition h2 { font-size: 28px; }
+  .sb-solution-transition .sb-arrow-container { flex-direction: column; gap: 16px; }
+  .sb-solution-transition .sb-arrow { transform: rotate(90deg); }
+}
+</style>
+
+<div class="sb-solution-transition">
+  <div class="sb-solution-transition-inner">
+    <div class="sb-stamp fade-up">Revised Plans</div>
+    <h2 class="fade-up">From Guesswork to Blueprint</h2>
+    <div class="sb-arrow-container fade-up">
+      <div class="sb-from">Winging It</div>
+      <div class="sb-arrow">&rarr;</div>
+      <div class="sb-to">Engineered System</div>
+    </div>
+    <p class="sb-desc fade-up">// what if every part of your business had a documented, repeatable process? every lead nurtured automatically. every proposal templated. every client onboarded in 24 hours. that's what we built.</p>
+    <a href="#" class="sb-cta-btn fade-up">View the Plans</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-solution-transition .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

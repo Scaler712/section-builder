@@ -1,0 +1,173 @@
+<!-- Generated: acid-brutalist/pain-points -->
+<style>
+.sb-pain-points {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+}
+.sb-pain-points::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.sb-pain-points-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+.sb-pain-points .sb-badge {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px 0px var(--sb-heading);
+  padding: 6px 16px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.sb-pain-points .sb-section-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--sb-heading);
+  margin: 0 0 48px 0;
+  max-width: 700px;
+}
+.sb-pain-points .sb-pain-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sb-pain-points .sb-pain-item {
+  background: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px 0px var(--sb-heading);
+  padding: 24px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sb-pain-points .sb-pain-item:hover {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.sb-pain-points .sb-pain-num {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: var(--sb-heading);
+  color: var(--sb-accent);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+}
+.sb-pain-points .sb-pain-text h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+.sb-pain-points .sb-pain-text p {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.6;
+  margin: 0;
+}
+.sb-pain-points .sb-pain-text .sb-mark {
+  background: var(--sb-accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: var(--sb-heading);
+}
+.sb-pain-points .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-pain-points .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pain-points .sb-section-title { font-size: 32px; }
+  .sb-pain-points .sb-pain-item { padding: 20px 22px; }
+}
+</style>
+
+<div class="sb-pain-points">
+  <div class="sb-pain-points-inner">
+    <span class="sb-badge fade-up">Sound Familiar?</span>
+    <h2 class="sb-section-title fade-up">You've Tried Everything And You're Still Stuck</h2>
+    <div class="sb-pain-list">
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-num">01</div>
+        <div class="sb-pain-text">
+          <h3>Endless Planning, Zero Revenue</h3>
+          <p>You've spent <span class="sb-mark">months researching</span> and perfecting your idea, but you still haven't made a single dollar from it.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-num">02</div>
+        <div class="sb-pain-text">
+          <h3>Courses That Collect Dust</h3>
+          <p>You've bought 3, maybe 5 programs. Watched the first few modules. Never finished. <span class="sb-mark">$2,000+ spent</span> with nothing to show for it.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-num">03</div>
+        <div class="sb-pain-text">
+          <h3>Posting Into the Void</h3>
+          <p>You're creating content consistently but getting <span class="sb-mark">12 likes and zero DMs</span>. Your audience isn't growing and neither is your revenue.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-num">04</div>
+        <div class="sb-pain-text">
+          <h3>No Clue Where to Find Clients</h3>
+          <p>Cold outreach feels slimy, ads are expensive, and referrals aren't coming. You're stuck in the <span class="sb-mark">"where do I find customers"</span> loop.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <div class="sb-pain-num">05</div>
+        <div class="sb-pain-text">
+          <h3>Paralyzed by Options</h3>
+          <p>SEO or paid ads? TikTok or LinkedIn? Coaching or productized service? Every guru says something different and you're <span class="sb-mark">frozen in place</span>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pain-points .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

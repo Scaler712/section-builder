@@ -1,0 +1,294 @@
+<!-- Generated: red-sun/solution-transition -->
+<style>
+.sb-solution-transition {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-solution-transition .sb-blur-1 {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.08;
+  filter: blur(120px);
+  pointer-events: none;
+  top: -100px;
+  right: -80px;
+}
+.sb-solution-transition .sb-blur-2 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(100px);
+  pointer-events: none;
+  bottom: -60px;
+  left: 5%;
+}
+.sb-solution-transition .sb-blur-3 {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.05;
+  filter: blur(110px);
+  pointer-events: none;
+  top: 60%;
+  left: 40%;
+}
+.sb-solution-transition-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.sb-solution-transition .sb-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sb-solution-transition .sb-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+}
+.sb-solution-transition h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 20px 0;
+}
+.sb-solution-transition h2 em {
+  color: var(--sb-accent);
+  font-style: italic;
+}
+.sb-solution-transition .sb-body {
+  font-size: 17px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 32px 0;
+}
+.sb-solution-transition .sb-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sb-solution-transition .sb-checklist li {
+  font-size: 15px;
+  color: var(--sb-heading);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sb-solution-transition .sb-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.sb-solution-transition .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: #ffffff;
+  border-radius: 30px;
+  padding: 16px 44px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+  font-family: var(--sb-font);
+  border: none;
+  box-shadow: 0 8px 24px rgba(239,70,35,0.2);
+}
+.sb-solution-transition .sb-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(239,70,35,0.3);
+}
+.sb-solution-card-wrap {
+  position: relative;
+}
+.sb-solution-transition .sb-dot-grid {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(#EF4623 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  opacity: 0.18;
+  pointer-events: none;
+  bottom: -20px;
+  left: -30px;
+  border-radius: 12px;
+}
+.sb-solution-card {
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 24px 64px rgba(45,59,66,0.08);
+  padding: 40px;
+  position: relative;
+  z-index: 2;
+}
+.sb-solution-card .sb-before-after {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sb-solution-card .sb-ba-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.sb-solution-card .sb-ba-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.sb-solution-card .sb-ba-before .sb-ba-icon {
+  background: #fef2f0;
+  color: var(--sb-accent);
+}
+.sb-solution-card .sb-ba-after .sb-ba-icon {
+  background: #f0faf4;
+  color: #22c55e;
+}
+.sb-solution-card .sb-ba-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sb-muted);
+  margin-bottom: 4px;
+}
+.sb-solution-card .sb-ba-text {
+  font-size: 15px;
+  color: var(--sb-heading);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.sb-solution-card .sb-ba-divider {
+  height: 1px;
+  background: var(--sb-highlight);
+  border: none;
+  margin: 0;
+}
+.sb-solution-card .sb-arrow-down {
+  text-align: center;
+  font-size: 20px;
+  color: var(--sb-accent);
+}
+.sb-solution-transition .fade-up {
+  opacity: 0;
+  transform: translateY(30px) rotate(2deg);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-solution-transition .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+@media (max-width: 768px) {
+  .sb-solution-transition-inner { grid-template-columns: 1fr; gap: 40px; }
+  .sb-solution-transition h2 { font-size: 32px; }
+  .sb-solution-transition .sb-dot-grid { display: none; }
+  .sb-solution-card { padding: 28px 24px; }
+}
+</style>
+
+<div class="sb-solution-transition">
+  <div class="sb-blur-1"></div>
+  <div class="sb-blur-2"></div>
+  <div class="sb-blur-3"></div>
+  <div class="sb-solution-transition-inner">
+    <div class="fade-up">
+      <div class="sb-label">The Solution</div>
+      <h2>From Chaos<br>to <em>Clarity</em></h2>
+      <p class="sb-body">We replaced the bloated agency playbook with an AI-powered system that produces better creative in a fraction of the time. One platform, one workflow, zero busywork.</p>
+      <ul class="sb-checklist">
+        <li><span class="sb-check">&#10003;</span> AI-generated ad creative in under 60 seconds</li>
+        <li><span class="sb-check">&#10003;</span> Built-in performance scoring before you spend a dollar</li>
+        <li><span class="sb-check">&#10003;</span> Automated A/B testing across every channel</li>
+        <li><span class="sb-check">&#10003;</span> Real-time optimization that never sleeps</li>
+      </ul>
+      <a href="#" class="sb-cta-btn">See How It Works</a>
+    </div>
+
+    <div class="sb-solution-card-wrap fade-up">
+      <div class="sb-dot-grid"></div>
+      <div class="sb-solution-card">
+        <div class="sb-before-after">
+          <div class="sb-ba-row sb-ba-before">
+            <div class="sb-ba-icon">&times;</div>
+            <div>
+              <div class="sb-ba-label">Before</div>
+              <div class="sb-ba-text">3-5 days per campaign asset. 8 tools. 4 team members. $12k/month in overhead.</div>
+            </div>
+          </div>
+          <div class="sb-arrow-down">&darr;</div>
+          <hr class="sb-ba-divider">
+          <div class="sb-ba-row sb-ba-after">
+            <div class="sb-ba-icon">&#10003;</div>
+            <div>
+              <div class="sb-ba-label">After</div>
+              <div class="sb-ba-text">60 seconds per asset. 1 platform. Zero extra hires. $297/month all-in.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-solution-transition .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

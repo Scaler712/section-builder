@@ -10,8 +10,8 @@ export const videoEmbed: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-video {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
   background: #FAFAFA;
 }
 .sb-video-inner {
@@ -22,13 +22,13 @@ export const videoEmbed: SectionTemplate = {
   text-align: center;
   font-size: 36px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 12px;
 }
 .sb-video .subtitle {
   text-align: center;
   font-size: 17px;
-  color: #6B6B6B;
+  color: var(--sb-muted);
   margin-bottom: 36px;
   font-weight: 400;
 }
@@ -36,7 +36,7 @@ export const videoEmbed: SectionTemplate = {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%;
-  border-radius: 18px;
+  border-radius: var(--sb-card-radius);
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
   background: #000;
@@ -60,7 +60,7 @@ export const videoEmbed: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-video { padding: 50px 16px; }
+  .sb-video { padding: var(--sb-section-pad); }
   .sb-video h2 { font-size: 28px; }
   .sb-video-wrapper { border-radius: 12px; }
 }

@@ -1,0 +1,175 @@
+<!-- Generated: luxury-dark-gold/cta -->
+<style>
+.sb-cta {
+  background: #0a0a0a;
+  color: var(--sb-body);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.sb-cta .sb-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(167,139,113,0.18) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.sb-cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.sb-cta .sb-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  border: 1px solid rgba(167,139,113,0.3);
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 50px;
+  margin-bottom: 32px;
+}
+.sb-cta h2 {
+  font-family: var(--sb-font);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  font-size: clamp(36px, 5vw, 52px);
+  margin: 0 0 20px 0;
+}
+.sb-cta h2 .sb-accent {
+  color: var(--sb-accent);
+}
+.sb-cta .sb-sub {
+  font-size: 18px;
+  color: var(--sb-muted);
+  margin-bottom: 44px;
+  line-height: 1.7;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sb-cta .sb-btn-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.sb-cta .sb-btn-primary {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 50px;
+  padding: 18px 48px;
+  font-family: var(--sb-font);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 40px rgba(167,139,113,0.25);
+}
+.sb-cta .sb-btn-primary:hover {
+  box-shadow: 0 0 70px rgba(167,139,113,0.4);
+  transform: translateY(-2px);
+}
+.sb-cta .sb-btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--sb-heading);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50px;
+  padding: 18px 48px;
+  font-family: var(--sb-font);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.sb-cta .sb-btn-secondary:hover {
+  border-color: var(--sb-accent);
+  color: var(--sb-accent);
+}
+.sb-cta .sb-proof {
+  margin-top: 44px;
+  font-size: 13px;
+  color: var(--sb-muted);
+  letter-spacing: 0.03em;
+}
+.sb-cta .sb-proof strong {
+  color: var(--sb-accent);
+}
+.sb-cta .sb-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(167,139,113,0.4), transparent);
+  margin: 20px auto 0 auto;
+}
+.sb-cta .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-cta .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-cta h2 { font-size: 32px; }
+  .sb-cta .sb-btn-group { flex-direction: column; align-items: center; }
+  .sb-cta .sb-btn-primary,
+  .sb-cta .sb-btn-secondary { width: 100%; max-width: 320px; text-align: center; }
+}
+</style>
+
+<div class="sb-cta">
+  <div class="sb-glow"></div>
+  <div class="sb-cta-inner">
+    <div class="sb-label fade-up">Limited Availability</div>
+    <h2 class="fade-up">Your Audience Deserves<br><span class="sb-accent">Better Than Average</span></h2>
+    <p class="sb-sub fade-up">The brands that win don't wait for the perfect moment. They create it. Secure your place before we close this round of invitations.</p>
+    <div class="sb-btn-group fade-up">
+      <a href="#" class="sb-btn-primary">Claim Your Spot</a>
+      <a href="#" class="sb-btn-secondary">Schedule a Call</a>
+    </div>
+    <div class="sb-proof fade-up">
+      <strong>1,200+</strong> premium brands already onboard &nbsp;&bull;&nbsp; <strong>30-day</strong> satisfaction guarantee
+      <div class="sb-divider"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-cta .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,190 @@
+<!-- Generated: red-noir/pain-points -->
+<style>
+.sb-pain-points {
+  background: #0a0a0a;
+  padding: var(--sb-section-pad, 100px 20px);
+  font-family: 'Manrope', var(--sb-font), sans-serif;
+  color: var(--sb-body, #d4d4d8);
+  position: relative;
+  overflow: hidden;
+}
+.sb-pain-points::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.sb-pain-points-glow {
+  position: absolute;
+  top: 30%; left: -100px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239,35,60,0.12), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.sb-pain-points-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.sb-pain-points-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-pain-points-title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #ffffff;
+  margin: 0 0 16px;
+  max-width: 600px;
+}
+.sb-pain-points-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 0 56px;
+}
+.sb-pain-points-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sb-pain-points-item {
+  background: rgba(39,39,42,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius, 18px);
+  padding: 28px 32px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  transition: border-color 400ms ease;
+}
+.sb-pain-points-item:hover {
+  border-color: rgba(239,35,60,0.3);
+}
+.sb-pain-points-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(239,35,60,0.1);
+  border: 1px solid rgba(239,35,60,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--sb-accent);
+  font-weight: 700;
+}
+.sb-pain-points-item-text {
+  flex: 1;
+}
+.sb-pain-points-item-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 4px;
+}
+.sb-pain-points-item-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.35);
+  margin: 0;
+}
+.sb-pain-points .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.77, 0, 0.175, 1), transform 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-pain-points .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .sb-pain-points-title { font-size: 36px; }
+  .sb-pain-points-item { flex-direction: column; text-align: center; padding: 24px; }
+}
+@media (max-width: 480px) {
+  .sb-pain-points-title { font-size: 28px; }
+  .sb-pain-points-item { padding: 20px; }
+}
+</style>
+
+<div class="sb-pain-points">
+  <div class="sb-pain-points-glow"></div>
+  <div class="sb-pain-points-inner">
+    <div class="sb-pain-points-badge fade-up">The problem</div>
+    <h2 class="sb-pain-points-title fade-up">Your ads are burning money while you sleep.</h2>
+    <p class="sb-pain-points-sub fade-up">Most brands throw spaghetti at the wall and call it a creative strategy. Sound familiar?</p>
+    <div class="sb-pain-points-list">
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">01</div>
+        <div class="sb-pain-points-item-text">
+          <h3 class="sb-pain-points-item-title">Creative fatigue is killing your CPAs</h3>
+          <p class="sb-pain-points-item-desc">The same three ad variations have been running for 6 weeks. Your audience has seen them 12 times. Cost per acquisition climbs 20% every month.</p>
+        </div>
+      </div>
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">02</div>
+        <div class="sb-pain-points-item-text">
+          <h3 class="sb-pain-points-item-title">Your agency takes 3 weeks to deliver anything</h3>
+          <p class="sb-pain-points-item-desc">Brief goes in, silence for two weeks, then you get a single polished video that looks great on a mood board but tanks in the auction.</p>
+        </div>
+      </div>
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">03</div>
+        <div class="sb-pain-points-item-text">
+          <h3 class="sb-pain-points-item-title">No idea what actually drives conversions</h3>
+          <p class="sb-pain-points-item-desc">Is it the hook? The social proof? The CTA? Nobody on your team can answer that because nobody is testing systematically.</p>
+        </div>
+      </div>
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">04</div>
+        <div class="sb-pain-points-item-text">
+          <h3 class="sb-pain-points-item-title">You are overpaying for underperforming content</h3>
+          <p class="sb-pain-points-item-desc">$5K per video. No performance guarantee. No iteration. Just a Google Drive link and a "let us know what you think" email.</p>
+        </div>
+      </div>
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">05</div>
+        <div class="sb-pain-points-item-text">
+          <h3 class="sb-pain-points-item-title">Scaling means more spend, not better creative</h3>
+          <p class="sb-pain-points-item-desc">Your instinct is to increase budget when something works. But without fresh creative to match, you just inflate CPMs and watch margins shrink.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pain-points .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

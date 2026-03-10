@@ -1,0 +1,244 @@
+<!-- Generated: atmospheric-glass/faq -->
+<style>
+.sb-faq {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-faq .sb-glow-1 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.08), transparent 70%);
+  filter: blur(60px);
+  top: 5%;
+  right: -3%;
+  pointer-events: none;
+}
+.sb-faq .sb-glow-2 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,85,247,0.06), transparent 70%);
+  filter: blur(60px);
+  bottom: 5%;
+  left: -3%;
+  pointer-events: none;
+}
+.sb-faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-faq .sb-badge {
+  display: inline-block;
+  background: rgba(99,102,241,0.1);
+  color: var(--sb-accent);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(99,102,241,0.2);
+  margin-bottom: 24px;
+  font-family: 'Inter', sans-serif;
+}
+.sb-faq h2 {
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 12px 0;
+}
+.sb-faq .sb-subtitle {
+  font-size: 18px;
+  color: var(--sb-muted);
+  margin-bottom: 48px;
+  font-family: 'Inter', sans-serif;
+}
+.sb-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sb-faq-item {
+  background: #ffffff;
+  border: 1px solid rgba(99,102,241,0.08);
+  border-radius: var(--sb-card-radius);
+  overflow: hidden;
+  transition: all 500ms ease;
+  box-shadow: 0 2px 12px rgba(99,102,241,0.03);
+}
+.sb-faq-item:hover {
+  border-color: rgba(99,102,241,0.15);
+  box-shadow: 0 4px 20px rgba(99,102,241,0.06);
+}
+.sb-faq-item .sb-faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 28px;
+  cursor: pointer;
+  user-select: none;
+}
+.sb-faq-item .sb-faq-q h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.4;
+}
+.sb-faq-item .sb-faq-q .sb-faq-toggle {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(99,102,241,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--sb-accent);
+  transition: transform 500ms ease, background 500ms ease;
+  margin-left: 16px;
+}
+.sb-faq-item.active .sb-faq-q .sb-faq-toggle {
+  transform: rotate(45deg);
+  background: rgba(99,102,241,0.15);
+}
+.sb-faq-item .sb-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 500ms ease, padding 500ms ease;
+}
+.sb-faq-item.active .sb-faq-a {
+  max-height: 300px;
+}
+.sb-faq-item .sb-faq-a p {
+  padding: 0 28px 24px;
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq h2 { font-size: 32px; }
+  .sb-faq-item .sb-faq-q { padding: 18px 20px; }
+  .sb-faq-item .sb-faq-a p { padding: 0 20px 20px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-glow-1"></div>
+  <div class="sb-glow-2"></div>
+  <div class="sb-faq-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Got Questions?</span>
+    </div>
+    <h2 class="fade-up">Frequently Asked Questions</h2>
+    <p class="sb-subtitle fade-up">Everything you need to know before getting started.</p>
+    <div class="sb-faq-list">
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>How quickly can I get set up?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>Most users launch their first campaign within 30 minutes of signing up. Our onboarding wizard walks you through everything, and pre-built templates mean you're never starting from a blank page.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Do I need any technical or design skills?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>Not at all. The platform was designed for non-technical founders and marketers. Everything is drag-and-drop, and our AI handles the optimization automatically. If you can write an email, you can use this.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>What happens after the 14-day trial?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>You simply choose a plan that fits your needs. If it's not for you, cancel with one click -- no calls, no retention teams, no tricks. We'll even export your data for you. No hard feelings.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Can I switch plans later?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>Absolutely. Upgrade or downgrade anytime from your account settings. Changes take effect on your next billing cycle, and we'll prorate any differences. No penalties, ever.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>Will this integrate with my existing tools?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>Yes. We integrate natively with Stripe, Mailchimp, HubSpot, Zapier, Google Analytics, and 50+ other tools. Our API is also available on Professional and Enterprise plans for custom integrations.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-q">
+          <h3>What kind of support do you offer?</h3>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-a">
+          <p>Starter gets email support (24hr response). Professional gets priority support with a 4-hour response guarantee. Enterprise gets a dedicated account manager plus Slack channel access with our team.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-faq-item');
+  for (var i = 0; i < items.length; i++) {
+    items[i].querySelector('.sb-faq-q').addEventListener('click', function() {
+      var item = this.parentElement;
+      var wasActive = item.classList.contains('active');
+      for (var j = 0; j < items.length; j++) {
+        items[j].classList.remove('active');
+      }
+      if (!wasActive) {
+        item.classList.add('active');
+      }
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

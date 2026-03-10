@@ -1,0 +1,214 @@
+<!-- Generated: hyper-fintech/about-bio -->
+<style>
+.sb-about-bio {
+  background: #0A0A0A;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-about-bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 56px;
+  align-items: center;
+}
+.sb-about-bio .sb-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.sb-about-bio .sb-photo-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 28px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.sb-about-bio .sb-photo-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--sb-accent), rgba(253,224,71,0.2));
+}
+.sb-about-bio .sb-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, rgba(253,224,71,0.08) 0%, rgba(255,255,255,0.03) 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+.sb-about-bio .sb-photo-stats {
+  display: flex;
+  gap: 24px;
+}
+.sb-about-bio .sb-photo-stat {
+  flex: 1;
+}
+.sb-about-bio .sb-photo-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  display: block;
+  letter-spacing: -0.02em;
+}
+.sb-about-bio .sb-photo-stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-muted);
+  display: block;
+  margin-top: 2px;
+}
+.sb-about-bio h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+  margin: 0 0 20px 0;
+}
+.sb-about-bio .sb-role {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sb-accent);
+  margin-bottom: 24px;
+  display: block;
+}
+.sb-about-bio .sb-bio-text {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.sb-about-bio .sb-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+}
+.sb-about-bio .sb-highlights li {
+  font-size: 14px;
+  color: var(--sb-body);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sb-about-bio .sb-highlights li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--sb-accent);
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+.sb-about-bio .sb-social-links {
+  display: flex;
+  gap: 12px;
+}
+.sb-about-bio .sb-social-link {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--sb-muted);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-about-bio .sb-social-link:hover {
+  background: rgba(253,224,71,0.1);
+  border-color: rgba(253,224,71,0.2);
+  color: var(--sb-accent);
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio-inner { grid-template-columns: 1fr; gap: 36px; }
+  .sb-about-bio h2 { font-size: 28px; }
+  .sb-about-bio .sb-photo-stats { gap: 16px; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-about-bio-inner">
+    <div class="sb-photo-card fade-up">
+      <div class="sb-photo-placeholder">&#128100;</div>
+      <div class="sb-photo-stats">
+        <div class="sb-photo-stat">
+          <span class="sb-photo-stat-value">12+</span>
+          <span class="sb-photo-stat-label">Years in Fintech</span>
+        </div>
+        <div class="sb-photo-stat">
+          <span class="sb-photo-stat-value">$4.2B</span>
+          <span class="sb-photo-stat-label">Processed</span>
+        </div>
+        <div class="sb-photo-stat">
+          <span class="sb-photo-stat-value">3</span>
+          <span class="sb-photo-stat-label">Exits</span>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <span class="sb-badge">Meet the Founder</span>
+      <h2>I spent 12 years in banking so you don't have to.</h2>
+      <span class="sb-role">CEO &amp; Co-Founder</span>
+      <p class="sb-bio-text">After a decade at Goldman Sachs and two years at a Series C fintech, I saw the same broken infrastructure from every angle. Settlement delays, hidden fees, compliance bottlenecks. The industry was building patches on a broken foundation.</p>
+      <p class="sb-bio-text">So I started over. Clean architecture, modern rails, zero legacy code. Three years and $4.2B in processed volume later, we're the fastest-growing payment platform in the market.</p>
+      <ul class="sb-highlights">
+        <li>Previously: VP Engineering at Plaid, Head of Payments at JPM</li>
+        <li>Forbes 30 Under 30 (Fintech, 2018)</li>
+        <li>MIT Computer Science, Stanford MBA</li>
+        <li>Angel investor in 14 fintech startups</li>
+      </ul>
+      <div class="sb-social-links">
+        <a href="#" class="sb-social-link" aria-label="Twitter">&#120143;</a>
+        <a href="#" class="sb-social-link" aria-label="LinkedIn">in</a>
+        <a href="#" class="sb-social-link" aria-label="GitHub">&#60;/&#62;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,180 @@
+<!-- Generated: blueprint/cta -->
+<style>
+.sb-cta {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-cta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sb-cta .sb-coord {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-cta .sb-stamp {
+  display: inline-block;
+  border: 2px solid var(--sb-accent);
+  color: var(--sb-accent);
+  transform: rotate(-3deg);
+  padding: 6px 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+.sb-cta h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 16px 0;
+}
+.sb-cta .sb-sub {
+  font-family: monospace;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0 0 40px 0;
+}
+.sb-cta .sb-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.sb-cta .sb-btn-primary {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #003366;
+  border: 2px solid var(--sb-accent);
+  border-radius: 0;
+  padding: 16px 40px;
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.sb-cta .sb-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 1px solid rgba(255,51,51,0.3);
+}
+.sb-cta .sb-btn-primary:hover {
+  background: transparent;
+  color: var(--sb-accent);
+}
+.sb-cta .sb-btn-ghost {
+  display: inline-block;
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  padding: 16px 40px;
+  font-family: monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sb-cta .sb-btn-ghost:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: #ffffff;
+}
+.sb-cta .sb-dim-line {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 0 auto;
+  max-width: 500px;
+  position: relative;
+  padding-top: 16px;
+}
+.sb-cta .sb-dim-line::before,
+.sb-cta .sb-dim-line::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: 1px;
+  height: 8px;
+  background: rgba(255,255,255,0.3);
+}
+.sb-cta .sb-dim-line::before { left: 0; }
+.sb-cta .sb-dim-line::after { right: 0; }
+.sb-cta .sb-dim-label {
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+}
+.sb-cta .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-cta .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-cta h2 { font-size: 28px; }
+  .sb-cta .sb-btn-group { flex-direction: column; align-items: center; }
+  .sb-cta .sb-btn-primary, .sb-cta .sb-btn-ghost { width: 100%; max-width: 300px; text-align: center; }
+}
+</style>
+
+<div class="sb-cta">
+  <div class="sb-cta-inner">
+    <div class="sb-coord fade-up">REF: FINAL-CALL-006 &nbsp;&middot;&nbsp; PRIORITY: HIGH</div>
+    <div class="sb-stamp fade-up">Action Required</div>
+    <h2 class="fade-up">Start Building Today</h2>
+    <p class="sb-sub fade-up">// 2,400+ entrepreneurs have used these blueprints to go from zero to revenue. your blueprint is ready for deployment. the only variable left is you.</p>
+    <div class="sb-btn-group fade-up">
+      <a href="#" class="sb-btn-primary">Deploy Now</a>
+      <a href="#" class="sb-btn-ghost">View Specs</a>
+    </div>
+    <div class="sb-dim-line fade-up">
+      <span class="sb-dim-label">30-DAY GUARANTEE &nbsp;&middot;&nbsp; INSTANT ACCESS &nbsp;&middot;&nbsp; CANCEL ANYTIME</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-cta .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

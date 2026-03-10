@@ -10,9 +10,9 @@ export const countdownTimer: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-countdown {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
-  background: #2B2B2B;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: var(--sb-cta-bg);
   text-align: center;
 }
 .sb-countdown-inner {
@@ -46,7 +46,7 @@ export const countdownTimer: SectionTemplate = {
 .sb-countdown-box .number {
   font-size: 36px;
   font-weight: 800;
-  color: #E8B931;
+  color: var(--sb-accent);
   line-height: 1;
   margin-bottom: 6px;
 }
@@ -59,10 +59,10 @@ export const countdownTimer: SectionTemplate = {
 }
 .sb-countdown .cta-btn {
   display: inline-block;
-  background: #E8B931;
-  color: #2B2B2B;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
   padding: 16px 48px;
-  border-radius: 50px;
+  border-radius: var(--sb-btn-radius);
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
@@ -83,7 +83,7 @@ export const countdownTimer: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-countdown { padding: 50px 16px; }
+  .sb-countdown { padding: var(--sb-section-pad); }
   .sb-countdown h2 { font-size: 26px; }
   .sb-countdown-boxes { gap: 10px; }
   .sb-countdown-box { min-width: 65px; padding: 16px 14px; }

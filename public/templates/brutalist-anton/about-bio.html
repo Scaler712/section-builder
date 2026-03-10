@@ -1,0 +1,191 @@
+<!-- Generated: brutalist-anton/about-bio -->
+<style>
+.sb-about-bio {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: var(--sb-heading);
+  position: relative;
+}
+.sb-about-bio::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px);
+  pointer-events: none;
+}
+.sb-about-bio-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-about-bio .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  padding: 4px 12px;
+  transform: rotate(-2deg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--sb-heading);
+  margin-bottom: 32px;
+}
+.sb-about-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.sb-about-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: var(--sb-card-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+}
+.sb-about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sb-about-content h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0 0 8px 0;
+}
+.sb-about-content .sb-role {
+  font-size: 14px;
+  color: var(--sb-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 28px 0;
+}
+.sb-about-content p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.sb-about-stats {
+  display: flex;
+  gap: 0;
+  margin-top: 32px;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: var(--sb-card-radius);
+  overflow: hidden;
+}
+.sb-about-stat {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  border-right: 2px solid rgba(255,255,255,0.1);
+}
+.sb-about-stat:last-child {
+  border-right: none;
+}
+.sb-about-stat .sb-stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--sb-accent);
+  display: block;
+  line-height: 1;
+}
+.sb-about-stat .sb-stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+  display: block;
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1), transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .sb-about-photo {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .sb-about-content h2 { font-size: 36px; }
+  .sb-about-stats { flex-direction: column; }
+  .sb-about-stat { border-right: none; border-bottom: 2px solid rgba(255,255,255,0.1); }
+  .sb-about-stat:last-child { border-bottom: none; }
+}
+@media (max-width: 480px) {
+  .sb-about-content h2 { font-size: 30px; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-about-bio-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Meet the Founder</span>
+    </div>
+    <div class="sb-about-grid fade-up">
+      <div class="sb-about-photo">
+        &#128100;
+      </div>
+      <div class="sb-about-content">
+        <h2>Alex Morgan</h2>
+        <p class="sb-role">Founder &amp; CEO</p>
+        <p>I spent 8 years in performance marketing, managing over $40M in ad spend across 200+ clients. The biggest problem was always the same: great ads driving traffic to terrible pages.</p>
+        <p>I watched businesses burn through thousands every month because their landing pages were slow, ugly, or built by someone who didn't understand conversion psychology.</p>
+        <p>So I built the tool I wished existed. One platform that makes it dead simple to create pages that actually convert.</p>
+        <div class="sb-about-stats">
+          <div class="sb-about-stat">
+            <span class="sb-stat-num">$40M+</span>
+            <span class="sb-stat-label">Ad Spend</span>
+          </div>
+          <div class="sb-about-stat">
+            <span class="sb-stat-num">200+</span>
+            <span class="sb-stat-label">Clients</span>
+          </div>
+          <div class="sb-about-stat">
+            <span class="sb-stat-num">8 yrs</span>
+            <span class="sb-stat-label">Experience</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

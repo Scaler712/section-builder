@@ -1,26 +1,124 @@
 "use client";
 
-import { Copy, Trash2, Monitor, Tablet, Smartphone } from "lucide-react";
+import { useState } from "react";
+import { Copy, Trash2, Monitor, Tablet, Smartphone, Code, CheckCircle, AlertTriangle, Download, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { optimizeForSystemeio, validateSystemeioHtml } from "@/lib/export";
+import type { StyleOverrides, PageSection } from "@/lib/page-builder/types";
 
 type Device = "desktop" | "tablet" | "mobile";
 
 interface OutputBarProps {
   html: string;
+  sections?: PageSection[];
   device: Device;
   onDeviceChange: (d: Device) => void;
   onClear: () => void;
+  showCode: boolean;
+  onToggleCode: () => void;
+  styleOverrides?: StyleOverrides;
+  getExportHtml?: () => string;
 }
 
-export function OutputBar({ html, device, onDeviceChange, onClear }: OutputBarProps) {
+/**
+ * Strip data URIs from HTML to reduce size (replace with placeholder).
+ * Also compress whitespace.
+ */
+function compressHtml(html: string): string {
+  return html
+    // Replace base64 data URIs with placeholder
+    .replace(/src="data:image\/[^"]+"/g, 'src="https://placehold.co/800x500/1c1c1c/ffffff?text=Image"')
+    // Compress whitespace
+    .replace(/\n\s*\n/g, "\n")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+/**
+ * Build a Lovable prompt from page data.
+ * Sends the actual HTML so Lovable replicates the exact design.
+ */
+function buildLovablePrompt(html: string, _sections: PageSection[], overrides?: StyleOverrides, exportHtml?: string): string {
+  const lines: string[] = [];
+
+  lines.push("IMPORTANT: Replicate this landing page EXACTLY as a React + Tailwind app. Do NOT redesign or reinterpret — match the original pixel-for-pixel.\n");
+
+  lines.push("## Critical Rules");
+  lines.push("- Copy ALL text content word-for-word, no rewording");
+  lines.push("- Match the EXACT layout structure (flexbox directions, grid columns, element positioning)");
+  lines.push("- Match ALL colors exactly using the hex values from the HTML");
+  lines.push("- Match font sizes, weights, and families exactly");
+  lines.push("- Match spacing, padding, margins, and border-radius exactly");
+  lines.push("- Match background colors (dark sections stay dark, light stay light)");
+  lines.push("- Keep the same visual hierarchy and component arrangement");
+  lines.push("- Do NOT add a navbar/header unless one exists in the HTML");
+  lines.push("- Do NOT center layouts that are left-aligned in the original");
+  lines.push("- Make it fully responsive\n");
+
+  // Design tokens for reference
+  if (overrides) {
+    lines.push("## Design Tokens (use these exact values)");
+    lines.push(`Headings: ${overrides.headingColor} | Body: ${overrides.bodyColor} | Muted: ${overrides.mutedColor}`);
+    lines.push(`Accent: ${overrides.accentColor} | Highlight BG: ${overrides.highlightBg} | CTA BG: ${overrides.ctaBg}`);
+    lines.push(`Font: ${overrides.fontFamily} | Spacing: ${overrides.spacing} | Card radius: ${overrides.cardRadius} | Button radius: ${overrides.buttonRadius}\n`);
+  }
+
+  // The actual HTML — this is the source of truth
+  const sourceHtml = exportHtml || html;
+  const compressed = compressHtml(sourceHtml);
+
+  // Lovable allows up to 50k chars — keep HTML under 40k to leave room for instructions
+  const maxHtmlChars = 40000;
+  const trimmedHtml = compressed.length > maxHtmlChars
+    ? compressed.slice(0, maxHtmlChars) + "\n<!-- truncated -->"
+    : compressed;
+
+  lines.push("## Source HTML (replicate this exactly)\n");
+  lines.push("```html");
+  lines.push(trimmedHtml);
+  lines.push("```");
+
+  return lines.join("\n");
+}
+
+export function OutputBar({ html, sections = [], device, onDeviceChange, onClear, showCode, onToggleCode, styleOverrides, getExportHtml }: OutputBarProps) {
+  const [showValidation, setShowValidation] = useState(false);
+  const [validation, setValidation] = useState<{ valid: boolean; warnings: string[] } | null>(null);
+
   const copy = async () => {
     if (!html.trim()) {
       toast.error("Nothing to copy");
       return;
     }
-    await navigator.clipboard.writeText(html);
+    const exportHtml = getExportHtml ? getExportHtml() : html;
+    await navigator.clipboard.writeText(exportHtml);
     toast.success("HTML copied to clipboard");
+  };
+
+  const copyForSystemeio = async () => {
+    if (!html.trim()) {
+      toast.error("Nothing to copy");
+      return;
+    }
+    if (!styleOverrides) {
+      await copy();
+      return;
+    }
+
+    const optimized = optimizeForSystemeio(html, styleOverrides);
+    const result = validateSystemeioHtml(optimized);
+    setValidation(result);
+
+    await navigator.clipboard.writeText(optimized);
+
+    if (result.valid) {
+      toast.success("Optimized HTML copied for Systeme.io");
+      setShowValidation(false);
+    } else {
+      setShowValidation(true);
+      toast.warning(`Copied with ${result.warnings.length} warning(s)`);
+    }
   };
 
   const devices: { key: Device; icon: React.ReactNode; label: string }[] = [
@@ -30,41 +128,145 @@ export function OutputBar({ html, device, onDeviceChange, onClear }: OutputBarPr
   ];
 
   return (
-    <div className="flex items-center justify-between px-5 py-2.5 border-b border-[#e5e4de] bg-[#f7f6f2]">
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={copy}
-        className="gap-2 font-mono text-[10px] uppercase tracking-[0.2em] border-[#e5e4de] bg-transparent hover:bg-[#3d7068] hover:text-[#f7f6f2] hover:border-[#3d7068] ed-transition"
-      >
-        <Copy className="size-3.5" />
-        Copy HTML
-      </Button>
-
-      <div className="flex items-center gap-0.5">
-        {devices.map((d) => (
+    <div>
+      <div className="flex items-center justify-between px-5 py-2.5 border-b border-[#e5e4de] bg-[#f7f6f2]">
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={copy}
+            className="gap-2 font-mono text-[10px] uppercase tracking-[0.2em] border-[#e5e4de] bg-transparent hover:bg-[#3d7068] hover:text-[#f7f6f2] hover:border-[#3d7068] ed-transition"
+          >
+            <Copy className="size-3.5" />
+            <span className="hidden sm:inline">Copy HTML</span>
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={copyForSystemeio}
+            className="gap-2 font-mono text-[10px] uppercase tracking-[0.2em] border-[#e5e4de] bg-transparent hover:bg-[#3d7068] hover:text-[#f7f6f2] hover:border-[#3d7068] ed-transition"
+          >
+            <CheckCircle className="size-3.5" />
+            <span className="hidden sm:inline">Systeme.io</span>
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              if (!html.trim()) { toast.error("Nothing to download"); return; }
+              const exportHtml = getExportHtml ? getExportHtml() : html;
+              const fullPage = `<!DOCTYPE html>\n<html>\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1">\n<title>Landing Page</title>\n</head>\n<body style="margin:0;padding:0">\n${exportHtml}\n</body>\n</html>`;
+              const blob = new Blob([fullPage], { type: "text/html" });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = `landing-page-${new Date().toISOString().slice(0, 10)}.html`;
+              a.click();
+              URL.revokeObjectURL(url);
+              toast.success("HTML file downloaded");
+            }}
+            className="gap-2 font-mono text-[10px] uppercase tracking-[0.2em] border-[#e5e4de] bg-transparent hover:bg-[#3d7068] hover:text-[#f7f6f2] hover:border-[#3d7068] ed-transition"
+          >
+            <Download className="size-3.5" />
+            <span className="hidden sm:inline">Save</span>
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              if (!html.trim()) {
+                toast.error("Nothing to send — build a page first");
+                return;
+              }
+              const exportHtml = getExportHtml ? getExportHtml() : undefined;
+              const prompt = buildLovablePrompt(html, sections, styleOverrides, exportHtml);
+              const encoded = encodeURIComponent(prompt);
+              // Check URL fragment length — browsers handle fragments client-side
+              // but very long URLs can still fail in some browsers
+              if (encoded.length > 100000) {
+                toast.error("Page too large for Lovable URL — try with fewer sections");
+                return;
+              }
+              const url = `https://lovable.dev/?autosubmit=true#prompt=${encoded}`;
+              window.open(url, "_blank");
+              toast.success("Opening Lovable...");
+            }}
+            className="gap-2 font-mono text-[10px] uppercase tracking-[0.2em] border-[#e5e4de] bg-transparent hover:bg-[#ec4899] hover:text-white hover:border-[#ec4899] ed-transition"
+          >
+            <ExternalLink className="size-3.5" />
+            <span className="hidden sm:inline">Lovable</span>
+          </Button>
           <button
-            key={d.key}
-            onClick={() => onDeviceChange(d.key)}
-            title={d.label}
-            className={`p-2 rounded-sm ed-transition ${
-              device === d.key
+            onClick={onToggleCode}
+            title={showCode ? "Hide code editor" : "Show code editor"}
+            className={`hidden lg:flex items-center gap-1.5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] ed-transition ${
+              showCode
                 ? "bg-[#3d7068] text-[#f7f6f2]"
                 : "text-[#7a7a72] hover:text-[#1c1c1c] hover:bg-[#efede8]"
             }`}
           >
-            {d.icon}
+            <Code className="size-3.5" />
+            Code
           </button>
-        ))}
+        </div>
+
+        <div className="flex items-center gap-2">
+          <span className="hidden md:inline font-mono text-[9px] uppercase tracking-[0.2em] text-[#7a7a72]">
+            Infoverse Funnel Designs
+          </span>
+          <div className="flex items-center gap-0.5">
+            {devices.map((d) => (
+              <button
+                key={d.key}
+                onClick={() => onDeviceChange(d.key)}
+                title={d.label}
+                className={`p-2 rounded-sm ed-transition ${
+                  device === d.key
+                    ? "bg-[#3d7068] text-[#f7f6f2]"
+                    : "text-[#7a7a72] hover:text-[#1c1c1c] hover:bg-[#efede8]"
+                }`}
+              >
+                {d.icon}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <button
+          onClick={onClear}
+          className="flex items-center gap-2 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7a72] hover:text-[#c45040] ed-transition"
+        >
+          <Trash2 className="size-3.5" />
+          <span className="hidden sm:inline">Clear</span>
+        </button>
       </div>
 
-      <button
-        onClick={onClear}
-        className="flex items-center gap-2 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7a7a72] hover:text-[#c45040] ed-transition"
-      >
-        <Trash2 className="size-3.5" />
-        Clear
-      </button>
+      {/* Validation warnings */}
+      {showValidation && validation && !validation.valid && (
+        <div className="px-5 py-2 border-b border-[#e5e4de] bg-[#fff8e1]">
+          <div className="flex items-start gap-2">
+            <AlertTriangle className="size-4 text-[#E8B931] mt-0.5 shrink-0" />
+            <div className="flex-1">
+              <div className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#7a7a72] mb-1">
+                Systeme.io Warnings
+              </div>
+              <ul className="space-y-0.5">
+                {validation.warnings.map((w, i) => (
+                  <li key={i} className="font-mono text-[11px] text-[#3A3A3A]">
+                    {w}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <button
+              onClick={() => setShowValidation(false)}
+              className="font-mono text-[10px] text-[#7a7a72] hover:text-[#1c1c1c]"
+            >
+              dismiss
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

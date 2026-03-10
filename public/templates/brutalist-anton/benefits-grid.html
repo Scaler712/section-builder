@@ -1,0 +1,169 @@
+<!-- Generated: brutalist-anton/benefits-grid -->
+<style>
+.sb-benefits {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: #ffffff;
+  position: relative;
+}
+.sb-benefits::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,0.03) 39px, rgba(0,0,0,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,0.03) 39px, rgba(0,0,0,0.03) 40px);
+  pointer-events: none;
+}
+.sb-benefits-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-benefits .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  padding: 4px 12px;
+  transform: rotate(-2deg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--sb-heading);
+  margin-bottom: 20px;
+}
+.sb-benefits h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0 0 12px 0;
+}
+.sb-benefits .sb-subtitle {
+  font-size: 18px;
+  color: var(--sb-muted);
+  margin-bottom: 48px;
+  font-weight: 400;
+}
+.sb-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.sb-benefits-card {
+  background: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: var(--sb-card-radius);
+  padding: 32px;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-benefits-card:hover {
+  background: var(--sb-heading);
+  color: #ffffff;
+}
+.sb-benefits-card:hover h3 {
+  color: #ffffff;
+}
+.sb-benefits-card:hover p {
+  color: rgba(255,255,255,0.75);
+}
+.sb-benefits-card:hover .sb-icon {
+  background: var(--sb-accent);
+}
+.sb-benefits-card .sb-icon {
+  font-size: 24px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--sb-heading);
+  border-radius: 6px;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-benefits-card h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin: 0 0 10px 0;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-benefits-card p {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.6;
+  margin: 0;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sb-benefits .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.77, 0, 0.175, 1), transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-benefits .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-grid { grid-template-columns: 1fr; }
+  .sb-benefits h2 { font-size: 38px; }
+}
+@media (max-width: 480px) {
+  .sb-benefits h2 { font-size: 30px; }
+  .sb-benefits-card { padding: 24px; }
+}
+</style>
+
+<div class="sb-benefits">
+  <div class="sb-benefits-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Why Choose Us</span>
+    </div>
+    <h2 class="fade-up">Everything You<br>Need to Scale</h2>
+    <p class="sb-subtitle fade-up">Stop cobbling together 12 different tools. One platform, zero headaches.</p>
+    <div class="sb-benefits-grid">
+      <div class="sb-benefits-card fade-up">
+        <span class="sb-icon">&#9889;</span>
+        <h3>Launch in 48 Hours</h3>
+        <p>Go from idea to live product in 2 days, not 2 months. Our templates and workflows eliminate 90% of setup time.</p>
+      </div>
+      <div class="sb-benefits-card fade-up">
+        <span class="sb-icon">&#128200;</span>
+        <h3>3.2x Higher Conversions</h3>
+        <p>Our AI-optimized layouts and copy frameworks have been tested across 10,000+ landing pages. The data doesn't lie.</p>
+      </div>
+      <div class="sb-benefits-card fade-up">
+        <span class="sb-icon">&#128274;</span>
+        <h3>Zero Technical Skills</h3>
+        <p>Drag, drop, publish. If you can write an email, you can build a high-converting page. No designers or developers needed.</p>
+      </div>
+      <div class="sb-benefits-card fade-up">
+        <span class="sb-icon">&#128640;</span>
+        <h3>Built-In Analytics</h3>
+        <p>Real-time conversion tracking, heatmaps, and A/B testing. Know exactly what's working and double down on winners.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

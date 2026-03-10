@@ -1,0 +1,149 @@
+<!-- Generated: blueprint/benefits-grid -->
+<style>
+.sb-benefits-grid {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-benefits-grid-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sb-benefits-grid .sb-coord {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-benefits-grid h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 48px 0;
+}
+.sb-benefits-grid .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.sb-benefits-grid .sb-card {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  padding: 32px;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+.sb-benefits-grid .sb-card::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+.sb-benefits-grid .sb-card::after {
+  content: '+';
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+  font-family: monospace;
+}
+.sb-benefits-grid .sb-card:hover {
+  border-color: rgba(255,255,255,0.5);
+}
+.sb-benefits-grid .sb-card .sb-card-num {
+  font-family: monospace;
+  font-size: 10px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-benefits-grid .sb-card h3 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 18px;
+  margin: 0 0 12px 0;
+}
+.sb-benefits-grid .sb-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-benefits-grid .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-benefits-grid .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-grid .sb-grid { grid-template-columns: 1fr; }
+  .sb-benefits-grid h2 { font-size: 28px; }
+}
+</style>
+
+<div class="sb-benefits-grid">
+  <div class="sb-benefits-grid-inner">
+    <div class="sb-coord fade-up">REF: FEATURES-SPEC-002 &nbsp;&middot;&nbsp; DETAIL A</div>
+    <h2 class="fade-up">System Specifications</h2>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-card-num">Spec 01</div>
+        <h3>Proven Frameworks</h3>
+        <p>// battle-tested templates and fill-in-the-blank systems used by 2,400+ founders. no theory, no fluff &mdash; just what works, field-verified.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-num">Spec 02</div>
+        <h3>Private Community</h3>
+        <p>// direct access to operators building real businesses. daily accountability, weekly hot seats, and a network that compounds over time.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-num">Spec 03</div>
+        <h3>Weekly Live Sessions</h3>
+        <p>// two live calls per week: strategy breakdowns on monday, implementation support on thursday. bring your real problems, leave with real solutions.</p>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-card-num">Spec 04</div>
+        <h3>Done-For-You Templates</h3>
+        <p>// 47 plug-and-play templates covering outreach, proposals, onboarding, and delivery. copy, customize, deploy. stop building from scratch.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits-grid .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

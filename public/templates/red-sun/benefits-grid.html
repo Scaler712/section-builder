@@ -1,0 +1,205 @@
+<!-- Generated: red-sun/benefits-grid -->
+<style>
+.sb-benefits-grid {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-benefits-grid .sb-blur-1 {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.07;
+  filter: blur(120px);
+  pointer-events: none;
+  bottom: -100px;
+  right: -60px;
+}
+.sb-benefits-grid .sb-blur-2 {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.05;
+  filter: blur(100px);
+  pointer-events: none;
+  top: -80px;
+  left: 10%;
+}
+.sb-benefits-grid-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-benefits-grid .sb-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.sb-benefits-grid .sb-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.sb-benefits-grid .sb-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+}
+.sb-benefits-grid h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 16px 0;
+}
+.sb-benefits-grid h2 em {
+  color: var(--sb-accent);
+  font-style: italic;
+}
+.sb-benefits-grid .sb-sub {
+  font-size: 17px;
+  color: var(--sb-muted);
+  margin: 0 auto;
+  max-width: 520px;
+  line-height: 1.7;
+}
+.sb-benefits-grid .sb-dot-grid {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(#EF4623 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  opacity: 0.18;
+  pointer-events: none;
+  top: 60px;
+  right: 40px;
+  border-radius: 12px;
+}
+.sb-benefits-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.sb-benefit-card {
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 24px 64px rgba(45,59,66,0.08);
+  padding: 40px 36px;
+  text-align: left;
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 72px rgba(45,59,66,0.12);
+}
+.sb-benefit-card .sb-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--sb-highlight);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 24px;
+}
+.sb-benefit-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.01em;
+}
+.sb-benefit-card p {
+  font-size: 15px;
+  color: var(--sb-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-benefits-grid .fade-up {
+  opacity: 0;
+  transform: translateY(30px) rotate(2deg);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-benefits-grid .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-cards { grid-template-columns: 1fr; }
+  .sb-benefits-grid h2 { font-size: 36px; }
+  .sb-benefit-card { padding: 28px 24px; }
+  .sb-benefits-grid .sb-dot-grid { display: none; }
+}
+</style>
+
+<div class="sb-benefits-grid">
+  <div class="sb-blur-1"></div>
+  <div class="sb-blur-2"></div>
+  <div class="sb-dot-grid"></div>
+
+  <div class="sb-benefits-grid-inner">
+    <div class="sb-header">
+      <div class="sb-label fade-up">Why Choose Us</div>
+      <h2 class="fade-up">Everything You Need<br>to <em>Win</em></h2>
+      <p class="sb-sub fade-up">Four pillars that separate high-performing brands from everyone else. We built the platform around each one.</p>
+    </div>
+
+    <div class="sb-benefits-cards">
+      <div class="sb-benefit-card fade-up">
+        <div class="sb-icon">&#9889;</div>
+        <h3>Rapid Deployment</h3>
+        <p>Go from concept to live campaign in minutes, not days. Our templating engine and AI copywriter handle the heavy lifting so you can focus on strategy.</p>
+      </div>
+      <div class="sb-benefit-card fade-up">
+        <div class="sb-icon">&#127919;</div>
+        <h3>Precision Targeting</h3>
+        <p>AI-powered audience modeling that finds your highest-value segments automatically. Stop guessing, start converting with data-driven precision.</p>
+      </div>
+      <div class="sb-benefit-card fade-up">
+        <div class="sb-icon">&#128202;</div>
+        <h3>Smart Analytics</h3>
+        <p>Real-time dashboards that tell you what's working and why. Revenue attribution down to the click, so every dollar of spend is accounted for.</p>
+      </div>
+      <div class="sb-benefit-card fade-up">
+        <div class="sb-icon">&#128640;</div>
+        <h3>Scale Without Limits</h3>
+        <p>Infrastructure that grows with you. Whether you're managing 5 campaigns or 5,000, the platform handles the complexity behind the scenes.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits-grid .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

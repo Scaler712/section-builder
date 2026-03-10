@@ -1,0 +1,129 @@
+<!-- Generated: organic-intelligence/guarantee -->
+<style>
+.sb-guarantee {
+  background: #fcfbf9;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-guarantee::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -10%;
+  width: 120%;
+  height: 120px;
+  background: var(--sb-highlight);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.sb-guarantee-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-guarantee .sb-shield {
+  width: 80px;
+  height: 80px;
+  background: var(--sb-highlight);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+  font-size: 36px;
+  border: 1px solid #e5e5e5;
+}
+.sb-guarantee .sb-mono-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+  display: block;
+}
+.sb-guarantee .sb-section-title {
+  font-family: var(--sb-font);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--sb-heading);
+  margin: 0 0 28px 0;
+}
+.sb-guarantee .sb-guarantee-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sb-guarantee .sb-guarantee-text:last-of-type {
+  margin-bottom: 0;
+}
+.sb-guarantee .sb-stat-line {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid #e5e5e5;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sb-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.sb-guarantee .sb-stat-line strong {
+  color: var(--sb-accent);
+}
+.sb-guarantee .fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1000ms cubic-bezier(0.22, 1, 0.36, 1), transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sb-guarantee .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-guarantee .sb-section-title { font-size: 28px; }
+  .sb-guarantee .sb-guarantee-text { font-size: 15px; }
+}
+</style>
+
+<div class="sb-guarantee">
+  <div class="sb-guarantee-inner">
+    <div class="sb-shield fade-up">&#128737;</div>
+    <span class="sb-mono-label fade-up">Our Promise</span>
+    <h2 class="sb-section-title fade-up">30-Day No-Questions-Asked<br>Money-Back Guarantee</h2>
+    <p class="sb-guarantee-text fade-up">Join, go through the material, implement the steps. If you don't see results within 30 days, we'll refund every cent. No hoops, no awkward emails.</p>
+    <p class="sb-guarantee-text fade-up">Simple refund request. Money back in 5-7 business days. We built this guarantee because the system works and we stand behind it completely.</p>
+    <p class="sb-stat-line fade-up"><strong>Fewer than 12 refunds</strong> out of 2,400+ members</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-guarantee .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

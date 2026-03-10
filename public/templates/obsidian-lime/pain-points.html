@@ -1,0 +1,176 @@
+<!-- Generated: obsidian-lime/pain-points -->
+<style>
+.sb-pain-points {
+  background: #0c0c0c;
+  padding: var(--sb-section-pad, 100px 20px);
+  font-family: 'Space Grotesk', var(--sb-font), sans-serif;
+  color: var(--sb-body);
+  position: relative;
+  overflow: hidden;
+}
+.sb-pain-points::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.sb-pain-points-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.sb-pain-points-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-pain-points-title {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+  color: var(--sb-heading);
+  margin: 0 0 64px;
+  max-width: 600px;
+}
+.sb-pain-points-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.sb-pain-points-item {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--sb-card-radius, 24px);
+  padding: 32px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: border-color 400ms ease;
+}
+.sb-pain-points-item:hover {
+  border-color: rgba(239,68,68,0.3);
+}
+.sb-pain-points-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #ef4444;
+}
+.sb-pain-points-item-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--sb-heading);
+  margin: 0 0 8px;
+}
+.sb-pain-points-item-desc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(235,235,235,0.45);
+  margin: 0;
+}
+.sb-pain-points .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 700ms cubic-bezier(0.77, 0, 0.175, 1), transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-pain-points .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .sb-pain-points-list { grid-template-columns: 1fr; }
+  .sb-pain-points-title { font-size: 32px; }
+}
+@media (max-width: 480px) {
+  .sb-pain-points-title { font-size: 26px; }
+  .sb-pain-points-item { padding: 24px; }
+}
+</style>
+
+<div class="sb-pain-points">
+  <div class="sb-pain-points-inner">
+    <div class="sb-pain-points-label fade-up">Sound familiar?</div>
+    <h2 class="sb-pain-points-title fade-up">The old way is costing you more than you think.</h2>
+    <div class="sb-pain-points-list">
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">&#10005;</div>
+        <div>
+          <h3 class="sb-pain-points-item-title">20-minute deploy cycles</h3>
+          <p class="sb-pain-points-item-desc">Every push triggers a full rebuild. Your team ships once a day instead of ten times.</p>
+        </div>
+      </div>
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">&#10005;</div>
+        <div>
+          <h3 class="sb-pain-points-item-title">Mystery outages at 2 AM</h3>
+          <p class="sb-pain-points-item-desc">No traces, no logs, no idea what broke. Just a Slack channel full of panic and guesswork.</p>
+        </div>
+      </div>
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">&#10005;</div>
+        <div>
+          <h3 class="sb-pain-points-item-title">Scaling means rewriting</h3>
+          <p class="sb-pain-points-item-desc">Traffic spikes and everything falls over. Vertical scaling hits a wall, horizontal scaling needs a PhD.</p>
+        </div>
+      </div>
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">&#10005;</div>
+        <div>
+          <h3 class="sb-pain-points-item-title">$8K/mo on infra you don't understand</h3>
+          <p class="sb-pain-points-item-desc">Three load balancers, two CDNs, a message queue, and a YAML file nobody wants to touch.</p>
+        </div>
+      </div>
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">&#10005;</div>
+        <div>
+          <h3 class="sb-pain-points-item-title">Security is an afterthought</h3>
+          <p class="sb-pain-points-item-desc">API keys in .env files, open ports, and a penetration test you keep postponing.</p>
+        </div>
+      </div>
+      <div class="sb-pain-points-item fade-up">
+        <div class="sb-pain-points-icon">&#10005;</div>
+        <div>
+          <h3 class="sb-pain-points-item-title">Vendor lock-in everywhere</h3>
+          <p class="sb-pain-points-item-desc">Migrating off your current stack would take a quarter. So you stay, paying more every month.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pain-points .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

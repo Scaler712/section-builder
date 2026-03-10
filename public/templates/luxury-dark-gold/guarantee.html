@@ -1,0 +1,191 @@
+<!-- Generated: luxury-dark-gold/guarantee -->
+<style>
+.sb-guarantee {
+  background: #0a0a0a;
+  color: var(--sb-body);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.sb-guarantee .sb-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(167,139,113,0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.sb-guarantee-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.sb-guarantee .sb-shield {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(167,139,113,0.1);
+  border: 1px solid rgba(167,139,113,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+  margin: 0 auto 32px auto;
+  box-shadow: 0 0 60px rgba(167,139,113,0.12);
+}
+.sb-guarantee .sb-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-guarantee h2 {
+  font-family: var(--sb-font);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  font-size: 42px;
+  margin: 0 0 24px 0;
+}
+.sb-guarantee h2 .sb-accent {
+  color: var(--sb-accent);
+}
+.sb-guarantee .sb-body {
+  font-size: 17px;
+  color: var(--sb-muted);
+  line-height: 1.8;
+  margin-bottom: 44px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sb-guarantee .sb-body strong {
+  color: var(--sb-heading);
+}
+.sb-guarantee .sb-terms {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+.sb-guarantee .sb-term {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius);
+  padding: 24px 32px;
+  text-align: center;
+  min-width: 140px;
+  transition: border-color 0.4s ease;
+}
+.sb-guarantee .sb-term:hover {
+  border-color: rgba(167,139,113,0.3);
+}
+.sb-guarantee .sb-term .sb-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--sb-accent);
+  display: block;
+  font-style: italic;
+}
+.sb-guarantee .sb-term .sb-term-label {
+  font-size: 12px;
+  color: var(--sb-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 6px;
+  display: block;
+}
+.sb-guarantee .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 50px;
+  padding: 18px 48px;
+  font-family: var(--sb-font);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 40px rgba(167,139,113,0.2);
+}
+.sb-guarantee .sb-cta-btn:hover {
+  box-shadow: 0 0 60px rgba(167,139,113,0.35);
+  transform: translateY(-2px);
+}
+.sb-guarantee .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-guarantee .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-guarantee h2 { font-size: 32px; }
+  .sb-guarantee .sb-terms { flex-direction: column; align-items: center; }
+  .sb-guarantee .sb-term { width: 100%; max-width: 280px; }
+}
+</style>
+
+<div class="sb-guarantee">
+  <div class="sb-glow"></div>
+  <div class="sb-guarantee-inner">
+    <div class="sb-shield fade-up">&#128737;</div>
+    <div class="sb-label fade-up">Our Promise</div>
+    <h2 class="fade-up">A Guarantee That<br>Matches <span class="sb-accent">Our Standards</span></h2>
+    <p class="sb-body fade-up">We believe in the transformative power of what we've built. If you don't experience a meaningful difference in your first <strong>30 days</strong>, we'll return your entire investment. No forms. No justification required. One message and it's done.</p>
+    <div class="sb-terms fade-up">
+      <div class="sb-term">
+        <span class="sb-value">30</span>
+        <span class="sb-term-label">Day Window</span>
+      </div>
+      <div class="sb-term">
+        <span class="sb-value">100%</span>
+        <span class="sb-term-label">Full Refund</span>
+      </div>
+      <div class="sb-term">
+        <span class="sb-value">Zero</span>
+        <span class="sb-term-label">Questions Asked</span>
+      </div>
+    </div>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Begin With Confidence</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-guarantee .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

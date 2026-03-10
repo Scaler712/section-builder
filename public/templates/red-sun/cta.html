@@ -1,0 +1,180 @@
+<!-- Generated: red-sun/cta -->
+<style>
+.sb-cta {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-cta .sb-blur-1 {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.10;
+  filter: blur(120px);
+  pointer-events: none;
+  left: -100px;
+  top: -80px;
+}
+.sb-cta .sb-blur-2 {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.08;
+  filter: blur(100px);
+  pointer-events: none;
+  right: -80px;
+  bottom: -60px;
+}
+.sb-cta .sb-blur-3 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(110px);
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.sb-cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-cta .sb-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.sb-cta .sb-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+}
+.sb-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 24px 0;
+}
+.sb-cta h2 em {
+  color: var(--sb-accent);
+  font-style: italic;
+}
+.sb-cta .sb-lead {
+  font-size: 18px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto 44px auto;
+}
+.sb-cta .sb-cta-btn {
+  display: inline-block;
+  background: var(--sb-cta-bg);
+  color: #ffffff;
+  border-radius: 30px;
+  padding: 20px 56px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+  font-family: var(--sb-font);
+  border: none;
+  box-shadow: 0 8px 24px rgba(239,70,35,0.2);
+}
+.sb-cta .sb-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(239,70,35,0.3);
+}
+.sb-cta .sb-ghost-link {
+  display: block;
+  margin-top: 20px;
+  color: var(--sb-heading);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  border-bottom: 1px solid var(--sb-heading);
+  display: inline-block;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+}
+.sb-cta .sb-ghost-link:hover {
+  color: var(--sb-accent);
+  border-color: var(--sb-accent);
+}
+.sb-cta .sb-microcopy {
+  font-size: 13px;
+  color: var(--sb-muted);
+  margin-top: 16px;
+  font-weight: 500;
+}
+.sb-cta .fade-up {
+  opacity: 0;
+  transform: translateY(30px) rotate(2deg);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-cta .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+@media (max-width: 768px) {
+  .sb-cta h2 { font-size: 36px; }
+  .sb-cta .sb-lead { font-size: 16px; }
+  .sb-cta .sb-cta-btn { padding: 16px 40px; }
+}
+</style>
+
+<div class="sb-cta">
+  <div class="sb-blur-1"></div>
+  <div class="sb-blur-2"></div>
+  <div class="sb-blur-3"></div>
+  <div class="sb-cta-inner">
+    <div class="sb-label fade-up">Ready to Start</div>
+    <h2 class="fade-up">Stop Guessing.<br>Start <em>Scaling</em>.</h2>
+    <p class="sb-lead fade-up">Join thousands of creators and agencies who are already producing better content in less time. Your competitors aren't waiting.</p>
+    <div class="fade-up">
+      <a href="#" class="sb-cta-btn">Start Your Free Trial</a>
+      <p class="sb-microcopy">14-day trial &bull; No credit card &bull; Cancel anytime</p>
+      <a href="#" class="sb-ghost-link">Or talk to our team first</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-cta .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

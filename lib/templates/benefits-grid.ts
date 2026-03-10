@@ -10,8 +10,8 @@ export const benefitsGrid: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-benefits {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
   background: #FAFAFA;
 }
 .sb-benefits-inner {
@@ -22,13 +22,13 @@ export const benefitsGrid: SectionTemplate = {
   text-align: center;
   font-size: 36px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 16px;
 }
 .sb-benefits .subtitle {
   text-align: center;
   font-size: 18px;
-  color: #6B6B6B;
+  color: var(--sb-muted);
   margin-bottom: 48px;
   font-weight: 400;
 }
@@ -39,7 +39,7 @@ export const benefitsGrid: SectionTemplate = {
 }
 .sb-benefits-card {
   background: #FFFFFF;
-  border-radius: 18px;
+  border-radius: var(--sb-card-radius);
   padding: 36px 28px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -55,12 +55,12 @@ export const benefitsGrid: SectionTemplate = {
 .sb-benefits-card h3 {
   font-size: 20px;
   font-weight: 700;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 10px;
 }
 .sb-benefits-card p {
   font-size: 16px;
-  color: #3A3A3A;
+  color: var(--sb-body);
   line-height: 1.6;
   font-weight: 400;
 }
@@ -75,7 +75,7 @@ export const benefitsGrid: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-benefits { padding: 50px 16px; }
+  .sb-benefits { padding: var(--sb-section-pad); }
   .sb-benefits h2 { font-size: 28px; }
   .sb-benefits-grid { grid-template-columns: 1fr; gap: 16px; }
 }

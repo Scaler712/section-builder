@@ -1,0 +1,119 @@
+<!-- Generated: swiss-echo/cta -->
+<style>
+.sb-cta {
+  background: var(--sb-cta-bg);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sb-cta .sb-label {
+  color: rgba(242,242,242,0.5);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: block;
+}
+.sb-cta .sb-section-title {
+  font-size: clamp(36px, 7vw, 100px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--sb-highlight);
+  margin: 0 0 12px 0;
+}
+.sb-cta .sb-echo {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(242,242,242,0.15);
+  font-size: clamp(36px, 7vw, 100px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  margin-top: -0.1em;
+  margin-bottom: 40px;
+  user-select: none;
+}
+.sb-cta .sb-section-sub {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(242,242,242,0.7);
+  max-width: 480px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+}
+.sb-cta .sb-cta-btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--sb-highlight);
+  border: 1px solid var(--sb-highlight);
+  border-radius: var(--sb-btn-radius);
+  padding: 18px 56px;
+  font-family: var(--sb-font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-cta .sb-cta-btn:hover {
+  background: var(--sb-highlight);
+  color: var(--sb-cta-bg);
+}
+.sb-cta .sb-urgency {
+  margin-top: 28px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(242,242,242,0.4);
+  letter-spacing: 0.04em;
+}
+.sb-cta .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 700ms cubic-bezier(0.77, 0, 0.175, 1), transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-cta .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-cta .sb-section-title { font-size: 36px; }
+  .sb-cta .sb-echo { font-size: 36px; }
+  .sb-cta .sb-section-sub { font-size: 16px; }
+}
+</style>
+
+<div class="sb-cta">
+  <div class="sb-cta-inner">
+    <span class="sb-label fade-up">Take Action</span>
+    <h2 class="sb-section-title fade-up">Start<br>Building</h2>
+    <span class="sb-echo fade-up" aria-hidden="true">Building</span>
+    <p class="sb-section-sub fade-up">Every day you wait is another day someone else closes the deal you should have. Join 2,400+ founders who chose action over analysis paralysis.</p>
+    <a href="#" class="sb-cta-btn fade-up">Claim Your Spot</a>
+    <p class="sb-urgency fade-up">Only 14 spots remaining for this cohort</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-cta .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

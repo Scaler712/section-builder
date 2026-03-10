@@ -1,0 +1,196 @@
+<!-- Generated: disruptor/testimonials -->
+<style>
+.sb-testimonials {
+  background: #000000;
+  color: #ffffff;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-testimonials .sb-vert-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.06);
+  user-select: none;
+}
+.sb-testimonials .sb-vert-left { left: 20px; }
+.sb-testimonials .sb-vert-right { right: 20px; }
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-testimonials .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+}
+.sb-testimonials h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.85;
+  color: #ffffff;
+  margin: 0 0 48px 0;
+}
+.sb-testimonials h2 .sb-accent {
+  color: var(--sb-accent);
+}
+.sb-testimonials .sb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-testimonials .sb-card {
+  background: #ffffff;
+  border: 4px solid #000000;
+  border-radius: 8px;
+  box-shadow: 8px 8px 0px 0px rgba(255,255,255,0.1);
+  padding: 32px;
+}
+.sb-testimonials .sb-card .sb-metric {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: #000000;
+  padding: 4px 12px;
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  transform: rotate(-1deg);
+  border: 4px solid #000000;
+}
+.sb-testimonials .sb-card .sb-quote {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(0,0,0,0.75);
+  margin-bottom: 24px;
+}
+.sb-testimonials .sb-card .sb-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sb-testimonials .sb-card .sb-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #000000;
+  color: var(--sb-accent);
+  border: 4px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: monospace;
+  flex-shrink: 0;
+}
+.sb-testimonials .sb-card .sb-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: #000000;
+  text-transform: uppercase;
+}
+.sb-testimonials .sb-card .sb-role {
+  font-size: 12px;
+  color: rgba(0,0,0,0.5);
+  margin-top: 2px;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-testimonials .sb-vert-text { display: none; }
+  .sb-testimonials .sb-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .sb-testimonials h2 { font-size: 36px; }
+}
+@media (max-width: 480px) {
+  .sb-testimonials h2 { font-size: 28px; }
+  .sb-testimonials .sb-card { padding: 24px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-vert-text sb-vert-left">Real Results &middot; Real People</div>
+  <div class="sb-vert-text sb-vert-right">Verified &middot; Receipts</div>
+  <div class="sb-testimonials-inner">
+    <div class="sb-badge fade-up">// Proof of Concept</div>
+    <h2 class="fade-up">Don't Take Our Word.<br><span class="sb-accent">Take Theirs.</span></h2>
+    <div class="sb-grid">
+      <div class="sb-card fade-up">
+        <div class="sb-metric">+312% Revenue</div>
+        <p class="sb-quote">"We rebuilt our entire funnel in a weekend. The first month we tripled revenue. The second month we hired two more people to handle demand."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">D</div>
+          <div>
+            <div class="sb-name">Derek Nash</div>
+            <div class="sb-role">CEO, BlitzScale Media</div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-metric">$47K First Month</div>
+        <p class="sb-quote">"I was spending $8K/month on a dev team to update landing pages. Replaced all of it in one afternoon. The ROI is genuinely insane."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">A</div>
+          <div>
+            <div class="sb-name">Ava Sinclair</div>
+            <div class="sb-role">Founder, The Growth Lab</div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-card fade-up">
+        <div class="sb-metric">4.8x ROAS</div>
+        <p class="sb-quote">"Our ad spend was bleeding before this. Swapped to their templates, matched our offer, and immediately hit a 4.8x return. Not slowly. Immediately."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">M</div>
+          <div>
+            <div class="sb-name">Marcus Vega</div>
+            <div class="sb-role">CMO, Apex Collective</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

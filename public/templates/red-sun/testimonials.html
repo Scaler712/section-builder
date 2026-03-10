@@ -1,0 +1,263 @@
+<!-- Generated: red-sun/testimonials -->
+<style>
+.sb-testimonials {
+  background: var(--sb-highlight);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-testimonials .sb-blur-1 {
+  position: absolute;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.07;
+  filter: blur(120px);
+  pointer-events: none;
+  top: -80px;
+  left: -60px;
+}
+.sb-testimonials .sb-blur-2 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.05;
+  filter: blur(100px);
+  pointer-events: none;
+  bottom: -100px;
+  right: 5%;
+}
+.sb-testimonials .sb-blur-3 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(110px);
+  pointer-events: none;
+  top: 50%;
+  right: 30%;
+}
+.sb-testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-testimonials .sb-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.sb-testimonials .sb-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.sb-testimonials .sb-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+}
+.sb-testimonials h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 16px 0;
+}
+.sb-testimonials h2 em {
+  color: var(--sb-accent);
+  font-style: italic;
+}
+.sb-testimonials .sb-sub {
+  font-size: 17px;
+  color: var(--sb-muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.sb-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-testimonial-card {
+  background: #ffffff;
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 24px 64px rgba(45,59,66,0.08);
+  padding: 36px 32px;
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+  display: flex;
+  flex-direction: column;
+}
+.sb-testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 72px rgba(45,59,66,0.12);
+}
+.sb-testimonial-card .sb-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+.sb-testimonial-card .sb-star {
+  color: var(--sb-accent);
+  font-size: 16px;
+}
+.sb-testimonial-card .sb-quote {
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0 0 28px 0;
+  flex: 1;
+}
+.sb-testimonial-card .sb-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--sb-highlight);
+}
+.sb-testimonial-card .sb-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--sb-highlight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--sb-accent);
+  flex-shrink: 0;
+}
+.sb-testimonial-card .sb-author-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  margin: 0 0 2px 0;
+}
+.sb-testimonial-card .sb-author-role {
+  font-size: 13px;
+  color: var(--sb-muted);
+  margin: 0;
+}
+.sb-testimonials .fade-up {
+  opacity: 0;
+  transform: translateY(30px) rotate(2deg);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-testimonials .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+@media (max-width: 768px) {
+  .sb-testimonials-grid { grid-template-columns: 1fr; }
+  .sb-testimonials h2 { font-size: 36px; }
+  .sb-testimonial-card { padding: 28px 24px; }
+}
+</style>
+
+<div class="sb-testimonials">
+  <div class="sb-blur-1"></div>
+  <div class="sb-blur-2"></div>
+  <div class="sb-blur-3"></div>
+
+  <div class="sb-testimonials-inner">
+    <div class="sb-header">
+      <div class="sb-label fade-up">Testimonials</div>
+      <h2 class="fade-up">Trusted by <em>Operators</em></h2>
+      <p class="sb-sub fade-up">Real results from real businesses. No fluff, no cherry-picked screenshots.</p>
+    </div>
+
+    <div class="sb-testimonials-grid">
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-stars">
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+        </div>
+        <p class="sb-quote">"We cut our content production time by 80% and our ROAS jumped from 1.8x to 4.6x in the first month. This isn't hyperbole. I pulled the numbers myself."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">S</div>
+          <div>
+            <p class="sb-author-name">Sarah Chen</p>
+            <p class="sb-author-role">Head of Growth, Meridian Labs</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-stars">
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+        </div>
+        <p class="sb-quote">"I was spending $8k/month on a creative agency and getting mediocre results. Switched to this, cancelled the agency, and my CPAs dropped 40% within two weeks."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">M</div>
+          <div>
+            <p class="sb-author-name">Marcus Rivera</p>
+            <p class="sb-author-role">Founder, Atlas Commerce</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sb-testimonial-card fade-up">
+        <div class="sb-stars">
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+          <span class="sb-star">&#9733;</span>
+        </div>
+        <p class="sb-quote">"The speed is what got me. We test 30+ ad variations per week now. Before, we were lucky to get 5 out the door. Our winning ad rate tripled."</p>
+        <div class="sb-author">
+          <div class="sb-avatar">A</div>
+          <div>
+            <p class="sb-author-name">Anika Patel</p>
+            <p class="sb-author-role">Marketing Director, Bloom Health</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-testimonials .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,186 @@
+<!-- Generated: red-noir/video-embed -->
+<style>
+.sb-video-embed {
+  background: #0a0a0a;
+  padding: var(--sb-section-pad, 100px 20px);
+  font-family: 'Manrope', var(--sb-font), sans-serif;
+  color: var(--sb-body, #d4d4d8);
+  position: relative;
+  overflow: hidden;
+}
+.sb-video-embed::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.sb-video-embed-glow {
+  position: absolute;
+  top: 60%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239,35,60,0.08), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.sb-video-embed-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.sb-video-embed-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  text-align: center;
+  width: 100%;
+}
+.sb-video-embed-title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #ffffff;
+  margin: 0 0 16px;
+  text-align: center;
+}
+.sb-video-embed-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  margin: 0 0 48px;
+  line-height: 1.7;
+}
+.sb-video-embed-frame {
+  background: rgba(39,39,42,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius, 18px);
+  overflow: hidden;
+  padding: 6px;
+  position: relative;
+}
+.sb-video-embed-frame::after {
+  content: '';
+  position: absolute;
+  top: -1px; left: 15%; right: 15%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(239,35,60,0.3), transparent);
+  pointer-events: none;
+}
+.sb-video-embed-ratio {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: #000000;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.sb-video-embed-ratio iframe {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border: none;
+}
+.sb-video-embed-placeholder {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.sb-video-embed-play {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 400ms ease, transform 300ms ease;
+  box-shadow: 0 0 30px rgba(239,35,60,0.3);
+}
+.sb-video-embed-play:hover {
+  box-shadow: 0 0 50px rgba(239,35,60,0.5);
+  transform: scale(1.08);
+}
+.sb-video-embed-play-icon {
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 12px 0 12px 22px;
+  border-color: transparent transparent transparent #ffffff;
+  margin-left: 4px;
+}
+.sb-video-embed-play-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.sb-video-embed .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.77, 0, 0.175, 1), transform 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-video-embed .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .sb-video-embed-title { font-size: 36px; }
+  .sb-video-embed-frame { border-radius: 14px; }
+  .sb-video-embed-ratio { border-radius: 10px; }
+}
+@media (max-width: 480px) {
+  .sb-video-embed-title { font-size: 28px; }
+  .sb-video-embed-play { width: 56px; height: 56px; }
+  .sb-video-embed-play-icon { border-width: 10px 0 10px 18px; }
+}
+</style>
+
+<div class="sb-video-embed">
+  <div class="sb-video-embed-glow"></div>
+  <div class="sb-video-embed-inner">
+    <div class="sb-video-embed-badge fade-up">See the process</div>
+    <h2 class="sb-video-embed-title fade-up">Watch how we build winning ads in 72 hours.</h2>
+    <p class="sb-video-embed-sub fade-up">From brief to live creative &mdash; this 4-minute walkthrough shows our full production and testing pipeline.</p>
+    <div class="sb-video-embed-frame fade-up">
+      <div class="sb-video-embed-ratio">
+        <div class="sb-video-embed-placeholder">
+          <div class="sb-video-embed-play">
+            <div class="sb-video-embed-play-icon"></div>
+          </div>
+          <span class="sb-video-embed-play-label">Watch breakdown &bull; 4:12</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-video-embed .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,259 @@
+<!-- Generated: glassmorphic-depth/faq -->
+<style>
+.sb-faq {
+  background: #000000;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-faq .sb-grain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.sb-faq .sb-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22vw;
+  font-weight: 700;
+  color: #ffffff;
+  opacity: 0.03;
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-family: var(--sb-font);
+}
+.sb-faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-faq .sb-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+}
+.sb-faq h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  color: var(--sb-heading);
+  margin: 0 0 16px 0;
+}
+.sb-faq .sb-sub {
+  font-size: 17px;
+  color: rgba(244,244,245,0.45);
+  margin-bottom: 52px;
+  line-height: 1.7;
+}
+.sb-faq .sb-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+.sb-faq .sb-accordion-item {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius);
+  overflow: hidden;
+  transition: all 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-faq .sb-accordion-item:hover {
+  border-color: rgba(255,255,255,0.18);
+}
+.sb-faq .sb-accordion-item.open {
+  border-color: rgba(255,255,255,0.15);
+}
+.sb-faq .sb-accordion-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--sb-font);
+  text-align: left;
+}
+.sb-faq .sb-accordion-trigger h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+  padding-right: 20px;
+}
+.sb-faq .sb-accordion-toggle {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--sb-accent);
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), background 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-faq .sb-accordion-item.open .sb-accordion-toggle {
+  transform: rotate(45deg);
+  background: rgba(255,255,255,0.1);
+}
+.sb-faq .sb-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-faq .sb-accordion-body p {
+  padding: 0 28px 24px;
+  font-size: 15px;
+  color: rgba(244,244,245,0.45);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq h2 { font-size: 32px; }
+  .sb-faq .sb-accordion-trigger { padding: 18px 20px; }
+  .sb-faq .sb-accordion-trigger h3 { font-size: 15px; }
+  .sb-faq .sb-accordion-body p { padding: 0 20px 20px; }
+  .sb-faq .sb-watermark { font-size: 30vw; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-grain"></div>
+  <div class="sb-watermark">FAQ</div>
+  <div class="sb-faq-inner">
+    <span class="sb-label fade-up">Questions</span>
+    <h2 class="fade-up">Frequently<br>Asked</h2>
+    <p class="sb-sub fade-up">Everything you need to know before getting started.</p>
+    <div class="sb-accordion-list">
+      <div class="sb-accordion-item fade-up">
+        <button class="sb-accordion-trigger" aria-expanded="false">
+          <h3>How quickly will I see results?</h3>
+          <span class="sb-accordion-toggle">+</span>
+        </button>
+        <div class="sb-accordion-body">
+          <p>Most members land their first client within 2-4 weeks. Our fastest member closed a $3,200 deal on day 9. Results depend on how consistently you implement the frameworks, but the system is designed for speed.</p>
+        </div>
+      </div>
+      <div class="sb-accordion-item fade-up">
+        <button class="sb-accordion-trigger" aria-expanded="false">
+          <h3>Do I need prior experience?</h3>
+          <span class="sb-accordion-toggle">+</span>
+        </button>
+        <div class="sb-accordion-body">
+          <p>Not at all. About 60% of our members are launching their first business. The system includes everything from choosing your niche to closing your first deal. If you can follow steps and show up consistently, you'll get results.</p>
+        </div>
+      </div>
+      <div class="sb-accordion-item fade-up">
+        <button class="sb-accordion-trigger" aria-expanded="false">
+          <h3>How much time do I need to commit?</h3>
+          <span class="sb-accordion-toggle">+</span>
+        </button>
+        <div class="sb-accordion-body">
+          <p>Plan for 1-2 hours per day. That's enough to go through the training, implement the templates, and do your daily outreach. Many of our most successful members have full-time jobs and build this on the side.</p>
+        </div>
+      </div>
+      <div class="sb-accordion-item fade-up">
+        <button class="sb-accordion-trigger" aria-expanded="false">
+          <h3>What makes this different from other programs?</h3>
+          <span class="sb-accordion-toggle">+</span>
+        </button>
+        <div class="sb-accordion-body">
+          <p>Speed and accountability. We don't give you 200 hours of theory. You get proven templates, fill-in-the-blank frameworks, and a community that keeps you on track. Our 94% completion rate speaks for itself.</p>
+        </div>
+      </div>
+      <div class="sb-accordion-item fade-up">
+        <button class="sb-accordion-trigger" aria-expanded="false">
+          <h3>What if it doesn't work for me?</h3>
+          <span class="sb-accordion-toggle">+</span>
+        </button>
+        <div class="sb-accordion-body">
+          <p>We offer a 30-day money-back guarantee. If you go through the material, implement the steps, and don't see results, we'll refund every cent. No questions, no hoops. Fewer than 12 refunds out of 2,400+ members.</p>
+        </div>
+      </div>
+      <div class="sb-accordion-item fade-up">
+        <button class="sb-accordion-trigger" aria-expanded="false">
+          <h3>Can I cancel or change plans anytime?</h3>
+          <span class="sb-accordion-toggle">+</span>
+        </button>
+        <div class="sb-accordion-body">
+          <p>Yes. No contracts, no lock-ins. Cancel from your dashboard in two clicks. Upgrade or downgrade whenever you want. We keep members because the program works, not because of fine print.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-accordion-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var trigger = item.querySelector('.sb-accordion-trigger');
+      var body = item.querySelector('.sb-accordion-body');
+      trigger.addEventListener('click', function() {
+        var isOpen = item.classList.contains('open');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('open');
+          items[j].querySelector('.sb-accordion-trigger').setAttribute('aria-expanded', 'false');
+          items[j].querySelector('.sb-accordion-body').style.maxHeight = null;
+        }
+        if (!isOpen) {
+          item.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    })(items[i]);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var k = 0; k < elements.length; k++) {
+    observer.observe(elements[k]);
+  }
+})();
+</script>

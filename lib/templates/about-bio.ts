@@ -10,8 +10,8 @@ export const aboutBio: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-about {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
   background: #FFFFFF;
 }
 .sb-about-inner {
@@ -26,7 +26,7 @@ export const aboutBio: SectionTemplate = {
   width: 280px;
   height: 340px;
   background: #F0F0F0;
-  border-radius: 18px;
+  border-radius: var(--sb-card-radius);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -42,18 +42,18 @@ export const aboutBio: SectionTemplate = {
 .sb-about-text h2 {
   font-size: 32px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 4px;
 }
 .sb-about-text .role {
   font-size: 16px;
-  color: #E8B931;
+  color: var(--sb-accent);
   font-weight: 600;
   margin-bottom: 24px;
 }
 .sb-about-text p {
   font-size: 16px;
-  color: #3A3A3A;
+  color: var(--sb-body);
   line-height: 1.7;
   margin-bottom: 16px;
   font-weight: 400;
@@ -69,11 +69,11 @@ export const aboutBio: SectionTemplate = {
 .sb-about-text .stat-number {
   font-size: 28px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
 }
 .sb-about-text .stat-label {
   font-size: 13px;
-  color: #6B6B6B;
+  color: var(--sb-muted);
   font-weight: 400;
 }
 .sb-about .fade-up {
@@ -87,7 +87,7 @@ export const aboutBio: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-about { padding: 50px 16px; }
+  .sb-about { padding: var(--sb-section-pad); }
   .sb-about-inner { grid-template-columns: 1fr; gap: 28px; justify-items: center; }
   .sb-about-img { width: 200px; height: 240px; }
   .sb-about-text { text-align: center; }

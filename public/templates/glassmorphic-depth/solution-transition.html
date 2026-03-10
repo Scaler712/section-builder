@@ -1,0 +1,247 @@
+<!-- Generated: glassmorphic-depth/solution-transition -->
+<style>
+.sb-solution-transition {
+  background: #000000;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-solution-transition .sb-grain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.sb-solution-transition .sb-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22vw;
+  font-weight: 700;
+  color: #ffffff;
+  opacity: 0.03;
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-family: var(--sb-font);
+}
+.sb-solution-transition-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-solution-transition .sb-top {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.sb-solution-transition .sb-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 20px;
+}
+.sb-solution-transition h2 {
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  color: var(--sb-heading);
+  margin: 0 0 20px 0;
+}
+.sb-solution-transition .sb-bridge {
+  font-size: 18px;
+  color: rgba(244,244,245,0.45);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.sb-solution-transition .sb-columns {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+.sb-solution-transition .sb-before,
+.sb-solution-transition .sb-after {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius);
+  padding: 36px 32px;
+  transition: all 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-solution-transition .sb-before:hover,
+.sb-solution-transition .sb-after:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.18);
+}
+.sb-solution-transition .sb-col-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+  display: block;
+}
+.sb-solution-transition .sb-before .sb-col-label {
+  color: rgba(244,244,245,0.35);
+}
+.sb-solution-transition .sb-after .sb-col-label {
+  color: var(--sb-accent);
+}
+.sb-solution-transition .sb-after {
+  border-color: rgba(255,255,255,0.15);
+}
+.sb-solution-transition .sb-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.sb-solution-transition .sb-item:last-child {
+  margin-bottom: 0;
+}
+.sb-solution-transition .sb-item-icon {
+  flex-shrink: 0;
+  font-size: 14px;
+  margin-top: 2px;
+}
+.sb-solution-transition .sb-before .sb-item-icon {
+  color: rgba(244,244,245,0.25);
+}
+.sb-solution-transition .sb-after .sb-item-icon {
+  color: var(--sb-accent);
+}
+.sb-solution-transition .sb-item-text {
+  font-size: 15px;
+  color: rgba(244,244,245,0.55);
+  line-height: 1.6;
+  margin: 0;
+}
+.sb-solution-transition .sb-arrow-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sb-solution-transition .sb-arrow-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sb-solution-transition .sb-arrow-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--sb-accent);
+  fill: none;
+  stroke-width: 2;
+}
+.sb-solution-transition .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sb-solution-transition .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-solution-transition h2 { font-size: 32px; }
+  .sb-solution-transition .sb-columns { grid-template-columns: 1fr; gap: 16px; }
+  .sb-solution-transition .sb-arrow-col { transform: rotate(90deg); padding: 8px 0; }
+  .sb-solution-transition .sb-before,
+  .sb-solution-transition .sb-after { padding: 28px 24px; }
+  .sb-solution-transition .sb-watermark { font-size: 30vw; }
+}
+</style>
+
+<div class="sb-solution-transition">
+  <div class="sb-grain"></div>
+  <div class="sb-watermark">SHIFT</div>
+  <div class="sb-solution-transition-inner">
+    <div class="sb-top">
+      <span class="sb-label fade-up">The Shift</span>
+      <h2 class="fade-up">What If the Problem<br>Isn't You?</h2>
+      <p class="sb-bridge fade-up">You don't lack ambition or intelligence. What you lack is a system that matches your pace, fits your life, and gives you a clear sequence of actions that compound over time.</p>
+    </div>
+    <div class="sb-columns fade-up">
+      <div class="sb-before">
+        <span class="sb-col-label">Before</span>
+        <div class="sb-item">
+          <span class="sb-item-icon">&#10005;</span>
+          <p class="sb-item-text">Scattered across 12 tools with no unified workflow</p>
+        </div>
+        <div class="sb-item">
+          <span class="sb-item-icon">&#10005;</span>
+          <p class="sb-item-text">Guessing which strategy to follow this week</p>
+        </div>
+        <div class="sb-item">
+          <span class="sb-item-icon">&#10005;</span>
+          <p class="sb-item-text">Building alone with zero accountability</p>
+        </div>
+        <div class="sb-item">
+          <span class="sb-item-icon">&#10005;</span>
+          <p class="sb-item-text">Months of work with nothing to show for it</p>
+        </div>
+      </div>
+      <div class="sb-arrow-col">
+        <div class="sb-arrow-icon">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="sb-after">
+        <span class="sb-col-label">After</span>
+        <div class="sb-item">
+          <span class="sb-item-icon">&#10003;</span>
+          <p class="sb-item-text">One system, one dashboard, complete clarity</p>
+        </div>
+        <div class="sb-item">
+          <span class="sb-item-icon">&#10003;</span>
+          <p class="sb-item-text">Step-by-step roadmap tailored to your stage</p>
+        </div>
+        <div class="sb-item">
+          <span class="sb-item-icon">&#10003;</span>
+          <p class="sb-item-text">Accountability pods that keep you shipping weekly</p>
+        </div>
+        <div class="sb-item">
+          <span class="sb-item-icon">&#10003;</span>
+          <p class="sb-item-text">Revenue within 30 days, not 30 months</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-solution-transition .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

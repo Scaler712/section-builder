@@ -1,0 +1,172 @@
+<!-- Generated: cyber-serif/about-bio -->
+<style>
+.sb-about-bio {
+  background: #050505;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-about-bio-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+}
+.sb-about-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sb-muted);
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+.sb-about-photo::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, transparent 40%, var(--sb-accent) 50%, transparent 60%);
+  background-size: 200% 200%;
+  animation: sb-bio-shimmer 4s linear infinite;
+  border-radius: inherit;
+  z-index: 0;
+}
+.sb-about-photo::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: #0a0a0a;
+  border-radius: inherit;
+  z-index: 0;
+}
+.sb-about-photo span {
+  position: relative;
+  z-index: 1;
+}
+@keyframes sb-bio-shimmer {
+  0% { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
+}
+.sb-about-content .sb-badge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-about-content h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-heading);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+}
+.sb-about-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+.sb-about-content .sb-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.sb-about-content .sb-stat-num {
+  font-size: 32px;
+  font-weight: 200;
+  font-style: italic;
+  color: var(--sb-accent);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.sb-about-content .sb-stat-label {
+  font-family: monospace;
+  font-size: 10px;
+  color: var(--sb-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 6px;
+}
+.sb-about-bio .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sb-about-bio .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-about-bio-inner { grid-template-columns: 1fr; gap: 32px; }
+  .sb-about-photo { max-width: 280px; margin: 0 auto; }
+  .sb-about-content h2 { font-size: 28px; }
+  .sb-about-content .sb-stats { gap: 24px; }
+}
+</style>
+
+<div class="sb-about-bio">
+  <div class="sb-about-bio-inner">
+    <div class="sb-about-photo fade-up">
+      <span>Your Photo</span>
+    </div>
+    <div class="sb-about-content">
+      <span class="sb-badge fade-up">About the Founder</span>
+      <h2 class="fade-up">Built by an Operator,<br>for Operators</h2>
+      <p class="fade-up">After scaling three companies past seven figures and burning through every tool on the market, I built the platform I wished existed. One that actually works the way operators think.</p>
+      <p class="fade-up">I've spent 12 years in performance marketing, managed over $50M in ad spend, and learned that the biggest bottleneck is never strategy. It's execution speed. That's what this platform solves.</p>
+      <div class="sb-stats fade-up">
+        <div>
+          <div class="sb-stat-num">12+</div>
+          <div class="sb-stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="sb-stat-num">$50M</div>
+          <div class="sb-stat-label">Ad Spend Managed</div>
+        </div>
+        <div>
+          <div class="sb-stat-num">2,400</div>
+          <div class="sb-stat-label">Teams Served</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-about-bio .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

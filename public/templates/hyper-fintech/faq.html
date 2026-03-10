@@ -1,0 +1,215 @@
+<!-- Generated: hyper-fintech/faq -->
+<style>
+.sb-faq {
+  background: #0A0A0A;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-faq-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sb-faq .sb-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.sb-faq h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+  margin: 0 0 48px 0;
+}
+.sb-faq .sb-accordion-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2rem;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-faq .sb-accordion-item:hover {
+  border-color: rgba(255,255,255,0.15);
+}
+.sb-faq .sb-accordion-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--sb-font);
+  text-align: left;
+}
+.sb-faq .sb-accordion-trigger span {
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  flex: 1;
+  padding-right: 16px;
+}
+.sb-faq .sb-accordion-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(253,224,71,0.1);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--sb-accent);
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-faq .sb-accordion-item.open .sb-accordion-icon {
+  transform: rotate(45deg);
+}
+.sb-faq .sb-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-faq .sb-accordion-body-inner {
+  padding: 0 28px 24px;
+}
+.sb-faq .sb-accordion-body p {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq h2 { font-size: 32px; }
+  .sb-faq .sb-accordion-trigger { padding: 20px; }
+  .sb-faq .sb-accordion-body-inner { padding: 0 20px 20px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-faq-inner">
+    <span class="sb-badge fade-up">FAQ</span>
+    <h2 class="fade-up">Questions? Answered.</h2>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>How fast can I integrate the API?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Most teams go live within 48 hours. Our SDK supports Node.js, Python, Go, and Ruby out of the box. The sandbox environment mirrors production 1:1, so there's zero surprise when you flip the switch.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>What currencies and countries are supported?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>140+ currencies across 190 countries. We handle real-time FX at mid-market rates with zero markup. New corridors are added monthly based on customer demand.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>Is there a minimum transaction volume?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>No minimums on any plan. Whether you're processing $1K or $100M per month, you get the same infrastructure, the same uptime, and the same support. Pricing scales with volume, so you save more as you grow.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>How do you handle compliance and KYC?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Built-in compliance engine handles KYC, AML, and sanctions screening automatically. We maintain licenses in 47 jurisdictions and update regulatory rules in real-time. Your compliance team can sleep at night.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>What happens if there's downtime?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>In 3 years of operation, we've had 4 minutes and 12 seconds of total downtime. Our infrastructure runs across 6 global regions with automatic failover. If a region goes down, traffic reroutes in under 200ms.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-accordion-item fade-up">
+      <button class="sb-accordion-trigger" aria-expanded="false">
+        <span>Can I migrate from my current provider?</span>
+        <div class="sb-accordion-icon">+</div>
+      </button>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Yes. We offer a dedicated migration team that handles the full transition. Most migrations complete within 2 weeks with zero payment disruption. We also offer 90 days of parallel running so you can validate before switching fully.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-accordion-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var trigger = item.querySelector('.sb-accordion-trigger');
+      var body = item.querySelector('.sb-accordion-body');
+      trigger.addEventListener('click', function() {
+        var isOpen = item.classList.contains('open');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('open');
+          items[j].querySelector('.sb-accordion-trigger').setAttribute('aria-expanded', 'false');
+          items[j].querySelector('.sb-accordion-body').style.maxHeight = null;
+        }
+        if (!isOpen) {
+          item.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    })(items[i]);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var k = 0; k < elements.length; k++) {
+    observer.observe(elements[k]);
+  }
+})();
+</script>

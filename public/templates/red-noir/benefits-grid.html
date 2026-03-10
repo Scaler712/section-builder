@@ -1,0 +1,172 @@
+<!-- Generated: red-noir/benefits-grid -->
+<style>
+.sb-benefits-grid {
+  background: #0a0a0a;
+  padding: var(--sb-section-pad, 100px 20px);
+  font-family: 'Manrope', var(--sb-font), sans-serif;
+  color: var(--sb-body, #d4d4d8);
+  position: relative;
+  overflow: hidden;
+}
+.sb-benefits-grid::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.sb-benefits-grid-glow {
+  position: absolute;
+  bottom: -200px; right: -100px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239,35,60,0.1), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.sb-benefits-grid-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.sb-benefits-grid-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+}
+.sb-benefits-grid-title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #ffffff;
+  margin: 0 0 16px;
+  max-width: 550px;
+}
+.sb-benefits-grid-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 0 64px;
+}
+.sb-benefits-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sb-benefits-grid-card {
+  background: rgba(39,39,42,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius, 18px);
+  padding: 36px;
+  transition: border-color 400ms ease, box-shadow 400ms ease;
+}
+.sb-benefits-grid-card:hover {
+  border-color: rgba(239,35,60,0.3);
+  box-shadow: 0 0 40px rgba(239,35,60,0.05);
+}
+.sb-benefits-grid-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(239,35,60,0.1);
+  border: 1px solid rgba(239,35,60,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+.sb-benefits-grid-card-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+.sb-benefits-grid-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+}
+.sb-benefits-grid .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.77, 0, 0.175, 1), transform 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-benefits-grid .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .sb-benefits-grid-cards { grid-template-columns: 1fr; }
+  .sb-benefits-grid-title { font-size: 36px; }
+}
+@media (max-width: 480px) {
+  .sb-benefits-grid-title { font-size: 28px; }
+  .sb-benefits-grid-card { padding: 28px; }
+}
+</style>
+
+<div class="sb-benefits-grid">
+  <div class="sb-benefits-grid-glow"></div>
+  <div class="sb-benefits-grid-inner">
+    <div class="sb-benefits-grid-badge fade-up">What we deliver</div>
+    <h2 class="sb-benefits-grid-title fade-up">Creative that converts, not just content that exists.</h2>
+    <p class="sb-benefits-grid-sub fade-up">Every asset is built to perform. Strategy, production, and iteration all under one roof.</p>
+    <div class="sb-benefits-grid-cards">
+      <div class="sb-benefits-grid-card fade-up">
+        <div class="sb-benefits-grid-icon">&#127916;</div>
+        <h3 class="sb-benefits-grid-card-title">Performance Creative</h3>
+        <p class="sb-benefits-grid-card-desc">AI-generated video ads built to beat your current controls. We test 20+ variations per concept to find what scales.</p>
+      </div>
+      <div class="sb-benefits-grid-card fade-up">
+        <div class="sb-benefits-grid-icon">&#128200;</div>
+        <h3 class="sb-benefits-grid-card-title">Data-Driven Iteration</h3>
+        <p class="sb-benefits-grid-card-desc">Every creative decision is backed by performance data. We analyze hooks, CTAs, and visual sequences to optimize ROAS weekly.</p>
+      </div>
+      <div class="sb-benefits-grid-card fade-up">
+        <div class="sb-benefits-grid-icon">&#9889;</div>
+        <h3 class="sb-benefits-grid-card-title">Rapid Turnaround</h3>
+        <p class="sb-benefits-grid-card-desc">First batch delivered in 72 hours. New variations weekly. No 3-week production cycles or agency bottlenecks.</p>
+      </div>
+      <div class="sb-benefits-grid-card fade-up" style="grid-column: span 3;">
+        <div style="display: flex; align-items: center; gap: 36px;">
+          <div class="sb-benefits-grid-icon">&#128176;</div>
+          <div>
+            <h3 class="sb-benefits-grid-card-title">Full-Funnel Strategy</h3>
+            <p class="sb-benefits-grid-card-desc">From cold traffic hooks to retargeting sequences, we build the entire creative funnel. Top-of-funnel awareness, mid-funnel consideration, and bottom-funnel conversion &mdash; all mapped to your buyer journey and optimized for each platform.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits-grid .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,193 @@
+<!-- Generated: red-sun/pain-points -->
+<style>
+.sb-pain-points {
+  background: #ffffff;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-pain-points .sb-blur-1 {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.07;
+  filter: blur(110px);
+  pointer-events: none;
+  top: -80px;
+  left: -100px;
+}
+.sb-pain-points .sb-blur-2 {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.05;
+  filter: blur(100px);
+  pointer-events: none;
+  bottom: -60px;
+  right: 10%;
+}
+.sb-pain-points-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-pain-points .sb-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sb-pain-points .sb-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+}
+.sb-pain-points h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 48px 0;
+}
+.sb-pain-points h2 em {
+  color: var(--sb-accent);
+  font-style: italic;
+}
+.sb-pain-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sb-pain-item {
+  background: var(--sb-highlight);
+  border-radius: var(--sb-card-radius);
+  box-shadow: 0 24px 64px rgba(45,59,66,0.08);
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-pain-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 32px 72px rgba(45,59,66,0.12);
+}
+.sb-pain-item .sb-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sb-accent);
+}
+.sb-pain-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.02em;
+}
+.sb-pain-item p {
+  font-size: 15px;
+  color: var(--sb-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-pain-points .fade-up {
+  opacity: 0;
+  transform: translateY(30px) rotate(2deg);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.sb-pain-points .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+
+@media (max-width: 768px) {
+  .sb-pain-points h2 { font-size: 32px; }
+  .sb-pain-item { padding: 20px 24px; flex-direction: column; gap: 12px; }
+}
+</style>
+
+<div class="sb-pain-points">
+  <div class="sb-blur-1"></div>
+  <div class="sb-blur-2"></div>
+  <div class="sb-pain-points-inner">
+    <div class="sb-label fade-up">The Problem</div>
+    <h2 class="fade-up">Does This Sound<br><em>Familiar</em>?</h2>
+    <div class="sb-pain-list">
+      <div class="sb-pain-item fade-up">
+        <span class="sb-num">1</span>
+        <div>
+          <h3>Content takes forever to produce</h3>
+          <p>Between briefing, drafting, design, and revisions, a single campaign asset takes 3-5 business days. Your competitors ship in hours.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-num">2</span>
+        <div>
+          <h3>Your creative doesn't convert</h3>
+          <p>You're spending thousands on ads that look great but deliver mediocre results. Pretty isn't profitable without the right messaging framework.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-num">3</span>
+        <div>
+          <h3>Scattered tools, scattered results</h3>
+          <p>Your workflow spans 8 different platforms. Every handoff is a chance for errors, delays, and lost context. Nothing is connected.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-num">4</span>
+        <div>
+          <h3>Scaling means hiring, not automating</h3>
+          <p>Every new client means more headcount. Your margins shrink as you grow, and quality control becomes a full-time job.</p>
+        </div>
+      </div>
+      <div class="sb-pain-item fade-up">
+        <span class="sb-num">5</span>
+        <div>
+          <h3>No visibility into what actually works</h3>
+          <p>You're flying blind on creative performance. Which headlines convert? Which visuals drive action? You're guessing, and it's costing you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-pain-points .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

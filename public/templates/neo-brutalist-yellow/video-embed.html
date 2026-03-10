@@ -1,0 +1,146 @@
+<!-- Generated: neo-brutalist-yellow/video-embed -->
+<style>
+.sb-video-embed {
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background: #ffffff;
+  position: relative;
+}
+.sb-video-embed::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#000 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.07;
+  pointer-events: none;
+}
+.sb-video-embed-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.sb-video-embed .sb-badge {
+  display: inline-block;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
+  border: 2px solid var(--sb-heading);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px 0px #000;
+  padding: 6px 16px;
+  font-weight: 800;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+.sb-video-embed h2 {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--sb-heading);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 12px 0;
+}
+.sb-video-embed .sb-subtitle {
+  font-size: 18px;
+  color: var(--sb-muted);
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+.sb-video-wrapper {
+  background: #ffffff;
+  border: 2px solid var(--sb-heading);
+  border-radius: var(--sb-card-radius);
+  box-shadow: 8px 8px 0px 0px #000;
+  overflow: hidden;
+}
+.sb-video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: #000000;
+}
+.sb-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.sb-video-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111111;
+  color: #ffffff;
+  font-size: 64px;
+  cursor: pointer;
+}
+.sb-video-caption {
+  padding: 16px 24px;
+  font-size: 14px;
+  color: var(--sb-muted);
+  font-weight: 500;
+  text-align: left;
+  border-top: 2px solid rgba(0,0,0,0.08);
+}
+.sb-video-embed .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-video-embed .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-video-embed h2 { font-size: 32px; }
+}
+@media (max-width: 480px) {
+  .sb-video-embed h2 { font-size: 26px; }
+  .sb-video-wrapper { box-shadow: 4px 4px 0px 0px #000; }
+}
+</style>
+
+<div class="sb-video-embed">
+  <div class="sb-video-embed-inner">
+    <div class="fade-up">
+      <span class="sb-badge">Watch Demo</span>
+    </div>
+    <h2 class="fade-up">See It In Action</h2>
+    <p class="sb-subtitle fade-up">Watch how our users build high-converting pages in under 10 minutes.</p>
+    <div class="sb-video-wrapper fade-up">
+      <div class="sb-video-container">
+        <div class="sb-video-placeholder">&#9654;</div>
+        <!-- Replace with your embed: <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
+      </div>
+      <p class="sb-video-caption">&#9201; 8 min watch &mdash; "From blank page to live funnel in one session"</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-video-embed .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

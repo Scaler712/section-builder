@@ -10,8 +10,8 @@ export const pricing: SectionTemplate = {
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 .sb-pricing {
-  padding: 80px 20px;
-  font-family: 'Raleway', sans-serif;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
   background: #FAFAFA;
 }
 .sb-pricing-inner {
@@ -22,13 +22,13 @@ export const pricing: SectionTemplate = {
   text-align: center;
   font-size: 36px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 12px;
 }
 .sb-pricing .subtitle {
   text-align: center;
   font-size: 18px;
-  color: #6B6B6B;
+  color: var(--sb-muted);
   margin-bottom: 48px;
   font-weight: 400;
 }
@@ -40,14 +40,14 @@ export const pricing: SectionTemplate = {
 }
 .sb-pricing-card {
   background: #FFFFFF;
-  border-radius: 18px;
+  border-radius: var(--sb-card-radius);
   padding: 36px 28px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.06);
   text-align: center;
   transition: transform 0.3s ease;
 }
 .sb-pricing-card.featured {
-  border: 2px solid #E8B931;
+  border: 2px solid var(--sb-accent);
   transform: scale(1.04);
   position: relative;
 }
@@ -56,10 +56,10 @@ export const pricing: SectionTemplate = {
   top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background: #E8B931;
-  color: #2B2B2B;
+  background: var(--sb-accent);
+  color: var(--sb-heading);
   padding: 4px 16px;
-  border-radius: 50px;
+  border-radius: var(--sb-btn-radius);
   font-size: 13px;
   font-weight: 700;
   white-space: nowrap;
@@ -67,18 +67,18 @@ export const pricing: SectionTemplate = {
 .sb-pricing-card .tier-name {
   font-size: 20px;
   font-weight: 700;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 8px;
 }
 .sb-pricing-card .price {
   font-size: 42px;
   font-weight: 800;
-  color: #2B2B2B;
+  color: var(--sb-heading);
   margin-bottom: 4px;
 }
 .sb-pricing-card .price-period {
   font-size: 14px;
-  color: #6B6B6B;
+  color: var(--sb-muted);
   margin-bottom: 28px;
   font-weight: 400;
 }
@@ -90,7 +90,7 @@ export const pricing: SectionTemplate = {
 .sb-pricing-card .features li {
   padding: 8px 0;
   font-size: 15px;
-  color: #3A3A3A;
+  color: var(--sb-body);
   border-bottom: 1px solid rgba(0,0,0,0.06);
   font-weight: 400;
 }
@@ -99,7 +99,7 @@ export const pricing: SectionTemplate = {
 }
 .sb-pricing-card .features li::before {
   content: "\\2713";
-  color: #E8B931;
+  color: var(--sb-accent);
   font-weight: 700;
   margin-right: 10px;
 }
@@ -107,13 +107,13 @@ export const pricing: SectionTemplate = {
   display: inline-block;
   width: 100%;
   padding: 14px 0;
-  border-radius: 50px;
+  border-radius: var(--sb-btn-radius);
   font-size: 16px;
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.2s ease;
-  background: #2B2B2B;
+  background: var(--sb-cta-bg);
   color: #FFFFFF;
 }
 .sb-pricing-card .price-btn:hover {
@@ -130,7 +130,7 @@ export const pricing: SectionTemplate = {
 }
 
 @media (max-width: 768px) {
-  .sb-pricing { padding: 50px 16px; }
+  .sb-pricing { padding: var(--sb-section-pad); }
   .sb-pricing h2 { font-size: 28px; }
   .sb-pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
   .sb-pricing-card.featured { transform: scale(1); }

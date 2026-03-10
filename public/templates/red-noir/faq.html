@@ -1,0 +1,224 @@
+<!-- Generated: red-noir/faq -->
+<style>
+.sb-faq {
+  background: #0a0a0a;
+  padding: var(--sb-section-pad, 100px 20px);
+  font-family: 'Manrope', var(--sb-font), sans-serif;
+  color: var(--sb-body, #d4d4d8);
+  position: relative;
+  overflow: hidden;
+}
+.sb-faq::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.sb-faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.sb-faq-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  text-align: center;
+  width: 100%;
+}
+.sb-faq-title {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #ffffff;
+  margin: 0 0 64px;
+  text-align: center;
+}
+.sb-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sb-faq-item {
+  background: rgba(39,39,42,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--sb-card-radius, 18px);
+  overflow: hidden;
+  transition: border-color 400ms ease;
+}
+.sb-faq-item.active {
+  border-color: rgba(239,35,60,0.3);
+}
+.sb-faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  cursor: pointer;
+  user-select: none;
+  gap: 16px;
+}
+.sb-faq-question-text {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+.sb-faq-toggle {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--sb-accent);
+  transition: transform 300ms ease, background 300ms ease;
+}
+.sb-faq-item.active .sb-faq-toggle {
+  transform: rotate(45deg);
+  background: rgba(239,35,60,0.15);
+}
+.sb-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 400ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-faq-item.active .sb-faq-answer {
+  max-height: 300px;
+}
+.sb-faq-answer-text {
+  padding: 0 32px 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms cubic-bezier(0.77, 0, 0.175, 1), transform 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .sb-faq-title { font-size: 36px; }
+  .sb-faq-question { padding: 20px 24px; }
+  .sb-faq-answer-text { padding: 0 24px 24px; }
+}
+@media (max-width: 480px) {
+  .sb-faq-title { font-size: 28px; }
+  .sb-faq-question-text { font-size: 15px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-faq-inner">
+    <div class="sb-faq-badge fade-up">FAQ</div>
+    <h2 class="sb-faq-title fade-up">Got questions. We have answers.</h2>
+    <div class="sb-faq-list">
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">How fast do I get my first batch?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">72 hours from onboarding. We start with a strategy session, pull your existing data, and deliver your first set of tested variations within 3 business days.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">Do you manage our ad accounts?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">No. We are a creative engine, not a media buying agency. We build and optimize the ads &mdash; you or your media buyer runs them. We integrate directly with your team via Slack and shared dashboards.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">What formats do you deliver?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">9:16 for TikTok and Reels, 1:1 for feed, 16:9 for YouTube pre-roll. We deliver platform-ready assets with proper safe zones, text overlays, and captions baked in.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">What if the ads do not perform?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">We iterate until they do. Our process is built on rapid testing. If a concept does not work, we analyze why, adjust the variables, and deliver new variations within 48 hours. We are not done until your ROAS targets are met.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">Is there a minimum contract?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">No long-term contracts. Month-to-month on all plans. We earn your business every 30 days. That said, our average client stays for 11 months because the results compound over time.</p>
+        </div>
+      </div>
+      <div class="sb-faq-item fade-up">
+        <div class="sb-faq-question">
+          <span class="sb-faq-question-text">How is this different from UGC agencies?</span>
+          <span class="sb-faq-toggle">+</span>
+        </div>
+        <div class="sb-faq-answer">
+          <p class="sb-faq-answer-text">UGC agencies send you raw creator content and hope it works. We use AI-generated performance creative combined with systematic hook testing, CTA optimization, and visual sequence analysis. Every asset is built to convert, not just to look native.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var question = item.querySelector('.sb-faq-question');
+      question.addEventListener('click', function() {
+        var wasActive = item.classList.contains('active');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('active');
+        }
+        if (!wasActive) {
+          item.classList.add('active');
+        }
+      });
+    })(items[i]);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

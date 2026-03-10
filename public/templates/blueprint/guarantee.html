@@ -1,0 +1,202 @@
+<!-- Generated: blueprint/guarantee -->
+<style>
+.sb-guarantee {
+  background: #003366;
+  color: rgba(255,255,255,0.8);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 19px, rgba(255,255,255,0.05) 20px);
+}
+.sb-guarantee-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.sb-guarantee .sb-coord {
+  font-family: monospace;
+  font-size: 9px;
+  color: #00FFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+.sb-guarantee h2 {
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 20px 0;
+}
+.sb-guarantee .sb-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+  font-family: monospace;
+}
+.sb-guarantee .sb-terms-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sb-guarantee .sb-terms-list li {
+  font-family: monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.sb-guarantee .sb-terms-list li::before {
+  content: '// ';
+  color: rgba(255,255,255,0.3);
+}
+.sb-guarantee .sb-shield-card {
+  background: transparent;
+  border: 2px solid var(--sb-accent);
+  border-radius: 0;
+  padding: 48px 32px;
+  text-align: center;
+  position: relative;
+}
+.sb-guarantee .sb-shield-card::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-size: 16px;
+  color: var(--sb-accent);
+  font-family: monospace;
+}
+.sb-guarantee .sb-shield-card::after {
+  content: '+';
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  font-size: 16px;
+  color: var(--sb-accent);
+  font-family: monospace;
+}
+.sb-guarantee .sb-stamp {
+  display: inline-block;
+  border: 2px solid var(--sb-accent);
+  color: var(--sb-accent);
+  transform: rotate(-3deg);
+  padding: 6px 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+.sb-guarantee .sb-days {
+  font-family: monospace;
+  font-size: 72px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  margin: 16px 0;
+}
+.sb-guarantee .sb-days-label {
+  font-family: monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.5);
+  display: block;
+  margin-bottom: 24px;
+}
+.sb-guarantee .sb-shield-desc {
+  font-family: monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+}
+.sb-guarantee .sb-dim-line {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin-top: 20px;
+  position: relative;
+  padding-top: 12px;
+}
+.sb-guarantee .sb-dim-line::before,
+.sb-guarantee .sb-dim-line::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: 1px;
+  height: 8px;
+  background: rgba(255,255,255,0.3);
+}
+.sb-guarantee .sb-dim-line::before { left: 0; }
+.sb-guarantee .sb-dim-line::after { right: 0; }
+.sb-guarantee .sb-dim-label {
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+}
+.sb-guarantee .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-guarantee .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-guarantee-inner { grid-template-columns: 1fr; gap: 36px; }
+  .sb-guarantee h2 { font-size: 28px; }
+  .sb-guarantee .sb-days { font-size: 56px; }
+}
+</style>
+
+<div class="sb-guarantee">
+  <div class="sb-guarantee-inner">
+    <div class="fade-up">
+      <div class="sb-coord">REF: WARRANTY-SPEC-003 &nbsp;&middot;&nbsp; REV 1.4</div>
+      <h2>Zero-Risk Deployment</h2>
+      <p class="sb-desc">// we stand behind every blueprint. if you implement the system and don't see results within 30 days, we refund every dollar. no fine print. no runaround.</p>
+      <ul class="sb-terms-list">
+        <li>Full refund within 30 days of purchase</li>
+        <li>No questions asked, no hoops to jump through</li>
+        <li>Refund processed within 24 business hours</li>
+        <li>Keep all downloaded materials regardless</li>
+        <li>Fewer than 0.5% refund rate across 2,400+ members</li>
+      </ul>
+    </div>
+    <div class="sb-shield-card fade-up">
+      <div class="sb-stamp">Certified Guarantee</div>
+      <div class="sb-days">30</div>
+      <span class="sb-days-label">Day Money-Back Guarantee</span>
+      <p class="sb-shield-desc">// implement the blueprints. if you don't see measurable progress, request a full refund. we process it in 24 hours.</p>
+      <div class="sb-dim-line">
+        <span class="sb-dim-label">TOLERANCE: ZERO RISK &nbsp;&middot;&nbsp; SPEC: FULL REFUND</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-guarantee .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

@@ -1,0 +1,176 @@
+<!-- Generated: hyper-fintech/video-embed -->
+<style>
+.sb-video-embed {
+  background: #0A0A0A;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+}
+.sb-video-embed-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sb-video-embed .sb-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.sb-video-embed h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--sb-heading);
+  margin: 0 0 16px 0;
+}
+.sb-video-embed .sb-desc {
+  font-size: 16px;
+  color: var(--sb-muted);
+  margin: 0 auto 40px;
+  max-width: 560px;
+  line-height: 1.6;
+}
+.sb-video-embed .sb-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 28px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.sb-video-embed .sb-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.sb-video-embed .sb-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
+  transition: background 0.4s ease;
+  z-index: 2;
+}
+.sb-video-embed .sb-video-wrapper:hover .sb-video-overlay {
+  background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
+}
+.sb-video-embed .sb-play-btn {
+  width: 80px;
+  height: 80px;
+  background: var(--sb-accent);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+  box-shadow: 0 0 60px rgba(253,224,71,0.3);
+}
+.sb-video-embed .sb-video-wrapper:hover .sb-play-btn {
+  transform: scale(1.1);
+}
+.sb-video-embed .sb-play-btn::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12px 0 12px 22px;
+  border-color: transparent transparent transparent #000000;
+  margin-left: 4px;
+}
+.sb-video-embed .sb-video-meta {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+}
+.sb-video-embed .sb-video-meta span {
+  font-size: 13px;
+  color: var(--sb-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sb-video-embed .sb-video-meta span strong {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+.sb-video-embed .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.sb-video-embed .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-video-embed h2 { font-size: 32px; }
+  .sb-video-embed .sb-video-wrapper { border-radius: 20px; }
+  .sb-video-embed .sb-play-btn { width: 56px; height: 56px; }
+  .sb-video-embed .sb-play-btn::after { border-width: 8px 0 8px 16px; margin-left: 3px; }
+  .sb-video-embed .sb-video-meta { flex-direction: column; gap: 8px; align-items: center; }
+}
+</style>
+
+<div class="sb-video-embed">
+  <div class="sb-video-embed-inner">
+    <span class="sb-badge fade-up">See It in Action</span>
+    <h2 class="fade-up">Watch the 2-minute demo.</h2>
+    <p class="sb-desc fade-up">See how 3,200+ companies are processing payments faster, cheaper, and more reliably than legacy providers.</p>
+    <div class="sb-video-wrapper fade-up" id="sb-hf-video-container">
+      <div class="sb-video-overlay" id="sb-hf-video-overlay">
+        <div class="sb-play-btn"></div>
+      </div>
+    </div>
+    <div class="sb-video-meta fade-up">
+      <span><strong>2:14</strong> runtime</span>
+      <span><strong>47K+</strong> views</span>
+      <span><strong>4.9/5</strong> avg rating</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('sb-hf-video-overlay');
+  var container = document.getElementById('sb-hf-video-container');
+  if (overlay && container) {
+    overlay.addEventListener('click', function() {
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0';
+      iframe.allow = 'autoplay; encrypted-media';
+      iframe.allowFullscreen = true;
+      container.appendChild(iframe);
+      overlay.style.display = 'none';
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-video-embed .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>

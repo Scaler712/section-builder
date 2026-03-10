@@ -1,0 +1,240 @@
+<!-- Generated: luxury-dark-gold/faq -->
+<style>
+.sb-faq {
+  background: #0a0a0a;
+  color: var(--sb-body);
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.sb-faq .sb-glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(167,139,113,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.sb-faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sb-faq .sb-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sb-accent);
+  margin-bottom: 16px;
+  text-align: center;
+}
+.sb-faq h2 {
+  font-family: var(--sb-font);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--sb-heading);
+  font-size: 42px;
+  text-align: center;
+  margin: 0 0 56px 0;
+}
+.sb-faq .sb-accordion-item {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--sb-card-radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.4s ease;
+}
+.sb-faq .sb-accordion-item:hover {
+  border-color: rgba(167,139,113,0.2);
+}
+.sb-faq .sb-accordion-item.sb-open {
+  border-color: rgba(167,139,113,0.3);
+}
+.sb-faq .sb-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  cursor: pointer;
+  user-select: none;
+}
+.sb-faq .sb-accordion-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sb-heading);
+  margin: 0;
+}
+.sb-faq .sb-accordion-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(167,139,113,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--sb-accent);
+  flex-shrink: 0;
+  transition: transform 0.4s ease, background 0.4s ease;
+}
+.sb-faq .sb-accordion-item.sb-open .sb-accordion-icon {
+  transform: rotate(45deg);
+  background: rgba(167,139,113,0.15);
+}
+.sb-faq .sb-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.sb-faq .sb-accordion-body-inner {
+  padding: 0 28px 24px 28px;
+}
+.sb-faq .sb-accordion-body p {
+  font-size: 15px;
+  color: var(--sb-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+.sb-faq .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sb-faq .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-faq h2 { font-size: 32px; }
+  .sb-faq .sb-accordion-header h3 { font-size: 15px; }
+  .sb-faq .sb-accordion-header { padding: 18px 20px; }
+}
+</style>
+
+<div class="sb-faq">
+  <div class="sb-glow"></div>
+  <div class="sb-faq-inner">
+    <div class="sb-label fade-up">Common Questions</div>
+    <h2 class="fade-up">Everything You Need<br>to Know</h2>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>How quickly can I get started?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Most clients have their first page live within the first afternoon. Professional tier and above includes a concierge onboarding call to ensure everything is configured perfectly from the start.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>Is this suitable for premium brands?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>It was built specifically for premium brands. Our design system, typography choices, and layout architecture were developed in partnership with luxury brand consultants. Every element communicates quality and exclusivity.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>Can I migrate from my current platform?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Absolutely. We provide a white-glove migration service for Professional and Enterprise clients. Our team handles domain transfers, content migration, and integration setup so you experience zero downtime.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>What kind of support do you offer?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Essentials includes priority email support with a 4-hour SLA. Professional adds live chat and a quarterly strategy review. Enterprise includes a dedicated account manager and same-day phone support.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>Is there a commitment or contract?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>No long-term contracts on any tier. You can upgrade, downgrade, or cancel at any time. We earn your loyalty through results, not paperwork. Annual plans save 20% if you prefer that option.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-accordion-item fade-up">
+      <div class="sb-accordion-header">
+        <h3>Do you offer custom enterprise solutions?</h3>
+        <div class="sb-accordion-icon">+</div>
+      </div>
+      <div class="sb-accordion-body">
+        <div class="sb-accordion-body-inner">
+          <p>Yes. For organizations with unique requirements, we create bespoke packages that include custom integrations, dedicated infrastructure, SLA guarantees, and strategic consulting. Contact our enterprise team to discuss your needs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.sb-faq .sb-accordion-item');
+  for (var i = 0; i < items.length; i++) {
+    (function(item) {
+      var header = item.querySelector('.sb-accordion-header');
+      var body = item.querySelector('.sb-accordion-body');
+      var inner = item.querySelector('.sb-accordion-body-inner');
+      header.addEventListener('click', function() {
+        var isOpen = item.classList.contains('sb-open');
+        for (var j = 0; j < items.length; j++) {
+          items[j].classList.remove('sb-open');
+          items[j].querySelector('.sb-accordion-body').style.maxHeight = '0';
+        }
+        if (!isOpen) {
+          item.classList.add('sb-open');
+          body.style.maxHeight = inner.scrollHeight + 24 + 'px';
+        }
+      });
+    })(items[i]);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-faq .fade-up');
+  for (var k = 0; k < elements.length; k++) {
+    observer.observe(elements[k]);
+  }
+})();
+</script>

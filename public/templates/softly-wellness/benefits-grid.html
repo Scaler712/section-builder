@@ -1,0 +1,173 @@
+<!-- Generated: softly-wellness/benefits-grid -->
+<style>
+.sb-benefits {
+  background: #E8EFE8;
+  padding: var(--sb-section-pad);
+  font-family: var(--sb-font);
+  position: relative;
+  overflow: hidden;
+}
+.sb-benefits .sb-blob-1 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--sb-accent);
+  opacity: 0.06;
+  filter: blur(80px);
+  top: -5%;
+  left: 10%;
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite;
+}
+.sb-benefits .sb-blob-2 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: #EFEDF4;
+  opacity: 0.4;
+  filter: blur(80px);
+  bottom: -5%;
+  right: 5%;
+  pointer-events: none;
+  animation: sb-float 6s ease-in-out infinite 3s;
+}
+@keyframes sb-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.sb-benefits-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.sb-benefits .sb-badge {
+  display: inline-block;
+  background: rgba(255,183,178,0.15);
+  color: var(--sb-accent);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.sb-benefits h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0 0 12px 0;
+}
+.sb-benefits .sb-subtitle {
+  font-size: 18px;
+  color: var(--sb-muted);
+  margin-bottom: 48px;
+}
+.sb-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  text-align: left;
+}
+.sb-benefits-card {
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05);
+  padding: 36px;
+  transition: all 0.4s ease;
+}
+.sb-benefits-card:hover {
+  box-shadow: 0 8px 32px -2px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+.sb-benefits-card .sb-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(255,183,178,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.sb-benefits-card h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--sb-heading);
+  letter-spacing: -0.015em;
+  margin: 0 0 10px 0;
+}
+.sb-benefits-card p {
+  font-size: 15px;
+  color: var(--sb-body);
+  line-height: 1.65;
+  margin: 0;
+}
+.sb-benefits .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.sb-benefits .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sb-benefits-grid { grid-template-columns: 1fr; }
+  .sb-benefits h2 { font-size: 32px; }
+}
+</style>
+
+<div class="sb-benefits">
+  <div class="sb-blob-1"></div>
+  <div class="sb-blob-2"></div>
+  <div class="sb-benefits-inner">
+    <span class="sb-badge fade-up">What you get</span>
+    <h2 class="fade-up">Everything your body<br>has been asking for</h2>
+    <p class="sb-subtitle fade-up">A holistic approach that nourishes mind, body, and spirit.</p>
+    <div class="sb-benefits-grid">
+      <div class="sb-benefits-card fade-up">
+        <div class="sb-icon">&#127807;</div>
+        <h3>Personalized wellness plan</h3>
+        <p>Your body is unique. Our assessment creates a custom roadmap based on your lifestyle, goals, and what actually feels good to you.</p>
+      </div>
+      <div class="sb-benefits-card fade-up">
+        <div class="sb-icon">&#128150;</div>
+        <h3>Guided meditations daily</h3>
+        <p>5 to 20 minute sessions designed for real people with real schedules. Start your mornings centered, end your evenings at peace.</p>
+      </div>
+      <div class="sb-benefits-card fade-up">
+        <div class="sb-icon">&#127793;</div>
+        <h3>Nourishing recipe library</h3>
+        <p>200+ plant-forward recipes that taste incredible and take under 30 minutes. No complicated ingredients, no kitchen stress.</p>
+      </div>
+      <div class="sb-benefits-card fade-up">
+        <div class="sb-icon">&#129303;</div>
+        <h3>Community support circle</h3>
+        <p>Connect with thousands of like-minded women on the same journey. Share wins, ask questions, and never feel alone in your growth.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  var elements = document.querySelectorAll('.sb-benefits .fade-up');
+  for (var i = 0; i < elements.length; i++) {
+    observer.observe(elements[i]);
+  }
+})();
+</script>
