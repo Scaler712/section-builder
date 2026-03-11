@@ -211,14 +211,14 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     if (urlMatch?.[1] && /fonts/.test(urlMatch[1])) fontUrls.add(urlMatch[1]);
   }
 
-  // ── Fetch @font-face declarations from Google Fonts and inline them ──
-  // Systeme.io strips @import rules and encodes & in URLs.
-  // The only reliable approach is to fetch the CSS that Google Fonts serves
-  // (which contains @font-face with direct woff2 URLs) and inline it.
+  // ── Fetch @font-face declarations with base64-encoded font files ──
+  // Systeme.io Raw HTML blocks block external font loading entirely.
+  // We fetch the Google Fonts CSS, then also fetch each woff2 file and
+  // embed it as a base64 data URI — making fonts 100% self-contained.
   let inlinedFontFaces = "";
   for (const fontUrl of fontUrls) {
     try {
-      const proxyUrl = `/api/font-css?url=${encodeURIComponent(fontUrl)}`;
+      const proxyUrl = `/api/font-css?url=${encodeURIComponent(fontUrl)}&inline=true`;
       const res = await fetch(proxyUrl);
       if (res.ok) {
         const css = await res.text();
