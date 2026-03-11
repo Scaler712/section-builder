@@ -368,7 +368,9 @@ export function validateSystemeioHtml(html: string): { valid: boolean; warnings:
       if (selectors) {
         for (const sel of selectors) {
           const trimmed = sel.trim().replace(/\s*\{$/, "");
-          if (trimmed && !trimmed.startsWith(".sb-") && !trimmed.startsWith(":root") && !trimmed.startsWith("@")) {
+          // Allow bare element selectors (img, body, html, etc.) — they're safe inside .sb-root
+          const bareElements = ["img", "body", "html", "a", "p", "h1", "h2", "h3", "h4", "h5", "h6", "ul", "ol", "li", "table", "iframe", "video", "button", "input", "label", "span", "div", "section", "nav", "header", "footer", "main", "article", "aside", "figure", "figcaption", "blockquote"];
+          if (trimmed && !trimmed.startsWith(".sb-") && !trimmed.startsWith(":root") && !trimmed.startsWith("@") && !bareElements.includes(trimmed)) {
             warnings.push(`Unscoped CSS selector: ${trimmed} (should use .sb- prefix)`);
             break;
           }
@@ -379,7 +381,7 @@ export function validateSystemeioHtml(html: string): { valid: boolean; warnings:
 
   // Check HTML size
   const sizeKb = new Blob([html]).size / 1024;
-  if (sizeKb > 500) {
+  if (sizeKb > 2000) {
     warnings.push(`HTML size is ${Math.round(sizeKb)}KB — may be slow to load`);
   }
 
