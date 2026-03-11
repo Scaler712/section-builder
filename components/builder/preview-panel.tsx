@@ -15,6 +15,7 @@ interface PreviewPanelProps {
   onDropImage?: (src: string, alt: string) => void;
   styleOverrides?: StyleOverrides;
   highlightSelector?: string | null;
+  lovableBaseUrl?: string;
 }
 
 const deviceWidths: Record<Device, string> = {
@@ -133,7 +134,7 @@ const EDITABLE_SCRIPT = `
 })();
 </script>`;
 
-export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOverrides, highlightSelector }: PreviewPanelProps) {
+export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOverrides, highlightSelector, lovableBaseUrl }: PreviewPanelProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isDragOver, setIsDragOver] = useState(false);
 
@@ -189,19 +190,25 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
 
     const themeBlock = styleOverrides ? buildCssVarBlock(styleOverrides) : "";
 
+    // <base> tag to resolve /lovable-uploads/ paths in preview
+    const baseTag = lovableBaseUrl
+      ? `<base href="${lovableBaseUrl.replace(/\/+$/, "")}/">`
+      : "";
+
     // Detect if this is a full HTML document (from Lovable or other source)
     const isFullDoc = /<!DOCTYPE|<html[\s>]/i.test(html);
 
     if (isFullDoc) {
-      // Full document: inject our theme block + editable script into the existing structure
+      // Full document: DON'T inject sb-theme — the page has its own styles.
+      // Only inject base tag (for lovable-uploads) + editable script.
       let doc = html;
-      // Remove existing sb-theme to avoid duplication
+      // Remove any previously injected sb-theme
       doc = doc.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
-      // Inject theme block before closing </head> (or before <body> if no </head>)
-      if (/<\/head>/i.test(doc)) {
-        doc = doc.replace(/<\/head>/i, `${themeBlock}</head>`);
-      } else if (/<body/i.test(doc)) {
-        doc = doc.replace(/<body/i, `${themeBlock}<body`);
+      // Inject <base> tag after <head> for /lovable-uploads/ resolution
+      if (baseTag) {
+        if (/<head[^>]*>/i.test(doc)) {
+          doc = doc.replace(/<head[^>]*>/i, `$&\n${baseTag}`);
+        }
       }
       // Inject editable script before closing </body>
       if (/<\/body>/i.test(doc)) {
@@ -212,11 +219,11 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
       return doc;
     }
 
-    // Fragment mode: wrap in our own document shell
+    // Fragment mode: wrap in our own document shell (theme block applies here)
     const cleanHtml = html.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
 
-    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
-  }, [html, styleOverrides]);
+    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${baseTag}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
+  }, [html, styleOverrides, lovableBaseUrl]);
 
   useEffect(() => {
     if (!onHtmlChange) return;

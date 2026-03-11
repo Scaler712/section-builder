@@ -56,6 +56,7 @@ export function BuilderLayout() {
   const [parsedContent, setParsedContent] = useState<ParsedPage | null>(null);
   const [highlightSelector, setHighlightSelector] = useState<string | null>(null);
   const [checkoutUrl, setCheckoutUrl] = useState("");
+  const [lovableUrl, setLovableUrl] = useState("");
 
   const selectTemplate = useCallback((id: string) => {
     setActiveTemplate(id);
@@ -429,6 +430,8 @@ export function BuilderLayout() {
         getExportHtml={getExportHtml}
         checkoutUrl={checkoutUrl}
         onHtmlChange={setHtml}
+        lovableUrl={lovableUrl}
+        onLovableUrlChange={setLovableUrl}
       />
       {html.trim() && (
         <SectionSplitter
@@ -454,7 +457,7 @@ export function BuilderLayout() {
             <HtmlEditor value={html} onChange={setHtml} onCursorLine={handleCursorLine} />
           </div>
         )}
-        <PreviewPanel html={html} device={device} onHtmlChange={handleHtmlChange} onDropImage={handleMediaImageInsert} styleOverrides={styleOverrides} highlightSelector={highlightSelector} />
+        <PreviewPanel html={html} device={device} onHtmlChange={handleHtmlChange} onDropImage={handleMediaImageInsert} styleOverrides={styleOverrides} highlightSelector={highlightSelector} lovableBaseUrl={lovableUrl} />
       </div>
 
       {/* Mobile/Tablet: tabbed layout */}
@@ -517,7 +520,7 @@ export function BuilderLayout() {
             <HtmlEditor value={html} onChange={setHtml} onCursorLine={handleCursorLine} />
           </TabsContent>
           <TabsContent value="preview" className="flex-1 overflow-hidden">
-            <PreviewPanel html={html} device={device} onHtmlChange={handleHtmlChange} onDropImage={handleMediaImageInsert} styleOverrides={styleOverrides} highlightSelector={highlightSelector} />
+            <PreviewPanel html={html} device={device} onHtmlChange={handleHtmlChange} onDropImage={handleMediaImageInsert} styleOverrides={styleOverrides} highlightSelector={highlightSelector} lovableBaseUrl={lovableUrl} />
           </TabsContent>
         </Tabs>
       </div>

@@ -22,6 +22,8 @@ interface OutputBarProps {
   getExportHtml?: () => string;
   checkoutUrl?: string;
   onHtmlChange?: (html: string) => void;
+  lovableUrl?: string;
+  onLovableUrlChange?: (url: string) => void;
 }
 
 /**
@@ -85,13 +87,14 @@ function buildLovablePrompt(html: string, _sections: PageSection[], overrides?: 
   return lines.join("\n");
 }
 
-export function OutputBar({ html, sections = [], device, onDeviceChange, onClear, showCode, onToggleCode, styleOverrides, getExportHtml, checkoutUrl, onHtmlChange }: OutputBarProps) {
+export function OutputBar({ html, sections = [], device, onDeviceChange, onClear, showCode, onToggleCode, styleOverrides, getExportHtml, checkoutUrl, onHtmlChange, lovableUrl = "", onLovableUrlChange }: OutputBarProps) {
   const [showValidation, setShowValidation] = useState(false);
   const [validation, setValidation] = useState<{ valid: boolean; warnings: string[] } | null>(null);
   const [baking, setBaking] = useState(false);
   const [videoWarnings, setVideoWarnings] = useState<string[]>([]);
-  const [lovableUrl, setLovableUrl] = useState("");
   const [showLovableInput, setShowLovableInput] = useState(false);
+
+  const setLovableUrl = (url: string) => onLovableUrlChange?.(url);
 
   const needsLovableUrl = html.trim() && hasLovableUploads(html);
 
