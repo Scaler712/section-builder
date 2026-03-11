@@ -118,26 +118,55 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   // Wrap content in .sb-root container for alignment control
   clean = `<div class="sb-root">\n${clean}\n</div>`;
 
-  // ── Inject font-family inline on every text element ──
-  // Systeme.io may strip or override <style> rules. Inline styles survive everything.
+  // ── Inject font-family + font-weight inline on every text element ──
+  // Systeme.io overrides both font-family AND font-weight via its own CSS.
+  // Inline styles with !important survive everything.
   // IMPORTANT: Use string replacement, NOT DOMParser serialization.
   // DOMParser moves <style> from body to head, destroying CSS when reading body.innerHTML.
   const fontFamily = overrides.fontFamily || "Raleway";
-  const fontStyle = `font-family: '${fontFamily}', sans-serif`;
+  const fontFamilyDecl = `font-family: '${fontFamily}', sans-serif !important`;
+
+  // Default font-weights per tag — headings should be bold, body text normal
+  const tagWeights: Record<string, string> = {
+    h1: "700", h2: "700", h3: "600", h4: "600", h5: "600", h6: "600",
+    button: "600", label: "500",
+  };
+
   const textTags = "h1|h2|h3|h4|h5|h6|p|span|a|li|button|label|div|blockquote|figcaption|td|th";
   // Match ALL opening tags of text elements
   clean = clean.replace(
     new RegExp(`<(${textTags})(\\s[^>]*)?>`, "gi"),
     (match, tag, attrs) => {
       if (!attrs) attrs = "";
-      // Already has font-family — skip
-      if (attrs.includes("font-family")) return match;
-      // Has style attribute — append font-family
+      const tagLower = tag.toLowerCase();
+
+      // Extract existing font-weight from inline style if present
+      const existingWeightMatch = attrs.match(/font-weight:\s*(\d+|bold|normal|lighter|bolder)/);
+      const existingWeight = existingWeightMatch ? existingWeightMatch[1] : null;
+
+      // Determine font-weight: use existing > tag default > skip
+      const weight = existingWeight || tagWeights[tagLower] || null;
+      const weightDecl = weight ? `; font-weight: ${weight} !important` : "";
+
+      // Already has font-family with !important — just add weight if needed
+      if (attrs.includes("font-family") && attrs.includes("!important")) {
+        if (weight && !attrs.includes("font-weight")) {
+          return match.replace(/style="([^"]*)"/, `style="$1${weightDecl}"`);
+        }
+        return match;
+      }
+
+      // Build the style additions
+      const additions = `${fontFamilyDecl}${weightDecl}`;
+
+      // Has style attribute — append
       if (attrs.includes('style="')) {
-        return match.replace(/style="([^"]*)"/, `style="$1; ${fontStyle}"`);
+        // Strip any existing font-family (we're replacing it with !important version)
+        const cleanedMatch = match.replace(/font-family:[^;"]*(;|\s*")/g, "$1");
+        return cleanedMatch.replace(/style="([^"]*)"/, `style="$1; ${additions}"`);
       }
       // No style attribute — add one
-      return `<${tag}${attrs} style="${fontStyle}">`;
+      return `<${tag}${attrs} style="${additions}">`;
     }
   );
 
@@ -239,8 +268,15 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     .filter((s) => s.trim())
     .join("\n\n");
 
-  // Font family CSS override as backup (inline styles on elements are the primary method)
-  const fontOverride = `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }`;
+  // Font family + weight CSS overrides as backup (inline styles are primary method)
+  const fontOverride = `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }
+.sb-root h1 { font-weight: 700 !important; }
+.sb-root h2 { font-weight: 700 !important; }
+.sb-root h3 { font-weight: 600 !important; }
+.sb-root h4 { font-weight: 600 !important; }
+.sb-root h5 { font-weight: 600 !important; }
+.sb-root h6 { font-weight: 600 !important; }
+.sb-root button { font-weight: 600 !important; }`;
 
   // ── Reinforce media element CSS rules with !important ──
   // Systeme.io applies its own sizing overrides to img, iframe, and video elements
@@ -284,6 +320,13 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
       }
       return `${selector}{${reinforced}}`;
     }
+  );
+
+  // ── Reinforce font-weight in ALL CSS rules with !important ──
+  // Systeme.io overrides font-weight. Add !important to any font-weight declaration.
+  reinforcedCss = reinforcedCss.replace(
+    /font-weight:\s*([^;!}]+)(;)/g,
+    "font-weight: $1 !important;"
   );
 
   // Everything in ONE <style> block: inlined @font-face first, then CSS rules
