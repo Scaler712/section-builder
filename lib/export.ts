@@ -68,14 +68,16 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/gi;
   clean = clean.replace(scriptRegex, "").trim();
 
-  // Deduplicate @import declarations across all styles
-  const imports = new Set<string>();
+  // Collect ALL @import declarations, then strip them from CSS blocks.
+  // @import MUST be at the very top of a <style> block or browsers ignore them.
+  const allImports = new Set<string>();
   const cleanedStyles = styles.map((s) => {
     let result = s.replace(/@import\s+url\([^)]+\)\s*;?\s*/g, (importLine) => {
       const normalized = importLine.trim().replace(/;$/, "");
-      if (imports.has(normalized)) return "";
-      imports.add(normalized);
-      return importLine;
+      if (!allImports.has(normalized)) {
+        allImports.add(normalized);
+      }
+      return ""; // strip from inline position — will be hoisted to top
     });
     // Scope bare `html` and `body` selectors to `.sb-root` to avoid Systeme.io conflicts
     result = result.replace(/(\n|^)\s*html\s*\{/g, "$1.sb-root {");
@@ -102,19 +104,13 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
 .sb-root { text-align: left; scroll-behavior: smooth; }
 
 /* Mobile responsive fix for Systeme.io */
-/* Systeme.io doesn't pass viewport meta to Raw HTML blocks. */
-/* Force responsive behavior on common layout patterns. */
 .sb-root { max-width: 100%; overflow-x: hidden; box-sizing: border-box; }
 .sb-root *, .sb-root *::before, .sb-root *::after { box-sizing: border-box; }
 .sb-root img, .sb-root video, .sb-root iframe { max-width: 100%; height: auto; }
 @media (max-width: 768px) {
-  .sb-root [class*="grid"] { grid-template-columns: 1fr !important; }
-  .sb-root [class*="flex"][class*="row"],
-  .sb-root [class*="flex"][class*="gap"] { flex-direction: column !important; }
   .sb-root [style*="display: flex"][style*="flex-direction: row"],
   .sb-root [style*="display:flex"][style*="flex-direction:row"] { flex-direction: column !important; }
   .sb-root [style*="width:"][style*="px"] { width: 100% !important; max-width: 100% !important; }
-  .sb-root { padding-left: 16px !important; padding-right: 16px !important; }
   .sb-root h1 { font-size: clamp(1.75rem, 6vw, 3rem) !important; }
   .sb-root h2 { font-size: clamp(1.5rem, 5vw, 2.25rem) !important; }
 }`;
@@ -138,33 +134,46 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // Build output
   const parts: string[] = [];
 
-  // Theme block first (with its own @import)
-  parts.push(themeBlock);
+  // Extract theme block's @import so we can deduplicate it
+  const themeImportMatch = themeBlock.match(/@import\s+url\([^)]+\)\s*;?/);
+  if (themeImportMatch) {
+    const normalized = themeImportMatch[0].trim().replace(/;$/, "");
+    allImports.add(normalized);
+  }
 
-  // Combined styles (skip any @import that duplicates the theme block's import)
-  const themeImportMatch = themeBlock.match(/@import url\('[^']+'\)/);
-  const themeImportUrl = themeImportMatch ? themeImportMatch[0] : "";
+  // Also add font imports extracted from <head> <link> tags
+  if (headLinks) {
+    for (const line of headLinks.split("\n")) {
+      const normalized = line.trim().replace(/;$/, "");
+      if (normalized) allImports.add(normalized);
+    }
+  }
 
+  // Hoist ALL @import rules to the top of a single <style> block.
+  // This is critical — browsers ignore @import if ANY CSS rule comes before it.
+  const hoistedImports = Array.from(allImports).map((i) => i + ";").join("\n");
+
+  // Theme block without @import (it's been hoisted)
+  const themeBlockClean = themeBlock
+    .replace(/@import\s+url\([^)]+\)\s*;?\s*\n?/g, "")
+    .replace(/<style id="sb-theme">\s*\n?/, '<style id="sb-theme">\n')
+    .trim();
+  parts.push(themeBlockClean);
+
+  // Combined styles
   const combinedCss = cleanedStyles
-    .map((s) => {
-      if (themeImportUrl) {
-        return s.replace(new RegExp(escapeRegex(themeImportUrl) + "\\s*;?\\s*", "g"), "");
-      }
-      return s;
-    })
     .filter((s) => s.trim())
     .join("\n\n");
 
-  // Prepend Google Font imports extracted from <head> <link> tags
-  const fontImports = headLinks ? headLinks + "\n" : "";
+  // Single combined <style> block: imports FIRST, then CSS rules
+  const cssBody = [
+    hoistedImports,
+    combinedCss,
+    fadeUpFix,
+    alignmentFix,
+  ].filter((s) => s.trim()).join("\n\n");
 
-  if (combinedCss.trim()) {
-    parts.push(`<style>\n${fontImports}${combinedCss}\n\n${fadeUpFix}\n\n${alignmentFix}\n</style>`);
-  } else if (fontImports) {
-    parts.push(`<style>\n${fontImports}\n${fadeUpFix}\n\n${alignmentFix}\n</style>`);
-  } else {
-    parts.push(`<style>\n${fadeUpFix}\n\n${alignmentFix}\n</style>`);
-  }
+  parts.push(`<style>\n${cssBody}\n</style>`);
 
   // HTML content
   if (clean.trim()) {
