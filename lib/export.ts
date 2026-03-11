@@ -96,42 +96,10 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // We wrap ALL content in a .sb-root container with text-align: left,
   // then selectively center only elements that should be centered.
   // Works with ANY class naming convention (sb- prefixed, Lovable classes, or plain HTML).
-  const alignmentFix = `/* Systeme.io alignment fix — universal */
-/* Force left on everything to override Systeme.io's text-align:center wrapper */
-.sb-root, .sb-root * { text-align: left !important; }
-/* Respect .text-center utility class (used by Lovable and many frameworks) */
-.sb-root .text-center { text-align: center !important; }
-.sb-root .text-center * { text-align: center !important; }
-/* Center headings by default */
-.sb-root h2 { text-align: center !important; }
-/* Center hero, CTA, guarantee, transition sections */
-.sb-root [class*="hero"],
-.sb-root [class*="cta"],
-.sb-root [class*="guarantee"],
-.sb-root [class*="transition"],
-.sb-root [class*="pricing-wrap"],
-.sb-root [class*="final-cta"] { text-align: center !important; }
-.sb-root [class*="hero"] *,
-.sb-root [class*="cta"] *,
-.sb-root [class*="guarantee"] *,
-.sb-root [class*="transition"] *,
-.sb-root [class*="pricing-wrap"] *,
-.sb-root [class*="final-cta"] * { text-align: center !important; }
-/* Left-align content that should stay left even inside centered sections */
-.sb-root [class*="hero-left"] { text-align: left !important; }
-.sb-root [class*="hero-left"] * { text-align: left !important; }
-.sb-root [class*="pain-text"],
-.sb-root [class*="lesson"],
-.sb-root [class*="check-text"],
-.sb-root [class*="author-msg-body"],
-.sb-root [class*="author-bio"],
-.sb-root [class*="faq-q"],
-.sb-root [class*="faq-answer"],
-.sb-root [class*="bonus-card"] p { text-align: left !important; }
-.sb-root [class*="pricing-card"] ul,
-.sb-root [class*="pricing-card"] li,
-.sb-root [class*="features"] li { text-align: left !important; }
-.sb-root { scroll-behavior: smooth; }`;
+  const alignmentFix = `/* Systeme.io alignment fix — minimal override */
+/* Only neutralize Systeme.io's text-align:center wrapper. */
+/* Let the original page CSS handle all other alignment. */
+.sb-root { text-align: left; scroll-behavior: smooth; }`;
 
   // Wrap content in .sb-root container for alignment control
   clean = `<div class="sb-root">\n${clean}\n</div>`;
