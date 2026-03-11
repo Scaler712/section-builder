@@ -211,21 +211,20 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     if (urlMatch?.[1] && /fonts/.test(urlMatch[1])) fontUrls.add(urlMatch[1]);
   }
 
-  // ── Fetch @font-face declarations with base64-encoded font files ──
-  // Systeme.io Raw HTML blocks block external font loading entirely.
-  // We fetch the Google Fonts CSS, then also fetch each woff2 file and
-  // embed it as a base64 data URI — making fonts 100% self-contained.
+  // ── Fetch @font-face declarations as CSS fallback ──
+  // Primary font loading is via JS <link> injection in the script block.
+  // This CSS @font-face is a secondary fallback in case scripts are blocked.
   let inlinedFontFaces = "";
   for (const fontUrl of fontUrls) {
     try {
-      const proxyUrl = `/api/font-css?url=${encodeURIComponent(fontUrl)}&inline=true`;
+      const proxyUrl = `/api/font-css?url=${encodeURIComponent(fontUrl)}`;
       const res = await fetch(proxyUrl);
       if (res.ok) {
         const css = await res.text();
         inlinedFontFaces += css + "\n";
       }
     } catch {
-      // If fetch fails, skip — inline styles still force the font name
+      // If fetch fails, skip — JS injection + inline styles handle fonts
     }
   }
 
@@ -304,13 +303,36 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     parts.push(clean);
   }
 
-  // Single unified animation script — replaces all per-section observers.
-  // Uses DOMContentLoaded + setTimeout fallback to guarantee execution.
-  // Adds .sb-animated class first (re-hides elements), then IntersectionObserver
-  // adds .visible (animates them in). If observer isn't supported, elements
-  // stay visible via the CSS default.
+  // Build font URL list for JS injection
+  const fontUrlList = Array.from(fontUrls).map(u => `'${u.replace(/'/g, "\\'")}'`).join(",");
+
+  // Single unified script — font loading + animations.
+  // Font loading: dynamically injects <link> tags into <head> at runtime.
+  // This bypasses Systeme.io's CSS stripping — scripts run, so we load fonts via JS.
+  // Animation: IntersectionObserver with fade-up class handling.
   parts.push(`<script>
 (function() {
+  // ── Load Google Fonts via JS (bypasses Systeme.io CSS stripping) ──
+  var fontUrls = [${fontUrlList}];
+  if (fontUrls.length > 0) {
+    var pc1 = document.createElement('link');
+    pc1.rel = 'preconnect';
+    pc1.href = 'https://fonts.googleapis.com';
+    document.head.appendChild(pc1);
+    var pc2 = document.createElement('link');
+    pc2.rel = 'preconnect';
+    pc2.href = 'https://fonts.gstatic.com';
+    pc2.crossOrigin = 'anonymous';
+    document.head.appendChild(pc2);
+    for (var f = 0; f < fontUrls.length; f++) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = fontUrls[f];
+      document.head.appendChild(link);
+    }
+  }
+
+  // ── Fade-up animations ──
   function initAnimations() {
     var els = document.querySelectorAll('.fade-up');
     if (!els.length) return;
