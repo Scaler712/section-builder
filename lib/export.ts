@@ -10,7 +10,7 @@ import { buildCssVarBlock } from "@/lib/css-vars";
  * - Replaces per-section IntersectionObservers with a single robust one
  * - Strips prohibited tags
  */
-export function optimizeForSystemeio(html: string, overrides: StyleOverrides, checkoutUrl?: string): string {
+export async function optimizeForSystemeio(html: string, overrides: StyleOverrides, checkoutUrl?: string): Promise<string> {
   if (!html.trim()) return html;
 
   // Strip full-document wrappers (from Lovable or other sources)
@@ -135,19 +135,11 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   const parts: string[] = [];
 
   // ── Collect ALL font URLs ──
-  // Systeme.io encodes & to &amp; in HTML, which breaks Google Fonts URLs
-  // like ...css2?family=Inter:wght@400;500&display=swap
-  // Fix: strip &display=swap so URLs contain NO ampersands.
   const fontUrls = new Set<string>();
-
-  function sanitizeFontUrl(url: string): string {
-    // Remove &display=swap (and any other & params) to avoid & encoding issues
-    return url.replace(/&[^&]*/g, "");
-  }
 
   // From theme block
   const themeImportMatch = themeBlock.match(/@import\s+url\(['"]?([^'")]+)['"]?\)/);
-  if (themeImportMatch?.[1]) fontUrls.add(sanitizeFontUrl(themeImportMatch[1]));
+  if (themeImportMatch?.[1]) fontUrls.add(themeImportMatch[1]);
 
   // From <head> <link> tags
   if (headMatch) {
@@ -155,7 +147,7 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
     for (const l of linkTags) {
       if (/fonts\.googleapis\.com/.test(l)) {
         const href = l.match(/href="([^"]+)"/)?.[1];
-        if (href) fontUrls.add(sanitizeFontUrl(href));
+        if (href) fontUrls.add(href);
       }
     }
   }
@@ -163,14 +155,30 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // From CSS @import declarations we already collected
   for (const imp of allImports) {
     const urlMatch = imp.match(/url\(['"]?([^'")]+)['"]?\)/);
-    if (urlMatch?.[1] && /fonts/.test(urlMatch[1])) fontUrls.add(sanitizeFontUrl(urlMatch[1]));
+    if (urlMatch?.[1] && /fonts/.test(urlMatch[1])) fontUrls.add(urlMatch[1]);
   }
 
-  // Build @import lines — these go at the TOP of the <style> block.
-  // URLs are now ampersand-free so Systeme.io won't break them.
-  const fontImportLines = Array.from(fontUrls)
-    .map((u) => `@import url('${u}');`)
-    .join("\n");
+  // ── Fetch @font-face declarations from Google Fonts and inline them ──
+  // Systeme.io strips @import rules and encodes & in URLs.
+  // The only reliable approach is to fetch the CSS that Google Fonts serves
+  // (which contains @font-face with direct woff2 URLs) and inline it.
+  let inlinedFontFaces = "";
+  for (const fontUrl of fontUrls) {
+    try {
+      const res = await fetch(fontUrl, {
+        headers: {
+          // Google Fonts returns woff2 format when it sees a modern user-agent
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        },
+      });
+      if (res.ok) {
+        const css = await res.text();
+        inlinedFontFaces += css + "\n";
+      }
+    } catch {
+      // If fetch fails, skip — fonts won't load but page still works
+    }
+  }
 
   // Extract theme CSS (without <style> tags and without @import)
   const themeCss = themeBlock
@@ -188,9 +196,9 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   const fontFamily = overrides.fontFamily || "Raleway";
   const fontOverride = `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }`;
 
-  // Everything in ONE <style> block: @imports first (no & chars), then CSS rules
+  // Everything in ONE <style> block: inlined @font-face first, then CSS rules
   const cssBody = [
-    fontImportLines,
+    inlinedFontFaces.trim(),
     themeCss,
     fontOverride,
     combinedCss,
@@ -210,23 +218,8 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // Adds .sb-animated class first (re-hides elements), then IntersectionObserver
   // adds .visible (animates them in). If observer isn't supported, elements
   // stay visible via the CSS default.
-  // Build font URLs array for the JS fallback (with display=swap for better UX)
-  const fontUrlsJs = Array.from(fontUrls).map((u) => `'${u.replace(/'/g, "\\'")}'`).join(",");
-
   parts.push(`<script>
 (function() {
-  /* Load Google Fonts via <link> injection — bypasses Systeme.io CSS sanitization */
-  var fonts = [${fontUrlsJs}];
-  for (var f = 0; f < fonts.length; f++) {
-    var exists = document.querySelector('link[href="' + fonts[f] + '"]');
-    if (!exists) {
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = fonts[f];
-      document.head.appendChild(link);
-    }
-  }
-
   function initAnimations() {
     var els = document.querySelectorAll('.fade-up');
     if (!els.length) return;

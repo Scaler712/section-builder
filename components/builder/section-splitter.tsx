@@ -198,7 +198,7 @@ export function SectionSplitter({ html, onHtmlChange, styleOverrides, checkoutUr
 
     // Run through Systeme.io optimizer if we have style overrides
     if (styleOverrides) {
-      const optimized = optimizeForSystemeio(fullChunk, styleOverrides, checkoutUrl);
+      const optimized = await optimizeForSystemeio(fullChunk, styleOverrides, checkoutUrl);
       await navigator.clipboard.writeText(optimized);
     } else {
       await navigator.clipboard.writeText(fullChunk);

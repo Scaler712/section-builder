@@ -107,7 +107,7 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
       return;
     }
 
-    const optimized = optimizeForSystemeio(html, styleOverrides, checkoutUrl);
+    const optimized = await optimizeForSystemeio(html, styleOverrides, checkoutUrl);
     const result = validateSystemeioHtml(optimized);
     setValidation(result);
 
