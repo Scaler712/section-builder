@@ -77,8 +77,9 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
       imports.add(normalized);
       return importLine;
     });
-    // Scope bare `html` selectors to `.sb-root` to avoid Systeme.io conflicts
+    // Scope bare `html` and `body` selectors to `.sb-root` to avoid Systeme.io conflicts
     result = result.replace(/(\n|^)\s*html\s*\{/g, "$1.sb-root {");
+    result = result.replace(/(\n|^)\s*body\s*\{/g, "$1.sb-root {");
     return result;
   });
 
