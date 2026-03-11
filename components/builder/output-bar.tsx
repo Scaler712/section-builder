@@ -89,6 +89,7 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
   const [showValidation, setShowValidation] = useState(false);
   const [validation, setValidation] = useState<{ valid: boolean; warnings: string[] } | null>(null);
   const [baking, setBaking] = useState(false);
+  const [videoWarnings, setVideoWarnings] = useState<string[]>([]);
 
   const bakeImages = async () => {
     if (!html.trim() || !onHtmlChange) {
@@ -96,18 +97,30 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
       return;
     }
     setBaking(true);
+    setVideoWarnings([]);
     const toastId = toast.loading("Baking images... 0/?");
     try {
       const result = await inlineExternalImages(html, (done, total) => {
         toast.loading(`Baking images... ${done}/${total}`, { id: toastId });
       });
-      if (result.total === 0) {
+      if (result.total === 0 && result.externalVideos.length === 0) {
         toast.dismiss(toastId);
         toast.info("No external images found to bake");
       } else {
         onHtmlChange(result.html);
         toast.dismiss(toastId);
-        toast.success(`Baked ${result.success}/${result.total} images${result.failed ? ` (${result.failed} failed)` : ""}`);
+        const parts: string[] = [];
+        if (result.total > 0) parts.push(`Baked ${result.success}/${result.total} images`);
+        if (result.failed > 0) parts.push(`${result.failed} failed`);
+        if (result.externalVideos.length > 0) parts.push(`${result.externalVideos.length} video(s) need attention`);
+        toast.success(parts.join(" · "));
+
+        // Surface video warnings
+        if (result.externalVideos.length > 0) {
+          setVideoWarnings(
+            result.externalVideos.map((v) => `<${v.tag}> → ${v.url}`)
+          );
+        }
       }
     } catch {
       toast.dismiss(toastId);
@@ -301,6 +314,33 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
             </div>
             <button
               onClick={() => setShowValidation(false)}
+              className="font-mono text-[10px] text-[#7a7a72] hover:text-[#1c1c1c]"
+            >
+              dismiss
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Video warnings from bake */}
+      {videoWarnings.length > 0 && (
+        <div className="px-5 py-2 border-b border-[#e5e4de] bg-[#fef3f2]">
+          <div className="flex items-start gap-2">
+            <AlertTriangle className="size-4 text-[#c45040] mt-0.5 shrink-0" />
+            <div className="flex-1">
+              <div className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#7a7a72] mb-1">
+                External Videos Detected — re-host or replace these manually
+              </div>
+              <ul className="space-y-0.5">
+                {videoWarnings.map((w, i) => (
+                  <li key={i} className="font-mono text-[11px] text-[#3A3A3A] break-all">
+                    {w}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <button
+              onClick={() => setVideoWarnings([])}
               className="font-mono text-[10px] text-[#7a7a72] hover:text-[#1c1c1c]"
             >
               dismiss

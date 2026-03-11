@@ -29,12 +29,18 @@ async function proxyFetchImage(url: string): Promise<string | null> {
   }
 }
 
+export interface ExternalVideo {
+  url: string;
+  tag: string; // "video", "source", "iframe"
+}
+
 export interface InlineResult {
   html: string;
   total: number;
   success: number;
   failed: number;
   skipped: number;
+  externalVideos: ExternalVideo[];
 }
 
 /**
@@ -128,9 +134,47 @@ export async function inlineExternalImages(
     }
   }
 
+  // Detect external videos that can't be inlined (too large for base64)
+  const externalVideos: ExternalVideo[] = [];
+  const seenVideoUrls = new Set<string>();
+
+  // <video src="..."> and <video><source src="..."></video>
+  for (const video of Array.from(doc.querySelectorAll("video"))) {
+    const src = video.getAttribute("src") || "";
+    if (src.startsWith("http") && !seenVideoUrls.has(src)) {
+      seenVideoUrls.add(src);
+      externalVideos.push({ url: src, tag: "video" });
+    }
+    for (const source of Array.from(video.querySelectorAll("source"))) {
+      const ssrc = source.getAttribute("src") || "";
+      if (ssrc.startsWith("http") && !seenVideoUrls.has(ssrc)) {
+        seenVideoUrls.add(ssrc);
+        externalVideos.push({ url: ssrc, tag: "source" });
+      }
+    }
+  }
+
+  // <iframe> with non-YouTube/Vimeo/Loom src (those are fine as embeds)
+  for (const iframe of Array.from(doc.querySelectorAll("iframe"))) {
+    const src = iframe.getAttribute("src") || "";
+    if (!src.startsWith("http")) continue;
+    const isPublicEmbed =
+      src.includes("youtube.com") ||
+      src.includes("youtu.be") ||
+      src.includes("vimeo.com") ||
+      src.includes("loom.com") ||
+      src.includes("wistia.com");
+    if (!isPublicEmbed && !seenVideoUrls.has(src)) {
+      seenVideoUrls.add(src);
+      externalVideos.push({ url: src, tag: "iframe" });
+    }
+  }
+
+  // Also detect background video in inline styles (rare but possible)
+  // e.g. a div with a video poster or custom video players
+
   // Serialize back to HTML string
-  // If original had full document structure, return body innerHTML
   const resultHtml = doc.body.innerHTML;
 
-  return { html: resultHtml, total, success, failed, skipped };
+  return { html: resultHtml, total, success, failed, skipped, externalVideos };
 }
