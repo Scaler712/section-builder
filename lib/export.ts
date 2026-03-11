@@ -391,6 +391,50 @@ export function validateSystemeioHtml(html: string): { valid: boolean; warnings:
   };
 }
 
+/**
+ * Extract Google Fonts header code for Systeme.io's Header injection point.
+ * Generates <link> tags that go in Settings → Tracking → Header.
+ * This is more reliable than @font-face inlining inside Raw HTML blocks.
+ */
+export function extractHeaderFontCode(html: string, overrides?: StyleOverrides): string {
+  const fontUrls = new Set<string>();
+
+  // From <link> tags in the HTML
+  const linkTags = html.match(/<link[^>]*>/gi) || [];
+  for (const l of linkTags) {
+    if (/fonts\.googleapis\.com/.test(l)) {
+      const href = l.match(/href="([^"]+)"/)?.[1];
+      if (href) fontUrls.add(href);
+    }
+  }
+
+  // From @import declarations in CSS
+  const importMatches = html.matchAll(/@import\s+url\(['"]?([^'")]+)['"]?\)/g);
+  for (const m of importMatches) {
+    if (m[1] && /fonts/.test(m[1])) fontUrls.add(m[1]);
+  }
+
+  // From style overrides (theme font)
+  if (overrides?.fontFamily) {
+    const themeFontUrl = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(overrides.fontFamily)}:wght@300;400;500;600;700;800&display=swap`;
+    fontUrls.add(themeFontUrl);
+  }
+
+  if (fontUrls.size === 0) return "";
+
+  const lines: string[] = [
+    '<!-- Google Fonts for Section Builder page -->',
+    '<link rel="preconnect" href="https://fonts.googleapis.com">',
+    '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
+  ];
+
+  for (const url of fontUrls) {
+    lines.push(`<link href="${url}" rel="stylesheet">`);
+  }
+
+  return lines.join("\n");
+}
+
 function escapeRegex(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }

@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Trash2, Monitor, Tablet, Smartphone, Code, CheckCircle, AlertTriangle, Download, ExternalLink, ImageDown } from "lucide-react";
+import { Copy, Trash2, Monitor, Tablet, Smartphone, Code, CheckCircle, AlertTriangle, Download, ExternalLink, ImageDown, Type } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { optimizeForSystemeio, validateSystemeioHtml } from "@/lib/export";
+import { optimizeForSystemeio, validateSystemeioHtml, extractHeaderFontCode } from "@/lib/export";
 import { inlineExternalImages } from "@/lib/image-inliner";
 import type { StyleOverrides, PageSection } from "@/lib/page-builder/types";
 
@@ -90,6 +90,7 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
   const [validation, setValidation] = useState<{ valid: boolean; warnings: string[] } | null>(null);
   const [baking, setBaking] = useState(false);
   const [videoWarnings, setVideoWarnings] = useState<string[]>([]);
+  const [headerCode, setHeaderCode] = useState<string | null>(null);
 
   const bakeImages = async () => {
     if (!html.trim() || !onHtmlChange) {
@@ -174,6 +175,21 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
       setShowValidation(true);
       toast.warning(`Copied with ${result.warnings.length} warning(s)`);
     }
+  };
+
+  const copyHeaderCode = async () => {
+    if (!html.trim()) {
+      toast.error("Nothing to extract");
+      return;
+    }
+    const code = extractHeaderFontCode(html, styleOverrides);
+    if (!code) {
+      toast.info("No Google Fonts found in the HTML");
+      return;
+    }
+    await navigator.clipboard.writeText(code);
+    setHeaderCode(code);
+    toast.success("Header font code copied — paste in Systeme.io → Settings → Tracking → Header");
   };
 
   const devices: { key: Device; icon: React.ReactNode; label: string }[] = [
@@ -261,6 +277,17 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
           >
             <ImageDown className="size-3.5" />
             <span className="hidden sm:inline">{baking ? "Baking..." : "Bake Images"}</span>
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={copyHeaderCode}
+            disabled={!html.trim()}
+            title="Copy Google Fonts <link> tags — paste in Systeme.io → Settings → Tracking → Header"
+            className="gap-2 font-mono text-[10px] uppercase tracking-[0.2em] border-[#e5e4de] bg-transparent hover:bg-[#6366f1] hover:text-white hover:border-[#6366f1] ed-transition disabled:opacity-40"
+          >
+            <Type className="size-3.5" />
+            <span className="hidden sm:inline">Fonts</span>
           </Button>
           <button
             onClick={onToggleCode}
@@ -353,6 +380,29 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
             </div>
             <button
               onClick={() => setVideoWarnings([])}
+              className="font-mono text-[10px] text-[#7a7a72] hover:text-[#1c1c1c]"
+            >
+              dismiss
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Google Fonts header code for Systeme.io */}
+      {headerCode && (
+        <div className="px-5 py-2 border-b border-[#e5e4de] bg-[#eef2ff]">
+          <div className="flex items-start gap-2">
+            <Type className="size-4 text-[#6366f1] mt-0.5 shrink-0" />
+            <div className="flex-1">
+              <div className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#7a7a72] mb-1">
+                Google Fonts — paste in Systeme.io → Settings → Tracking → Header code
+              </div>
+              <pre className="font-mono text-[10px] text-[#3A3A3A] bg-white border border-[#e5e4de] p-2 overflow-x-auto whitespace-pre-wrap break-all select-all">
+                {headerCode}
+              </pre>
+            </div>
+            <button
+              onClick={() => setHeaderCode(null)}
               className="font-mono text-[10px] text-[#7a7a72] hover:text-[#1c1c1c]"
             >
               dismiss
