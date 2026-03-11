@@ -134,24 +134,31 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // Build output
   const parts: string[] = [];
 
-  // Extract theme block's @import so we can deduplicate it
-  const themeImportMatch = themeBlock.match(/@import\s+url\([^)]+\)\s*;?/);
-  if (themeImportMatch) {
-    const normalized = themeImportMatch[0].trim().replace(/;$/, "");
-    allImports.add(normalized);
-  }
+  // ── Collect ALL font URLs for JS injection ──
+  // Systeme.io may sanitize <style> blocks, encoding & to &amp; and breaking
+  // Google Fonts URLs. We load fonts via JavaScript instead — guaranteed to work.
+  const fontUrls = new Set<string>();
 
-  // Also add font imports extracted from <head> <link> tags
-  if (headLinks) {
-    for (const line of headLinks.split("\n")) {
-      const normalized = line.trim().replace(/;$/, "");
-      if (normalized) allImports.add(normalized);
+  // From theme block
+  const themeImportMatch = themeBlock.match(/@import\s+url\(['"]?([^'")]+)['"]?\)/);
+  if (themeImportMatch?.[1]) fontUrls.add(themeImportMatch[1]);
+
+  // From <head> <link> tags
+  if (headMatch) {
+    const linkTags = headMatch[1]!.match(/<link[^>]*>/gi) || [];
+    for (const l of linkTags) {
+      if (/fonts\.googleapis\.com/.test(l)) {
+        const href = l.match(/href="([^"]+)"/)?.[1];
+        if (href) fontUrls.add(href);
+      }
     }
   }
 
-  // Hoist ALL @import rules to the very top of ONE <style> block.
-  // Browsers silently ignore @import if ANY CSS rule comes before it.
-  const hoistedImports = Array.from(allImports).map((i) => i + ";").join("\n");
+  // From CSS @import declarations we already collected
+  for (const imp of allImports) {
+    const urlMatch = imp.match(/url\(['"]?([^'")]+)['"]?\)/);
+    if (urlMatch?.[1] && /fonts/.test(urlMatch[1])) fontUrls.add(urlMatch[1]);
+  }
 
   // Extract theme CSS (without <style> tags and without @import)
   const themeCss = themeBlock
@@ -159,7 +166,7 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
     .replace(/<\/?style[^>]*>/gi, "")
     .trim();
 
-  // Combined page styles
+  // Combined page styles (already have @imports stripped)
   const combinedCss = cleanedStyles
     .filter((s) => s.trim())
     .join("\n\n");
@@ -169,9 +176,8 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   const fontFamily = overrides.fontFamily || "Raleway";
   const fontOverride = `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }`;
 
-  // Everything in ONE <style> block: @imports first, then all CSS rules
+  // Everything in ONE <style> block — NO @import (fonts loaded via JS)
   const cssBody = [
-    hoistedImports,
     themeCss,
     fontOverride,
     combinedCss,
@@ -191,8 +197,24 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // Adds .sb-animated class first (re-hides elements), then IntersectionObserver
   // adds .visible (animates them in). If observer isn't supported, elements
   // stay visible via the CSS default.
+  // Build font URLs array for the script
+  const fontUrlsArray = Array.from(fontUrls);
+  const fontUrlsJs = fontUrlsArray.map((u) => `'${u.replace(/'/g, "\\'")}'`).join(",");
+
   parts.push(`<script>
 (function() {
+  /* Load Google Fonts via <link> injection — bypasses Systeme.io CSS sanitization */
+  var fonts = [${fontUrlsJs}];
+  for (var f = 0; f < fonts.length; f++) {
+    var exists = document.querySelector('link[href="' + fonts[f] + '"]');
+    if (!exists) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = fonts[f];
+      document.head.appendChild(link);
+    }
+  }
+
   function initAnimations() {
     var els = document.querySelectorAll('.fade-up');
     if (!els.length) return;
