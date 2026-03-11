@@ -17,6 +17,7 @@ import { LovablePrompt } from "./lovable-prompt";
 import { ImageInput } from "./image-input";
 import { MediaPanel, type ImageWidth } from "./media-panel";
 import { ButtonManager } from "./button-manager";
+import { SectionSplitter } from "./section-splitter";
 import { templateMap } from "@/lib/templates";
 import { applyStyleOverrides } from "@/lib/style-engine";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -428,6 +429,13 @@ export function BuilderLayout() {
         getExportHtml={getExportHtml}
         checkoutUrl={checkoutUrl}
       />
+      {html.trim() && (
+        <SectionSplitter
+          html={html}
+          styleOverrides={styleOverrides}
+          checkoutUrl={checkoutUrl}
+        />
+      )}
 
       {/* Desktop */}
       <div
