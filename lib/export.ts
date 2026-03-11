@@ -106,7 +106,8 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
 /* Mobile responsive fix for Systeme.io */
 .sb-root { max-width: 100%; overflow-x: hidden; box-sizing: border-box; }
 .sb-root *, .sb-root *::before, .sb-root *::after { box-sizing: border-box; }
-.sb-root img, .sb-root video, .sb-root iframe { max-width: 100%; height: auto; }
+.sb-root video, .sb-root iframe { max-width: 100%; }
+/* Do NOT set generic img rules here — page CSS handles image sizing with !important */
 @media (max-width: 768px) {
   .sb-root [style*="display: flex"][style*="flex-direction: row"],
   .sb-root [style*="display:flex"][style*="flex-direction:row"] { flex-direction: column !important; }
@@ -120,18 +121,56 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
 
   // ── Inject font-family inline on every text element ──
   // Systeme.io may strip or override <style> rules. Inline styles survive everything.
+  // IMPORTANT: Use string replacement, NOT DOMParser serialization.
+  // DOMParser moves <style> from body to head, destroying CSS when reading body.innerHTML.
   const fontFamily = overrides.fontFamily || "Raleway";
   const fontStyle = `font-family: '${fontFamily}', sans-serif`;
-  const parser = new DOMParser();
-  const domDoc = parser.parseFromString(clean, "text/html");
-  const textEls = domDoc.body.querySelectorAll("h1, h2, h3, h4, h5, h6, p, span, a, li, button, label, div, blockquote, figcaption, td, th");
-  textEls.forEach((el) => {
-    const existing = el.getAttribute("style") || "";
-    if (!existing.includes("font-family")) {
-      el.setAttribute("style", existing ? `${existing}; ${fontStyle}` : fontStyle);
+  const textTags = "h1|h2|h3|h4|h5|h6|p|span|a|li|button|label|div|blockquote|figcaption|td|th";
+  // Match ALL opening tags of text elements
+  clean = clean.replace(
+    new RegExp(`<(${textTags})(\\s[^>]*)?>`, "gi"),
+    (match, tag, attrs) => {
+      if (!attrs) attrs = "";
+      // Already has font-family — skip
+      if (attrs.includes("font-family")) return match;
+      // Has style attribute — append font-family
+      if (attrs.includes('style="')) {
+        return match.replace(/style="([^"]*)"/, `style="$1; ${fontStyle}"`);
+      }
+      // No style attribute — add one
+      return `<${tag}${attrs} style="${fontStyle}">`;
     }
-  });
-  clean = domDoc.body.innerHTML;
+  );
+
+  // ── Reinforce image inline styles for Systeme.io ──
+  // Systeme.io's CSS overrides image sizing. Add !important to critical properties.
+  // For images WITH existing inline styles, reinforce them.
+  // For images WITHOUT inline styles, the CSS !important rules (added above) handle it.
+  clean = clean.replace(
+    /<img\s([^>]*?)style="([^"]*)"([^>]*?)>/gi,
+    (match, pre, style, post) => {
+      let reinforced = style
+        .replace(/width:\s*([^;!]+)(;|$)/g, "width: $1 !important;")
+        .replace(/height:\s*([^;!]+)(;|$)/g, "height: $1 !important;")
+        .replace(/object-fit:\s*([^;!]+)(;|$)/g, "object-fit: $1 !important;")
+        .replace(/object-position:\s*([^;!]+)(;|$)/g, "object-position: $1 !important;");
+      return `<img ${pre}style="${reinforced}"${post}>`;
+    }
+  );
+
+  // Also reinforce explicit height on image container divs
+  // (containers with height that directly contain an img)
+  clean = clean.replace(
+    /(<div\s[^>]*?style="[^"]*height:\s*\d+[^"]*"[^>]*>)\s*(<img\s)/gi,
+    (match, divTag, imgStart) => {
+      // Add !important to the container's height
+      const reinforcedDiv = divTag.replace(
+        /height:\s*([^;!"]+)(;|")/g,
+        "height: $1 !important$2"
+      );
+      return `${reinforcedDiv}\n${imgStart}`;
+    }
+  );
 
   // ── Replace dead links with checkout URL or anchor ──
   if (checkoutUrl && checkoutUrl.trim()) {
@@ -205,12 +244,32 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   // Font family CSS override as backup (inline styles on elements are the primary method)
   const fontOverride = `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }`;
 
+  // ── Reinforce image CSS rules with !important ──
+  // Systeme.io applies its own `img { height: auto; max-width: 100% }` which
+  // overrides class-based sizing rules like `.hero-image-wrap img { height: 100%; object-fit: cover }`.
+  // Fix: find CSS rules targeting `img` and add !important to sizing properties.
+  const imgSizingProps = ["width", "height", "min-height", "max-width", "object-fit", "object-position"];
+  const reinforcedCss = combinedCss.replace(
+    /([^{}@]*\bimg\b[^{]*)\{([^}]+)\}/g,
+    (match, selector, body) => {
+      let reinforced = body;
+      for (const prop of imgSizingProps) {
+        // Only add !important if not already present
+        reinforced = reinforced.replace(
+          new RegExp(`(${prop}):\\s*([^;!}]+)(;)`, "g"),
+          `$1: $2 !important;`
+        );
+      }
+      return `${selector}{${reinforced}}`;
+    }
+  );
+
   // Everything in ONE <style> block: inlined @font-face first, then CSS rules
   const cssBody = [
     inlinedFontFaces.trim(),
     themeCss,
     fontOverride,
-    combinedCss,
+    reinforcedCss,
     fadeUpFix,
     alignmentFix,
   ].filter((s) => s.trim()).join("\n\n");

@@ -2,7 +2,15 @@
 
 import { useMemo, useEffect, useRef, useState, useCallback } from "react";
 import { buildCssVarBlock } from "@/lib/css-vars";
-import { processImageFile } from "@/lib/image-utils";
+/** Read file as raw base64 data URI — no resizing */
+function readFileAsDataUri(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("Failed to read file"));
+    reader.onload = () => resolve(reader.result as string);
+    reader.readAsDataURL(file);
+  });
+}
 import { toast } from "sonner";
 import type { StyleOverrides } from "@/lib/page-builder/types";
 
@@ -175,7 +183,7 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
     if (!onDropImage) return;
 
     try {
-      const dataUri = await processImageFile(file);
+      const dataUri = await readFileAsDataUri(file);
       onDropImage(dataUri, "Image");
       toast.success("Image added");
     } catch {

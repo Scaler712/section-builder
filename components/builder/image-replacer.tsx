@@ -3,7 +3,16 @@
 import { useState, useMemo, useCallback, useRef } from "react";
 import { ImageOff, Upload, Link, Check, X } from "lucide-react";
 import { toast } from "sonner";
-import { processImageFile } from "@/lib/image-utils";
+/** Read file as raw base64 data URI — NO resizing, NO compression.
+ *  The HTML's own CSS (object-fit, width, height) handles display sizing. */
+function readFileAsDataUri(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("Failed to read file"));
+    reader.onload = () => resolve(reader.result as string);
+    reader.readAsDataURL(file);
+  });
+}
 
 interface ImageReplacerProps {
   html: string;
@@ -73,7 +82,7 @@ export function ImageReplacer({ html, onHtmlChange }: ImageReplacerProps) {
         return;
       }
       try {
-        const dataUri = await processImageFile(file);
+        const dataUri = await readFileAsDataUri(file);
         replaceImage(oldSrc, dataUri);
       } catch {
         toast.error("Failed to process image");

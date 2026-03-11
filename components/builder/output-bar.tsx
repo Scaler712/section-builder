@@ -158,8 +158,17 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
 
     await navigator.clipboard.writeText(optimized);
 
+    // Debug: also download the optimized HTML so we can inspect it
+    const debugBlob = new Blob([`<!DOCTYPE html>\n<html>\n<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Systeme.io Debug Export</title></head>\n<body style="margin:0;padding:0">\n${optimized}\n</body>\n</html>`], { type: "text/html" });
+    const debugUrl = URL.createObjectURL(debugBlob);
+    const debugA = document.createElement("a");
+    debugA.href = debugUrl;
+    debugA.download = `systemeio-debug-${new Date().toISOString().slice(0, 16)}.html`;
+    debugA.click();
+    URL.revokeObjectURL(debugUrl);
+
     if (result.valid) {
-      toast.success("Optimized HTML copied for Systeme.io");
+      toast.success("Optimized HTML copied + debug file downloaded");
       setShowValidation(false);
     } else {
       setShowValidation(true);
