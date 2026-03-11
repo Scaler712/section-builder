@@ -71,12 +71,15 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // Deduplicate @import declarations across all styles
   const imports = new Set<string>();
   const cleanedStyles = styles.map((s) => {
-    return s.replace(/@import\s+url\([^)]+\)\s*;?\s*/g, (importLine) => {
+    let result = s.replace(/@import\s+url\([^)]+\)\s*;?\s*/g, (importLine) => {
       const normalized = importLine.trim().replace(/;$/, "");
       if (imports.has(normalized)) return "";
       imports.add(normalized);
       return importLine;
     });
+    // Scope bare `html` selectors to `.sb-root` to avoid Systeme.io conflicts
+    result = result.replace(/(\n|^)\s*html\s*\{/g, "$1.sb-root {");
+    return result;
   });
 
   // ── Fix fade-up visibility ──
