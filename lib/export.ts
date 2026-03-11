@@ -13,8 +13,44 @@ import { buildCssVarBlock } from "@/lib/css-vars";
 export function optimizeForSystemeio(html: string, overrides: StyleOverrides, checkoutUrl?: string): string {
   if (!html.trim()) return html;
 
+  // Strip full-document wrappers (from Lovable or other sources)
+  // Extract <head> content (styles, links) and <body> content separately
+  let stripped = html;
+
+  // Extract link tags from <head> (Google Fonts etc.) before stripping
+  const headMatch = stripped.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
+  let headLinks = "";
+  if (headMatch) {
+    const linkTags = headMatch[1]!.match(/<link[^>]*>/gi);
+    if (linkTags) {
+      // Convert link preconnect + font imports to @import in CSS
+      const fontLinks = linkTags.filter(l => /fonts\.googleapis\.com\/css/.test(l));
+      headLinks = fontLinks.map(l => {
+        const href = l.match(/href="([^"]+)"/)?.[1];
+        return href ? `@import url('${href}');` : "";
+      }).filter(Boolean).join("\n");
+    }
+  }
+
+  // Extract body content
+  const bodyMatch = stripped.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+  if (bodyMatch) {
+    // Get styles from head
+    const headStyles = headMatch ? (headMatch[1]!.match(/<style[^>]*>[\s\S]*?<\/style>/gi) || []).join("\n") : "";
+    stripped = headStyles + "\n" + bodyMatch[1]!;
+  }
+
+  // Remove remaining document wrappers
+  stripped = stripped.replace(/<!DOCTYPE[^>]*>/gi, "");
+  stripped = stripped.replace(/<\/?html[^>]*>/gi, "");
+  stripped = stripped.replace(/<\/?head[^>]*>/gi, "");
+  stripped = stripped.replace(/<\/?body[^>]*>/gi, "");
+  stripped = stripped.replace(/<meta[^>]*>/gi, "");
+  stripped = stripped.replace(/<title[^>]*>[\s\S]*?<\/title>/gi, "");
+  stripped = stripped.replace(/<link[^>]*>/gi, ""); // links converted to @import above
+
   // Strip any existing theme block
-  let clean = html.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
+  let clean = stripped.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
 
   // Build fresh theme block
   const themeBlock = buildCssVarBlock(overrides);
@@ -78,7 +114,7 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
 .sb-root [class*="pricing-card"] [class*="features"] li { text-align: left !important; }
 /* Button alignment: inherit from parent (centered in hero/cta, left elsewhere) */
 .sb-root a, .sb-root button { text-align: inherit; }
-html { scroll-behavior: smooth; }`;
+.sb-root { scroll-behavior: smooth; }`;
 
   // Wrap content in .sb-root container for alignment control
   clean = `<div class="sb-root">\n${clean}\n</div>`;
@@ -116,8 +152,13 @@ html { scroll-behavior: smooth; }`;
     .filter((s) => s.trim())
     .join("\n\n");
 
+  // Prepend Google Font imports extracted from <head> <link> tags
+  const fontImports = headLinks ? headLinks + "\n" : "";
+
   if (combinedCss.trim()) {
-    parts.push(`<style>\n${combinedCss}\n\n${fadeUpFix}\n\n${alignmentFix}\n</style>`);
+    parts.push(`<style>\n${fontImports}${combinedCss}\n\n${fadeUpFix}\n\n${alignmentFix}\n</style>`);
+  } else if (fontImports) {
+    parts.push(`<style>\n${fontImports}\n${fadeUpFix}\n\n${alignmentFix}\n</style>`);
   } else {
     parts.push(`<style>\n${fadeUpFix}\n\n${alignmentFix}\n</style>`);
   }
