@@ -163,20 +163,23 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   // The only reliable approach is to fetch the CSS that Google Fonts serves
   // (which contains @font-face with direct woff2 URLs) and inline it.
   let inlinedFontFaces = "";
+  console.log("[sb-export] Font URLs collected:", Array.from(fontUrls));
   for (const fontUrl of fontUrls) {
     try {
-      // Fetch via our server-side proxy to avoid CORS issues and
-      // ensure Google Fonts returns woff2 format (needs modern User-Agent).
       const proxyUrl = `/api/font-css?url=${encodeURIComponent(fontUrl)}`;
+      console.log("[sb-export] Fetching font CSS from:", proxyUrl);
       const res = await fetch(proxyUrl);
+      console.log("[sb-export] Font fetch status:", res.status);
       if (res.ok) {
         const css = await res.text();
+        console.log("[sb-export] Got @font-face CSS, length:", css.length);
         inlinedFontFaces += css + "\n";
       }
-    } catch {
-      // If fetch fails, skip — fonts won't load but page still works
+    } catch (err) {
+      console.error("[sb-export] Font fetch error:", err);
     }
   }
+  console.log("[sb-export] Total inlined font CSS length:", inlinedFontFaces.length);
 
   // Extract theme CSS (without <style> tags and without @import)
   const themeCss = themeBlock
