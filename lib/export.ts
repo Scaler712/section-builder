@@ -134,14 +134,20 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // Build output
   const parts: string[] = [];
 
-  // ── Collect ALL font URLs for JS injection ──
-  // Systeme.io may sanitize <style> blocks, encoding & to &amp; and breaking
-  // Google Fonts URLs. We load fonts via JavaScript instead — guaranteed to work.
+  // ── Collect ALL font URLs ──
+  // Systeme.io encodes & to &amp; in HTML, which breaks Google Fonts URLs
+  // like ...css2?family=Inter:wght@400;500&display=swap
+  // Fix: strip &display=swap so URLs contain NO ampersands.
   const fontUrls = new Set<string>();
+
+  function sanitizeFontUrl(url: string): string {
+    // Remove &display=swap (and any other & params) to avoid & encoding issues
+    return url.replace(/&[^&]*/g, "");
+  }
 
   // From theme block
   const themeImportMatch = themeBlock.match(/@import\s+url\(['"]?([^'")]+)['"]?\)/);
-  if (themeImportMatch?.[1]) fontUrls.add(themeImportMatch[1]);
+  if (themeImportMatch?.[1]) fontUrls.add(sanitizeFontUrl(themeImportMatch[1]));
 
   // From <head> <link> tags
   if (headMatch) {
@@ -149,7 +155,7 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
     for (const l of linkTags) {
       if (/fonts\.googleapis\.com/.test(l)) {
         const href = l.match(/href="([^"]+)"/)?.[1];
-        if (href) fontUrls.add(href);
+        if (href) fontUrls.add(sanitizeFontUrl(href));
       }
     }
   }
@@ -157,8 +163,14 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // From CSS @import declarations we already collected
   for (const imp of allImports) {
     const urlMatch = imp.match(/url\(['"]?([^'")]+)['"]?\)/);
-    if (urlMatch?.[1] && /fonts/.test(urlMatch[1])) fontUrls.add(urlMatch[1]);
+    if (urlMatch?.[1] && /fonts/.test(urlMatch[1])) fontUrls.add(sanitizeFontUrl(urlMatch[1]));
   }
+
+  // Build @import lines — these go at the TOP of the <style> block.
+  // URLs are now ampersand-free so Systeme.io won't break them.
+  const fontImportLines = Array.from(fontUrls)
+    .map((u) => `@import url('${u}');`)
+    .join("\n");
 
   // Extract theme CSS (without <style> tags and without @import)
   const themeCss = themeBlock
@@ -176,8 +188,9 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   const fontFamily = overrides.fontFamily || "Raleway";
   const fontOverride = `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }`;
 
-  // Everything in ONE <style> block — NO @import (fonts loaded via JS)
+  // Everything in ONE <style> block: @imports first (no & chars), then CSS rules
   const cssBody = [
+    fontImportLines,
     themeCss,
     fontOverride,
     combinedCss,
@@ -197,9 +210,8 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // Adds .sb-animated class first (re-hides elements), then IntersectionObserver
   // adds .visible (animates them in). If observer isn't supported, elements
   // stay visible via the CSS default.
-  // Build font URLs array for the script
-  const fontUrlsArray = Array.from(fontUrls);
-  const fontUrlsJs = fontUrlsArray.map((u) => `'${u.replace(/'/g, "\\'")}'`).join(",");
+  // Build font URLs array for the JS fallback (with display=swap for better UX)
+  const fontUrlsJs = Array.from(fontUrls).map((u) => `'${u.replace(/'/g, "\\'")}'`).join(",");
 
   parts.push(`<script>
 (function() {
