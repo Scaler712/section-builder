@@ -187,17 +187,35 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
       return `<html><body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:'Space Mono',monospace;color:#7a7a72;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin:0;background:#f7f6f2"><p>Select a template or generate with AI</p></body></html>`;
     }
 
-    // Build the theme block from overrides, inject into the iframe
     const themeBlock = styleOverrides ? buildCssVarBlock(styleOverrides) : "";
 
-    // Strip any existing theme block from the html to avoid duplication
+    // Detect if this is a full HTML document (from Lovable or other source)
+    const isFullDoc = /<!DOCTYPE|<html[\s>]/i.test(html);
+
+    if (isFullDoc) {
+      // Full document: inject our theme block + editable script into the existing structure
+      let doc = html;
+      // Remove existing sb-theme to avoid duplication
+      doc = doc.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
+      // Inject theme block before closing </head> (or before <body> if no </head>)
+      if (/<\/head>/i.test(doc)) {
+        doc = doc.replace(/<\/head>/i, `${themeBlock}</head>`);
+      } else if (/<body/i.test(doc)) {
+        doc = doc.replace(/<body/i, `${themeBlock}<body`);
+      }
+      // Inject editable script before closing </body>
+      if (/<\/body>/i.test(doc)) {
+        doc = doc.replace(/<\/body>/i, `${EDITABLE_SCRIPT}</body>`);
+      } else {
+        doc += EDITABLE_SCRIPT;
+      }
+      return doc;
+    }
+
+    // Fragment mode: wrap in our own document shell
     const cleanHtml = html.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
 
-    // Alignment fix CSS — simulates Systeme.io's text-align:center wrapper then overrides.
-    // Applied in preview so what you see matches the Systeme.io export.
-    const alignCss = 'body>*{text-align:left;display:block;margin-left:auto;margin-right:auto}[class*="hero"],[class*="cta"],[class*="guarantee"],[class*="transition"]{text-align:center}[class*="hero"] h1,[class*="hero"] h2,[class*="hero"] p,[class*="cta"] h1,[class*="cta"] h2,[class*="cta"] p,[class*="guarantee"] h2,[class*="guarantee"] p,[class*="transition"] h2,[class*="transition"] p{text-align:center}[class*="pricing-card"]{text-align:center}[class*="pricing-card"] ul,[class*="pricing-card"] li{text-align:left}h2{text-align:center}';
-
-    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;padding:0;text-align:center;}${alignCss}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
+    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
   }, [html, styleOverrides]);
 
   useEffect(() => {
@@ -215,9 +233,10 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
       if (!cssPath || !newText || !tagName) return;
 
       // Update the html string using DOMParser
+      const isFullDoc = /<!DOCTYPE|<html[\s>]/i.test(html);
       const parser = new DOMParser();
       const doc = parser.parseFromString(
-        `<body>${html}</body>`,
+        isFullDoc ? html : `<body>${html}</body>`,
         "text/html"
       );
 
@@ -225,8 +244,12 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
         const el = doc.body.querySelector(cssPath);
         if (el && el.tagName.toLowerCase() === tagName) {
           el.innerHTML = newText;
-          // Extract updated html from body
-          onHtmlChange!(doc.body.innerHTML);
+          if (isFullDoc) {
+            // Reconstruct full document
+            onHtmlChange!("<!DOCTYPE html>\n" + doc.documentElement.outerHTML);
+          } else {
+            onHtmlChange!(doc.body.innerHTML);
+          }
         }
       } catch {
         // CSS path didn't match — skip
