@@ -49,6 +49,17 @@ function detectSections(html: string): DetectedSection[] {
       }
     }
 
+    // Extract first heading text for a more descriptive label
+    const headingMatch = fullMatch.match(/<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/i);
+    if (headingMatch) {
+      const headingText = headingMatch[1]!.replace(/<[^>]*>/g, "").trim();
+      if (headingText && headingText.length <= 50) {
+        label = headingText;
+      } else if (headingText) {
+        label = headingText.slice(0, 47) + "...";
+      }
+    }
+
     sections.push({ index: index++, label, html: fullMatch });
   }
 
