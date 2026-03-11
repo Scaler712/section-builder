@@ -432,6 +432,7 @@ export function BuilderLayout() {
       {html.trim() && (
         <SectionSplitter
           html={html}
+          onHtmlChange={handleHtmlChange}
           styleOverrides={styleOverrides}
           checkoutUrl={checkoutUrl}
         />

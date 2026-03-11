@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Scissors, Copy, ChevronDown, ChevronRight, Plus, X } from "lucide-react";
+import { Scissors, Copy, ChevronDown, ChevronRight, Plus, X, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { optimizeForSystemeio } from "@/lib/export";
 import type { StyleOverrides } from "@/lib/page-builder/types";
@@ -14,6 +14,7 @@ interface DetectedSection {
 
 interface SectionSplitterProps {
   html: string;
+  onHtmlChange: (html: string) => void;
   styleOverrides?: StyleOverrides;
   checkoutUrl?: string;
 }
@@ -97,13 +98,38 @@ function extractSharedCss(html: string): string {
   return [...links, ...styles].join("\n");
 }
 
-export function SectionSplitter({ html, styleOverrides, checkoutUrl }: SectionSplitterProps) {
+export function SectionSplitter({ html, onHtmlChange, styleOverrides, checkoutUrl }: SectionSplitterProps) {
   const [expanded, setExpanded] = useState(false);
   const [splitPoints, setSplitPoints] = useState<Set<number>>(new Set());
+  const [deletedIndices, setDeletedIndices] = useState<Set<number>>(new Set());
 
-  const sections = useMemo(() => detectSections(html), [html]);
+  const allSections = useMemo(() => detectSections(html), [html]);
 
-  if (sections.length <= 1) return null;
+  // Filter out deleted sections for display and chunking
+  const sections = useMemo(
+    () => allSections.filter((_, i) => !deletedIndices.has(i)),
+    [allSections, deletedIndices]
+  );
+
+  if (allSections.length <= 1) return null;
+
+  const deleteSection = (originalIndex: number) => {
+    // Remove the section's HTML from the page
+    const section = allSections[originalIndex];
+    if (!section) return;
+
+    const newHtml = html.replace(section.html, "").replace(/\n{3,}/g, "\n\n").trim();
+    onHtmlChange(newHtml);
+
+    // Track deletion and clean up split points
+    setDeletedIndices((prev) => {
+      const next = new Set(prev);
+      next.add(originalIndex);
+      return next;
+    });
+
+    toast.success(`Deleted: ${section.label}`);
+  };
 
   const toggleSplit = (afterIndex: number) => {
     setSplitPoints((prev) => {
@@ -202,13 +228,20 @@ export function SectionSplitter({ html, styleOverrides, checkoutUrl }: SectionSp
             {sections.map((section, i) => (
               <div key={section.index}>
                 {/* Section row */}
-                <div className="flex items-center gap-2 py-1.5 px-2 bg-white border border-[#e5e4de] border-b-0 last:border-b">
+                <div className="flex items-center gap-2 py-1.5 px-2 bg-white border border-[#e5e4de] border-b-0 last:border-b group">
                   <span className="font-mono text-[9px] text-[#7a7a72] w-4 text-right shrink-0">
                     {i + 1}
                   </span>
                   <span className="font-mono text-[11px] text-[#1c1c1c] truncate flex-1">
                     {section.label}
                   </span>
+                  <button
+                    onClick={() => deleteSection(section.index)}
+                    className="opacity-0 group-hover:opacity-100 p-0.5 text-[#7a7a72] hover:text-[#c45040] ed-transition shrink-0"
+                    title={`Delete ${section.label}`}
+                  >
+                    <Trash2 className="size-3" />
+                  </button>
                 </div>
 
                 {/* Split point toggle (between sections, not after last) */}
