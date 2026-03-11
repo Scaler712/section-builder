@@ -193,7 +193,24 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
     // Strip any existing theme block from the html to avoid duplication
     const cleanHtml = html.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
 
-    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
+    // Inject alignment fix in preview so it matches the Systeme.io export exactly.
+    // Systeme.io wraps raw HTML in text-align:center — simulate that + override.
+    const alignmentFix = `<style id="sb-align-fix">
+/* Simulate Systeme.io wrapper (text-align:center) then override back to left */
+body { text-align: center; }
+body > * { text-align: left; display: block; margin-left: auto; margin-right: auto; }
+/* Center only intentionally centered elements */
+[class*="hero"], [class*="cta"], [class*="guarantee"], [class*="transition"] { text-align: center; }
+[class*="hero"] h1, [class*="hero"] h2, [class*="hero"] p,
+[class*="cta"] h1, [class*="cta"] h2, [class*="cta"] p,
+[class*="guarantee"] h2, [class*="guarantee"] p,
+[class*="transition"] h2, [class*="transition"] p { text-align: center; }
+[class*="pricing-card"] { text-align: center; }
+[class*="pricing-card"] ul, [class*="pricing-card"] li,
+[class*="pricing-card"] .features, [class*="pricing-card"] .features li { text-align: left; }
+h2 { text-align: center; }
+</style>`;
+    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;padding:0;}</style>${themeBlock}${alignmentFix}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
   }, [html, styleOverrides]);
 
   useEffect(() => {

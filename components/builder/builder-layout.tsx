@@ -16,6 +16,7 @@ import { PasteGenerator, buildSectionsFromParsed } from "./paste-generator";
 import { LovablePrompt } from "./lovable-prompt";
 import { ImageInput } from "./image-input";
 import { MediaPanel, type ImageWidth } from "./media-panel";
+import { ButtonManager } from "./button-manager";
 import { templateMap } from "@/lib/templates";
 import { applyStyleOverrides } from "@/lib/style-engine";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -391,24 +392,17 @@ export function BuilderLayout() {
     <>
       <ApiKeyInput apiKey={apiKey} onApiKeyChange={setApiKey} />
       <div className="my-4 border-t border-[#e5e4de]" />
-      <div className="space-y-1.5">
-        <div className="flex items-center gap-1.5">
-          <Link className="size-3 text-[#7a7a72]" />
-          <span className="font-mono text-[10px] font-medium text-[#1c1c1c]">Checkout URL</span>
-        </div>
-        <input
-          type="url"
-          value={checkoutUrl}
-          onChange={(e) => setCheckoutUrl(e.target.value)}
-          placeholder="https://yourdomain.systeme.io/checkout"
-          className="w-full px-3 py-2 font-mono text-xs border border-[#e5e4de] bg-white focus:border-[#3d7068] focus:outline-none"
-        />
-        <p className="font-mono text-[9px] text-[#7a7a72] leading-relaxed">
-          All CTA buttons will link here on Systeme.io export.{" "}
-          {!checkoutUrl && "Leave empty → buttons scroll to pricing section."}
-        </p>
-      </div>
-      <div className="my-4 border-t border-[#e5e4de]" />
+      {html.trim() && (
+        <>
+          <ButtonManager
+            html={html}
+            onHtmlChange={handleHtmlChange}
+            checkoutUrl={checkoutUrl}
+            onCheckoutUrlChange={setCheckoutUrl}
+          />
+          <div className="my-4 border-t border-[#e5e4de]" />
+        </>
+      )}
       <PresetPicker activePreset={activePreset} onSelect={handlePresetSelect} />
       <div className="my-4 border-t border-[#e5e4de]" />
       {modeTab}

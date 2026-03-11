@@ -53,25 +53,35 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
 
   // ── Fix Systeme.io alignment override ──
   // Systeme.io wraps Raw HTML blocks in a container with text-align: center.
-  // This CSS resets alignment properly: left by default, center only where intended.
-  const alignmentFix = `/* Systeme.io alignment fix */
-[class^="sb-"] { text-align: left !important; }
-[class^="sb-"] h2 { text-align: center !important; }
-[class^="sb-"] .subtitle,
-[class^="sb-"] .lead { text-align: center !important; }
-.sb-hero { text-align: center !important; }
-.sb-hero h1, .sb-hero p, .sb-hero .cta-btn { text-align: center !important; }
-.sb-cta { text-align: center !important; }
-.sb-cta h2, .sb-cta p, .sb-cta .cta-btn { text-align: center !important; }
-.sb-guarantee { text-align: center !important; }
-.sb-guarantee h2, .sb-guarantee p, .sb-guarantee .shield { text-align: center !important; }
-.sb-transition { text-align: center !important; }
-.sb-transition h2, .sb-transition p { text-align: center !important; }
-.sb-pricing-card { text-align: center !important; }
-.sb-pricing-card .features,
-.sb-pricing-card .features li { text-align: left !important; }
-.sb-about-text .stat { text-align: center !important; }
+  // We wrap ALL content in a .sb-root container with text-align: left,
+  // then selectively center only elements that should be centered.
+  // Works with ANY class naming convention (sb- prefixed, Lovable classes, or plain HTML).
+  const alignmentFix = `/* Systeme.io alignment fix — universal */
+.sb-root { text-align: left !important; }
+.sb-root * { text-align: inherit; }
+/* Center headings by default (common layout pattern) */
+.sb-root h2 { text-align: center !important; }
+/* Center hero, CTA, guarantee, and transition sections */
+.sb-root [class*="hero"],
+.sb-root [class*="cta"],
+.sb-root [class*="guarantee"],
+.sb-root [class*="transition"] { text-align: center !important; }
+.sb-root [class*="hero"] h1, .sb-root [class*="hero"] h2, .sb-root [class*="hero"] p,
+.sb-root [class*="cta"] h1, .sb-root [class*="cta"] h2, .sb-root [class*="cta"] p,
+.sb-root [class*="guarantee"] h2, .sb-root [class*="guarantee"] p,
+.sb-root [class*="transition"] h2, .sb-root [class*="transition"] p { text-align: center !important; }
+/* Pricing cards: center card, left-align feature lists */
+.sb-root [class*="pricing-card"] { text-align: center !important; }
+.sb-root [class*="pricing-card"] ul,
+.sb-root [class*="pricing-card"] li,
+.sb-root [class*="pricing-card"] [class*="features"],
+.sb-root [class*="pricing-card"] [class*="features"] li { text-align: left !important; }
+/* Button alignment: inherit from parent (centered in hero/cta, left elsewhere) */
+.sb-root a, .sb-root button { text-align: inherit; }
 html { scroll-behavior: smooth; }`;
+
+  // Wrap content in .sb-root container for alignment control
+  clean = `<div class="sb-root">\n${clean}\n</div>`;
 
   // ── Replace dead links with checkout URL or anchor ──
   if (checkoutUrl && checkoutUrl.trim()) {
