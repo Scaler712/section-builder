@@ -118,6 +118,21 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   // Wrap content in .sb-root container for alignment control
   clean = `<div class="sb-root">\n${clean}\n</div>`;
 
+  // ── Inject font-family inline on every text element ──
+  // Systeme.io may strip or override <style> rules. Inline styles survive everything.
+  const fontFamily = overrides.fontFamily || "Raleway";
+  const fontStyle = `font-family: '${fontFamily}', sans-serif`;
+  const parser = new DOMParser();
+  const domDoc = parser.parseFromString(clean, "text/html");
+  const textEls = domDoc.body.querySelectorAll("h1, h2, h3, h4, h5, h6, p, span, a, li, button, label, div, blockquote, figcaption, td, th");
+  textEls.forEach((el) => {
+    const existing = el.getAttribute("style") || "";
+    if (!existing.includes("font-family")) {
+      el.setAttribute("style", existing ? `${existing}; ${fontStyle}` : fontStyle);
+    }
+  });
+  clean = domDoc.body.innerHTML;
+
   // ── Replace dead links with checkout URL or anchor ──
   if (checkoutUrl && checkoutUrl.trim()) {
     clean = clean.replace(/href="#"/g, `href="${checkoutUrl.trim()}"`);
@@ -163,23 +178,18 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   // The only reliable approach is to fetch the CSS that Google Fonts serves
   // (which contains @font-face with direct woff2 URLs) and inline it.
   let inlinedFontFaces = "";
-  console.log("[sb-export] Font URLs collected:", Array.from(fontUrls));
   for (const fontUrl of fontUrls) {
     try {
       const proxyUrl = `/api/font-css?url=${encodeURIComponent(fontUrl)}`;
-      console.log("[sb-export] Fetching font CSS from:", proxyUrl);
       const res = await fetch(proxyUrl);
-      console.log("[sb-export] Font fetch status:", res.status);
       if (res.ok) {
         const css = await res.text();
-        console.log("[sb-export] Got @font-face CSS, length:", css.length);
         inlinedFontFaces += css + "\n";
       }
-    } catch (err) {
-      console.error("[sb-export] Font fetch error:", err);
+    } catch {
+      // If fetch fails, skip — inline styles still force the font name
     }
   }
-  console.log("[sb-export] Total inlined font CSS length:", inlinedFontFaces.length);
 
   // Extract theme CSS (without <style> tags and without @import)
   const themeCss = themeBlock
@@ -192,9 +202,7 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     .filter((s) => s.trim())
     .join("\n\n");
 
-  // Font family override — force the font on .sb-root so it applies
-  // even when the page CSS uses direct font-family or Tailwind's font-sans.
-  const fontFamily = overrides.fontFamily || "Raleway";
+  // Font family CSS override as backup (inline styles on elements are the primary method)
   const fontOverride = `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }`;
 
   // Everything in ONE <style> block: inlined @font-face first, then CSS rules
