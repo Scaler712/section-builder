@@ -165,12 +165,9 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   let inlinedFontFaces = "";
   for (const fontUrl of fontUrls) {
     try {
-      const res = await fetch(fontUrl, {
-        headers: {
-          // Google Fonts returns woff2 format when it sees a modern user-agent
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        },
-      });
+      // No custom headers — browser's own UA already signals woff2 support.
+      // Custom headers like User-Agent trigger CORS preflight which Google Fonts blocks.
+      const res = await fetch(fontUrl);
       if (res.ok) {
         const css = await res.text();
         inlinedFontFaces += css + "\n";
