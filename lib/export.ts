@@ -106,8 +106,7 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
 /* Mobile responsive fix for Systeme.io */
 .sb-root { max-width: 100%; overflow-x: hidden; box-sizing: border-box; }
 .sb-root *, .sb-root *::before, .sb-root *::after { box-sizing: border-box; }
-.sb-root video, .sb-root iframe { max-width: 100%; }
-/* Do NOT set generic img rules here — page CSS handles image sizing with !important */
+/* Do NOT set generic img/video/iframe rules here — page CSS handles sizing with !important */
 @media (max-width: 768px) {
   .sb-root [style*="display: flex"][style*="flex-direction: row"],
   .sb-root [style*="display:flex"][style*="flex-direction:row"] { flex-direction: column !important; }
@@ -244,17 +243,41 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   // Font family CSS override as backup (inline styles on elements are the primary method)
   const fontOverride = `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }`;
 
-  // ── Reinforce image CSS rules with !important ──
-  // Systeme.io applies its own `img { height: auto; max-width: 100% }` which
-  // overrides class-based sizing rules like `.hero-image-wrap img { height: 100%; object-fit: cover }`.
-  // Fix: find CSS rules targeting `img` and add !important to sizing properties.
-  const imgSizingProps = ["width", "height", "min-height", "max-width", "object-fit", "object-position"];
-  const reinforcedCss = combinedCss.replace(
-    /([^{}@]*\bimg\b[^{]*)\{([^}]+)\}/g,
+  // ── Reinforce media element CSS rules with !important ──
+  // Systeme.io applies its own sizing overrides to img, iframe, and video elements
+  // which breaks class-based sizing rules. Fix: add !important to sizing properties
+  // on any CSS rule targeting these elements.
+  const mediaSizingProps = ["width", "height", "min-height", "max-width", "min-width", "object-fit", "object-position", "aspect-ratio", "position", "top", "left", "right", "bottom", "border"];
+  const mediaElementRegex = /([^{}@]*\b(?:img|iframe|video)\b[^{]*)\{([^}]+)\}/g;
+  let reinforcedCss = combinedCss.replace(
+    mediaElementRegex,
     (match, selector, body) => {
       let reinforced = body;
-      for (const prop of imgSizingProps) {
-        // Only add !important if not already present
+      for (const prop of mediaSizingProps) {
+        reinforced = reinforced.replace(
+          new RegExp(`(${prop}):\\s*([^;!}]+)(;)`, "g"),
+          `$1: $2 !important;`
+        );
+      }
+      return `${selector}{${reinforced}}`;
+    }
+  );
+
+  // Also reinforce container rules critical for video/image layout
+  // (containers with aspect-ratio, or explicit height that wrap media)
+  const containerSizingProps = ["width", "height", "min-height", "max-width", "aspect-ratio", "position", "overflow"];
+  const containerKeywords = ["video", "iframe", "image", "img", "media", "embed", "player"];
+  reinforcedCss = reinforcedCss.replace(
+    /([^{}@][^{]*)\{([^}]+)\}/g,
+    (match, selector, body) => {
+      const sel = selector.toLowerCase();
+      // Only target selectors that look like media containers
+      const isMediaContainer = containerKeywords.some(kw => sel.includes(kw));
+      if (!isMediaContainer) return match;
+      // Skip if this is a media query or already processed media element rule
+      if (sel.includes("@") || /\b(img|iframe|video)\b/.test(sel)) return match;
+      let reinforced = body;
+      for (const prop of containerSizingProps) {
         reinforced = reinforced.replace(
           new RegExp(`(${prop}):\\s*([^;!}]+)(;)`, "g"),
           `$1: $2 !important;`
