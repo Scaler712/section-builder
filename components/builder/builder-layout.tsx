@@ -17,6 +17,7 @@ import { LovablePrompt } from "./lovable-prompt";
 import { ImageInput } from "./image-input";
 import { MediaPanel, type ImageWidth } from "./media-panel";
 import { ButtonManager } from "./button-manager";
+import { ImageReplacer } from "./image-replacer";
 import { SectionSplitter } from "./section-splitter";
 import { templateMap } from "@/lib/templates";
 import { applyStyleOverrides } from "@/lib/style-engine";
@@ -56,7 +57,6 @@ export function BuilderLayout() {
   const [parsedContent, setParsedContent] = useState<ParsedPage | null>(null);
   const [highlightSelector, setHighlightSelector] = useState<string | null>(null);
   const [checkoutUrl, setCheckoutUrl] = useState("");
-  const [lovableUrl, setLovableUrl] = useState("");
 
   const selectTemplate = useCallback((id: string) => {
     setActiveTemplate(id);
@@ -396,6 +396,8 @@ export function BuilderLayout() {
       <div className="my-4 border-t border-[#e5e4de]" />
       {html.trim() && (
         <>
+          <ImageReplacer html={html} onHtmlChange={handleHtmlChange} />
+          <div className="my-4 border-t border-[#e5e4de]" />
           <ButtonManager
             html={html}
             onHtmlChange={handleHtmlChange}
@@ -430,8 +432,6 @@ export function BuilderLayout() {
         getExportHtml={getExportHtml}
         checkoutUrl={checkoutUrl}
         onHtmlChange={setHtml}
-        lovableUrl={lovableUrl}
-        onLovableUrlChange={setLovableUrl}
       />
       {html.trim() && (
         <SectionSplitter
@@ -457,7 +457,7 @@ export function BuilderLayout() {
             <HtmlEditor value={html} onChange={setHtml} onCursorLine={handleCursorLine} />
           </div>
         )}
-        <PreviewPanel html={html} device={device} onHtmlChange={handleHtmlChange} onDropImage={handleMediaImageInsert} styleOverrides={styleOverrides} highlightSelector={highlightSelector} lovableBaseUrl={lovableUrl} />
+        <PreviewPanel html={html} device={device} onHtmlChange={handleHtmlChange} onDropImage={handleMediaImageInsert} styleOverrides={styleOverrides} highlightSelector={highlightSelector} lovableBaseUrl="" />
       </div>
 
       {/* Mobile/Tablet: tabbed layout */}
@@ -520,7 +520,7 @@ export function BuilderLayout() {
             <HtmlEditor value={html} onChange={setHtml} onCursorLine={handleCursorLine} />
           </TabsContent>
           <TabsContent value="preview" className="flex-1 overflow-hidden">
-            <PreviewPanel html={html} device={device} onHtmlChange={handleHtmlChange} onDropImage={handleMediaImageInsert} styleOverrides={styleOverrides} highlightSelector={highlightSelector} lovableBaseUrl={lovableUrl} />
+            <PreviewPanel html={html} device={device} onHtmlChange={handleHtmlChange} onDropImage={handleMediaImageInsert} styleOverrides={styleOverrides} highlightSelector={highlightSelector} lovableBaseUrl="" />
           </TabsContent>
         </Tabs>
       </div>

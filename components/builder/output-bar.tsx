@@ -5,7 +5,7 @@ import { Copy, Trash2, Monitor, Tablet, Smartphone, Code, CheckCircle, AlertTria
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { optimizeForSystemeio, validateSystemeioHtml } from "@/lib/export";
-import { inlineExternalImages, hasLovableUploads } from "@/lib/image-inliner";
+import { inlineExternalImages } from "@/lib/image-inliner";
 import type { StyleOverrides, PageSection } from "@/lib/page-builder/types";
 
 type Device = "desktop" | "tablet" | "mobile";
@@ -22,8 +22,6 @@ interface OutputBarProps {
   getExportHtml?: () => string;
   checkoutUrl?: string;
   onHtmlChange?: (html: string) => void;
-  lovableUrl?: string;
-  onLovableUrlChange?: (url: string) => void;
 }
 
 /**
@@ -87,26 +85,15 @@ function buildLovablePrompt(html: string, _sections: PageSection[], overrides?: 
   return lines.join("\n");
 }
 
-export function OutputBar({ html, sections = [], device, onDeviceChange, onClear, showCode, onToggleCode, styleOverrides, getExportHtml, checkoutUrl, onHtmlChange, lovableUrl = "", onLovableUrlChange }: OutputBarProps) {
+export function OutputBar({ html, sections = [], device, onDeviceChange, onClear, showCode, onToggleCode, styleOverrides, getExportHtml, checkoutUrl, onHtmlChange }: OutputBarProps) {
   const [showValidation, setShowValidation] = useState(false);
   const [validation, setValidation] = useState<{ valid: boolean; warnings: string[] } | null>(null);
   const [baking, setBaking] = useState(false);
   const [videoWarnings, setVideoWarnings] = useState<string[]>([]);
-  const [showLovableInput, setShowLovableInput] = useState(false);
-
-  const setLovableUrl = (url: string) => onLovableUrlChange?.(url);
-
-  const needsLovableUrl = html.trim() && hasLovableUploads(html);
 
   const bakeImages = async () => {
     if (!html.trim() || !onHtmlChange) {
       toast.error("Nothing to bake");
-      return;
-    }
-    // If there are /lovable-uploads/ paths and no URL provided, prompt
-    if (needsLovableUrl && !lovableUrl.trim()) {
-      setShowLovableInput(true);
-      toast.error("Paste your Lovable preview URL first — needed to resolve /lovable-uploads/ images");
       return;
     }
     setBaking(true);
@@ -117,8 +104,7 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
         html,
         (done, total) => {
           toast.loading(`Baking images... ${done}/${total}`, { id: toastId });
-        },
-        lovableUrl.trim() || undefined
+        }
       );
       if (result.total === 0 && result.externalVideos.length === 0) {
         toast.dismiss(toastId);
@@ -311,27 +297,6 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
           <span className="hidden sm:inline">Clear</span>
         </button>
       </div>
-
-      {/* Lovable URL input — shown when /lovable-uploads/ paths detected */}
-      {(needsLovableUrl || showLovableInput) && (
-        <div className="px-5 py-2 border-b border-[#e5e4de] bg-[#fdf4ff]">
-          <div className="flex items-center gap-3">
-            <div className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#7a7a72] whitespace-nowrap">
-              Lovable URL
-            </div>
-            <input
-              type="text"
-              value={lovableUrl}
-              onChange={(e) => setLovableUrl(e.target.value)}
-              placeholder="https://your-project.lovable.app"
-              className="flex-1 h-7 px-2 font-mono text-[11px] bg-white border border-[#e5e4de] focus:border-[#ec4899] focus:outline-none ed-transition placeholder:text-[#cccbc4]"
-            />
-            <span className="font-mono text-[9px] text-[#7a7a72] whitespace-nowrap">
-              needed for /lovable-uploads/ images
-            </span>
-          </div>
-        </div>
-      )}
 
       {/* Validation warnings */}
       {showValidation && validation && !validation.valid && (
