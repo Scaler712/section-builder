@@ -99,7 +99,25 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   const alignmentFix = `/* Systeme.io alignment fix — minimal override */
 /* Only neutralize Systeme.io's text-align:center wrapper. */
 /* Let the original page CSS handle all other alignment. */
-.sb-root { text-align: left; scroll-behavior: smooth; }`;
+.sb-root { text-align: left; scroll-behavior: smooth; }
+
+/* Mobile responsive fix for Systeme.io */
+/* Systeme.io doesn't pass viewport meta to Raw HTML blocks. */
+/* Force responsive behavior on common layout patterns. */
+.sb-root { max-width: 100%; overflow-x: hidden; box-sizing: border-box; }
+.sb-root *, .sb-root *::before, .sb-root *::after { box-sizing: border-box; }
+.sb-root img, .sb-root video, .sb-root iframe { max-width: 100%; height: auto; }
+@media (max-width: 768px) {
+  .sb-root [class*="grid"] { grid-template-columns: 1fr !important; }
+  .sb-root [class*="flex"][class*="row"],
+  .sb-root [class*="flex"][class*="gap"] { flex-direction: column !important; }
+  .sb-root [style*="display: flex"][style*="flex-direction: row"],
+  .sb-root [style*="display:flex"][style*="flex-direction:row"] { flex-direction: column !important; }
+  .sb-root [style*="width:"][style*="px"] { width: 100% !important; max-width: 100% !important; }
+  .sb-root { padding-left: 16px !important; padding-right: 16px !important; }
+  .sb-root h1 { font-size: clamp(1.75rem, 6vw, 3rem) !important; }
+  .sb-root h2 { font-size: clamp(1.5rem, 5vw, 2.25rem) !important; }
+}`;
 
   // Wrap content in .sb-root container for alignment control
   clean = `<div class="sb-root">\n${clean}\n</div>`;

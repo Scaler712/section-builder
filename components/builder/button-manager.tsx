@@ -402,18 +402,30 @@ function ButtonRow({
 
       {/* Link value */}
       {linkType === "scroll" ? (
-        <select
-          defaultValue={btn.href.replace("#", "")}
-          onChange={(e) => onLinkChange("scroll", e.target.value)}
-          className="w-full px-1.5 py-1.5 font-mono text-[11px] border border-[#e5e4de] bg-white focus:border-[#3d7068] focus:outline-none text-[#7a7a72]"
-        >
-          <option value="">— Select section —</option>
-          {sections.map((s) => (
-            <option key={s.id} value={s.id}>
-              #{s.id} — {s.label}
-            </option>
-          ))}
-        </select>
+        <div className="space-y-1">
+          {sections.length > 0 && (
+            <select
+              defaultValue={btn.href.replace("#", "")}
+              onChange={(e) => { if (e.target.value) onLinkChange("scroll", e.target.value); }}
+              className="w-full px-1.5 py-1.5 font-mono text-[11px] border border-[#e5e4de] bg-white focus:border-[#3d7068] focus:outline-none text-[#7a7a72]"
+            >
+              <option value="">— Page sections —</option>
+              {sections.map((s) => (
+                <option key={s.id} value={s.id}>
+                  #{s.id} — {s.label}
+                </option>
+              ))}
+            </select>
+          )}
+          <input
+            type="text"
+            defaultValue={btn.href.startsWith("#") ? btn.href.replace("#", "") : ""}
+            onBlur={(e) => { if (e.target.value.trim()) onLinkChange("scroll", e.target.value.trim()); }}
+            placeholder="section-9f186c44 (Systeme.io section ID)"
+            className="w-full px-1.5 py-1.5 font-mono text-[11px] border border-[#e5e4de] bg-white focus:border-[#3d7068] focus:outline-none text-[#7a7a72]"
+            title="Paste any section ID — works with Systeme.io native section IDs"
+          />
+        </div>
       ) : (
         <input
           type="url"
