@@ -97,27 +97,40 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
   // then selectively center only elements that should be centered.
   // Works with ANY class naming convention (sb- prefixed, Lovable classes, or plain HTML).
   const alignmentFix = `/* Systeme.io alignment fix — universal */
-.sb-root { text-align: left !important; }
-.sb-root * { text-align: inherit; }
-/* Center headings by default (common layout pattern) */
+/* Force left on everything to override Systeme.io's text-align:center wrapper */
+.sb-root, .sb-root * { text-align: left !important; }
+/* Respect .text-center utility class (used by Lovable and many frameworks) */
+.sb-root .text-center { text-align: center !important; }
+.sb-root .text-center * { text-align: center !important; }
+/* Center headings by default */
 .sb-root h2 { text-align: center !important; }
-/* Center hero, CTA, guarantee, and transition sections */
+/* Center hero, CTA, guarantee, transition sections */
 .sb-root [class*="hero"],
 .sb-root [class*="cta"],
 .sb-root [class*="guarantee"],
-.sb-root [class*="transition"] { text-align: center !important; }
-.sb-root [class*="hero"] h1, .sb-root [class*="hero"] h2, .sb-root [class*="hero"] p,
-.sb-root [class*="cta"] h1, .sb-root [class*="cta"] h2, .sb-root [class*="cta"] p,
-.sb-root [class*="guarantee"] h2, .sb-root [class*="guarantee"] p,
-.sb-root [class*="transition"] h2, .sb-root [class*="transition"] p { text-align: center !important; }
-/* Pricing cards: center card, left-align feature lists */
-.sb-root [class*="pricing-card"] { text-align: center !important; }
+.sb-root [class*="transition"],
+.sb-root [class*="pricing-wrap"],
+.sb-root [class*="final-cta"] { text-align: center !important; }
+.sb-root [class*="hero"] *,
+.sb-root [class*="cta"] *,
+.sb-root [class*="guarantee"] *,
+.sb-root [class*="transition"] *,
+.sb-root [class*="pricing-wrap"] *,
+.sb-root [class*="final-cta"] * { text-align: center !important; }
+/* Left-align content that should stay left even inside centered sections */
+.sb-root [class*="hero-left"] { text-align: left !important; }
+.sb-root [class*="hero-left"] * { text-align: left !important; }
+.sb-root [class*="pain-text"],
+.sb-root [class*="lesson"],
+.sb-root [class*="check-text"],
+.sb-root [class*="author-msg-body"],
+.sb-root [class*="author-bio"],
+.sb-root [class*="faq-q"],
+.sb-root [class*="faq-answer"],
+.sb-root [class*="bonus-card"] p { text-align: left !important; }
 .sb-root [class*="pricing-card"] ul,
 .sb-root [class*="pricing-card"] li,
-.sb-root [class*="pricing-card"] [class*="features"],
-.sb-root [class*="pricing-card"] [class*="features"] li { text-align: left !important; }
-/* Button alignment: inherit from parent (centered in hero/cta, left elsewhere) */
-.sb-root a, .sb-root button { text-align: inherit; }
+.sb-root [class*="features"] li { text-align: left !important; }
 .sb-root { scroll-behavior: smooth; }`;
 
   // Wrap content in .sb-root container for alignment control
