@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Trash2, Monitor, Tablet, Smartphone, Code, CheckCircle, AlertTriangle, Download, ExternalLink } from "lucide-react";
+import { Copy, Trash2, Monitor, Tablet, Smartphone, Code, CheckCircle, AlertTriangle, Download, ExternalLink, ImageDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { optimizeForSystemeio, validateSystemeioHtml } from "@/lib/export";
+import { inlineExternalImages } from "@/lib/image-inliner";
 import type { StyleOverrides, PageSection } from "@/lib/page-builder/types";
 
 type Device = "desktop" | "tablet" | "mobile";
@@ -20,6 +21,7 @@ interface OutputBarProps {
   styleOverrides?: StyleOverrides;
   getExportHtml?: () => string;
   checkoutUrl?: string;
+  onHtmlChange?: (html: string) => void;
 }
 
 /**
@@ -83,9 +85,36 @@ function buildLovablePrompt(html: string, _sections: PageSection[], overrides?: 
   return lines.join("\n");
 }
 
-export function OutputBar({ html, sections = [], device, onDeviceChange, onClear, showCode, onToggleCode, styleOverrides, getExportHtml, checkoutUrl }: OutputBarProps) {
+export function OutputBar({ html, sections = [], device, onDeviceChange, onClear, showCode, onToggleCode, styleOverrides, getExportHtml, checkoutUrl, onHtmlChange }: OutputBarProps) {
   const [showValidation, setShowValidation] = useState(false);
   const [validation, setValidation] = useState<{ valid: boolean; warnings: string[] } | null>(null);
+  const [baking, setBaking] = useState(false);
+
+  const bakeImages = async () => {
+    if (!html.trim() || !onHtmlChange) {
+      toast.error("Nothing to bake");
+      return;
+    }
+    setBaking(true);
+    const toastId = toast.loading("Baking images... 0/?");
+    try {
+      const result = await inlineExternalImages(html, (done, total) => {
+        toast.loading(`Baking images... ${done}/${total}`, { id: toastId });
+      });
+      if (result.total === 0) {
+        toast.dismiss(toastId);
+        toast.info("No external images found to bake");
+      } else {
+        onHtmlChange(result.html);
+        toast.dismiss(toastId);
+        toast.success(`Baked ${result.success}/${result.total} images${result.failed ? ` (${result.failed} failed)` : ""}`);
+      }
+    } catch {
+      toast.dismiss(toastId);
+      toast.error("Failed to bake images");
+    }
+    setBaking(false);
+  };
 
   const copy = async () => {
     if (!html.trim()) {
@@ -196,6 +225,17 @@ export function OutputBar({ html, sections = [], device, onDeviceChange, onClear
           >
             <ExternalLink className="size-3.5" />
             <span className="hidden sm:inline">Lovable</span>
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={bakeImages}
+            disabled={baking || !html.trim()}
+            title="Download external images and embed them as base64 — fixes Lovable CDN images that break on export"
+            className="gap-2 font-mono text-[10px] uppercase tracking-[0.2em] border-[#e5e4de] bg-transparent hover:bg-[#f59e0b] hover:text-white hover:border-[#f59e0b] ed-transition disabled:opacity-40"
+          >
+            <ImageDown className="size-3.5" />
+            <span className="hidden sm:inline">{baking ? "Baking..." : "Bake Images"}</span>
           </Button>
           <button
             onClick={onToggleCode}

@@ -428,6 +428,7 @@ export function BuilderLayout() {
         styleOverrides={styleOverrides}
         getExportHtml={getExportHtml}
         checkoutUrl={checkoutUrl}
+        onHtmlChange={setHtml}
       />
       {html.trim() && (
         <SectionSplitter
