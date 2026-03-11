@@ -2,18 +2,19 @@
  * Image Inliner — scans HTML for external <img> URLs and converts them
  * to base64 data URIs via the /api/proxy-image endpoint.
  *
- * This "bakes" images into the HTML so they survive export to Systeme.io,
- * download, or any other platform that can't access the original CDN.
+ * IMPORTANT: Uses DOMParser ONLY to extract URLs (read-only).
+ * Actual replacement is done via string replace on the original HTML
+ * to avoid DOMParser mangling the document structure (stripping styles, etc).
  */
 
-/** Check if a src is already a data URI or relative path (skip these) */
-function isAlreadyInlined(src: string): boolean {
+/** Check if a src should be skipped */
+function shouldSkip(src: string): boolean {
   if (!src) return true;
   if (src.startsWith("data:")) return true;
   if (src.startsWith("blob:")) return true;
-  // Skip placeholder services
   if (src.includes("placehold.co")) return true;
   if (src.includes("placeholder.com")) return true;
+  if (!src.startsWith("http://") && !src.startsWith("https://")) return true;
   return false;
 }
 
@@ -31,7 +32,7 @@ async function proxyFetchImage(url: string): Promise<string | null> {
 
 export interface ExternalVideo {
   url: string;
-  tag: string; // "video", "source", "iframe"
+  tag: string;
 }
 
 export interface InlineResult {
@@ -44,59 +45,98 @@ export interface InlineResult {
 }
 
 /**
- * Scan HTML for external images and replace their src with base64 data URIs.
- * Uses DOMParser for safe HTML manipulation.
- *
- * @param html - The HTML string to process
- * @param onProgress - Optional callback: (completed, total) => void
+ * Extract unique external image URLs from HTML using DOMParser (read-only).
+ * Returns deduplicated list of URLs.
+ */
+function extractImageUrls(html: string): string[] {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+  const urls = new Set<string>();
+
+  // <img src="...">
+  for (const img of Array.from(doc.querySelectorAll("img"))) {
+    const src = img.getAttribute("src") || "";
+    if (!shouldSkip(src)) urls.add(src);
+  }
+
+  // background-image: url(...)
+  for (const el of Array.from(doc.querySelectorAll("[style]"))) {
+    const style = el.getAttribute("style") || "";
+    const match = style.match(/background-image:\s*url\(['"]?(https?:\/\/[^'")\s]+)['"]?\)/);
+    if (match && !shouldSkip(match[1])) urls.add(match[1]);
+  }
+
+  return Array.from(urls);
+}
+
+/**
+ * Extract external video URLs from HTML using DOMParser (read-only).
+ */
+function extractVideoUrls(html: string): ExternalVideo[] {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+  const videos: ExternalVideo[] = [];
+  const seen = new Set<string>();
+
+  for (const video of Array.from(doc.querySelectorAll("video"))) {
+    const src = video.getAttribute("src") || "";
+    if (src.startsWith("http") && !seen.has(src)) {
+      seen.add(src);
+      videos.push({ url: src, tag: "video" });
+    }
+    for (const source of Array.from(video.querySelectorAll("source"))) {
+      const ssrc = source.getAttribute("src") || "";
+      if (ssrc.startsWith("http") && !seen.has(ssrc)) {
+        seen.add(ssrc);
+        videos.push({ url: ssrc, tag: "source" });
+      }
+    }
+  }
+
+  for (const iframe of Array.from(doc.querySelectorAll("iframe"))) {
+    const src = iframe.getAttribute("src") || "";
+    if (!src.startsWith("http")) continue;
+    const isPublicEmbed =
+      src.includes("youtube.com") ||
+      src.includes("youtu.be") ||
+      src.includes("vimeo.com") ||
+      src.includes("loom.com") ||
+      src.includes("wistia.com");
+    if (!isPublicEmbed && !seen.has(src)) {
+      seen.add(src);
+      videos.push({ url: src, tag: "iframe" });
+    }
+  }
+
+  return videos;
+}
+
+/**
+ * Escape special regex characters in a string.
+ */
+function escapeRegex(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/**
+ * Scan HTML for external images, fetch them via proxy, and replace URLs
+ * with base64 data URIs using pure string replacement (no DOM serialization).
  */
 export async function inlineExternalImages(
   html: string,
   onProgress?: (completed: number, total: number) => void
 ): Promise<InlineResult> {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
+  const urls = extractImageUrls(html);
+  const externalVideos = extractVideoUrls(html);
 
-  const images = Array.from(doc.querySelectorAll("img"));
-  // Also check CSS background-image URLs in inline styles
-  const bgElements = Array.from(doc.querySelectorAll("[style]")).filter((el) => {
-    const style = el.getAttribute("style") || "";
-    return style.includes("background-image") && style.includes("url(");
-  });
-
-  // Collect all unique external URLs
-  const urlMap = new Map<string, { elements: Element[]; attr: "src" | "bg" }[]>();
-
-  for (const img of images) {
-    const src = img.getAttribute("src") || "";
-    if (isAlreadyInlined(src)) continue;
-    // Must be absolute URL
-    if (!src.startsWith("http://") && !src.startsWith("https://")) continue;
-
-    if (!urlMap.has(src)) urlMap.set(src, []);
-    urlMap.get(src)!.push({ elements: [img], attr: "src" });
-  }
-
-  for (const el of bgElements) {
-    const style = el.getAttribute("style") || "";
-    const match = style.match(/background-image:\s*url\(['"]?(https?:\/\/[^'")\s]+)['"]?\)/);
-    if (!match) continue;
-    const url = match[1];
-    if (isAlreadyInlined(url)) continue;
-
-    if (!urlMap.has(url)) urlMap.set(url, []);
-    urlMap.get(url)!.push({ elements: [el], attr: "bg" });
-  }
-
-  const total = urlMap.size;
+  const total = urls.length;
   let success = 0;
   let failed = 0;
-  const skipped = images.length + bgElements.length - total;
   let completed = 0;
+  let resultHtml = html;
 
-  // Fetch all images in parallel (batched to avoid hammering)
+  // Fetch in parallel batches
   const batchSize = 5;
-  const urls = Array.from(urlMap.keys());
 
   for (let i = 0; i < urls.length; i += batchSize) {
     const batch = urls.slice(i, i + batchSize);
@@ -105,25 +145,12 @@ export async function inlineExternalImages(
     for (let j = 0; j < batch.length; j++) {
       const url = batch[j];
       const dataUri = results[j];
-      const entries = urlMap.get(url)!;
 
       if (dataUri) {
-        for (const entry of entries) {
-          for (const el of entry.elements) {
-            if (entry.attr === "src") {
-              el.setAttribute("src", dataUri);
-            } else {
-              const style = el.getAttribute("style") || "";
-              el.setAttribute(
-                "style",
-                style.replace(
-                  /background-image:\s*url\(['"]?https?:\/\/[^'")\s]+['"]?\)/,
-                  `background-image: url('${dataUri}')`
-                )
-              );
-            }
-          }
-        }
+        // Replace ALL occurrences of this URL in the raw HTML string.
+        // This preserves the entire document structure — no DOM serialization.
+        const escaped = escapeRegex(url);
+        resultHtml = resultHtml.replace(new RegExp(escaped, "g"), dataUri);
         success++;
       } else {
         failed++;
@@ -134,47 +161,12 @@ export async function inlineExternalImages(
     }
   }
 
-  // Detect external videos that can't be inlined (too large for base64)
-  const externalVideos: ExternalVideo[] = [];
-  const seenVideoUrls = new Set<string>();
-
-  // <video src="..."> and <video><source src="..."></video>
-  for (const video of Array.from(doc.querySelectorAll("video"))) {
-    const src = video.getAttribute("src") || "";
-    if (src.startsWith("http") && !seenVideoUrls.has(src)) {
-      seenVideoUrls.add(src);
-      externalVideos.push({ url: src, tag: "video" });
-    }
-    for (const source of Array.from(video.querySelectorAll("source"))) {
-      const ssrc = source.getAttribute("src") || "";
-      if (ssrc.startsWith("http") && !seenVideoUrls.has(ssrc)) {
-        seenVideoUrls.add(ssrc);
-        externalVideos.push({ url: ssrc, tag: "source" });
-      }
-    }
-  }
-
-  // <iframe> with non-YouTube/Vimeo/Loom src (those are fine as embeds)
-  for (const iframe of Array.from(doc.querySelectorAll("iframe"))) {
-    const src = iframe.getAttribute("src") || "";
-    if (!src.startsWith("http")) continue;
-    const isPublicEmbed =
-      src.includes("youtube.com") ||
-      src.includes("youtu.be") ||
-      src.includes("vimeo.com") ||
-      src.includes("loom.com") ||
-      src.includes("wistia.com");
-    if (!isPublicEmbed && !seenVideoUrls.has(src)) {
-      seenVideoUrls.add(src);
-      externalVideos.push({ url: src, tag: "iframe" });
-    }
-  }
-
-  // Also detect background video in inline styles (rare but possible)
-  // e.g. a div with a video poster or custom video players
-
-  // Serialize back to HTML string
-  const resultHtml = doc.body.innerHTML;
-
-  return { html: resultHtml, total, success, failed, skipped, externalVideos };
+  return {
+    html: resultHtml,
+    total,
+    success,
+    failed,
+    skipped: 0,
+    externalVideos,
+  };
 }
