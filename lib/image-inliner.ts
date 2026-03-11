@@ -119,21 +119,49 @@ function escapeRegex(s: string): string {
 }
 
 /**
+ * Resolve relative /lovable-uploads/ paths to absolute URLs.
+ * Replaces all occurrences in the raw HTML string (no DOM parsing).
+ */
+export function resolveLovableUrls(html: string, baseUrl: string): string {
+  // Normalize: strip trailing slash
+  const base = baseUrl.replace(/\/+$/, "");
+  // Match src="/lovable-uploads/..." or url('/lovable-uploads/...')
+  return html.replace(
+    /(["'(])\/lovable-uploads\//g,
+    `$1${base}/lovable-uploads/`
+  );
+}
+
+/**
+ * Detect if HTML contains unresolved /lovable-uploads/ relative paths.
+ */
+export function hasLovableUploads(html: string): boolean {
+  return /["'(]\/lovable-uploads\//.test(html);
+}
+
+/**
  * Scan HTML for external images, fetch them via proxy, and replace URLs
  * with base64 data URIs using pure string replacement (no DOM serialization).
  */
 export async function inlineExternalImages(
   html: string,
-  onProgress?: (completed: number, total: number) => void
+  onProgress?: (completed: number, total: number) => void,
+  lovableBaseUrl?: string
 ): Promise<InlineResult> {
-  const urls = extractImageUrls(html);
-  const externalVideos = extractVideoUrls(html);
+  // Step 0: resolve Lovable relative paths if base URL provided
+  let processedHtml = html;
+  if (lovableBaseUrl) {
+    processedHtml = resolveLovableUrls(processedHtml, lovableBaseUrl);
+  }
+
+  const urls = extractImageUrls(processedHtml);
+  const externalVideos = extractVideoUrls(processedHtml);
 
   const total = urls.length;
   let success = 0;
   let failed = 0;
   let completed = 0;
-  let resultHtml = html;
+  let resultHtml = processedHtml;
 
   // Fetch in parallel batches
   const batchSize = 5;
