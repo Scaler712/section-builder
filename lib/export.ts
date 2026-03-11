@@ -149,25 +149,31 @@ export function optimizeForSystemeio(html: string, overrides: StyleOverrides, ch
     }
   }
 
-  // Hoist ALL @import rules to the top of a single <style> block.
-  // This is critical — browsers ignore @import if ANY CSS rule comes before it.
+  // Hoist ALL @import rules to the very top of ONE <style> block.
+  // Browsers silently ignore @import if ANY CSS rule comes before it.
   const hoistedImports = Array.from(allImports).map((i) => i + ";").join("\n");
 
-  // Theme block without @import (it's been hoisted)
-  const themeBlockClean = themeBlock
+  // Extract theme CSS (without <style> tags and without @import)
+  const themeCss = themeBlock
     .replace(/@import\s+url\([^)]+\)\s*;?\s*\n?/g, "")
-    .replace(/<style id="sb-theme">\s*\n?/, '<style id="sb-theme">\n')
+    .replace(/<\/?style[^>]*>/gi, "")
     .trim();
-  parts.push(themeBlockClean);
 
-  // Combined styles
+  // Combined page styles
   const combinedCss = cleanedStyles
     .filter((s) => s.trim())
     .join("\n\n");
 
-  // Single combined <style> block: imports FIRST, then CSS rules
+  // Font family override — force the font on .sb-root so it applies
+  // even when the page CSS uses direct font-family or Tailwind's font-sans.
+  const fontFamily = overrides.fontFamily || "Raleway";
+  const fontOverride = `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }`;
+
+  // Everything in ONE <style> block: @imports first, then all CSS rules
   const cssBody = [
     hoistedImports,
+    themeCss,
+    fontOverride,
     combinedCss,
     fadeUpFix,
     alignmentFix,
