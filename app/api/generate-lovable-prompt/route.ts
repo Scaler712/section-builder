@@ -200,6 +200,13 @@ Your output is a SINGLE prompt that gets copy-pasted directly into Lovable. It m
 
 # Technical Requirements
 [React + Tailwind, mobile-first, semantic HTML, scroll animations, image placeholders]
+[MUST include this exact block:]
+## HTML Export Rules (CRITICAL)
+This page will be exported as a single HTML file. To ensure it works outside Lovable:
+1. Do NOT import from lucide-react, heroicons, or any icon library — use inline <svg> elements with explicit width/height
+2. All CSS must compile into inline <style> blocks — no external stylesheet references
+3. All images use placeholder divs with descriptive text (no external image URLs)
+4. When the user asks to "turn this into a single HTML file", ALL Tailwind classes must be compiled into a <style> block inside the HTML. No external /assets/*.css files. The HTML must work when opened directly in a browser with zero server.
 
 # Anti-Slop Rules
 [15+ specific rules for what NOT to do]
@@ -222,7 +229,9 @@ Your output is a SINGLE prompt that gets copy-pasted directly into Lovable. It m
 14. Every numbered list must use large, styled numbers (accent color, 32px+)
 15. The <frontend_aesthetics> block must be rewritten for DIRECT-RESPONSE pages specifically
 16. NEVER import from lucide-react, heroicons, or any icon library — Lovable DROPS these imports in HTML export and icons vanish completely. ALL icons MUST be inline SVG elements with explicit width, height, viewBox, and HTML-valid attributes (stroke-width, stroke-linecap, NOT React camelCase). Include the SVG icon code samples from above in your prompt so Lovable copies them exactly
-17. In the Technical Requirements section of your prompt, add: "CRITICAL: Do NOT import any icon libraries. All icons must be inline <svg> elements with explicit width/height attributes. Icon library imports are silently dropped in HTML export."`;
+17. The Technical Requirements section MUST include the HTML Export Rules block shown in the Output Structure above — this tells Lovable to inline all CSS and use no external files
+18. The LAST section of your prompt must be a "## How to Export" section with these exact instructions: "After the page is built, tell Lovable: 'Turn this into a single self-contained HTML file. Inline ALL CSS into style tags inside the HTML. No external stylesheet links, no /assets/ references. The file must work when opened directly in a browser with no server.'"`;
+
 
 export async function POST(req: Request) {
   if (!checkRateLimit()) {

@@ -385,9 +385,15 @@ export function LovablePrompt({ apiKey }: LovablePromptProps) {
             <ol className="font-mono text-[9px] text-[#7a7a72] space-y-0.5 list-decimal list-inside">
               <li>Copy the prompt → paste into Lovable</li>
               {mode === "clone" && <li>Replace the [REPLACE] markers with your own copy</li>}
-              <li>When Lovable finishes → ask: &quot;Turn this into a single HTML file&quot;</li>
-              <li>Copy the page source → Paste Copy tab here → edit → export to Systeme.io</li>
+              <li>When Lovable finishes → tell it: <span className="text-[#1c1c1c] font-medium">&quot;Turn this into a single self-contained HTML file. Inline ALL CSS into style tags. No external stylesheet links, no /assets/ references.&quot;</span></li>
+              <li>Copy the full HTML → paste into Code tab here → edit → export to Systeme.io</li>
             </ol>
+          </div>
+          <div className="p-2.5 bg-[#fef9ee] border border-[#f5d89a] space-y-1">
+            <p className="font-mono text-[10px] font-medium text-[#92710a]">⚠ Export tip:</p>
+            <p className="font-mono text-[9px] text-[#92710a] leading-relaxed">
+              You MUST ask Lovable to inline all CSS. If you just copy the page source, the Tailwind CSS stays in an external file and spacing/sizing/colors will break. The magic phrase: <span className="font-medium">&quot;Inline ALL CSS into style tags, no external files&quot;</span>
+            </p>
           </div>
         </div>
       )}

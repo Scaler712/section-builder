@@ -188,6 +188,16 @@ Source: [URL]
 - All CTA buttons smooth-scroll to pricing section
 - No navigation bar or footer — pure direct-response
 
+## HTML Export Rules (CRITICAL)
+This page will be exported as a single HTML file. To ensure it works outside Lovable:
+1. Do NOT import from lucide-react, heroicons, or any icon library — use inline <svg> elements with explicit width/height
+2. All CSS must compile into inline <style> blocks — no external stylesheet references
+3. All images use placeholder divs with descriptive text (no external image URLs)
+4. When the user asks to "turn this into a single HTML file", ALL Tailwind classes must be compiled into a <style> block inside the HTML. No external /assets/*.css files. The HTML must work when opened directly in a browser with zero server.
+
+## How to Export
+After the page is built, tell Lovable: "Turn this into a single self-contained HTML file. Inline ALL CSS into style tags inside the HTML. No external stylesheet links, no /assets/ references. The file must work when opened directly in a browser with no server."
+
 # Anti-Slop Rules
 1. Recreate THIS specific design — do not default to generic patterns
 2. Use the EXACT color palette above — no purple gradients, no generic blue
