@@ -364,6 +364,7 @@ export function BuilderLayout() {
             activePreset={activePreset}
             onGenerated={handlePageGenerated}
             onParsedContent={setParsedContent}
+            onRawHtmlImport={setHtml}
           />
           {sections.length > 0 && (
             <>

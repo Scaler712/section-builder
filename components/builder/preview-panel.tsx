@@ -236,9 +236,17 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
     }
 
     // Fragment mode: wrap in our own document shell (theme block applies here)
-    const cleanHtml = html.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
+    let cleanHtml = html.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
 
-    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${baseTag}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
+    // Extract <link> tags from fragment and move to <head> for proper font loading
+    const linkTags: string[] = [];
+    cleanHtml = cleanHtml.replace(/<link\s[^>]*>/gi, (tag) => {
+      linkTags.push(tag);
+      return "";
+    });
+    const linksInHead = linkTags.join("\n");
+
+    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${baseTag}${linksInHead}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
   }, [html, styleOverrides, lovableBaseUrl]);
 
   useEffect(() => {

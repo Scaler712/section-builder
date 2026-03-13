@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Loader2, ClipboardPaste, CheckCircle2, AlertCircle } from "lucide-react";
+import { Loader2, ClipboardPaste, CheckCircle2, AlertCircle, Code2 } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -20,6 +20,7 @@ interface PasteGeneratorProps {
   activePreset: string | null;
   onGenerated: (sections: PageSection[]) => void;
   onParsedContent: (parsed: ParsedPage) => void;
+  onRawHtmlImport?: (html: string) => void;
 }
 
 type Stage = "input" | "analyzing" | "building" | "complete" | "error";
@@ -103,12 +104,25 @@ function LoadingBar({ stage }: { stage: "analyzing" | "building" }) {
   );
 }
 
-export function PasteGenerator({ apiKey, activePreset, onGenerated, onParsedContent }: PasteGeneratorProps) {
+export function PasteGenerator({ apiKey, activePreset, onGenerated, onParsedContent, onRawHtmlImport }: PasteGeneratorProps) {
   const [rawCopy, setRawCopy] = useState("");
   const [language, setLanguage] = useState("en");
   const [stage, setStage] = useState<Stage>("input");
   const [stageDetail, setStageDetail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  // Detect if pasted content is pre-styled HTML (has <style> blocks + HTML structure)
+  const isHtmlContent = rawCopy.length > 50 &&
+    /<style[\s>]/i.test(rawCopy) &&
+    (/<div[\s>]/i.test(rawCopy) || /<section[\s>]/i.test(rawCopy));
+
+  const handleRawHtmlImport = () => {
+    if (!onRawHtmlImport || !rawCopy.trim()) return;
+    onRawHtmlImport(rawCopy.trim());
+    toast.success("Raw HTML imported — preview it in the right panel");
+    setStage("complete");
+    setTimeout(() => setStage("input"), 2000);
+  };
 
   const generate = async () => {
     if (!rawCopy.trim() || rawCopy.trim().length < 10) {
@@ -279,6 +293,17 @@ export function PasteGenerator({ apiKey, activePreset, onGenerated, onParsedCont
           <p className="font-mono text-[10px] text-[#b5a36a]">
             {!apiKey ? "Enter your Anthropic API key above to generate" : `Need at least 10 characters (${rawCopy.trim().length}/10)`}
           </p>
+        )}
+
+        {/* Raw HTML import — shown when pasted content looks like HTML */}
+        {isHtmlContent && onRawHtmlImport && !isLoading && stage !== "complete" && (
+          <button
+            onClick={handleRawHtmlImport}
+            className="w-full flex items-center justify-center gap-2 h-10 bg-[#1c1c1c] text-[#f7f6f2] font-mono text-[10px] uppercase tracking-[0.25em] hover:bg-[#3d7068] ed-transition mb-2"
+          >
+            <Code2 className="size-4" />
+            Import as Raw HTML (keep original styles)
+          </button>
         )}
 
         <button

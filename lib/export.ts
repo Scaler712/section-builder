@@ -13,6 +13,13 @@ import { buildCssVarBlock } from "@/lib/css-vars";
 export async function optimizeForSystemeio(html: string, overrides: StyleOverrides, checkoutUrl?: string): Promise<string> {
   if (!html.trim()) return html;
 
+  // ── Detect if HTML has its own complete CSS system ──
+  // HTML with custom root wrappers (like .lp-root) that already have full CSS
+  // with !important declarations should NOT get font overrides injected.
+  // These pages were designed to survive Systeme.io's CSS overrides on their own.
+  const hasOwnCssSystem = /\.[a-z]+-root[\s,{]/i.test(html) &&
+    /font-family:[^}]*!important/i.test(html);
+
   // Strip full-document wrappers (from Lovable or other sources)
   // Extract <head> content (styles, links) and <body> content separately
   let stripped = html;
@@ -47,7 +54,18 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   stripped = stripped.replace(/<\/?body[^>]*>/gi, "");
   stripped = stripped.replace(/<meta[^>]*>/gi, "");
   stripped = stripped.replace(/<title[^>]*>[\s\S]*?<\/title>/gi, "");
-  stripped = stripped.replace(/<link[^>]*>/gi, ""); // links converted to @import above
+  // Strip <link> tags — they've been converted to @import or JS injection above.
+  // BUT preserve top-level <link> tags for HTML with its own CSS system (e.g. .lp-root)
+  // since their fonts are already referenced in their own CSS.
+  if (!hasOwnCssSystem) {
+    stripped = stripped.replace(/<link[^>]*>/gi, "");
+  } else {
+    // Only strip non-font links, keep Google Fonts links as-is
+    stripped = stripped.replace(/<link[^>]*>/gi, (tag) => {
+      if (/fonts\.googleapis\.com|fonts\.gstatic\.com|preconnect/i.test(tag)) return tag;
+      return "";
+    });
+  }
 
   // Strip any existing theme block
   let clean = stripped.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
@@ -125,6 +143,7 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   // Inline styles with !important survive everything.
   // IMPORTANT: Use string replacement, NOT DOMParser serialization.
   // DOMParser moves <style> from body to head, destroying CSS when reading body.innerHTML.
+  // SKIP if the HTML already has its own font system with !important declarations.
   const fontFamily = overrides.fontFamily || "Raleway";
   const fontFamilyDecl = `font-family: '${fontFamily}', sans-serif !important`;
 
@@ -134,43 +153,46 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     button: "600", label: "500",
   };
 
-  const textTags = "h1|h2|h3|h4|h5|h6|p|span|a|li|button|label|div|blockquote|figcaption|td|th";
-  // Match ALL opening tags of text elements
-  clean = clean.replace(
-    new RegExp(`<(${textTags})(\\s[^>]*)?>`, "gi"),
-    (match, tag, attrs) => {
-      if (!attrs) attrs = "";
-      const tagLower = tag.toLowerCase();
+  // Only inject inline fonts if HTML doesn't have its own font system
+  if (!hasOwnCssSystem) {
+    const textTags = "h1|h2|h3|h4|h5|h6|p|span|a|li|button|label|div|blockquote|figcaption|td|th";
+    // Match ALL opening tags of text elements
+    clean = clean.replace(
+      new RegExp(`<(${textTags})(\\s[^>]*)?>`, "gi"),
+      (match, tag, attrs) => {
+        if (!attrs) attrs = "";
+        const tagLower = tag.toLowerCase();
 
-      // Extract existing font-weight from inline style if present
-      const existingWeightMatch = attrs.match(/font-weight:\s*(\d+|bold|normal|lighter|bolder)/);
-      const existingWeight = existingWeightMatch ? existingWeightMatch[1] : null;
+        // Extract existing font-weight from inline style if present
+        const existingWeightMatch = attrs.match(/font-weight:\s*(\d+|bold|normal|lighter|bolder)/);
+        const existingWeight = existingWeightMatch ? existingWeightMatch[1] : null;
 
-      // Determine font-weight: use existing > tag default > skip
-      const weight = existingWeight || tagWeights[tagLower] || null;
-      const weightDecl = weight ? `; font-weight: ${weight} !important` : "";
+        // Determine font-weight: use existing > tag default > skip
+        const weight = existingWeight || tagWeights[tagLower] || null;
+        const weightDecl = weight ? `; font-weight: ${weight} !important` : "";
 
-      // Already has font-family with !important — just add weight if needed
-      if (attrs.includes("font-family") && attrs.includes("!important")) {
-        if (weight && !attrs.includes("font-weight")) {
-          return match.replace(/style="([^"]*)"/, `style="$1${weightDecl}"`);
+        // Already has font-family with !important — just add weight if needed
+        if (attrs.includes("font-family") && attrs.includes("!important")) {
+          if (weight && !attrs.includes("font-weight")) {
+            return match.replace(/style="([^"]*)"/, `style="$1${weightDecl}"`);
+          }
+          return match;
         }
-        return match;
-      }
 
-      // Build the style additions
-      const additions = `${fontFamilyDecl}${weightDecl}`;
+        // Build the style additions
+        const additions = `${fontFamilyDecl}${weightDecl}`;
 
-      // Has style attribute — append
-      if (attrs.includes('style="')) {
-        // Strip any existing font-family (we're replacing it with !important version)
-        const cleanedMatch = match.replace(/font-family:[^;"]*(;|\s*")/g, "$1");
-        return cleanedMatch.replace(/style="([^"]*)"/, `style="$1; ${additions}"`);
+        // Has style attribute — append
+        if (attrs.includes('style="')) {
+          // Strip any existing font-family (we're replacing it with !important version)
+          const cleanedMatch = match.replace(/font-family:[^;"]*(;|\s*")/g, "$1");
+          return cleanedMatch.replace(/style="([^"]*)"/, `style="$1; ${additions}"`);
+        }
+        // No style attribute — add one
+        return `<${tag}${attrs} style="${additions}">`;
       }
-      // No style attribute — add one
-      return `<${tag}${attrs} style="${additions}">`;
-    }
-  );
+    );
+  }
 
   // ── Inline color on SVG icon containers for Systeme.io ──
   // SVGs use currentColor which inherits CSS color. Systeme.io overrides color
@@ -303,7 +325,8 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     .join("\n\n");
 
   // Font family + weight CSS overrides as backup (inline styles are primary method)
-  const fontOverride = `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }
+  // Skip when HTML has its own font system — it already handles font overrides
+  const fontOverride = hasOwnCssSystem ? "" : `.sb-root, .sb-root * { font-family: '${fontFamily}', sans-serif !important; }
 .sb-root h1 { font-weight: 700 !important; }
 .sb-root h2 { font-weight: 700 !important; }
 .sb-root h3 { font-weight: 600 !important; }
