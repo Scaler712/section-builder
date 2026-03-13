@@ -218,6 +218,26 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
           doc = doc.replace(/<head[^>]*>/i, `$&\n${baseTag}`);
         }
       }
+
+      // ── Tailwind CSS fallback for Lovable imports ──
+      // Lovable HTML references compiled Tailwind via <link href="/assets/index-xxx.css">
+      // which doesn't resolve in srcdoc. Detect Tailwind class usage without loaded CSS
+      // and inject Tailwind CDN as fallback so spacing, sizing, flex etc. all work.
+      const hasTailwindClasses = /class="[^"]*\b(flex|grid|p-[0-9]|px-|py-|gap-|space-[xy]|rounded|max-w-|w-full|text-[a-z]+-[0-9]|bg-[a-z]+-[0-9]|items-|justify-)\b/.test(doc);
+      const hasUnresolvableCss = /<link[^>]*href="\/assets\/[^"]*\.css"/.test(doc);
+      const hasTailwindLoaded = /tailwindcss|tailwind\.config/.test(doc);
+      if (hasTailwindClasses && (hasUnresolvableCss || !hasTailwindLoaded)) {
+        // Remove broken <link> tags pointing to relative /assets/ paths
+        doc = doc.replace(/<link[^>]*href="\/assets\/[^"]*\.css"[^>]*>/gi, "");
+        // Inject Tailwind CDN play script in <head>
+        const tailwindCdn = `<script src="https://cdn.tailwindcss.com"></script>`;
+        if (/<head[^>]*>/i.test(doc)) {
+          doc = doc.replace(/<\/head>/i, `${tailwindCdn}\n</head>`);
+        } else {
+          doc = tailwindCdn + "\n" + doc;
+        }
+      }
+
       // Inject editable script before closing </body>
       if (/<\/body>/i.test(doc)) {
         doc = doc.replace(/<\/body>/i, `${EDITABLE_SCRIPT}</body>`);
@@ -230,7 +250,11 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
     // Fragment mode: wrap in our own document shell (theme block applies here)
     const cleanHtml = html.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
 
-    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${baseTag}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
+    // Detect if fragment uses Tailwind classes — inject CDN if so
+    const fragmentUsesTailwind = /class="[^"]*\b(flex|grid|p-[0-9]|px-|py-|gap-|space-[xy]|rounded|max-w-|w-full|text-[a-z]+-[0-9]|bg-[a-z]+-[0-9]|items-|justify-)\b/.test(cleanHtml);
+    const tailwindScript = fragmentUsesTailwind ? `<script src="https://cdn.tailwindcss.com"></script>` : "";
+
+    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${baseTag}${tailwindScript}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
   }, [html, styleOverrides, lovableBaseUrl]);
 
   useEffect(() => {
