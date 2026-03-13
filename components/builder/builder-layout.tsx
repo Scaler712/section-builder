@@ -6,6 +6,7 @@ import { AiGenerator } from "./ai-generator";
 import { ApiKeyInput } from "./api-key-input";
 import { Link } from "lucide-react";
 import { HtmlEditor } from "./html-editor";
+import { HtmlImportDirect } from "./html-import-direct";
 import { PreviewPanel } from "./preview-panel";
 import { OutputBar } from "./output-bar";
 import { PageGenerator } from "./page-generator";
@@ -297,6 +298,14 @@ export function BuilderLayout() {
         Paste Copy
       </button>
       <button
+        onClick={() => setMode("import")}
+        className={`flex-1 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] ed-transition ${
+          mode === "import" ? "bg-[#3d7068] text-[#f7f6f2]" : "text-[#7a7a72] hover:text-[#1c1c1c]"
+        }`}
+      >
+        Import
+      </button>
+      <button
         onClick={() => setMode("lovable")}
         className={`flex-1 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] ed-transition ${
           mode === "lovable" ? "bg-[#3d7068] text-[#f7f6f2]" : "text-[#7a7a72] hover:text-[#1c1c1c]"
@@ -383,6 +392,11 @@ export function BuilderLayout() {
             </>
           )}
         </>
+      );
+    }
+    if (mode === "import") {
+      return (
+        <HtmlImportDirect onImport={setHtml} />
       );
     }
     // lovable mode

@@ -1,4 +1,4 @@
-export type BuilderMode = "section" | "page" | "paste" | "lovable";
+export type BuilderMode = "section" | "page" | "paste" | "import" | "lovable";
 
 export interface PageSection {
   id: string;
