@@ -253,12 +253,18 @@ export async function POST(req: Request) {
 
   var client = new Anthropic({ apiKey });
 
-  var stream = await client.messages.stream({
-    model: "claude-opus-4-6",
-    max_tokens: 16384,
-    system: SYSTEM_PROMPT,
-    messages: [{ role: "user", content: userParts.join("\n") }],
-  });
+  var stream;
+  try {
+    stream = await client.messages.stream({
+      model: "claude-sonnet-4-5-20250929",
+      max_tokens: 16384,
+      system: SYSTEM_PROMPT,
+      messages: [{ role: "user", content: userParts.join("\n") }],
+    });
+  } catch (err: unknown) {
+    var msg = err instanceof Error ? err.message : "API call failed";
+    return Response.json({ error: msg }, { status: 502 });
+  }
 
   var encoder = new TextEncoder();
 
