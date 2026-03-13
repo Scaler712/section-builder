@@ -109,6 +109,31 @@ function extractSharedCss(html: string): string {
   return [...links, ...styles].join("\n");
 }
 
+/** Detect the root wrapper element that wraps all <section> tags.
+ *  e.g. <div class="lp-root"> or <div class="sb-root"> or <main class="page">
+ *  Returns opening + closing tags so chunks can be re-wrapped. */
+function detectRootWrapper(html: string): { open: string; close: string } | null {
+  // Strip <style>, <link>, and HTML comments to find the first real content element
+  const stripped = html
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<link[^>]*>/gi, "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .trim();
+
+  // Check if content starts with a wrapper div/main that contains <section> children
+  const wrapperMatch = stripped.match(/^<(div|main)\s+([^>]*)>/i);
+  if (wrapperMatch) {
+    const tag = wrapperMatch[1]!.toLowerCase();
+    const attrs = wrapperMatch[2]!;
+    return {
+      open: `<${tag} ${attrs}>`,
+      close: `</${tag}>`,
+    };
+  }
+
+  return null;
+}
+
 export function SectionSplitter({ html, onHtmlChange, styleOverrides, checkoutUrl }: SectionSplitterProps) {
   const [expanded, setExpanded] = useState(false);
   const [splitPoints, setSplitPoints] = useState<Set<number>>(new Set());
@@ -185,12 +210,20 @@ export function SectionSplitter({ html, onHtmlChange, styleOverrides, checkoutUr
     return result;
   }, [sections, splitPoints]);
 
+  const rootWrapper = useMemo(() => detectRootWrapper(html), [html]);
+
   const copyChunk = async (chunkIndex: number) => {
     const chunk = chunks[chunkIndex];
     if (!chunk) return;
 
     // Combine the chunk's section HTML
-    const chunkHtml = chunk.sections.map((s) => s.html).join("\n\n");
+    let chunkHtml = chunk.sections.map((s) => s.html).join("\n\n");
+
+    // Re-wrap in the root wrapper element (e.g. <div class="lp-root">)
+    // so CSS selectors like .lp-root .hero-check svg still match
+    if (rootWrapper) {
+      chunkHtml = `${rootWrapper.open}\n${chunkHtml}\n${rootWrapper.close}`;
+    }
 
     // Get the shared CSS and prepend it
     const sharedCss = extractSharedCss(html);

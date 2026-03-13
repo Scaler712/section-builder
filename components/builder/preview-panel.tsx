@@ -144,7 +144,22 @@ const EDITABLE_SCRIPT = `
 
 export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOverrides, highlightSelector, lovableBaseUrl }: PreviewPanelProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  // Measure container width for desktop scaling
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setContainerWidth(entry.contentRect.width - 32); // subtract padding
+      }
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleDragEnter = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -213,13 +228,6 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
       // Remove any previously injected sb-theme
       doc = doc.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
 
-      // Fix viewport for desktop preview — set 1280px so media queries trigger correctly
-      if (device === "desktop") {
-        doc = doc.replace(
-          /<meta\s+name="viewport"[^>]*>/i,
-          '<meta name="viewport" content="width=1280,initial-scale=1">'
-        );
-      }
       // Inject <base> tag after <head> for /lovable-uploads/ resolution
       if (baseTag) {
         if (/<head[^>]*>/i.test(doc)) {
@@ -254,13 +262,8 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
     });
     const linksInHead = linkTags.join("\n");
 
-    // For desktop preview, set viewport width to 1280px so CSS media queries
-    // trigger correctly even when the iframe is narrow (split-panel layout).
-    // For tablet/mobile, use device-width so responsive CSS matches.
-    const vpWidth = device === "desktop" ? "1280" : "device-width";
-
-    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=${vpWidth},initial-scale=1">${baseTag}${linksInHead}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
-  }, [html, device, styleOverrides, lovableBaseUrl]);
+    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${baseTag}${linksInHead}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
+  }, [html, styleOverrides, lovableBaseUrl]);
 
   useEffect(() => {
     if (!onHtmlChange) return;
@@ -314,8 +317,15 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
     );
   }, [highlightSelector]);
 
+  // For desktop: render iframe at 1280px and scale down to fit container
+  const desktopScale = device === "desktop" && containerWidth > 0
+    ? Math.min(1, containerWidth / 1280)
+    : 1;
+  const useScaling = device === "desktop" && desktopScale < 1;
+
   return (
     <div
+      ref={containerRef}
       className="h-full bg-[#efede8]/50 flex items-start justify-center overflow-auto p-4 relative"
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
@@ -329,10 +339,12 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
         sandbox="allow-scripts allow-same-origin"
         className="bg-white border border-[#e5e4de]"
         style={{
-          width: deviceWidths[device],
-          maxWidth: "100%",
-          height: "100%",
-          minHeight: "500px",
+          width: useScaling ? "1280px" : deviceWidths[device],
+          maxWidth: useScaling ? "none" : "100%",
+          height: useScaling ? `${100 / desktopScale}%` : "100%",
+          minHeight: useScaling ? `${500 / desktopScale}px` : "500px",
+          transform: useScaling ? `scale(${desktopScale})` : undefined,
+          transformOrigin: useScaling ? "top left" : undefined,
           pointerEvents: isDragOver ? "none" : undefined,
         }}
       />
