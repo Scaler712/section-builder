@@ -209,7 +209,9 @@ Source: [URL]
 - Extract REAL font names from the HTML — don't guess
 - Be obsessively specific with hex values, sizes, spacing
 - The prompt must produce a page that looks like $20K agency work
-- Truncate repetitive HTML — focus on <style> blocks and <body> structure`;
+- Truncate repetitive HTML — focus on <style> blocks and <body> structure
+- NEVER import from lucide-react, heroicons, or any icon library — Lovable DROPS these imports in HTML export and icons vanish completely. ALL icons (checkmarks, X marks, stars, arrows, shields, warnings) MUST be inline <svg> elements with explicit width, height, viewBox, and HTML-valid attributes (stroke-width NOT strokeWidth). In the Technical Requirements section of your prompt, add: "CRITICAL: Do NOT import any icon libraries. All icons must be inline <svg> elements."
+- Include these common inline SVG icon samples in the prompt: checkmark \`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>\`, X mark \`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>\`, star \`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>\``;
 
 export async function POST(req: Request) {
   if (!checkRateLimit()) {

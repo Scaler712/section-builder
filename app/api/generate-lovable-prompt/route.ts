@@ -92,6 +92,34 @@ The hero MUST feel like a $20K page in the first viewport:
 - NO parallax, NO particle effects, NO glassmorphism, NO gradient mesh blobs
 - Grain texture overlay (optional, for warmth): SVG noise at 0.3 opacity
 
+### Icons (CRITICAL — Do NOT Use Icon Libraries)
+NEVER import icons from lucide-react, heroicons, react-icons, or any icon library.
+Lovable DROPS icon library imports when exporting to HTML — the icons completely disappear.
+
+Instead, ALWAYS use inline SVG elements directly in JSX. Here are the most common ones:
+
+**Checkmark (for benefit lists, included items):**
+\`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>\`
+
+**X mark (for pain points, exclusions):**
+\`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>\`
+
+**Star (for ratings, testimonials):**
+\`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>\`
+
+**Arrow right (for CTAs, links):**
+\`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>\`
+
+**Warning/Alert triangle (for urgency):**
+\`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>\`
+
+**Shield/check (for guarantee, trust):**
+\`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>\`
+
+For ANY other icon needed: write the inline SVG with explicit width, height, viewBox, and valid HTML attributes (stroke-width NOT strokeWidth, stroke-linecap NOT strokeLinecap).
+
+In your prompt, specify that Lovable must embed these SVGs directly — NO icon imports.
+
 ### Module/Curriculum Cards (For Course Pages)
 - Each module: card with rounded corners (16-24px), subtle shadow
 - Large module number in accent color (32-48px, bold)
@@ -193,7 +221,8 @@ Your output is a SINGLE prompt that gets copy-pasted directly into Lovable. It m
 13. Pricing section MUST have price anchoring (strikethrough original → sale price)
 14. Every numbered list must use large, styled numbers (accent color, 32px+)
 15. The <frontend_aesthetics> block must be rewritten for DIRECT-RESPONSE pages specifically
-16. ALL icons (checkmarks, stars, arrows, badges) MUST use inline SVG elements with explicit width and height attributes (e.g. width="20" height="20") — NEVER rely on CSS classes alone for icon sizing. This ensures icons survive HTML export. Use Lucide icon SVG paths for consistency`;
+16. NEVER import from lucide-react, heroicons, or any icon library — Lovable DROPS these imports in HTML export and icons vanish completely. ALL icons MUST be inline SVG elements with explicit width, height, viewBox, and HTML-valid attributes (stroke-width, stroke-linecap, NOT React camelCase). Include the SVG icon code samples from above in your prompt so Lovable copies them exactly
+17. In the Technical Requirements section of your prompt, add: "CRITICAL: Do NOT import any icon libraries. All icons must be inline <svg> elements with explicit width/height attributes. Icon library imports are silently dropped in HTML export."`;
 
 export async function POST(req: Request) {
   if (!checkRateLimit()) {
