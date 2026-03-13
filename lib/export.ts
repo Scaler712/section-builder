@@ -49,14 +49,6 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   stripped = stripped.replace(/<title[^>]*>[\s\S]*?<\/title>/gi, "");
   stripped = stripped.replace(/<link[^>]*>/gi, ""); // links converted to @import above
 
-  // Strip Tailwind CDN play script if present (from preview) — not needed in export
-  stripped = stripped.replace(/<script[^>]*src="[^"]*cdn\.tailwindcss\.com[^"]*"[^>]*><\/script>\s*/gi, "");
-
-  // Detect if HTML uses Tailwind utility classes but has no Tailwind CSS in style blocks
-  const usesTailwindClasses = /class="[^"]*\b(flex|grid|p-[0-9]|px-|py-|gap-|space-[xy]|rounded-|max-w-|w-full|text-[a-z]+-[0-9]|bg-[a-z]+-[0-9]|items-|justify-)\b/.test(stripped);
-  const hasTailwindInStyles = /<style[^>]*>[\s\S]*?(\.flex\s*\{|\.p-[0-9]|\.gap-|\.rounded-|utilities|tailwind)[\s\S]*?<\/style>/i.test(stripped);
-  const needsTailwindCdn = usesTailwindClasses && !hasTailwindInStyles;
-
   // Strip any existing theme block
   let clean = stripped.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
 
@@ -390,14 +382,6 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   ].filter((s) => s.trim()).join("\n\n");
 
   parts.push(`<style>\n${cssBody}\n</style>`);
-
-  // ── Tailwind CDN fallback for Lovable imports ──
-  // Lovable HTML uses Tailwind utility classes but the compiled CSS is in an external
-  // file (/assets/index-xxx.css) that doesn't survive export. Load Tailwind CDN via JS
-  // so all utility classes (padding, flex, grid, sizing, colors) work in Systeme.io.
-  if (needsTailwindCdn) {
-    parts.push(`<script src="https://cdn.tailwindcss.com"></script>`);
-  }
 
   // HTML content
   if (clean.trim()) {
