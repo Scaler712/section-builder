@@ -231,43 +231,42 @@ export async function POST(req: Request) {
 
   var client = new Anthropic({ apiKey });
 
-  var stream;
   try {
-    stream = await client.messages.stream({
+    var stream = await client.messages.stream({
       model: "claude-sonnet-4-5-20250929",
       max_tokens: 16384,
       system: SYSTEM_PROMPT,
       messages: [{ role: "user", content: userParts.join("\n") }],
     });
-  } catch (err: unknown) {
-    var msg = err instanceof Error ? err.message : "API call failed";
-    return Response.json({ error: msg }, { status: 502 });
-  }
 
-  var encoder = new TextEncoder();
+    var encoder = new TextEncoder();
 
-  var readable = new ReadableStream({
-    async start(controller) {
-      try {
-        for await (var event of stream) {
-          if (
-            event.type === "content_block_delta" &&
-            event.delta.type === "text_delta"
-          ) {
-            controller.enqueue(encoder.encode(event.delta.text));
+    var readable = new ReadableStream({
+      async start(controller) {
+        try {
+          for await (var event of stream) {
+            if (
+              event.type === "content_block_delta" &&
+              event.delta.type === "text_delta"
+            ) {
+              controller.enqueue(encoder.encode(event.delta.text));
+            }
           }
+          controller.close();
+        } catch (err) {
+          controller.error(err);
         }
-        controller.close();
-      } catch (err) {
-        controller.error(err);
-      }
-    },
-  });
+      },
+    });
 
-  return new Response(readable, {
-    headers: {
-      "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "no-cache",
-    },
-  });
+    return new Response(readable, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-cache",
+      },
+    });
+  } catch (err: unknown) {
+    var errMsg = err instanceof Error ? err.message : "API call failed";
+    return Response.json({ error: errMsg }, { status: 502 });
+  }
 }
