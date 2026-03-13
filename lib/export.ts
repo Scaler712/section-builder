@@ -106,6 +106,8 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
 /* Mobile responsive fix for Systeme.io */
 .sb-root { max-width: 100%; overflow-x: hidden; box-sizing: border-box; }
 .sb-root *, .sb-root *::before, .sb-root *::after { box-sizing: border-box; }
+/* SVG icon color preservation — Systeme.io overrides parent color which breaks currentColor in SVGs */
+.sb-root svg { color: inherit !important; }
 /* Do NOT set generic img/video/iframe rules here — page CSS handles sizing with !important */
 @media (max-width: 768px) {
   .sb-root [style*="display: flex"][style*="flex-direction: row"],
@@ -169,6 +171,38 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
       return `<${tag}${attrs} style="${additions}">`;
     }
   );
+
+  // ── Inline color on SVG icon containers for Systeme.io ──
+  // SVGs use currentColor which inherits CSS color. Systeme.io overrides color
+  // on containers, breaking icon colors. Fix: add inline color !important to
+  // elements with Tailwind text-color classes so currentColor resolves correctly.
+  const twColorMap: Record<string, string> = {
+    "text-red-400": "#f87171", "text-red-500": "#ef4444", "text-red-600": "#dc2626",
+    "text-green-400": "#4ade80", "text-green-500": "#22c55e", "text-green-600": "#16a34a",
+    "text-blue-400": "#60a5fa", "text-blue-500": "#3b82f6", "text-blue-600": "#2563eb",
+    "text-yellow-400": "#facc15", "text-yellow-500": "#eab308", "text-amber-500": "#f59e0b",
+    "text-orange-500": "#f97316", "text-purple-500": "#a855f7", "text-pink-500": "#ec4899",
+    "text-emerald-500": "#10b981", "text-emerald-600": "#059669",
+    "text-rose-500": "#f43f5e", "text-indigo-500": "#6366f1",
+    "text-teal-500": "#14b8a6", "text-cyan-500": "#06b6d4",
+    "text-white": "#ffffff",
+    "text-gray-400": "#9ca3af", "text-gray-500": "#6b7280", "text-gray-600": "#4b5563",
+    "text-slate-400": "#94a3b8", "text-slate-500": "#64748b",
+  };
+  for (const [cls, hex] of Object.entries(twColorMap)) {
+    // Match opening tags that have this class
+    const escaped = cls.replace(/[.*+?^${}()|[\]\\-]/g, "\\$&");
+    clean = clean.replace(
+      new RegExp(`(<[a-z][a-z0-9]*\\s[^>]*class="[^"]*${escaped}[^"]*")`, "gi"),
+      (match) => {
+        // Add inline color if no style attribute, or append to existing
+        if (match.includes('style="')) {
+          return match.replace(/style="([^"]*)"/, `style="$1; color: ${hex} !important"`);
+        }
+        return match + ` style="color: ${hex} !important"`;
+      }
+    );
+  }
 
   // ── Reinforce image inline styles for Systeme.io ──
   // Systeme.io's CSS overrides image sizing. Add !important to critical properties.
@@ -327,6 +361,14 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   reinforcedCss = reinforcedCss.replace(
     /font-weight:\s*([^;!}]+)(;)/g,
     "font-weight: $1 !important;"
+  );
+
+  // ── Reinforce color declarations with !important ──
+  // Systeme.io overrides text color, which breaks SVG icons using currentColor.
+  // Add !important to all color declarations so Tailwind color classes survive.
+  reinforcedCss = reinforcedCss.replace(
+    /([^-])color:\s*([^;!}]+)(;)/g,
+    "$1color: $2 !important;"
   );
 
   // Everything in ONE <style> block: inlined @font-face first, then CSS rules
