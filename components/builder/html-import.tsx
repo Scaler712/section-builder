@@ -56,6 +56,15 @@ export function HtmlImport({ apiKey, activePreset, onGenerated, onParsedContent 
     var reader = new FileReader();
     reader.onload = (ev) => {
       var content = ev.target?.result as string;
+      // Extract <style> tags from <head> before stripping it
+      var headMatch = content.match(/<head[\s\S]*?<\/head>/i);
+      var headStyles = "";
+      if (headMatch) {
+        var styleMatches = headMatch[0].match(/<style[\s\S]*?<\/style>/gi);
+        if (styleMatches) {
+          headStyles = styleMatches.join("\n");
+        }
+      }
       // Strip HTML wrapper, keep body content
       var cleaned = content
         .replace(/<!DOCTYPE[^>]*>/gi, "")
@@ -65,6 +74,10 @@ export function HtmlImport({ apiKey, activePreset, onGenerated, onParsedContent 
         .replace(/<body[^>]*>/gi, "")
         .replace(/<\/body>/gi, "")
         .trim();
+      // Prepend preserved styles so icons and layout survive
+      if (headStyles) {
+        cleaned = headStyles + "\n" + cleaned;
+      }
       setRawContent(cleaned);
       toast.success(`Loaded ${file.name}`);
     };

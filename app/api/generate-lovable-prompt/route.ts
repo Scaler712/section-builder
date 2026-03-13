@@ -192,7 +192,8 @@ Your output is a SINGLE prompt that gets copy-pasted directly into Lovable. It m
 12. Include sticky mobile CTA bar that appears after scrolling past hero
 13. Pricing section MUST have price anchoring (strikethrough original → sale price)
 14. Every numbered list must use large, styled numbers (accent color, 32px+)
-15. The <frontend_aesthetics> block must be rewritten for DIRECT-RESPONSE pages specifically`;
+15. The <frontend_aesthetics> block must be rewritten for DIRECT-RESPONSE pages specifically
+16. ALL icons (checkmarks, stars, arrows, badges) MUST use inline SVG elements with explicit width and height attributes (e.g. width="20" height="20") — NEVER rely on CSS classes alone for icon sizing. This ensures icons survive HTML export. Use Lucide icon SVG paths for consistency`;
 
 export async function POST(req: Request) {
   if (!checkRateLimit()) {
