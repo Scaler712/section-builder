@@ -212,6 +212,14 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
       let doc = html;
       // Remove any previously injected sb-theme
       doc = doc.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
+
+      // Fix viewport for desktop preview — set 1280px so media queries trigger correctly
+      if (device === "desktop") {
+        doc = doc.replace(
+          /<meta\s+name="viewport"[^>]*>/i,
+          '<meta name="viewport" content="width=1280,initial-scale=1">'
+        );
+      }
       // Inject <base> tag after <head> for /lovable-uploads/ resolution
       if (baseTag) {
         if (/<head[^>]*>/i.test(doc)) {
@@ -246,8 +254,13 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
     });
     const linksInHead = linkTags.join("\n");
 
-    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${baseTag}${linksInHead}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
-  }, [html, styleOverrides, lovableBaseUrl]);
+    // For desktop preview, set viewport width to 1280px so CSS media queries
+    // trigger correctly even when the iframe is narrow (split-panel layout).
+    // For tablet/mobile, use device-width so responsive CSS matches.
+    const vpWidth = device === "desktop" ? "1280" : "device-width";
+
+    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=${vpWidth},initial-scale=1">${baseTag}${linksInHead}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
+  }, [html, device, styleOverrides, lovableBaseUrl]);
 
   useEffect(() => {
     if (!onHtmlChange) return;
