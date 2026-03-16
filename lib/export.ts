@@ -92,14 +92,43 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   }
   clean = clean.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "").trim();
 
-  // ── Strip base64 images to reduce file size ──
-  // base64-encoded images can be 1-2MB each, making the HTML too large for Systeme.io.
-  // Replace with a tiny SVG placeholder. Users must upload images to a host separately.
-  const placeholderSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%23111' width='800' height='600'/%3E%3Ctext x='400' y='290' text-anchor='middle' fill='%23c44' font-size='28' font-family='sans-serif'%3EUPLOAD IMAGE%3C/text%3E%3Ctext x='400' y='330' text-anchor='middle' fill='%23888' font-size='16' font-family='sans-serif'%3EReplace this src with a hosted image URL%3C/text%3E%3C/svg%3E";
-  clean = clean.replace(
-    /src="data:image\/[^;]+;base64,[A-Za-z0-9+/=]+"/g,
-    `src="${placeholderSvg}"`
-  );
+  // ── Upload base64 images to Vercel Blob for hosted URLs ──
+  // base64-encoded images can be 1-2MB each, making HTML too large for Systeme.io.
+  // Upload each to Vercel Blob and replace src with the hosted URL.
+  // Falls back to SVG placeholder if upload fails.
+  const base64Regex = /src="data:image\/([\w+]+);base64,([A-Za-z0-9+/=]+)"/g;
+  const base64Matches: Array<{ full: string; type: string; data: string }> = [];
+  let b64Match: RegExpExecArray | null;
+  while ((b64Match = base64Regex.exec(clean)) !== null) {
+    base64Matches.push({ full: b64Match[0], type: b64Match[1]!, data: b64Match[2]! });
+  }
+  if (base64Matches.length > 0) {
+    const placeholderSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%23111' width='800' height='600'/%3E%3Ctext x='400' y='290' text-anchor='middle' fill='%23c44' font-size='28' font-family='sans-serif'%3EUPLOAD FAILED%3C/text%3E%3C/svg%3E";
+    const uploads = await Promise.all(
+      base64Matches.map(async (match, i) => {
+        try {
+          const contentType = `image/${match.type === "jpg" ? "jpeg" : match.type}`;
+          const res = await fetch("/api/upload-image", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              base64: match.data,
+              filename: `section-builder/img-${Date.now()}-${i}.${match.type === "jpeg" ? "jpg" : match.type}`,
+              contentType,
+            }),
+          });
+          if (res.ok) {
+            const { url } = await res.json();
+            return { original: match.full, replacement: `src="${url}"` };
+          }
+        } catch { /* fall through to placeholder */ }
+        return { original: match.full, replacement: `src="${placeholderSvg}"` };
+      })
+    );
+    for (const { original, replacement } of uploads) {
+      clean = clean.replace(original, replacement);
+    }
+  }
 
   // Collect ALL @import declarations, then strip them from CSS blocks.
   // @import MUST be at the very top of a <style> block or browsers ignore them.
