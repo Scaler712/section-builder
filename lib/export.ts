@@ -92,6 +92,15 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   }
   clean = clean.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "").trim();
 
+  // ── Strip base64 images to reduce file size ──
+  // base64-encoded images can be 1-2MB each, making the HTML too large for Systeme.io.
+  // Replace with a tiny SVG placeholder. Users must upload images to a host separately.
+  const placeholderSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%23111' width='800' height='600'/%3E%3Ctext x='400' y='290' text-anchor='middle' fill='%23c44' font-size='28' font-family='sans-serif'%3EUPLOAD IMAGE%3C/text%3E%3Ctext x='400' y='330' text-anchor='middle' fill='%23888' font-size='16' font-family='sans-serif'%3EReplace this src with a hosted image URL%3C/text%3E%3C/svg%3E";
+  clean = clean.replace(
+    /src="data:image\/[^;]+;base64,[A-Za-z0-9+/=]+"/g,
+    `src="${placeholderSvg}"`
+  );
+
   // Collect ALL @import declarations, then strip them from CSS blocks.
   // @import MUST be at the very top of a <style> block or browsers ignore them.
   const allImports = new Set<string>();
@@ -106,6 +115,9 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     // Scope bare `html` and `body` selectors to `.sb-root` to avoid Systeme.io conflicts
     result = result.replace(/(\n|^)\s*html\s*\{/g, "$1.sb-root {");
     result = result.replace(/(\n|^)\s*body\s*\{/g, "$1.sb-root {");
+    // Scope all class/element selectors under .sb-root so page CSS doesn't
+    // leak into or get overridden by Systeme.io's own styles.
+    result = scopeSelectorsUnderRoot(result);
     return result;
   });
 
@@ -591,6 +603,40 @@ export function extractHeaderFontCode(html: string, overrides?: StyleOverrides):
 
 function escapeRegex(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/**
+ * Scope CSS selectors under .sb-root to prevent leaking into Systeme.io.
+ * Handles: class selectors, element selectors, combinator selectors.
+ * Skips: :root, @keyframes, @font-face, already-scoped .sb- selectors.
+ */
+function scopeSelectorsUnderRoot(css: string): string {
+  // Process CSS rule by rule. Split on } but keep @-rules intact.
+  // Strategy: find each "selector { ... }" and prefix the selector.
+  return css.replace(
+    /([^{}@]+)\{/g,
+    (match, selectorBlock) => {
+      const trimmed = selectorBlock.trim();
+      // Skip already-scoped, :root, and special selectors
+      if (!trimmed) return match;
+      if (trimmed.startsWith(":root")) return match;
+      if (trimmed.startsWith(".sb-root")) return match;
+      if (trimmed.startsWith(".sb-")) return match;
+      if (trimmed.startsWith("from") || trimmed.startsWith("to") || /^\d+%$/.test(trimmed)) return match; // @keyframes steps
+      // Scope each comma-separated selector
+      const selectors = trimmed.split(",").map((s: string) => {
+        const sel = s.trim();
+        if (!sel) return sel;
+        if (sel.startsWith(":root")) return sel;
+        if (sel.startsWith(".sb-root")) return sel;
+        if (sel.startsWith(".sb-")) return sel;
+        return `.sb-root ${sel}`;
+      });
+      // Preserve original whitespace before the {
+      const leadingWhitespace = selectorBlock.match(/^(\s*)/)?.[1] || "";
+      return `${leadingWhitespace}${selectors.join(", ")} {`;
+    }
+  );
 }
 
 /**
