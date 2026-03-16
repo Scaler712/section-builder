@@ -202,6 +202,14 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   .sb-root [style*="width:"][style*="px"] { width: 100% !important; max-width: 100% !important; }
   .sb-root h1 { font-size: clamp(1.75rem, 6vw, 3rem) !important; }
   .sb-root h2 { font-size: clamp(1.5rem, 5vw, 2.25rem) !important; }
+  /* Prevent buttons/CTAs from overflowing on mobile — long text + large padding causes overflow */
+  .sb-root a[class*="cta"], .sb-root button[class*="cta"],
+  .sb-root a[class*="btn"], .sb-root button[class*="btn"],
+  .sb-root .cta-button, .sb-root .cta-button-large {
+    max-width: 100% !important; box-sizing: border-box !important;
+    padding-left: 24px !important; padding-right: 24px !important;
+    word-break: break-word !important;
+  }
 }`;
 
   // Wrap content in .sb-root container for alignment control

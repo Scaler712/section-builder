@@ -72,6 +72,15 @@ const VISIBILITY_FIX = `
   opacity: 1 !important; transform: none !important; visibility: visible !important;
   transition: none !important;
 }
+@media (max-width: 768px) {
+  a[class*="cta"], button[class*="cta"],
+  a[class*="btn"], button[class*="btn"],
+  .cta-button, .cta-button-large {
+    max-width: 100% !important; box-sizing: border-box !important;
+    padding-left: 24px !important; padding-right: 24px !important;
+    word-break: break-word !important;
+  }
+}
 </style>`;
 
 const EDITABLE_SCRIPT = `
