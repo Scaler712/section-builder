@@ -144,19 +144,37 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     // Scope bare `html` and `body` selectors to `.sb-root` to avoid Systeme.io conflicts
     result = result.replace(/(\n|^)\s*html\s*\{/g, "$1.sb-root {");
     result = result.replace(/(\n|^)\s*body\s*\{/g, "$1.sb-root {");
+    // Kill JS-dependent animation hiding at the source — remove opacity:0 and
+    // transform from scroll-reveal/fade-up/animate classes so elements are
+    // visible even when scripts don't run.
+    result = result.replace(
+      /\.(scroll-reveal|fade-up|fade-in|slide-up|animate-on-scroll)\s*\{[^}]*\}/g,
+      (match) => {
+        // Strip opacity:0, transform, and visibility:hidden from the rule
+        return match
+          .replace(/opacity:\s*0[^;]*;?/g, "opacity: 1;")
+          .replace(/transform:\s*[^;]+;?/g, "transform: none;")
+          .replace(/visibility:\s*hidden[^;]*;?/g, "visibility: visible;");
+      }
+    );
     // Scope all class/element selectors under .sb-root so page CSS doesn't
     // leak into or get overridden by Systeme.io's own styles.
     result = scopeSelectorsUnderRoot(result);
     return result;
   });
 
-  // ── Fix fade-up visibility ──
-  // Override all .fade-up rules: make elements visible immediately,
-  // then let the script add animation as progressive enhancement.
-  // This prevents flash-of-invisible if scripts load late.
-  const fadeUpFix = `.fade-up { opacity: 1 !important; transform: none !important; }
-.fade-up.sb-animated { opacity: 0 !important; transform: translateY(30px) !important; transition: opacity 0.6s ease, transform 0.6s ease !important; }
-.fade-up.sb-animated.visible { opacity: 1 !important; transform: translateY(0) !important; }`;
+  // ── Fix scroll-reveal / fade-up visibility ──
+  // Many pages use JS-triggered animation classes (opacity: 0 until JS adds .revealed/.visible).
+  // Systeme.io may strip <script> blocks, leaving elements permanently invisible.
+  // Force all common animation classes to be visible immediately.
+  const animationFix = `/* Force all JS-animated elements visible — scripts may not run in Systeme.io */
+.scroll-reveal, .fade-up, .fade-in, .slide-up, .animate-on-scroll,
+[data-animate], [data-scroll], [data-aos] {
+  opacity: 1 !important; transform: none !important; visibility: visible !important;
+}
+.scroll-reveal.revealed, .fade-up.visible, .fade-in.visible {
+  opacity: 1 !important; transform: none !important;
+}`;
 
   // ── Fix Systeme.io alignment override ──
   // Systeme.io wraps Raw HTML blocks in a container with text-align: center.
@@ -447,7 +465,7 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     themeCss,
     fontOverride,
     reinforcedCss,
-    fadeUpFix,
+    animationFix,
     alignmentFix,
   ].filter((s) => s.trim()).join("\n\n");
 
