@@ -82,9 +82,15 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   }
   clean = clean.replace(styleRegex, "").trim();
 
-  // Extract all <script> blocks (we'll replace with a single unified script)
+  // Extract all <script> blocks — preserve source scripts, merge with our own
   const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/gi;
-  clean = clean.replace(scriptRegex, "").trim();
+  const sourceScripts: string[] = [];
+  let scriptMatch: RegExpExecArray | null;
+  while ((scriptMatch = scriptRegex.exec(clean)) !== null) {
+    const content = scriptMatch[1]!.trim();
+    if (content) sourceScripts.push(content);
+  }
+  clean = clean.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "").trim();
 
   // Collect ALL @import declarations, then strip them from CSS blocks.
   // @import MUST be at the very top of a <style> block or browsers ignore them.
@@ -394,17 +400,6 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     "$1color: $2 !important;"
   );
 
-  // ── Reinforce background/background-color with !important ──
-  // Systeme.io may override background colors on sections.
-  reinforcedCss = reinforcedCss.replace(
-    /background-color:\s*([^;!}]+)(;)/g,
-    "background-color: $1 !important;"
-  );
-  reinforcedCss = reinforcedCss.replace(
-    /(\n\s*|;\s*)background:\s*([^;!}]+)(;)/g,
-    "$1background: $2 !important;"
-  );
-
   // Everything in ONE <style> block: inlined @font-face first, then CSS rules
   let cssBody = [
     inlinedFontFaces.trim(),
@@ -486,6 +481,7 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     setTimeout(initAnimations, 50);
   }
 })();
+${sourceScripts.length > 0 ? "\n  // ── Source page scripts (FAQ, scroll reveal, etc.) ──\n" + sourceScripts.map(s => `  ${s}`).join("\n\n") : ""}
 </script>`);
 
   return parts.join("\n\n");
