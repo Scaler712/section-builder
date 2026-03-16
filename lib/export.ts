@@ -163,14 +163,16 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   // ── Fix scroll-reveal / fade-up visibility ──
   // Many pages use JS-triggered animation classes (opacity: 0 until JS adds .revealed/.visible).
   // Systeme.io may strip <script> blocks, leaving elements permanently invisible.
-  // Force all common animation classes to be visible immediately.
+  // Force ALL animation class combinations visible — including .sb-animated which our own
+  // script adds. Must use high-specificity selectors to beat any source CSS.
   const animationFix = `/* Force all JS-animated elements visible — scripts may not run in Systeme.io */
 .scroll-reveal, .fade-up, .fade-in, .slide-up, .animate-on-scroll,
+.scroll-reveal.revealed, .fade-up.visible, .fade-in.visible,
+.fade-up.sb-animated, .fade-in.sb-animated, .slide-up.sb-animated,
+.scroll-reveal.sb-animated, .animate-on-scroll.sb-animated,
+.fade-up.sb-animated.visible, .sb-animated,
 [data-animate], [data-scroll], [data-aos] {
   opacity: 1 !important; transform: none !important; visibility: visible !important;
-}
-.scroll-reveal.revealed, .fade-up.visible, .fade-in.visible {
-  opacity: 1 !important; transform: none !important;
 }`;
 
   // ── Fix Systeme.io alignment override ──
@@ -514,21 +516,17 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   }
 
   // ── Fade-up animations ──
+  // IMPORTANT: Do NOT hide elements with opacity:0 via JS classes.
+  // Systeme.io may strip scripts, leaving elements permanently invisible.
+  // Instead, only ADD the visible class — elements start visible (CSS safety net),
+  // and if JS runs, we just confirm visibility.
   function initAnimations() {
-    var els = document.querySelectorAll('.fade-up');
+    var els = document.querySelectorAll('.fade-up, .scroll-reveal, .fade-in, .slide-up, .animate-on-scroll');
     if (!els.length) return;
-    if (!('IntersectionObserver' in window)) return;
-    var observer = new IntersectionObserver(function(entries) {
-      for (var i = 0; i < entries.length; i++) {
-        if (entries[i].isIntersecting) {
-          entries[i].target.classList.add('visible');
-          observer.unobserve(entries[i].target);
-        }
-      }
-    }, { threshold: 0.1, rootMargin: '50px' });
+    // Mark all as visible immediately — no hiding first
     for (var i = 0; i < els.length; i++) {
-      els[i].classList.add('sb-animated');
-      observer.observe(els[i]);
+      els[i].classList.add('visible');
+      els[i].classList.add('revealed');
     }
   }
   if (document.readyState === 'loading') {
