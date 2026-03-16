@@ -394,8 +394,19 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     "$1color: $2 !important;"
   );
 
+  // ── Reinforce background/background-color with !important ──
+  // Systeme.io may override background colors on sections.
+  reinforcedCss = reinforcedCss.replace(
+    /background-color:\s*([^;!}]+)(;)/g,
+    "background-color: $1 !important;"
+  );
+  reinforcedCss = reinforcedCss.replace(
+    /(\n\s*|;\s*)background:\s*([^;!}]+)(;)/g,
+    "$1background: $2 !important;"
+  );
+
   // Everything in ONE <style> block: inlined @font-face first, then CSS rules
-  const cssBody = [
+  let cssBody = [
     inlinedFontFaces.trim(),
     themeCss,
     fontOverride,
@@ -403,6 +414,17 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     fadeUpFix,
     alignmentFix,
   ].filter((s) => s.trim()).join("\n\n");
+
+  // ── Resolve CSS custom properties (var(--xxx)) to actual values ──
+  // Systeme.io may not respect :root CSS variable definitions.
+  // Extract all --variable definitions, then replace var() references
+  // with actual values so the CSS is fully self-contained.
+  const cssVars = extractCssVariables(cssBody);
+  if (cssVars.size > 0) {
+    cssBody = resolveCssVariables(cssBody, cssVars);
+    // Also resolve var() in inline styles throughout the HTML
+    clean = resolveInlineStyleVars(clean, cssVars);
+  }
 
   parts.push(`<style>\n${cssBody}\n</style>`);
 
@@ -509,10 +531,16 @@ export function validateSystemeioHtml(html: string): { valid: boolean; warnings:
     }
   }
 
+  // Check for base64 images (massive size bloat)
+  const base64Count = (html.match(/data:image\/[^;]+;base64,/g) || []).length;
+  if (base64Count > 0) {
+    warnings.push(`Contains ${base64Count} base64-encoded image(s) — these massively inflate file size. Upload images to a host and use URLs instead`);
+  }
+
   // Check HTML size
   const sizeKb = new Blob([html]).size / 1024;
   if (sizeKb > 2000) {
-    warnings.push(`HTML size is ${Math.round(sizeKb)}KB — may be slow to load`);
+    warnings.push(`HTML size is ${Math.round(sizeKb)}KB — may be slow to load. Systeme.io may truncate or fail on large HTML blocks`);
   }
 
   return {
@@ -567,4 +595,63 @@ export function extractHeaderFontCode(html: string, overrides?: StyleOverrides):
 
 function escapeRegex(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/**
+ * Parse :root blocks and extract CSS custom property definitions.
+ * Returns a map of --variable-name → value.
+ */
+function extractCssVariables(css: string): Map<string, string> {
+  const vars = new Map<string, string>();
+  // Match :root { ... } blocks (may appear multiple times)
+  const rootBlockRegex = /:root\s*\{([^}]+)\}/g;
+  let match: RegExpExecArray | null;
+  while ((match = rootBlockRegex.exec(css)) !== null) {
+    const body = match[1]!;
+    // Extract --name: value pairs
+    const propRegex = /(--[\w-]+)\s*:\s*([^;]+);/g;
+    let propMatch: RegExpExecArray | null;
+    while ((propMatch = propRegex.exec(body)) !== null) {
+      vars.set(propMatch[1]!, propMatch[2]!.trim());
+    }
+  }
+  return vars;
+}
+
+/**
+ * Resolve all var(--xxx) references in CSS to their actual values.
+ * Handles nested vars and fallbacks: var(--x, fallback).
+ * Runs multiple passes to resolve vars that reference other vars.
+ */
+function resolveCssVariables(css: string, vars: Map<string, string>): string {
+  let resolved = css;
+  // Up to 5 passes to resolve nested variable references
+  for (let pass = 0; pass < 5; pass++) {
+    const before = resolved;
+    resolved = resolved.replace(
+      /var\((--[\w-]+)(?:\s*,\s*([^)]+))?\)/g,
+      (match, name, fallback) => {
+        const value = vars.get(name);
+        if (value !== undefined) return value;
+        if (fallback !== undefined) return fallback.trim();
+        return match; // Can't resolve — leave as-is
+      }
+    );
+    if (resolved === before) break; // No more changes
+  }
+  return resolved;
+}
+
+/**
+ * Resolve var() references in inline style attributes throughout HTML.
+ */
+function resolveInlineStyleVars(html: string, vars: Map<string, string>): string {
+  return html.replace(
+    /style="([^"]*)"/g,
+    (match, styleContent) => {
+      if (!styleContent.includes("var(")) return match;
+      const resolved = resolveCssVariables(styleContent, vars);
+      return `style="${resolved}"`;
+    }
+  );
 }
