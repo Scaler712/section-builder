@@ -32,13 +32,42 @@ const deviceWidths: Record<Device, string> = {
   desktop: "100%",
 };
 
-// CSS injected into preview iframe to force all JS-animated elements visible.
-// Source pages hide elements with opacity:0 until IntersectionObserver fires,
-// but in the preview iframe elements may never intersect properly.
+/**
+ * Strip animation-hiding CSS from HTML before rendering in preview.
+ * Generic approach: any CSS rule with opacity:0 + transform:translate is an animation hide.
+ * Also catches named animation classes and data attributes.
+ * Rewrites opacity:0 → 1, transform → none in those rules.
+ */
+function stripAnimationHiding(html: string): string {
+  // 1. Generic: rewrite any CSS rule block that has BOTH opacity:0 AND transform:translate
+  let result = html.replace(
+    /([^{}]*)\{([^}]*)\}/g,
+    (match, selector, body) => {
+      if (/opacity:\s*0/.test(body) && /transform:\s*translate/.test(body)) {
+        const fixed = body
+          .replace(/opacity:\s*0[^;]*;?/g, "opacity: 1;")
+          .replace(/transform:\s*translate[^;]+;?/g, "transform: none;");
+        return `${selector}{${fixed}}`;
+      }
+      return match;
+    }
+  );
+  // 2. Kill .sb-animated opacity:0 rules (our own old export artifact)
+  result = result.replace(
+    /\.[\w-]*\.sb-animated\s*\{[^}]*opacity:\s*0[^}]*\}/g,
+    (match) => match
+      .replace(/opacity:\s*0[^;]*;?/g, "opacity: 1;")
+      .replace(/transform:\s*translate[^;]+;?/g, "transform: none;")
+  );
+  return result;
+}
+
+// Fallback CSS injected into preview iframe for any patterns the regex misses
 const VISIBILITY_FIX = `
 <style id="sb-preview-visibility-fix">
 .scroll-reveal, .reveal, .fade-up, .fade-in, .slide-up, .animate-on-scroll,
 .scroll-reveal.revealed, .reveal.visible, .fade-up.visible, .fade-in.visible,
+.sb-animated, .fade-up.sb-animated, .reveal.sb-animated,
 [data-animate], [data-scroll], [data-aos] {
   opacity: 1 !important; transform: none !important; visibility: visible !important;
   transition: none !important;
@@ -231,13 +260,16 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
       ? `<base href="${lovableBaseUrl.replace(/\/+$/, "")}/">`
       : "";
 
+    // Strip animation-hiding CSS (opacity:0 + transform) so preview shows all text
+    const safeHtml = stripAnimationHiding(html);
+
     // Detect if this is a full HTML document (from Lovable or other source)
-    const isFullDoc = /<!DOCTYPE|<html[\s>]/i.test(html);
+    const isFullDoc = /<!DOCTYPE|<html[\s>]/i.test(safeHtml);
 
     if (isFullDoc) {
       // Full document: DON'T inject sb-theme — the page has its own styles.
       // Only inject base tag (for lovable-uploads) + editable script.
-      let doc = html;
+      let doc = safeHtml;
       // Remove any previously injected sb-theme
       doc = doc.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
 
@@ -265,7 +297,7 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
     }
 
     // Fragment mode: wrap in our own document shell (theme block applies here)
-    let cleanHtml = html.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
+    let cleanHtml = safeHtml.replace(/<style id="sb-theme">[\s\S]*?<\/style>\s*/g, "");
 
     // Extract <link> tags from fragment and move to <head> for proper font loading
     const linkTags: string[] = [];

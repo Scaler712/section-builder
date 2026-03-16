@@ -144,17 +144,22 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     // Scope bare `html` and `body` selectors to `.sb-root` to avoid Systeme.io conflicts
     result = result.replace(/(\n|^)\s*html\s*\{/g, "$1.sb-root {");
     result = result.replace(/(\n|^)\s*body\s*\{/g, "$1.sb-root {");
-    // Kill JS-dependent animation hiding at the source — remove opacity:0 and
-    // transform from scroll-reveal/fade-up/animate classes so elements are
-    // visible even when scripts don't run.
+    // Kill JS-dependent animation hiding at the source — GENERIC approach:
+    // any CSS rule with opacity:0 + transform:translate is an animation hide.
+    // This catches ALL class names (scroll-reveal, reveal, fade-up, etc.)
+    // without needing to enumerate them.
     result = result.replace(
-      /\.(scroll-reveal|reveal|fade-up|fade-in|slide-up|animate-on-scroll)\s*\{[^}]*\}/g,
-      (match) => {
-        // Strip opacity:0, transform, and visibility:hidden from the rule
-        return match
-          .replace(/opacity:\s*0[^;]*;?/g, "opacity: 1;")
-          .replace(/transform:\s*[^;]+;?/g, "transform: none;")
-          .replace(/visibility:\s*hidden[^;]*;?/g, "visibility: visible;");
+      /([^{}]*)\{([^}]*)\}/g,
+      (match, selector, body) => {
+        // Only rewrite rules that have BOTH opacity:0 AND transform:translate
+        if (/opacity:\s*0/.test(body) && /transform:\s*translate/.test(body)) {
+          const fixed = body
+            .replace(/opacity:\s*0[^;]*;?/g, "opacity: 1;")
+            .replace(/transform:\s*translate[^;]+;?/g, "transform: none;")
+            .replace(/visibility:\s*hidden[^;]*;?/g, "visibility: visible;");
+          return `${selector}{${fixed}}`;
+        }
+        return match;
       }
     );
     return result;
