@@ -32,6 +32,19 @@ const deviceWidths: Record<Device, string> = {
   desktop: "100%",
 };
 
+// CSS injected into preview iframe to force all JS-animated elements visible.
+// Source pages hide elements with opacity:0 until IntersectionObserver fires,
+// but in the preview iframe elements may never intersect properly.
+const VISIBILITY_FIX = `
+<style id="sb-preview-visibility-fix">
+.scroll-reveal, .fade-up, .fade-in, .slide-up, .animate-on-scroll,
+.scroll-reveal.revealed, .fade-up.visible, .fade-in.visible,
+[data-animate], [data-scroll], [data-aos] {
+  opacity: 1 !important; transform: none !important; visibility: visible !important;
+  transition: none !important;
+}
+</style>`;
+
 const EDITABLE_SCRIPT = `
 <script>
 (function() {
@@ -242,11 +255,11 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
       // exported correctly from Lovable ("Turn into a single HTML file").
       doc = doc.replace(/<link[^>]*href="\/assets\/[^"]*\.css"[^>]*>/gi, "");
 
-      // Inject editable script before closing </body>
+      // Inject visibility fix + editable script before closing </body>
       if (/<\/body>/i.test(doc)) {
-        doc = doc.replace(/<\/body>/i, `${EDITABLE_SCRIPT}</body>`);
+        doc = doc.replace(/<\/body>/i, `${VISIBILITY_FIX}${EDITABLE_SCRIPT}</body>`);
       } else {
-        doc += EDITABLE_SCRIPT;
+        doc += VISIBILITY_FIX + EDITABLE_SCRIPT;
       }
       return doc;
     }
@@ -262,7 +275,7 @@ export function PreviewPanel({ html, device, onHtmlChange, onDropImage, styleOve
     });
     const linksInHead = linkTags.join("\n");
 
-    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${baseTag}${linksInHead}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${EDITABLE_SCRIPT}</body></html>`;
+    return `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${baseTag}${linksInHead}<style>body{margin:0;padding:0;}</style>${themeBlock}</head><body>${cleanHtml}${VISIBILITY_FIX}${EDITABLE_SCRIPT}</body></html>`;
   }, [html, styleOverrides, lovableBaseUrl]);
 
   useEffect(() => {
