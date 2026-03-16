@@ -157,9 +157,6 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
           .replace(/visibility:\s*hidden[^;]*;?/g, "visibility: visible;");
       }
     );
-    // Scope all class/element selectors under .sb-root so page CSS doesn't
-    // leak into or get overridden by Systeme.io's own styles.
-    result = scopeSelectorsUnderRoot(result);
     return result;
   });
 
