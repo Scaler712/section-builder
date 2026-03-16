@@ -37,8 +37,8 @@ const deviceWidths: Record<Device, string> = {
 // but in the preview iframe elements may never intersect properly.
 const VISIBILITY_FIX = `
 <style id="sb-preview-visibility-fix">
-.scroll-reveal, .fade-up, .fade-in, .slide-up, .animate-on-scroll,
-.scroll-reveal.revealed, .fade-up.visible, .fade-in.visible,
+.scroll-reveal, .reveal, .fade-up, .fade-in, .slide-up, .animate-on-scroll,
+.scroll-reveal.revealed, .reveal.visible, .fade-up.visible, .fade-in.visible,
 [data-animate], [data-scroll], [data-aos] {
   opacity: 1 !important; transform: none !important; visibility: visible !important;
   transition: none !important;

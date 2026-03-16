@@ -148,7 +148,7 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     // transform from scroll-reveal/fade-up/animate classes so elements are
     // visible even when scripts don't run.
     result = result.replace(
-      /\.(scroll-reveal|fade-up|fade-in|slide-up|animate-on-scroll)\s*\{[^}]*\}/g,
+      /\.(scroll-reveal|reveal|fade-up|fade-in|slide-up|animate-on-scroll)\s*\{[^}]*\}/g,
       (match) => {
         // Strip opacity:0, transform, and visibility:hidden from the rule
         return match
@@ -166,10 +166,10 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   // Force ALL animation class combinations visible — including .sb-animated which our own
   // script adds. Must use high-specificity selectors to beat any source CSS.
   const animationFix = `/* Force all JS-animated elements visible — scripts may not run in Systeme.io */
-.scroll-reveal, .fade-up, .fade-in, .slide-up, .animate-on-scroll,
-.scroll-reveal.revealed, .fade-up.visible, .fade-in.visible,
+.scroll-reveal, .reveal, .fade-up, .fade-in, .slide-up, .animate-on-scroll,
+.scroll-reveal.revealed, .reveal.visible, .fade-up.visible, .fade-in.visible,
 .fade-up.sb-animated, .fade-in.sb-animated, .slide-up.sb-animated,
-.scroll-reveal.sb-animated, .animate-on-scroll.sb-animated,
+.scroll-reveal.sb-animated, .reveal.sb-animated, .animate-on-scroll.sb-animated,
 .fade-up.sb-animated.visible, .sb-animated,
 [data-animate], [data-scroll], [data-aos] {
   opacity: 1 !important; transform: none !important; visibility: visible !important;
@@ -521,7 +521,7 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
   // Instead, only ADD the visible class — elements start visible (CSS safety net),
   // and if JS runs, we just confirm visibility.
   function initAnimations() {
-    var els = document.querySelectorAll('.fade-up, .scroll-reveal, .fade-in, .slide-up, .animate-on-scroll');
+    var els = document.querySelectorAll('.fade-up, .scroll-reveal, .reveal, .fade-in, .slide-up, .animate-on-scroll');
     if (!els.length) return;
     // Mark all as visible immediately — no hiding first
     for (var i = 0; i < els.length; i++) {
