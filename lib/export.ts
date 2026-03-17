@@ -165,6 +165,14 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     return result;
   });
 
+  // ── Fix FAQ answer visibility — ensure .open state actually shows content ──
+  // Many Lovable pages define .faq-answer { max-height: 0; opacity: 0 }
+  // but .faq-answer.open only sets opacity:1, forgetting max-height.
+  // Fix: inject a proper .faq-answer.open rule with max-height.
+  const faqFix = `/* FAQ answer open state fix */
+.faq-answer.open { max-height: 2000px !important; opacity: 1 !important; overflow: visible !important; }
+.faq-item.open .faq-answer { max-height: 2000px !important; opacity: 1 !important; overflow: visible !important; }`;
+
   // ── Fix scroll-reveal / fade-up visibility ──
   // Many pages use JS-triggered animation classes (opacity: 0 until JS adds .revealed/.visible).
   // Systeme.io may strip <script> blocks, leaving elements permanently invisible.
@@ -478,6 +486,7 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     fontOverride,
     reinforcedCss,
     animationFix,
+    faqFix,
     alignmentFix,
   ].filter((s) => s.trim()).join("\n\n");
 
@@ -546,6 +555,39 @@ export async function optimizeForSystemeio(html: string, overrides: StyleOverrid
     document.addEventListener('DOMContentLoaded', initAnimations);
   } else {
     setTimeout(initAnimations, 50);
+  }
+
+  // ── FAQ accordion toggle ──
+  // Auto-wires click handlers for .faq-question buttons.
+  // Toggles .open on parent .faq-item, which controls .faq-answer visibility.
+  function initFaq() {
+    var questions = document.querySelectorAll('.faq-question');
+    if (!questions.length) return;
+    for (var i = 0; i < questions.length; i++) {
+      questions[i].addEventListener('click', function() {
+        var item = this.closest('.faq-item');
+        if (!item) return;
+        var wasOpen = item.classList.contains('open');
+        // Close all other items
+        var allItems = document.querySelectorAll('.faq-item');
+        for (var j = 0; j < allItems.length; j++) {
+          allItems[j].classList.remove('open');
+          var ans = allItems[j].querySelector('.faq-answer');
+          if (ans) ans.classList.remove('open');
+        }
+        // Toggle clicked item
+        if (!wasOpen) {
+          item.classList.add('open');
+          var answer = item.querySelector('.faq-answer');
+          if (answer) answer.classList.add('open');
+        }
+      });
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaq);
+  } else {
+    setTimeout(initFaq, 100);
   }
 })();
 ${sourceScripts.length > 0 ? "\n  // ── Source page scripts (FAQ, scroll reveal, etc.) ──\n" + sourceScripts.map(s => `  ${s}`).join("\n\n") : ""}

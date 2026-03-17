@@ -72,6 +72,9 @@ const VISIBILITY_FIX = `
   opacity: 1 !important; transform: none !important; visibility: visible !important;
   transition: none !important;
 }
+/* FAQ answer open state fix */
+.faq-answer.open { max-height: 2000px !important; opacity: 1 !important; overflow: visible !important; }
+.faq-item.open .faq-answer { max-height: 2000px !important; opacity: 1 !important; overflow: visible !important; }
 @media (max-width: 768px) {
   a[class*="cta"], button[class*="cta"],
   a[class*="btn"], button[class*="btn"],
@@ -154,6 +157,29 @@ const EDITABLE_SCRIPT = `
   }
 
   makeEditable();
+
+  // FAQ accordion toggle
+  var faqQuestions = document.querySelectorAll('.faq-question');
+  for (var q = 0; q < faqQuestions.length; q++) {
+    faqQuestions[q].addEventListener('click', function(evt) {
+      evt.preventDefault();
+      var item = this.closest('.faq-item');
+      if (!item) return;
+      var wasOpen = item.classList.contains('open');
+      var allItems = document.querySelectorAll('.faq-item');
+      for (var k = 0; k < allItems.length; k++) {
+        allItems[k].classList.remove('open');
+        var a = allItems[k].querySelector('.faq-answer');
+        if (a) a.classList.remove('open');
+      }
+      if (!wasOpen) {
+        item.classList.add('open');
+        var ans = item.querySelector('.faq-answer');
+        if (ans) ans.classList.add('open');
+      }
+    });
+  }
+
   var observer = new MutationObserver(function() { makeEditable(); });
   observer.observe(document.body, { childList: true, subtree: true });
 
