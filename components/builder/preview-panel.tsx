@@ -163,13 +163,21 @@ const EDITABLE_SCRIPT = `
   makeEditable();
 
   // FAQ accordion toggle
+  // Use mousedown instead of click — blur fires BETWEEN mousedown and click.
+  // By handling on mousedown and blurring nothing, we prevent the iframe reload.
   var faqQuestions = document.querySelectorAll('.faq-question');
   for (var q = 0; q < faqQuestions.length; q++) {
-    faqQuestions[q].addEventListener('click', function(evt) {
+    faqQuestions[q].addEventListener('mousedown', function(evt) {
       evt.preventDefault();
       evt.stopPropagation();
-      // Freeze scroll position so expanding answer doesn't cause page scroll
-      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      // Blur active element SILENTLY — remove contenteditable first so blur
+      // handler doesn't fire postMessage back to parent
+      var active = document.activeElement;
+      if (active && active.getAttribute('contenteditable') === 'true') {
+        active.removeAttribute('contenteditable');
+        active.blur();
+        active.setAttribute('contenteditable', 'true');
+      }
       var item = this.closest('.faq-item');
       if (!item) return;
       var wasOpen = item.classList.contains('open');
@@ -184,8 +192,6 @@ const EDITABLE_SCRIPT = `
         var ans = item.querySelector('.faq-answer');
         if (ans) ans.classList.add('open');
       }
-      // Restore scroll position after DOM change
-      window.scrollTo(0, scrollTop);
     });
   }
 
