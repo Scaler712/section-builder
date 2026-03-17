@@ -121,6 +121,8 @@ const EDITABLE_SCRIPT = `
     for (var i = 0; i < elements.length; i++) {
       var el = elements[i];
       if (el.getAttribute('contenteditable') === 'true') continue;
+      // Don't make FAQ question buttons editable — breaks click toggle
+      if (el.classList && el.classList.contains('faq-question')) continue;
       el.setAttribute('contenteditable', 'true');
       el.addEventListener('blur', function() {
         var cssPath = getCssPath(this);
