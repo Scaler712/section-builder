@@ -75,6 +75,8 @@ const VISIBILITY_FIX = `
 /* FAQ answer open state fix */
 .faq-answer.open { max-height: 2000px !important; opacity: 1 !important; overflow: visible !important; }
 .faq-item.open .faq-answer { max-height: 2000px !important; opacity: 1 !important; overflow: visible !important; }
+/* Disable smooth scroll in preview — causes unwanted scroll when FAQ expands */
+html, body, .sb-root { scroll-behavior: auto !important; }
 @media (max-width: 768px) {
   a[class*="cta"], button[class*="cta"],
   a[class*="btn"], button[class*="btn"],
@@ -165,6 +167,9 @@ const EDITABLE_SCRIPT = `
   for (var q = 0; q < faqQuestions.length; q++) {
     faqQuestions[q].addEventListener('click', function(evt) {
       evt.preventDefault();
+      evt.stopPropagation();
+      // Freeze scroll position so expanding answer doesn't cause page scroll
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
       var item = this.closest('.faq-item');
       if (!item) return;
       var wasOpen = item.classList.contains('open');
@@ -179,6 +184,8 @@ const EDITABLE_SCRIPT = `
         var ans = item.querySelector('.faq-answer');
         if (ans) ans.classList.add('open');
       }
+      // Restore scroll position after DOM change
+      window.scrollTo(0, scrollTop);
     });
   }
 
