@@ -162,35 +162,15 @@ const EDITABLE_SCRIPT = `
 
   makeEditable();
 
-  // FAQ accordion toggle
-  // Use mousedown instead of click — blur fires BETWEEN mousedown and click.
-  // By handling on mousedown and blurring nothing, we prevent the iframe reload.
-  var faqQuestions = document.querySelectorAll('.faq-question');
-  for (var q = 0; q < faqQuestions.length; q++) {
-    faqQuestions[q].addEventListener('mousedown', function(evt) {
-      evt.preventDefault();
-      evt.stopPropagation();
-      // Blur active element SILENTLY — remove contenteditable first so blur
-      // handler doesn't fire postMessage back to parent
+  // FAQ: blur active contenteditable before FAQ click can trigger postMessage
+  var faqItems = document.querySelectorAll('.faq-question');
+  for (var q = 0; q < faqItems.length; q++) {
+    faqItems[q].addEventListener('mousedown', function(evt) {
       var active = document.activeElement;
       if (active && active.getAttribute('contenteditable') === 'true') {
         active.removeAttribute('contenteditable');
         active.blur();
         active.setAttribute('contenteditable', 'true');
-      }
-      var item = this.closest('.faq-item');
-      if (!item) return;
-      var wasOpen = item.classList.contains('open');
-      var allItems = document.querySelectorAll('.faq-item');
-      for (var k = 0; k < allItems.length; k++) {
-        allItems[k].classList.remove('open');
-        var a = allItems[k].querySelector('.faq-answer');
-        if (a) a.classList.remove('open');
-      }
-      if (!wasOpen) {
-        item.classList.add('open');
-        var ans = item.querySelector('.faq-answer');
-        if (ans) ans.classList.add('open');
       }
     });
   }
